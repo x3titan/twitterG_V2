@@ -1,0 +1,2451 @@
+<page>
+  <controls count="46">
+    <control type="DivRoot" pathname="/divRoot">
+      <backgroundColor>ffffff</backgroundColor>
+      <backgroundImg>login.jpg</backgroundImg>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>607</height>
+      <left>0</left>
+      <onControlLoad>/*
+eb.processDock();
+ee.getControl("divRoot").dockX = "disabled";
+ee.getControl("divRoot").dockY = "disabled";
+*/
+
+//g5.pushHistory2("/login");
+
+g5.imgUrl = "/incoming/";
+
+
+g5.p1.changePage("a3");
+eb.processDock();</onControlLoad>
+      <pageTitle>拳头聊天室·管理</pageTitle>
+      <top>0</top>
+      <width>788</width>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel9">
+      <dockX>center</dockX>
+      <dockY>center</dockY>
+      <height>651</height>
+      <heightRatio>1.01401869158878</heightRatio>
+      <left>190</left>
+      <leftRatio>0.126373626373626</leftRatio>
+      <note>p1</note>
+      <onCreate>sender.a1 = ee.getControl("panel1");
+sender.a2 = ee.getControl("panel6");
+sender.a3 = ee.getControl("panel31");
+sender.a4 = ee.getControl("panel43");
+sender.a5 = ee.getControl("panel51");
+sender.a6 = ee.getControl("panel58");
+
+sender.currentPageName = "";
+sender.changePage = function(pageName) {
+    if (this.currentPageName == "a2") {
+        ee.setVisible(this.a2, false);
+    } else if (this.currentPageName == "a3") {
+        ee.setVisible(this.a3, false);
+    } else if (this.currentPageName == "a4") {
+        ee.setVisible(this.a4, false);
+    } else if (this.currentPageName == "a5") {
+        ee.setVisible(this.a5, false);
+    } else if (this.currentPageName == "a6") {
+        ee.setVisible(this.a6, false);
+    }
+    this.currentPageName = pageName;
+    if (this.currentPageName == "a2") {
+        ee.setVisible(this.a2, true);
+    } else if (this.currentPageName == "a3") {
+        ee.setVisible(this.a3, true);
+    } else if (this.currentPageName == "a4") {
+        ee.setVisible(this.a4, true);
+    } else if (this.currentPageName == "a5") {
+        ee.setVisible(this.a5, true);
+    } else if (this.currentPageName == "a6") {
+        ee.setVisible(this.a6, true);
+    }
+    g5.tiledV(this,0,0,0);
+}
+</onCreate>
+      <sizeRatio>1.5995085995086</sizeRatio>
+      <top>-22</top>
+      <topRatio>-0.00623052959501558</topRatio>
+      <width>407</width>
+      <widthRatio>0.745421245421245</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel9/panel1">
+      <dockX>fill</dockX>
+      <height>239</height>
+      <heightRatio>0.367127496159754</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <note>a1</note>
+      <sizeRatio>0.587223587223587</sizeRatio>
+      <top>5</top>
+      <topRatio>0.00768049155145929</topRatio>
+      <width>407</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel9/panel1/panel5">
+      <backgroundImgMode>fill</backgroundImgMode>
+      <dockX>center</dockX>
+      <fontBold>true</fontBold>
+      <fontFamily>arial</fontFamily>
+      <fontSize>24</fontSize>
+      <height>49</height>
+      <heightRatio>0.205020920502092</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>20</left>
+      <leftRatio>0.0491400491400491</leftRatio>
+      <sizeRatio>0.133879781420765</sizeRatio>
+      <text><![CDATA[FIS<font color=#ff0000>T</font>ALK]]></text>
+      <top>137</top>
+      <topRatio>0.573221757322176</topRatio>
+      <width>366</width>
+      <widthRatio>0.899262899262899</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel9/panel1/panel8">
+      <backgroundImg>fist.jpg</backgroundImg>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <dockX>center</dockX>
+      <height>113</height>
+      <heightRatio>0.472803347280335</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>21</left>
+      <leftRatio>0.0515970515970516</leftRatio>
+      <sizeRatio>0.30958904109589</sizeRatio>
+      <top>24</top>
+      <topRatio>0.100418410041841</topRatio>
+      <width>365</width>
+      <widthRatio>0.896805896805897</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel9/panel1/panel32">
+      <backgroundImgMode>fill</backgroundImgMode>
+      <dockX>center</dockX>
+      <fontBold>true</fontBold>
+      <fontFamily>微软雅黑</fontFamily>
+      <fontSize>16</fontSize>
+      <height>33</height>
+      <heightRatio>0.138075313807531</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>67</left>
+      <leftRatio>0.164619164619165</leftRatio>
+      <sizeRatio>0.121323529411765</sizeRatio>
+      <text>拳头聊天室</text>
+      <top>174</top>
+      <topRatio>0.728033472803347</topRatio>
+      <width>272</width>
+      <widthRatio>0.668304668304668</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel9/panel31">
+      <dockX>fill</dockX>
+      <height>397</height>
+      <heightRatio>0.609831029185868</heightRatio>
+      <layerName><![CDATA[p1.a3 -> 主登录]]></layerName>
+      <left>0</left>
+      <sizeRatio>0.975429975429975</sizeRatio>
+      <top>226</top>
+      <topRatio>0.34715821812596</topRatio>
+      <width>407</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel9/panel31/panel39">
+      <backgroundImgMode>fill</backgroundImgMode>
+      <dockX>center</dockX>
+      <fontColor>808080</fontColor>
+      <fontFamily>微软雅黑</fontFamily>
+      <fontSize>12</fontSize>
+      <hAlign>left</hAlign>
+      <height>33</height>
+      <heightRatio>0.0831234256926952</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>67</left>
+      <leftRatio>0.164619164619165</leftRatio>
+      <sizeRatio>0.121323529411765</sizeRatio>
+      <text>账号</text>
+      <top>5</top>
+      <topRatio>0.0125944584382872</topRatio>
+      <width>272</width>
+      <widthRatio>0.668304668304668</widthRatio>
+    </control>
+    <control type="Edit" pathname="/divRoot/panel9/panel31/edit7">
+      <backgroundSkin>empty</backgroundSkin>
+      <dockX>center</dockX>
+      <fontSize>14</fontSize>
+      <height>33</height>
+      <heightRatio>0.0831234256926952</heightRatio>
+      <inputFont>Arial</inputFont>
+      <inputFontSize>14</inputFontSize>
+      <layerVisible>false</layerVisible>
+      <left>67</left>
+      <leftRatio>0.164619164619165</leftRatio>
+      <onCreate>sender.style.borderRadius = "5px";
+sender.style.borderWidth = "1px";
+sender.style.borderColor = "rgb(29,161,242)";
+sender.style.borderStyle = "solid";
+sender.style.boxSizing="border-box";
+sender.style.backgroundColor = "rgba(29,161,242,0.05)";
+
+sender._input.addEventListener("keydown", function(event) {
+    if (event.keyCode==13) {
+        ee.getControl("edit8")._input.focus();
+        event.preventDefault();
+        return false;
+    }
+});</onCreate>
+      <sizeRatio>0.121323529411765</sizeRatio>
+      <top>41</top>
+      <topRatio>0.103274559193955</topRatio>
+      <width>272</width>
+      <widthRatio>0.668304668304668</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel9/panel31/panel42">
+      <backgroundImgMode>fill</backgroundImgMode>
+      <dockX>center</dockX>
+      <fontColor>808080</fontColor>
+      <fontFamily>微软雅黑</fontFamily>
+      <fontSize>12</fontSize>
+      <hAlign>left</hAlign>
+      <height>33</height>
+      <heightRatio>0.0831234256926952</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>67</left>
+      <leftRatio>0.164619164619165</leftRatio>
+      <sizeRatio>0.121323529411765</sizeRatio>
+      <text>密码</text>
+      <top>75</top>
+      <topRatio>0.188916876574307</topRatio>
+      <width>272</width>
+      <widthRatio>0.668304668304668</widthRatio>
+    </control>
+    <control type="Edit" pathname="/divRoot/panel9/panel31/edit8">
+      <backgroundSkin>empty</backgroundSkin>
+      <dockX>center</dockX>
+      <fontSize>14</fontSize>
+      <height>33</height>
+      <heightRatio>0.0831234256926952</heightRatio>
+      <inputFont>Arial</inputFont>
+      <inputFontSize>14</inputFontSize>
+      <inputPassword>true</inputPassword>
+      <layerVisible>false</layerVisible>
+      <left>67</left>
+      <leftRatio>0.164619164619165</leftRatio>
+      <onCreate>sender.style.borderRadius = "5px";
+sender.style.borderWidth = "1px";
+sender.style.borderColor = "rgb(29,161,242)";
+sender.style.borderStyle = "solid";
+sender.style.boxSizing="border-box";
+sender.style.backgroundColor = "rgba(29,161,242,0.05)";
+
+sender._input.addEventListener("keydown", function(event) {
+    if (event.keyCode==13) {
+        login.username = ee.getEditText(ee.getControl("edit7"));
+        login.password = ee.getEditText(ee.getControl("edit8"));
+        login();
+        event.preventDefault();
+        return false;
+    }
+});</onCreate>
+      <sizeRatio>0.121323529411765</sizeRatio>
+      <top>108</top>
+      <topRatio>0.272040302267003</topRatio>
+      <width>272</width>
+      <widthRatio>0.668304668304668</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel9/panel31/panel256">
+      <backgroundColor>8ED0F9</backgroundColor>
+      <cursor>pointer</cursor>
+      <dockX>center</dockX>
+      <fontBold>true</fontBold>
+      <fontColor>404040</fontColor>
+      <fontFamily>微软雅黑</fontFamily>
+      <fontSize>12</fontSize>
+      <height>36</height>
+      <heightRatio>0.0906801007556675</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>67</left>
+      <leftRatio>0.164619164619165</leftRatio>
+      <onClick>g5.p1.changePage("a4");</onClick>
+      <onCreate>sender.style.visibility = "hidden";
+
+sender.BStyle = function(color1,color2,color3,text1,text2,text3,tColor1,tColor2,tColor3,bdColor) {
+    this.color1 = color1;
+    this.color2 = color2
+    this.color3 = color3;
+    this.text1 = text1;
+    this.text2 = text2;
+    this.text3 = text3;
+    this.tColor1 = tColor1;
+    this.tColor2 = tColor2;
+    this.tColor3 = tColor3;
+    this.bdColor = bdColor;
+}
+sender.v_style = [
+    new sender.BStyle("#e0245e","#ca2055","#b31d4b","免费注册新账号","免费注册新账号","免费注册新账号","#ffffff","#ffffff","#ffffff","")
+];
+
+sender.init = function(index) {
+    this.v_index = index;
+    this.style.backgroundColor = this.v_style[index].color1;
+    ee.setText(this, this.v_style[index].text1);
+    ee.setTextColor(this, this.v_style[index].tColor1);
+    if (this.v_style[index].bdColor=="") {
+        this.style.borderWidth = "0px";
+    } else {
+        this.style.boxSizing="border-box";
+        this.style.borderWidth = "1px";
+        this.style.borderColor = this.v_style[index].bdColor;
+        this.style.borderStyle = "solid";
+    }
+    this.style.borderRadius = parseInt(eb.getDivRect(this).h/2) + "px";
+}
+
+ee.setOnMouseEnter(sender, function(sender,event) { 
+    var s =sender.v_style[sender.v_index];
+    sender.style.backgroundColor = s.color2;
+    ee.setText(sender, s.text2);
+    ee.setTextColor(sender, s.tColor2);
+});
+ee.setOnMouseLeave(sender, function(sender,event) { 
+    var s =sender.v_style[sender.v_index];
+    sender.style.backgroundColor = s.color1;
+    ee.setText(sender, s.text1);
+    ee.setTextColor(sender, s.tColor1);
+});
+sender.eeMouseDown = function(sender,event,x,y) {
+    var s =sender.v_style[sender.v_index];
+    sender.style.backgroundColor = s.color3;
+    ee.setText(sender, s.text3);
+    ee.setTextColor(sender, s.tColor3);
+}
+sender.eeMouseUp = function(sender,event,x,y) {
+    var s =sender.v_style[sender.v_index];
+    sender.style.backgroundColor = s.color2;
+    ee.setText(sender, s.text2);
+    ee.setTextColor(sender, s.tColor2);
+}
+eb.initMouseEvent(sender);
+
+sender.init(0);
+
+
+
+
+
+
+
+</onCreate>
+      <sizeRatio>0.132352941176471</sizeRatio>
+      <text>免费注册新账号</text>
+      <top>218</top>
+      <topRatio>0.54911838790932</topRatio>
+      <width>272</width>
+      <widthRatio>0.668304668304668</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel9/panel31/panel41">
+      <backgroundColor>8ED0F9</backgroundColor>
+      <cursor>pointer</cursor>
+      <dockX>center</dockX>
+      <fontBold>true</fontBold>
+      <fontColor>404040</fontColor>
+      <fontFamily>微软雅黑</fontFamily>
+      <fontSize>12</fontSize>
+      <height>36</height>
+      <heightRatio>0.0906801007556675</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>67</left>
+      <leftRatio>0.164619164619165</leftRatio>
+      <onCreate>sender.style.visibility = "hidden";
+
+sender.BStyle = function(color1,color2,color3,text1,text2,text3,tColor1,tColor2,tColor3,bdColor) {
+    this.color1 = color1;
+    this.color2 = color2
+    this.color3 = color3;
+    this.text1 = text1;
+    this.text2 = text2;
+    this.text3 = text3;
+    this.tColor1 = tColor1;
+    this.tColor2 = tColor2;
+    this.tColor3 = tColor3;
+    this.bdColor = bdColor;
+}
+sender.v_style = [
+    new sender.BStyle("","rgba(29,161,242,0.1)","rgba(29,161,242,0.2)","使用已保存的账号登录","使用已保存的账号登录","使用已保存的账号登录","#404040","#404040","#404040","")
+];
+
+sender.init = function(index) {
+    this.v_index = index;
+    this.style.backgroundColor = this.v_style[index].color1;
+    ee.setText(this, this.v_style[index].text1);
+    ee.setTextColor(this, this.v_style[index].tColor1);
+    if (this.v_style[index].bdColor=="") {
+        this.style.borderWidth = "0px";
+    } else {
+        this.style.boxSizing="border-box";
+        this.style.borderWidth = "1px";
+        this.style.borderColor = this.v_style[index].bdColor;
+        this.style.borderStyle = "solid";
+    }
+    this.style.borderRadius = parseInt(eb.getDivRect(this).h/2) + "px";
+}
+
+ee.setOnMouseEnter(sender, function(sender,event) { 
+    var s =sender.v_style[sender.v_index];
+    sender.style.backgroundColor = s.color2;
+    ee.setText(sender, s.text2);
+    ee.setTextColor(sender, s.tColor2);
+});
+ee.setOnMouseLeave(sender, function(sender,event) { 
+    var s =sender.v_style[sender.v_index];
+    sender.style.backgroundColor = s.color1;
+    ee.setText(sender, s.text1);
+    ee.setTextColor(sender, s.tColor1);
+});
+sender.eeMouseDown = function(sender,event,x,y) {
+    var s =sender.v_style[sender.v_index];
+    sender.style.backgroundColor = s.color3;
+    ee.setText(sender, s.text3);
+    ee.setTextColor(sender, s.tColor3);
+}
+sender.eeMouseUp = function(sender,event,x,y) {
+    var s =sender.v_style[sender.v_index];
+    sender.style.backgroundColor = s.color2;
+    ee.setText(sender, s.text2);
+    ee.setTextColor(sender, s.tColor2);
+}
+eb.initMouseEvent(sender);
+
+sender.init(0);
+
+
+
+
+
+
+
+</onCreate>
+      <sizeRatio>0.132352941176471</sizeRatio>
+      <text>使用已保存的账号登录</text>
+      <top>259</top>
+      <topRatio>0.652392947103275</topRatio>
+      <width>272</width>
+      <widthRatio>0.668304668304668</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel9/panel31/panel49">
+      <backgroundColor>8ED0F9</backgroundColor>
+      <cursor>pointer</cursor>
+      <dockX>center</dockX>
+      <fontBold>true</fontBold>
+      <fontColor>1DA1F2</fontColor>
+      <fontSize>12</fontSize>
+      <height>33</height>
+      <heightRatio>0.0831234256926952</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>67</left>
+      <leftRatio>0.164619164619165</leftRatio>
+      <onClick>login.username = ee.getEditText(ee.getControl("edit7"));
+login.password = ee.getEditText(ee.getControl("edit8"));
+login();</onClick>
+      <onCreate><![CDATA[sender.BStyle = function(color1,color2,color3,text1,text2,text3,tColor1,tColor2,tColor3,bdColor) {
+    this.color1 = color1;
+    this.color2 = color2
+    this.color3 = color3;
+    this.text1 = text1;
+    this.text2 = text2;
+    this.text3 = text3;
+    this.tColor1 = tColor1;
+    this.tColor2 = tColor2;
+    this.tColor3 = tColor3;
+    this.bdColor = bdColor;
+}
+sender.v_style = [
+    new sender.BStyle("#1da1f2","#0d91e2","#0081d2","","","","#ffffff","#ffffff","#ffffff","")
+];
+
+sender.init = function(index) {
+    this.v_index = index;
+    this.style.backgroundColor = this.v_style[index].color1;
+    if (this.v_style[index].text1.length>0) ee.setText(this, this.v_style[index].text1);
+    ee.setTextColor(this, this.v_style[index].tColor1);
+    if (this.v_style[index].bdColor=="") {
+        this.style.borderWidth = "0px";
+    } else {
+        this.style.boxSizing="border-box";
+        this.style.borderWidth = "1px";
+        this.style.borderColor = this.v_style[index].bdColor;
+        this.style.borderStyle = "solid";
+    }
+    this.style.borderRadius = parseInt(eb.getDivRect(this).h/2) + "px";
+}
+
+ee.setOnMouseEnter(sender, function(sender,event) { 
+    var s =sender.v_style[sender.v_index];
+    sender.style.backgroundColor = s.color2;
+    if (s.text2.length>0) ee.setText(sender, s.text2);
+    ee.setTextColor(sender, s.tColor2);
+});
+ee.setOnMouseLeave(sender, function(sender,event) { 
+    var s =sender.v_style[sender.v_index];
+    sender.style.backgroundColor = s.color1;
+    if (s.text1.length>0)  ee.setText(sender, s.text1);
+    ee.setTextColor(sender, s.tColor1);
+});
+sender.eeMouseDown = function(sender,event,x,y) {
+    var s =sender.v_style[sender.v_index];
+    sender.style.backgroundColor = s.color3;
+    if (s.text3.length>0) ee.setText(sender, s.text3);
+    ee.setTextColor(sender, s.tColor3);
+}
+sender.eeMouseUp = function(sender,event,x,y) {
+    var s =sender.v_style[sender.v_index];
+    sender.style.backgroundColor = s.color2;
+    if (s.text2.length>0) ee.setText(sender, s.text2);
+    ee.setTextColor(sender, s.tColor2);
+}
+eb.initMouseEvent(sender);
+
+sender.init(0);
+
+
+
+
+
+
+
+]]></onCreate>
+      <sizeRatio>0.121323529411765</sizeRatio>
+      <text>登 录</text>
+      <top>176</top>
+      <topRatio>0.443324937027708</topRatio>
+      <width>272</width>
+      <widthRatio>0.668304668304668</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel9/panel43">
+      <dockX>fill</dockX>
+      <height>397</height>
+      <heightRatio>0.609831029185868</heightRatio>
+      <layerName><![CDATA[p1.a4 -> 注册第一页]]></layerName>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.975429975429975</sizeRatio>
+      <top>234</top>
+      <topRatio>0.359447004608295</topRatio>
+      <width>407</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel9/panel43/panel44">
+      <backgroundImgMode>fill</backgroundImgMode>
+      <dockX>center</dockX>
+      <fontColor>808080</fontColor>
+      <fontFamily>微软雅黑</fontFamily>
+      <fontSize>12</fontSize>
+      <hAlign>left</hAlign>
+      <height>33</height>
+      <heightRatio>0.0831234256926952</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>67</left>
+      <leftRatio>0.164619164619165</leftRatio>
+      <sizeRatio>0.121323529411765</sizeRatio>
+      <text>第一步：选择账号</text>
+      <top>53</top>
+      <topRatio>0.133501259445844</topRatio>
+      <width>272</width>
+      <widthRatio>0.668304668304668</widthRatio>
+    </control>
+    <control type="Edit" pathname="/divRoot/panel9/panel43/edit9">
+      <backgroundSkin>empty</backgroundSkin>
+      <dockX>center</dockX>
+      <fontColor>808080</fontColor>
+      <fontFamily>微软雅黑</fontFamily>
+      <fontSize>12</fontSize>
+      <height>33</height>
+      <heightRatio>0.0831234256926952</heightRatio>
+      <inputFont>Arial</inputFont>
+      <inputFontSize>14</inputFontSize>
+      <layerVisible>false</layerVisible>
+      <left>67</left>
+      <leftRatio>0.164619164619165</leftRatio>
+      <onCreate>sender.style.borderRadius = "5px";
+sender.style.borderWidth = "1px";
+sender.style.borderColor = "rgb(29,161,242)";
+sender.style.borderStyle = "solid";
+sender.style.boxSizing="border-box";
+sender.style.backgroundColor = "rgba(29,161,242,0.05)";
+ 
+sender._input.addEventListener("keydown", function(event) {
+    if (event.keyCode==13) {
+        ee.getControl("panel46").click();
+        event.preventDefault();
+        return false;
+    }
+});</onCreate>
+      <sizeRatio>0.121323529411765</sizeRatio>
+      <text>请输入账号名</text>
+      <top>89</top>
+      <topRatio>0.224181360201511</topRatio>
+      <width>272</width>
+      <widthRatio>0.668304668304668</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel9/panel43/panel45">
+      <backgroundImgMode>fill</backgroundImgMode>
+      <dockX>center</dockX>
+      <fontBold>true</fontBold>
+      <fontColor>404040</fontColor>
+      <fontFamily>微软雅黑</fontFamily>
+      <fontSize>12</fontSize>
+      <height>40</height>
+      <heightRatio>0.100755667506297</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>67</left>
+      <leftRatio>0.164619164619165</leftRatio>
+      <sizeRatio>0.147058823529412</sizeRatio>
+      <text>注册新用户</text>
+      <top>4</top>
+      <topRatio>0.0100755667506297</topRatio>
+      <width>272</width>
+      <widthRatio>0.668304668304668</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel9/panel43/panel45/panel48">
+      <backgroundColor>1DA1F2</backgroundColor>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <fontColor>808080</fontColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>25</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>2</height>
+      <heightRatio>0.05</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.00735294117647059</sizeRatio>
+      <top>38</top>
+      <topRatio>0.95</topRatio>
+      <width>272</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel9/panel43/panel46">
+      <backgroundColor>8ED0F9</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>1DA1F2</fontColor>
+      <fontSize>12</fontSize>
+      <height>33</height>
+      <heightRatio>0.0831234256926952</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>209</left>
+      <leftRatio>0.513513513513513</leftRatio>
+      <onClick>checkUserName.userName = ee.getEditText(ee.getControl("edit9"));
+checkUserName.onComplete = function() {
+    g5.p1.changePage("a5");
+}
+checkUserName();
+
+</onClick>
+      <onCreate><![CDATA[sender.BStyle = function(color1,color2,color3,text1,text2,text3,tColor1,tColor2,tColor3,bdColor) {
+    this.color1 = color1;
+    this.color2 = color2
+    this.color3 = color3;
+    this.text1 = text1;
+    this.text2 = text2;
+    this.text3 = text3;
+    this.tColor1 = tColor1;
+    this.tColor2 = tColor2;
+    this.tColor3 = tColor3;
+    this.bdColor = bdColor;
+}
+sender.v_style = [
+    new sender.BStyle("#1da1f2","#0d91e2","#0081d2","","","","#ffffff","#ffffff","#ffffff","")
+];
+
+sender.init = function(index) {
+    this.v_index = index;
+    this.style.backgroundColor = this.v_style[index].color1;
+    if (this.v_style[index].text1.length>0) ee.setText(this, this.v_style[index].text1);
+    ee.setTextColor(this, this.v_style[index].tColor1);
+    if (this.v_style[index].bdColor=="") {
+        this.style.borderWidth = "0px";
+    } else {
+        this.style.boxSizing="border-box";
+        this.style.borderWidth = "1px";
+        this.style.borderColor = this.v_style[index].bdColor;
+        this.style.borderStyle = "solid";
+    }
+    this.style.borderRadius = parseInt(eb.getDivRect(this).h/2) + "px";
+}
+
+ee.setOnMouseEnter(sender, function(sender,event) { 
+    var s =sender.v_style[sender.v_index];
+    sender.style.backgroundColor = s.color2;
+    if (s.text2.length>0) ee.setText(sender, s.text2);
+    ee.setTextColor(sender, s.tColor2);
+});
+ee.setOnMouseLeave(sender, function(sender,event) { 
+    var s =sender.v_style[sender.v_index];
+    sender.style.backgroundColor = s.color1;
+    if (s.text1.length>0)  ee.setText(sender, s.text1);
+    ee.setTextColor(sender, s.tColor1);
+});
+sender.eeMouseDown = function(sender,event,x,y) {
+    var s =sender.v_style[sender.v_index];
+    sender.style.backgroundColor = s.color3;
+    if (s.text3.length>0) ee.setText(sender, s.text3);
+    ee.setTextColor(sender, s.tColor3);
+}
+sender.eeMouseUp = function(sender,event,x,y) {
+    var s =sender.v_style[sender.v_index];
+    sender.style.backgroundColor = s.color2;
+    if (s.text2.length>0) ee.setText(sender, s.text2);
+    ee.setTextColor(sender, s.tColor2);
+}
+eb.initMouseEvent(sender);
+
+sender.init(0);
+
+
+
+
+
+
+
+]]></onCreate>
+      <sizeRatio>0.239130434782609</sizeRatio>
+      <text><![CDATA[下一步 >>]]></text>
+      <top>248</top>
+      <topRatio>0.624685138539043</topRatio>
+      <width>138</width>
+      <widthRatio>0.339066339066339</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel9/panel43/panel47">
+      <backgroundColor>8ED0F9</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>1DA1F2</fontColor>
+      <fontSize>12</fontSize>
+      <height>33</height>
+      <heightRatio>0.0831234256926952</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>58</left>
+      <leftRatio>0.142506142506143</leftRatio>
+      <onClick>g5.p1.changePage("a3");</onClick>
+      <onCreate><![CDATA[sender.BStyle = function(color1,color2,color3,text1,text2,text3,tColor1,tColor2,tColor3,bdColor) {
+    this.color1 = color1;
+    this.color2 = color2
+    this.color3 = color3;
+    this.text1 = text1;
+    this.text2 = text2;
+    this.text3 = text3;
+    this.tColor1 = tColor1;
+    this.tColor2 = tColor2;
+    this.tColor3 = tColor3;
+    this.bdColor = bdColor;
+}
+sender.v_style = [
+    new sender.BStyle("","rgba(29,161,242,0.1)","rgba(29,161,242,0.2)","","","","#1da1f2","#1da1f2","#1da1f2","#1da1f2")
+];
+
+sender.init = function(index) {
+    this.v_index = index;
+    this.style.backgroundColor = this.v_style[index].color1;
+    if (this.v_style[index].text1.length>0) ee.setText(this, this.v_style[index].text1);
+    ee.setTextColor(this, this.v_style[index].tColor1);
+    if (this.v_style[index].bdColor=="") {
+        this.style.borderWidth = "0px";
+    } else {
+        this.style.boxSizing="border-box";
+        this.style.borderWidth = "1px";
+        this.style.borderColor = this.v_style[index].bdColor;
+        this.style.borderStyle = "solid";
+    }
+    this.style.borderRadius = parseInt(eb.getDivRect(this).h/2) + "px";
+}
+
+ee.setOnMouseEnter(sender, function(sender,event) { 
+    var s =sender.v_style[sender.v_index];
+    sender.style.backgroundColor = s.color2;
+    if (s.text2.length>0) ee.setText(sender, s.text2);
+    ee.setTextColor(sender, s.tColor2);
+});
+ee.setOnMouseLeave(sender, function(sender,event) { 
+    var s =sender.v_style[sender.v_index];
+    sender.style.backgroundColor = s.color1;
+    if (s.text1.length>0)  ee.setText(sender, s.text1);
+    ee.setTextColor(sender, s.tColor1);
+});
+sender.eeMouseDown = function(sender,event,x,y) {
+    var s =sender.v_style[sender.v_index];
+    sender.style.backgroundColor = s.color3;
+    if (s.text3.length>0) ee.setText(sender, s.text3);
+    ee.setTextColor(sender, s.tColor3);
+}
+sender.eeMouseUp = function(sender,event,x,y) {
+    var s =sender.v_style[sender.v_index];
+    sender.style.backgroundColor = s.color2;
+    if (s.text2.length>0) ee.setText(sender, s.text2);
+    ee.setTextColor(sender, s.tColor2);
+}
+eb.initMouseEvent(sender);
+
+sender.init(0);
+
+
+
+
+
+
+
+]]></onCreate>
+      <sizeRatio>0.239130434782609</sizeRatio>
+      <text><![CDATA[<< 返回]]></text>
+      <top>248</top>
+      <topRatio>0.624685138539043</topRatio>
+      <width>138</width>
+      <widthRatio>0.339066339066339</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel9/panel43/panel50">
+      <backgroundImgMode>fill</backgroundImgMode>
+      <dockX>center</dockX>
+      <fontColor>FF8080</fontColor>
+      <fontFamily>微软雅黑</fontFamily>
+      <hAlign>left</hAlign>
+      <height>125</height>
+      <heightRatio>0.314861460957179</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>67</left>
+      <leftRatio>0.164619164619165</leftRatio>
+      <sizeRatio>0.459558823529412</sizeRatio>
+      <text>* 账号名只能是英文或者数字
+* 账号名不能出现"_"以外的控制字符
+* 账号名不能出现空格
+* 账号名的长度必须是6到20位之间
+* 账号名相同判断不区分大小写</text>
+      <top>125</top>
+      <topRatio>0.314861460957179</topRatio>
+      <vAlign>top</vAlign>
+      <width>272</width>
+      <widthRatio>0.668304668304668</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel9/panel51">
+      <dockX>fill</dockX>
+      <height>397</height>
+      <heightRatio>0.609831029185868</heightRatio>
+      <layerName><![CDATA[p1.a5 -> 注册第二页]]></layerName>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.975429975429975</sizeRatio>
+      <top>238</top>
+      <topRatio>0.365591397849462</topRatio>
+      <width>407</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel9/panel51/panel52">
+      <backgroundImgMode>fill</backgroundImgMode>
+      <dockX>center</dockX>
+      <fontColor>808080</fontColor>
+      <fontFamily>微软雅黑</fontFamily>
+      <fontSize>12</fontSize>
+      <hAlign>left</hAlign>
+      <height>33</height>
+      <heightRatio>0.0831234256926952</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>67</left>
+      <leftRatio>0.164619164619165</leftRatio>
+      <sizeRatio>0.121323529411765</sizeRatio>
+      <text>第二步：起个好听的名字</text>
+      <top>53</top>
+      <topRatio>0.133501259445844</topRatio>
+      <width>272</width>
+      <widthRatio>0.668304668304668</widthRatio>
+    </control>
+    <control type="Edit" pathname="/divRoot/panel9/panel51/edit10">
+      <backgroundSkin>empty</backgroundSkin>
+      <dockX>center</dockX>
+      <fontColor>808080</fontColor>
+      <fontFamily>微软雅黑</fontFamily>
+      <fontSize>12</fontSize>
+      <height>33</height>
+      <heightRatio>0.0831234256926952</heightRatio>
+      <inputFont>Arial</inputFont>
+      <inputFontSize>14</inputFontSize>
+      <layerVisible>false</layerVisible>
+      <left>67</left>
+      <leftRatio>0.164619164619165</leftRatio>
+      <onCreate>sender.style.borderRadius = "5px";
+sender.style.borderWidth = "1px";
+sender.style.borderColor = "rgb(29,161,242)";
+sender.style.borderStyle = "solid";
+sender.style.boxSizing="border-box";
+sender.style.backgroundColor = "rgba(29,161,242,0.05)";
+ 
+sender._input.addEventListener("keydown", function(event) {
+    if (event.keyCode==13) {
+        ee.getControl("panel55").click();
+        event.preventDefault();
+        return false;
+    }
+});</onCreate>
+      <sizeRatio>0.121323529411765</sizeRatio>
+      <text>请输入用户名</text>
+      <top>89</top>
+      <topRatio>0.224181360201511</topRatio>
+      <width>272</width>
+      <widthRatio>0.668304668304668</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel9/panel51/panel53">
+      <backgroundImgMode>fill</backgroundImgMode>
+      <dockX>center</dockX>
+      <fontBold>true</fontBold>
+      <fontColor>404040</fontColor>
+      <fontFamily>微软雅黑</fontFamily>
+      <fontSize>12</fontSize>
+      <height>40</height>
+      <heightRatio>0.100755667506297</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>67</left>
+      <leftRatio>0.164619164619165</leftRatio>
+      <sizeRatio>0.147058823529412</sizeRatio>
+      <text>注册新用户</text>
+      <top>4</top>
+      <topRatio>0.0100755667506297</topRatio>
+      <width>272</width>
+      <widthRatio>0.668304668304668</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel9/panel51/panel53/panel54">
+      <backgroundColor>1DA1F2</backgroundColor>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <fontColor>808080</fontColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>25</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>2</height>
+      <heightRatio>0.05</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.00735294117647059</sizeRatio>
+      <top>38</top>
+      <topRatio>0.95</topRatio>
+      <width>272</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel9/panel51/panel55">
+      <backgroundColor>8ED0F9</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>1DA1F2</fontColor>
+      <fontSize>12</fontSize>
+      <height>33</height>
+      <heightRatio>0.0831234256926952</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>209</left>
+      <leftRatio>0.513513513513513</leftRatio>
+      <onClick>checkNickName.nickName = ee.getEditText(ee.getControl("edit10"));
+checkNickName.onComplete = function() {
+    g5.p1.changePage("a6");
+}
+checkNickName();
+
+</onClick>
+      <onCreate><![CDATA[sender.BStyle = function(color1,color2,color3,text1,text2,text3,tColor1,tColor2,tColor3,bdColor) {
+    this.color1 = color1;
+    this.color2 = color2
+    this.color3 = color3;
+    this.text1 = text1;
+    this.text2 = text2;
+    this.text3 = text3;
+    this.tColor1 = tColor1;
+    this.tColor2 = tColor2;
+    this.tColor3 = tColor3;
+    this.bdColor = bdColor;
+}
+sender.v_style = [
+    new sender.BStyle("#1da1f2","#0d91e2","#0081d2","","","","#ffffff","#ffffff","#ffffff","")
+];
+
+sender.init = function(index) {
+    this.v_index = index;
+    this.style.backgroundColor = this.v_style[index].color1;
+    if (this.v_style[index].text1.length>0) ee.setText(this, this.v_style[index].text1);
+    ee.setTextColor(this, this.v_style[index].tColor1);
+    if (this.v_style[index].bdColor=="") {
+        this.style.borderWidth = "0px";
+    } else {
+        this.style.boxSizing="border-box";
+        this.style.borderWidth = "1px";
+        this.style.borderColor = this.v_style[index].bdColor;
+        this.style.borderStyle = "solid";
+    }
+    this.style.borderRadius = parseInt(eb.getDivRect(this).h/2) + "px";
+}
+
+ee.setOnMouseEnter(sender, function(sender,event) { 
+    var s =sender.v_style[sender.v_index];
+    sender.style.backgroundColor = s.color2;
+    if (s.text2.length>0) ee.setText(sender, s.text2);
+    ee.setTextColor(sender, s.tColor2);
+});
+ee.setOnMouseLeave(sender, function(sender,event) { 
+    var s =sender.v_style[sender.v_index];
+    sender.style.backgroundColor = s.color1;
+    if (s.text1.length>0)  ee.setText(sender, s.text1);
+    ee.setTextColor(sender, s.tColor1);
+});
+sender.eeMouseDown = function(sender,event,x,y) {
+    var s =sender.v_style[sender.v_index];
+    sender.style.backgroundColor = s.color3;
+    if (s.text3.length>0) ee.setText(sender, s.text3);
+    ee.setTextColor(sender, s.tColor3);
+}
+sender.eeMouseUp = function(sender,event,x,y) {
+    var s =sender.v_style[sender.v_index];
+    sender.style.backgroundColor = s.color2;
+    if (s.text2.length>0) ee.setText(sender, s.text2);
+    ee.setTextColor(sender, s.tColor2);
+}
+eb.initMouseEvent(sender);
+
+sender.init(0);
+
+
+
+
+
+
+
+]]></onCreate>
+      <sizeRatio>0.239130434782609</sizeRatio>
+      <text><![CDATA[下一步 >>]]></text>
+      <top>248</top>
+      <topRatio>0.624685138539043</topRatio>
+      <width>138</width>
+      <widthRatio>0.339066339066339</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel9/panel51/panel56">
+      <backgroundColor>8ED0F9</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>1DA1F2</fontColor>
+      <fontSize>12</fontSize>
+      <height>33</height>
+      <heightRatio>0.0831234256926952</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>58</left>
+      <leftRatio>0.142506142506143</leftRatio>
+      <onClick>g5.p1.changePage("a4");</onClick>
+      <onCreate><![CDATA[sender.BStyle = function(color1,color2,color3,text1,text2,text3,tColor1,tColor2,tColor3,bdColor) {
+    this.color1 = color1;
+    this.color2 = color2
+    this.color3 = color3;
+    this.text1 = text1;
+    this.text2 = text2;
+    this.text3 = text3;
+    this.tColor1 = tColor1;
+    this.tColor2 = tColor2;
+    this.tColor3 = tColor3;
+    this.bdColor = bdColor;
+}
+sender.v_style = [
+    new sender.BStyle("","rgba(29,161,242,0.1)","rgba(29,161,242,0.2)","","","","#1da1f2","#1da1f2","#1da1f2","#1da1f2")
+];
+
+sender.init = function(index) {
+    this.v_index = index;
+    this.style.backgroundColor = this.v_style[index].color1;
+    if (this.v_style[index].text1.length>0) ee.setText(this, this.v_style[index].text1);
+    ee.setTextColor(this, this.v_style[index].tColor1);
+    if (this.v_style[index].bdColor=="") {
+        this.style.borderWidth = "0px";
+    } else {
+        this.style.boxSizing="border-box";
+        this.style.borderWidth = "1px";
+        this.style.borderColor = this.v_style[index].bdColor;
+        this.style.borderStyle = "solid";
+    }
+    this.style.borderRadius = parseInt(eb.getDivRect(this).h/2) + "px";
+}
+
+ee.setOnMouseEnter(sender, function(sender,event) { 
+    var s =sender.v_style[sender.v_index];
+    sender.style.backgroundColor = s.color2;
+    if (s.text2.length>0) ee.setText(sender, s.text2);
+    ee.setTextColor(sender, s.tColor2);
+});
+ee.setOnMouseLeave(sender, function(sender,event) { 
+    var s =sender.v_style[sender.v_index];
+    sender.style.backgroundColor = s.color1;
+    if (s.text1.length>0)  ee.setText(sender, s.text1);
+    ee.setTextColor(sender, s.tColor1);
+});
+sender.eeMouseDown = function(sender,event,x,y) {
+    var s =sender.v_style[sender.v_index];
+    sender.style.backgroundColor = s.color3;
+    if (s.text3.length>0) ee.setText(sender, s.text3);
+    ee.setTextColor(sender, s.tColor3);
+}
+sender.eeMouseUp = function(sender,event,x,y) {
+    var s =sender.v_style[sender.v_index];
+    sender.style.backgroundColor = s.color2;
+    if (s.text2.length>0) ee.setText(sender, s.text2);
+    ee.setTextColor(sender, s.tColor2);
+}
+eb.initMouseEvent(sender);
+
+sender.init(0);
+
+
+
+
+
+
+
+]]></onCreate>
+      <sizeRatio>0.239130434782609</sizeRatio>
+      <text><![CDATA[<< 上一步]]></text>
+      <top>248</top>
+      <topRatio>0.624685138539043</topRatio>
+      <width>138</width>
+      <widthRatio>0.339066339066339</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel9/panel51/panel57">
+      <backgroundImgMode>fill</backgroundImgMode>
+      <dockX>center</dockX>
+      <fontColor>FF8080</fontColor>
+      <fontFamily>微软雅黑</fontFamily>
+      <hAlign>left</hAlign>
+      <height>101</height>
+      <heightRatio>0.254408060453401</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>67</left>
+      <leftRatio>0.164619164619165</leftRatio>
+      <sizeRatio>0.371323529411765</sizeRatio>
+      <text>* 用户名可以是中文
+* 用户名不能包含空格
+* 用户名不能包含@#$"等控制字符
+* 用户名可以包含下划线"_"
+* 用户名长度必须在2至20个英文或者汉字之间</text>
+      <top>125</top>
+      <topRatio>0.314861460957179</topRatio>
+      <vAlign>top</vAlign>
+      <width>272</width>
+      <widthRatio>0.668304668304668</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel9/panel58">
+      <dockX>fill</dockX>
+      <height>397</height>
+      <heightRatio>0.609831029185868</heightRatio>
+      <layerName><![CDATA[p1.a6 -> 注册第三页]]></layerName>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.975429975429975</sizeRatio>
+      <top>238</top>
+      <topRatio>0.365591397849462</topRatio>
+      <width>407</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel9/panel58/panel59">
+      <backgroundImgMode>fill</backgroundImgMode>
+      <dockX>center</dockX>
+      <fontColor>808080</fontColor>
+      <fontFamily>微软雅黑</fontFamily>
+      <fontSize>12</fontSize>
+      <hAlign>left</hAlign>
+      <height>33</height>
+      <heightRatio>0.0831234256926952</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>67</left>
+      <leftRatio>0.164619164619165</leftRatio>
+      <sizeRatio>0.121323529411765</sizeRatio>
+      <text>第三步：设置密码并完成</text>
+      <top>53</top>
+      <topRatio>0.133501259445844</topRatio>
+      <width>272</width>
+      <widthRatio>0.668304668304668</widthRatio>
+    </control>
+    <control type="Edit" pathname="/divRoot/panel9/panel58/edit11">
+      <backgroundSkin>empty</backgroundSkin>
+      <dockX>center</dockX>
+      <fontColor>808080</fontColor>
+      <fontFamily>微软雅黑</fontFamily>
+      <fontSize>12</fontSize>
+      <height>33</height>
+      <heightRatio>0.0831234256926952</heightRatio>
+      <inputFont>Arial</inputFont>
+      <inputFontSize>14</inputFontSize>
+      <inputPassword>true</inputPassword>
+      <layerVisible>false</layerVisible>
+      <left>67</left>
+      <leftRatio>0.164619164619165</leftRatio>
+      <onCreate>sender.style.borderRadius = "5px";
+sender.style.borderWidth = "1px";
+sender.style.borderColor = "rgb(29,161,242)";
+sender.style.borderStyle = "solid";
+sender.style.boxSizing="border-box";
+sender.style.backgroundColor = "rgba(29,161,242,0.05)";
+ 
+sender._input.addEventListener("keydown", function(event) {
+    if (event.keyCode==13) {
+        ee.getControl("edit12")._input.focus();
+        event.preventDefault();
+        return false;
+    }
+});</onCreate>
+      <sizeRatio>0.121323529411765</sizeRatio>
+      <text>请输入密码</text>
+      <top>89</top>
+      <topRatio>0.224181360201511</topRatio>
+      <width>272</width>
+      <widthRatio>0.668304668304668</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel9/panel58/panel60">
+      <backgroundImgMode>fill</backgroundImgMode>
+      <dockX>center</dockX>
+      <fontBold>true</fontBold>
+      <fontColor>404040</fontColor>
+      <fontFamily>微软雅黑</fontFamily>
+      <fontSize>12</fontSize>
+      <height>40</height>
+      <heightRatio>0.100755667506297</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>67</left>
+      <leftRatio>0.164619164619165</leftRatio>
+      <sizeRatio>0.147058823529412</sizeRatio>
+      <text>注册新用户</text>
+      <top>4</top>
+      <topRatio>0.0100755667506297</topRatio>
+      <width>272</width>
+      <widthRatio>0.668304668304668</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel9/panel58/panel60/panel61">
+      <backgroundColor>1DA1F2</backgroundColor>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <fontColor>808080</fontColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>25</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>2</height>
+      <heightRatio>0.05</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.00735294117647059</sizeRatio>
+      <top>38</top>
+      <topRatio>0.95</topRatio>
+      <width>272</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel9/panel58/panel62">
+      <backgroundColor>8ED0F9</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>1DA1F2</fontColor>
+      <fontSize>12</fontSize>
+      <height>33</height>
+      <heightRatio>0.0831234256926952</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>209</left>
+      <leftRatio>0.513513513513513</leftRatio>
+      <onClick>var p1 = ee.getEditText(ee.getControl("edit11"));
+var p2 = ee.getEditText(ee.getControl("edit12"));
+if (p1!=p2) {
+    g5.alert1("密码错误", "您两次输入的密码不一致，请重新输入");
+    return;
+}
+
+regV2.userName = checkUserName.userName;
+regV2.nickName = checkNickName.nickName;
+regV2.password = p1;
+regV2.onComplete = function() {
+    g5.alert1("注册成功", "欢迎加入拳头聊天室！", 
+        function() {
+            login.username = regV2.userName;
+            login.password = regV2.password;
+            login.param = "?p=1&amp;u=" + escape(regV2.userName);
+            login();
+        },
+        function() {
+            login.username = regV2.userName;
+            login.password = regV2.password;
+            login.param = "?p=1&amp;u=" + escape(regV2.userName);
+            login();
+        }
+    );
+}
+regV2();
+
+</onClick>
+      <onCreate><![CDATA[sender.BStyle = function(color1,color2,color3,text1,text2,text3,tColor1,tColor2,tColor3,bdColor) {
+    this.color1 = color1;
+    this.color2 = color2
+    this.color3 = color3;
+    this.text1 = text1;
+    this.text2 = text2;
+    this.text3 = text3;
+    this.tColor1 = tColor1;
+    this.tColor2 = tColor2;
+    this.tColor3 = tColor3;
+    this.bdColor = bdColor;
+}
+sender.v_style = [
+    new sender.BStyle("#1da1f2","#0d91e2","#0081d2","","","","#ffffff","#ffffff","#ffffff","")
+];
+
+sender.init = function(index) {
+    this.v_index = index;
+    this.style.backgroundColor = this.v_style[index].color1;
+    if (this.v_style[index].text1.length>0) ee.setText(this, this.v_style[index].text1);
+    ee.setTextColor(this, this.v_style[index].tColor1);
+    if (this.v_style[index].bdColor=="") {
+        this.style.borderWidth = "0px";
+    } else {
+        this.style.boxSizing="border-box";
+        this.style.borderWidth = "1px";
+        this.style.borderColor = this.v_style[index].bdColor;
+        this.style.borderStyle = "solid";
+    }
+    this.style.borderRadius = parseInt(eb.getDivRect(this).h/2) + "px";
+}
+
+ee.setOnMouseEnter(sender, function(sender,event) { 
+    var s =sender.v_style[sender.v_index];
+    sender.style.backgroundColor = s.color2;
+    if (s.text2.length>0) ee.setText(sender, s.text2);
+    ee.setTextColor(sender, s.tColor2);
+});
+ee.setOnMouseLeave(sender, function(sender,event) { 
+    var s =sender.v_style[sender.v_index];
+    sender.style.backgroundColor = s.color1;
+    if (s.text1.length>0)  ee.setText(sender, s.text1);
+    ee.setTextColor(sender, s.tColor1);
+});
+sender.eeMouseDown = function(sender,event,x,y) {
+    var s =sender.v_style[sender.v_index];
+    sender.style.backgroundColor = s.color3;
+    if (s.text3.length>0) ee.setText(sender, s.text3);
+    ee.setTextColor(sender, s.tColor3);
+}
+sender.eeMouseUp = function(sender,event,x,y) {
+    var s =sender.v_style[sender.v_index];
+    sender.style.backgroundColor = s.color2;
+    if (s.text2.length>0) ee.setText(sender, s.text2);
+    ee.setTextColor(sender, s.tColor2);
+}
+eb.initMouseEvent(sender);
+
+sender.init(0);
+
+
+
+
+
+
+
+]]></onCreate>
+      <sizeRatio>0.239130434782609</sizeRatio>
+      <text>完成注册</text>
+      <top>248</top>
+      <topRatio>0.624685138539043</topRatio>
+      <width>138</width>
+      <widthRatio>0.339066339066339</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel9/panel58/panel63">
+      <backgroundColor>8ED0F9</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>1DA1F2</fontColor>
+      <fontSize>12</fontSize>
+      <height>33</height>
+      <heightRatio>0.0831234256926952</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>58</left>
+      <leftRatio>0.142506142506143</leftRatio>
+      <onClick>g5.p1.changePage("a5");</onClick>
+      <onCreate><![CDATA[sender.BStyle = function(color1,color2,color3,text1,text2,text3,tColor1,tColor2,tColor3,bdColor) {
+    this.color1 = color1;
+    this.color2 = color2
+    this.color3 = color3;
+    this.text1 = text1;
+    this.text2 = text2;
+    this.text3 = text3;
+    this.tColor1 = tColor1;
+    this.tColor2 = tColor2;
+    this.tColor3 = tColor3;
+    this.bdColor = bdColor;
+}
+sender.v_style = [
+    new sender.BStyle("","rgba(29,161,242,0.1)","rgba(29,161,242,0.2)","","","","#1da1f2","#1da1f2","#1da1f2","#1da1f2")
+];
+
+sender.init = function(index) {
+    this.v_index = index;
+    this.style.backgroundColor = this.v_style[index].color1;
+    if (this.v_style[index].text1.length>0) ee.setText(this, this.v_style[index].text1);
+    ee.setTextColor(this, this.v_style[index].tColor1);
+    if (this.v_style[index].bdColor=="") {
+        this.style.borderWidth = "0px";
+    } else {
+        this.style.boxSizing="border-box";
+        this.style.borderWidth = "1px";
+        this.style.borderColor = this.v_style[index].bdColor;
+        this.style.borderStyle = "solid";
+    }
+    this.style.borderRadius = parseInt(eb.getDivRect(this).h/2) + "px";
+}
+
+ee.setOnMouseEnter(sender, function(sender,event) { 
+    var s =sender.v_style[sender.v_index];
+    sender.style.backgroundColor = s.color2;
+    if (s.text2.length>0) ee.setText(sender, s.text2);
+    ee.setTextColor(sender, s.tColor2);
+});
+ee.setOnMouseLeave(sender, function(sender,event) { 
+    var s =sender.v_style[sender.v_index];
+    sender.style.backgroundColor = s.color1;
+    if (s.text1.length>0)  ee.setText(sender, s.text1);
+    ee.setTextColor(sender, s.tColor1);
+});
+sender.eeMouseDown = function(sender,event,x,y) {
+    var s =sender.v_style[sender.v_index];
+    sender.style.backgroundColor = s.color3;
+    if (s.text3.length>0) ee.setText(sender, s.text3);
+    ee.setTextColor(sender, s.tColor3);
+}
+sender.eeMouseUp = function(sender,event,x,y) {
+    var s =sender.v_style[sender.v_index];
+    sender.style.backgroundColor = s.color2;
+    if (s.text2.length>0) ee.setText(sender, s.text2);
+    ee.setTextColor(sender, s.tColor2);
+}
+eb.initMouseEvent(sender);
+
+sender.init(0);
+
+
+
+
+
+
+
+]]></onCreate>
+      <sizeRatio>0.239130434782609</sizeRatio>
+      <text><![CDATA[<< 上一步]]></text>
+      <top>248</top>
+      <topRatio>0.624685138539043</topRatio>
+      <width>138</width>
+      <widthRatio>0.339066339066339</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel9/panel58/panel64">
+      <backgroundImgMode>fill</backgroundImgMode>
+      <dockX>center</dockX>
+      <fontColor>FF8080</fontColor>
+      <fontFamily>微软雅黑</fontFamily>
+      <hAlign>left</hAlign>
+      <height>91</height>
+      <heightRatio>0.229219143576826</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>67</left>
+      <leftRatio>0.164619164619165</leftRatio>
+      <sizeRatio>0.334558823529412</sizeRatio>
+      <text>* 密码区分英文字母大小写
+* 密码可以包含英文数字或特殊符号
+* 密码不能出现汉字和空格
+* 密码长度必须在6-20个字符之间</text>
+      <top>162</top>
+      <topRatio>0.408060453400504</topRatio>
+      <vAlign>top</vAlign>
+      <width>272</width>
+      <widthRatio>0.668304668304668</widthRatio>
+    </control>
+    <control type="Edit" pathname="/divRoot/panel9/panel58/edit12">
+      <backgroundSkin>empty</backgroundSkin>
+      <dockX>center</dockX>
+      <fontColor>808080</fontColor>
+      <fontFamily>微软雅黑</fontFamily>
+      <fontSize>12</fontSize>
+      <height>33</height>
+      <heightRatio>0.0831234256926952</heightRatio>
+      <inputFont>Arial</inputFont>
+      <inputFontSize>14</inputFontSize>
+      <inputPassword>true</inputPassword>
+      <layerVisible>false</layerVisible>
+      <left>67</left>
+      <leftRatio>0.164619164619165</leftRatio>
+      <onCreate>sender.style.borderRadius = "5px";
+sender.style.borderWidth = "1px";
+sender.style.borderColor = "rgb(29,161,242)";
+sender.style.borderStyle = "solid";
+sender.style.boxSizing="border-box";
+sender.style.backgroundColor = "rgba(29,161,242,0.05)";
+
+sender._input.addEventListener("keydown", function(event) {
+    if (event.keyCode==13) {
+        ee.getControl("panel62").click();
+        event.preventDefault();
+        return false;
+    }
+});</onCreate>
+      <sizeRatio>0.121323529411765</sizeRatio>
+      <text>请再次输入密码</text>
+      <top>126</top>
+      <topRatio>0.317380352644836</topRatio>
+      <width>272</width>
+      <widthRatio>0.668304668304668</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel112">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <backgroundImg>dark1.png</backgroundImg>
+      <backgroundImgMode>stretch</backgroundImgMode>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>607</height>
+      <heightRatio>1</heightRatio>
+      <layerName><![CDATA[popBlack->主界面弹窗黑色]]></layerName>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <onClick>if (!ee.isInternalNode(sender, event.target)) {
+    return;
+}
+sender.close();
+
+</onClick>
+      <onCreate><![CDATA[sender.style.zIndex=100;
+sender.a7 = ee.getControl("panel344");
+
+sender.addEventListener("mousewheel", function(e) {
+    if (!sender.v_canScroll) {
+        window.event? window.event.cancelBubble = true : e.stopPropagation();
+        e.returnValue = false;
+        return false;
+    }
+    sender.v_canScroll = false;
+});
+
+sender.close = function() {
+    for (var i=0; i<sender.eeChildren.length; i++) {
+        if (sender.eeChildren[i].style.visibility != "hidden") {
+            if (sender.eeChildren[i].close) {
+                sender.eeChildren[i].close();
+                ee.setVisible(this, false);
+            } else {
+                ee.showAni(sender.eeChildren[i], 1);
+            }
+        }
+    }
+}]]></onCreate>
+      <sizeRatio>1.17582417582418</sizeRatio>
+      <top>0</top>
+      <width>788</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel112/panel344">
+      <ani2Alpha>disappear:渐变消失</ani2Alpha>
+      <ani2Size>pointDisappear:收缩消失成点</ani2Size>
+      <aniAlpha>appear:渐变出现</aniAlpha>
+      <backgroundColor>FFFFFF</backgroundColor>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <backgroundSkin>body5</backgroundSkin>
+      <dockX>center</dockX>
+      <dockY>center</dockY>
+      <height>211</height>
+      <heightRatio>0.328660436137072</heightRatio>
+      <layerName><![CDATA[  a7->通用提示窗口]]></layerName>
+      <layerVisible>false</layerVisible>
+      <left>203</left>
+      <leftRatio>0.15018315018315</leftRatio>
+      <onAni2End>ee.setVisible(sender.parentNode, false);
+</onAni2End>
+      <onClick>        window.event? window.event.cancelBubble = true : event.stopPropagation();
+</onClick>
+      <onCreate>sender.show = function(title,text,bStyle,onComplete,onCancel) {
+    ee.setText(ee.getControl("panel346"),title);
+    ee.setText(ee.getControl("panel345"),text);
+    ee.getControl("panel349").v_style = bStyle;
+    ee.getControl("panel349").init(0);
+    this.onComplete = onComplete;
+    this.onCancel = onCancel;
+    ee.setVisible(this.parentNode, true);
+    ee.setVisible(this, true);
+}
+
+sender.close = function() {
+    ee.setVisible(this, false);
+    ee.setVisible(this.parentNode, false);
+}</onCreate>
+      <sizeRatio>0.552356020942408</sizeRatio>
+      <top>198</top>
+      <topRatio>0.334890965732087</topRatio>
+      <width>382</width>
+      <widthRatio>0.6996336996337</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel112/panel344/panel345">
+      <fontColor>657786</fontColor>
+      <fontFamily>微软雅黑</fontFamily>
+      <fontSize>12</fontSize>
+      <height>78</height>
+      <heightRatio>0.369668246445498</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>31</left>
+      <leftRatio>0.081151832460733</leftRatio>
+      <sizeRatio>0.242990654205607</sizeRatio>
+      <text>此操作不可撤消，并且将从你的个人资料、关注你的任何账号的时间线以及 GET搜索结果中移除。</text>
+      <top>54</top>
+      <topRatio>0.255924170616114</topRatio>
+      <width>321</width>
+      <widthRatio>0.840314136125654</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel112/panel344/panel346">
+      <dockX>center</dockX>
+      <fontBold>true</fontBold>
+      <fontColor>202326</fontColor>
+      <fontFamily>微软雅黑</fontFamily>
+      <fontSize>14</fontSize>
+      <height>39</height>
+      <heightRatio>0.184834123222749</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>36</left>
+      <leftRatio>0.0942408376963351</leftRatio>
+      <sizeRatio>0.12621359223301</sizeRatio>
+      <text>删除发言</text>
+      <top>18</top>
+      <topRatio>0.0853080568720379</topRatio>
+      <width>309</width>
+      <widthRatio>0.808900523560209</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel112/panel344/panel347">
+      <backgroundColor>00C0C0</backgroundColor>
+      <cursor>move</cursor>
+      <dockX>fill</dockX>
+      <dockY>top</dockY>
+      <height>65</height>
+      <heightRatio>0.308056872037915</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <onCreate><![CDATA[sender.v_down = false;
+sender.style.backgroundColor = "rgba(255,255,255,0.01)";
+sender.onpointerdown = function(event) {
+    var sender = event.target;
+    sender.v_down = true;
+    sender.v_x = event.clientX;
+    sender.v_y = event.clientY;
+    sender.setPointerCapture(event.pointerId);
+}
+sender.onpointerup = function(event) {
+    var sender = event.target;
+    sender.v_down = false;
+    sender.releasePointerCapture(event.pointerId);
+}
+sender.onpointermove = function(event) {
+    var sender = event.target;
+    if (sender.v_down) {
+        var dx = event.clientX - sender.v_x;
+        var dy = event.clientY - sender.v_y;
+        var rect = eb.getDivRect(sender.parentNode);
+        var rectP = eb.getDivRect(sender.parentNode.parentNode);
+        if (rect.x+dx<0) dx = null;
+        if (rect.x+dx+rect.w>=rectP.w) dx = null;
+        if (dx!=null) {
+            sender.v_x = event.clientX;
+            dx = rect.x+dx;
+        }
+        if (rect.y+dy<0) dy = null;
+        if (rect.y+dy+rect.h>=rectP.h) dy = null;
+        if (dy!=null) {
+            sender.v_y = event.clientY;
+            dy = rect.y+dy;
+        }
+        ee.setRect(sender.parentNode, dx, dy, null, null);
+    }
+}
+
+
+]]></onCreate>
+      <sizeRatio>0.170157068062827</sizeRatio>
+      <top>0</top>
+      <width>382</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel112/panel344/panel349">
+      <backgroundColor>8ED0F9</backgroundColor>
+      <cursor>pointer</cursor>
+      <dockX>center</dockX>
+      <fontBold>true</fontBold>
+      <fontColor>1DA1F2</fontColor>
+      <fontFamily>微软雅黑</fontFamily>
+      <fontSize>12</fontSize>
+      <height>40</height>
+      <heightRatio>0.18957345971564</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>128</left>
+      <leftRatio>0.335078534031414</leftRatio>
+      <onClick>sender.parentNode.close();
+if (!eb.isEmpty(sender.parentNode.onComplete)) sender.parentNode.onComplete();</onClick>
+      <onCreate>sender.BStyle = function(color1,color2,color3,text1,text2,text3,tColor1,tColor2,tColor3,bdColor) {
+    this.color1 = color1;
+    this.color2 = color2
+    this.color3 = color3;
+    this.text1 = text1;
+    this.text2 = text2;
+    this.text3 = text3;
+    this.tColor1 = tColor1;
+    this.tColor2 = tColor2;
+    this.tColor3 = tColor3;
+    this.bdColor = bdColor;
+}
+sender.v_style = [
+    new sender.BStyle("#e0245e","#ca2055","#b31d4b","已屏蔽","取消屏蔽","取消屏蔽","#ffffff","#ffffff","#ffffff","")
+];
+
+sender.init = function(index) {
+    this.v_index = index;
+    this.style.backgroundColor = this.v_style[index].color1;
+    ee.setText(this, this.v_style[index].text1);
+    ee.setTextColor(this, this.v_style[index].tColor1);
+    if (this.v_style[index].bdColor=="") {
+        this.style.borderWidth = "0px";
+    } else {
+        this.style.boxSizing="border-box";
+        this.style.borderWidth = "1px";
+        this.style.borderColor = this.v_style[index].bdColor;
+        this.style.borderStyle = "solid";
+    }
+    this.style.borderRadius = parseInt(eb.getDivRect(this).h/2) + "px";
+}
+
+ee.setOnMouseEnter(sender, function(sender,event) { 
+    var s =sender.v_style[sender.v_index];
+    sender.style.backgroundColor = s.color2;
+    ee.setText(sender, s.text2);
+    ee.setTextColor(sender, s.tColor2);
+});
+ee.setOnMouseLeave(sender, function(sender,event) { 
+    var s =sender.v_style[sender.v_index];
+    sender.style.backgroundColor = s.color1;
+    ee.setText(sender, s.text1);
+    ee.setTextColor(sender, s.tColor1);
+});
+sender.eeMouseDown = function(sender,event,x,y) {
+    var s =sender.v_style[sender.v_index];
+    sender.style.backgroundColor = s.color3;
+    ee.setText(sender, s.text3);
+    ee.setTextColor(sender, s.tColor3);
+}
+sender.eeMouseUp = function(sender,event,x,y) {
+    var s =sender.v_style[sender.v_index];
+    sender.style.backgroundColor = s.color2;
+    ee.setText(sender, s.text2);
+    ee.setTextColor(sender, s.tColor2);
+}
+eb.initMouseEvent(sender);
+
+sender.init(0);
+
+
+
+
+
+
+
+</onCreate>
+      <sizeRatio>0.317460317460317</sizeRatio>
+      <text>确认</text>
+      <top>142</top>
+      <topRatio>0.672985781990521</topRatio>
+      <width>126</width>
+      <widthRatio>0.329842931937173</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel112/panel344/panel350">
+      <dockX>right</dockX>
+      <dockY>top</dockY>
+      <height>36</height>
+      <heightRatio>0.170616113744076</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>328</left>
+      <leftRatio>0.858638743455497</leftRatio>
+      <onClick>sender.parentNode.close();
+if (!eb.isEmpty(sender.parentNode.onCancel)) sender.parentNode.onCancel();</onClick>
+      <onCreate><![CDATA[ee.setText(sender,
+    "<svg viewBox=\"0 0 24 24\" style=\"font-size: 13px;height:1.5em;width:1.5em;margin:5px 8px 8px 5px;fill:rgba(80,80,80,1);vertical-align:middle;\">" + g5.iconClose + "</svg>"
+);
+sender.style.borderRadius = "50%";
+ee.setOnMouseEnter(sender, function(sender,event) {
+    sender.style.backgroundColor = "#dfeffa";
+});    
+ee.setOnMouseLeave(sender, function(sender,event) {
+    sender.style.backgroundColor = "";
+});
+]]></onCreate>
+      <outerRight>18</outerRight>
+      <outerTop>15</outerTop>
+      <sizeRatio>1</sizeRatio>
+      <top>15</top>
+      <topRatio>0.0710900473933649</topRatio>
+      <width>36</width>
+      <widthRatio>0.0942408376963351</widthRatio>
+    </control>
+  </controls>
+  <taskSet count="7">
+    <taskSetItem name="loginToken">
+      <script1><![CDATA[g5.token = eb.getCookie("FAToken");
+if (eb.isEmpty(g5.token)) {
+    g5.token = "";
+}
+if (g5.token.length<=0) return;
+
+eio.appendString8(g5.token);]]></script1>
+      <script2><![CDATA[var token = eio.readString8();
+var sql,sqlResult;
+sql = "exec getUserInfoBySessionAdmin '" + db.encode(token) + "'";
+sqlResult = db.executeQuery("DB", sql);
+if (sqlResult == null) {
+    eio.appendString8("F");
+    eio.appendString8("系统繁忙请稍后再试");
+    return;
+}
+db.read(sqlResult);
+if (db.getString(sqlResult, "sessionId").length < 5) {
+    eio.appendString8("F");
+    eio.appendString8("上次登录时间太久或者您更换了系统");
+    es.logCommon("用户token登录失败,token=" + token);
+    return;
+} 
+eio.appendString8("T");
+//eio.appendString8(db.getString(sqlResult, "userType"));
+es.logCommon("用户token登录,userName=" + db.getString(sqlResult,"userName") +
+    ",nickName=" + db.getString(sqlResult, "nickName"));
+
+]]></script2>
+      <script3>if (eio.readString8()!="T") {
+    g5.alert1("提示", "登录失败："+eio.readString8() + ",请尝试使用用户名和密码进行登录。");
+    return;
+}
+
+window.location.href = ee.getUrl("/admin/main");
+
+</script3>
+    </taskSetItem>
+    <taskSetItem name="getUserInfo">
+      <script1><![CDATA[ee.setText(ee.getControl("panel12"), "无保存的用户<br/>请重新登录"); 
+g5.token = eb.getCookie("FAToken");
+if (eb.isEmpty(g5.token)) g5.token = "";
+if (g5.token.length <= 0) return;
+
+eio.appendString16(g5.token);
+
+
+
+
+
+
+
+
+
+]]></script1>
+      <script2><![CDATA[var token = eio.readString16();
+var sql,sqlResult;  
+
+sql = "exec getUserInfoBySession '" + db.encode(token) + "'";
+sqlResult = db.executeQuery("DB", sql);
+if (sqlResult == null) {
+    eio.appendString8("F");
+    eio.appendString8("系统繁忙请稍后再试");
+    return;
+}
+db.read(sqlResult);
+if (db.getString(sqlResult, "sessionId").length < 5) {
+    eio.appendString8("F");
+    eio.appendString8("上次登录时间太久或者您更换了系统");
+    es.logCommon("用户token登录失败,token=" + token);
+    return;
+} 
+
+session.set("userName", db.getString(sqlResult,"userName"));
+var userId = db.getString(sqlResult,"id");
+
+eio.appendString8("T");
+es.logCommon("用户token登录,userName=" + db.getString(sqlResult,"userName") +
+    ",nickName=" + db.getString(sqlResult, "nickName"));
+eio.appendString8(db.getString(sqlResult,"userName"));
+eio.appendString16(db.getString(sqlResult,"nickName"));
+eio.appendString16(db.getString(sqlResult,"photo"));
+eio.appendString16(db.getString(sqlResult,"titleBg"));
+eio.appendString16(db.getString(sqlResult,"note"));
+eio.appendString16(db.getString(sqlResult,"homePage"));
+
+//new user?
+/*
+sql = "select count(*) as c from follow where userId = " + userId + " and followId <> userId";
+if (sqlResult == null) {
+    eio.appendString16("F");
+    return;
+}
+db.read(sqlResult);
+if (db.getInt32(sqlResult,"c") > 0) {
+    eio.appendString16("F");
+} else {
+    eio.appendString16("T");
+}
+*/
+]]></script2>
+      <script3><![CDATA[if (eio.readString8() != "T") {
+    //g5.alert1("提示", eio.readString8());
+    return;
+}
+
+g5.userName = eio.readString8();
+g5.nickName = eio.readString16();
+g5.photo = eio.readString16();
+g5.titleBg = eio.readString16();
+g5.userNote = eio.readString16();
+g5.userHomepage = eio.readString16();
+
+if (g5.photo.length <= 0) {
+    ee.setImage(ee.getControl("panel29"), "/faith/pc/main/user.png");
+} else {
+    ee.setImage(ee.getControl("panel29"), "url:" + g5.imgUrl + g5.photo);
+}
+var s = "<b>" + g5.nickName + "</b><br/>";
+s += "@" + g5.userName;
+ee.setText(ee.getControl("panel12"), s);    
+                               
+
+
+
+]]></script3>
+    </taskSetItem>
+    <taskSetItem name="login">
+      <script1><![CDATA[if (!login.param) login.param = "";
+g5.username = login.username;
+g5.password = login.password;
+if (g5.username.length <= 2) {
+    g5.alert1("登录提示", "请输入有效的账号");
+    return;
+}
+eio.appendString8(g5.username);
+eio.appendString8(g5.password);
+
+
+
+]]></script1>
+      <script2><![CDATA[var username = eio.readString8();
+var password = eio.readString8();
+var sql,sqlResult;  
+
+//var decodeText = function(text) {
+//1    var result = "";
+//    for (var i=0; i<text.length; i++) {
+//        result +=  String.fromCharCode(text.charCodeAt(i) ^ 0x0A);    
+//    }
+//    return result;                   
+//}
+//var passwordMd5 = es.getMd5(decodeText(password));
+var passwordMd5 = es.getMd5(password);
+
+sql = "exec loginAdmin '" + db.encode(username) + "'," +
+    "'" + passwordMd5 + "'";
+sqlResult = db.executeQuery("DB", sql);
+if (sqlResult == null) {
+    eio.appendString8("F");
+    eio.appendString8("系统繁忙请稍后再试");
+    return;
+}
+db.read(sqlResult);
+if (db.getInt32(sqlResult, "errorCode")!=0) {
+    eio.appendString8("F");
+    eio.appendString8(db.getString(sqlResult, "errorString"));
+    es.logWarning("用户登录失败,username=" + username + ",password=" + password);
+    return;
+} 
+eio.appendString8("T");
+eio.appendString8(db.getString(sqlResult, "errorString"));
+es.logCommon("用户输入账户密码登录：" + username);
+]]></script2>
+      <script3>var resultCode=eio.readString8(); 
+if (resultCode=="F") {
+    g5.alert1("提示", "登录失败：" + eio.readString8());
+    return;
+}  
+//获取令牌
+eb.setCookie("FAToken", eio.readString8());  
+window.location.href = ee.getUrl("/admin/main");
+
+
+</script3>
+    </taskSetItem>
+    <taskSetItem name="checkUserName">
+      <script1><![CDATA[//userName, onComplete
+var userName = checkUserName.userName;
+
+var chkUserName = function(userName) {
+    if ((userName.length<6) || (userName.length>20)) {
+        return "账号名的长度不能小于6或者大于20";
+    }
+    for (var i=0; i<userName.length; i++) {
+        var ch = userName[i];
+        if ((ch>="a") &amp;&amp; (ch<="z")) continue;
+        if ((ch>="A") &amp;&amp; (ch<="Z")) continue;
+        if ((ch>="0") &amp;&amp; (ch<="9")) continue;
+        if (ch=="_") continue;
+        return "账号名只能是英文或者数字";
+    }
+    return "";
+}
+var r = chkUserName(userName);
+if (r.length>0) {
+    g5.alert1("账号错误提示", r);
+    return;
+}
+
+eio.appendString8(checkUserName.userName);
+
+]]></script1>
+      <script2><![CDATA[var userName = eio.readString8();
+var chkUserName = function(userName) {
+    if ((userName.length<6) || (userName.length>20)) {
+        return "账号名的长度不能小于6或者大于20";
+    }
+    for (var i=0; i<userName.length; i++) {
+        var ch = userName[i];
+        if ((ch>="a") &amp;&amp; (ch<="z")) continue;
+        if ((ch>="A") &amp;&amp; (ch<="Z")) continue;
+        if ((ch>="0") &amp;&amp; (ch<="9")) continue;
+        if (ch=="_") continue;
+        return "账号名中存在非英文或者数字字符";
+    }
+    return "";
+}
+var r = chkUserName(userName);
+if (r.length>0) {
+    eio.appendString8("F");
+    eio.appendString8(r);
+    return;
+}
+
+var sql,sqlResult;  
+
+sql = "select * from userInfo where  userName = '" + db.encode(userName) + "'; ";
+sqlResult = db.executeQuery("DB", sql);
+if (sqlResult == null) {
+    eio.appendString8("F");
+    eio.appendString8("系统繁忙请稍后再试");
+    return;
+}
+if (db.read(sqlResult)) {
+    eio.appendString8("F");
+    eio.appendString8("账号名已经存在，请重新选择一个账号");
+} else {
+    eio.appendString8("T");
+}]]></script2>
+      <script3>var resultCode=eio.readString8(); 
+if (resultCode=="F") {
+    g5.alert1("账号选择失败", eio.readString8());
+    return;
+}  
+
+if (!eb.isEmpty(checkUserName.onComplete)) {
+    checkUserName.onComplete();
+    checkUserName.onComplete = null;
+}
+
+
+
+</script3>
+    </taskSetItem>
+    <taskSetItem name="checkNickName">
+      <script1><![CDATA[//nickName, onComplete
+var nickName = checkNickName.nickName;
+
+var chkNickName = function(nickName) {
+    if ((nickName.length<2) || (nickName.length>20)) {
+        return "用户名的长度不能小于2或者大于20";
+    }
+    for (var i=0; i<nickName.length; i++) {
+        var ch = nickName[i];
+        if ((ch>="a") &amp;&amp; (ch<="z")) continue;
+        if ((ch>="A") &amp;&amp; (ch<="Z")) continue;
+        if ((ch>="0") &amp;&amp; (ch<="9")) continue;
+        if (ch=="_") continue;
+        if (ch.charCodeAt(0)>256) continue;
+        return "账号名中存在非英文、数字或者汉字字符";
+    }
+    return "";
+}
+var r = chkNickName(nickName);
+if (r.length>0) {
+    g5.alert1("用户名错误提示", r);
+    return;
+}
+
+if (!eb.isEmpty(checkNickName.onComplete)) {
+    checkNickName.onComplete();
+    checkNickName.onComplete = null;
+}
+
+return;
+eio.appendString8(checkNickName.nickName);
+
+]]></script1>
+      <script2><![CDATA[var userName = eio.readString8();
+var chkUserName = function(userName) {
+    if ((userName.length<6) || (userName.length>20)) {
+        return "账号名的长度不能小于6或者大于20";
+    }
+    for (var i=0; i<userName.length; i++) {
+        var ch = userName[i];
+        if ((ch>="a") &amp;&amp; (ch<="z")) continue;
+        if ((ch>="A") &amp;&amp; (ch<="Z")) continue;
+        if ((ch>="0") &amp;&amp; (ch<="9")) continue;
+        if (ch=="_") continue;
+        return "账号名中存在非英文或者数字字符";
+    }
+    var ch = userName[0];
+    if ((ch>="0") &amp;&amp; (ch<="9")) return "账号名的首字母不能是数字";
+    return "";
+}
+var r = chkUserName(userName);
+if (r.length>0) {
+    eio.appendString8("F");
+    eio.appendString8(r);
+    return;
+}
+
+var sql,sqlResult;  
+
+sql = "select * from userInfo where  userName = '" + db.encode(userName) + "'; ";
+sqlResult = db.executeQuery("DB", sql);
+if (sqlResult == null) {
+    eio.appendString8("F");
+    eio.appendString8("系统繁忙请稍后再试");
+    return;
+}
+if (db.read(sqlResult)) {
+    eio.appendString8("F");
+    eio.appendString8("账号名已经存在，请重新选择一个账号");
+} else {
+    eio.appendString8("T");
+}]]></script2>
+      <script3>var resultCode=eio.readString8(); 
+if (resultCode=="F") {
+    g5.alert1("账号选择失败", eio.readString8());
+    return;
+}  
+
+if (!eb.isEmpty(checkUserName.onComplete)) {
+    checkUserName.onComplete();
+    checkUserName.onComplete = null;
+}
+
+
+
+</script3>
+    </taskSetItem>
+    <taskSetItem name="reg">
+      <script1><![CDATA[//check
+var username = ee.getEditText(ee.getControl("edit3")).trim();
+var nickname = ee.getEditText(ee.getControl("edit6"));
+var password1 = ee.getEditText(ee.getControl("edit4"));
+var password2 = ee.getEditText(ee.getControl("edit5"));
+if (username.length < 3) {
+    g5.alert1("提示", "请输入有效的用户名,用户名长度至少为3个英文或者汉字字母");
+    return;
+}
+if (nickname.length < 3) {
+    g5.alert1("提示", "昵称需要至少3个英文字母或者汉字长度");
+    return;
+}
+if (password1.length<6) {
+    g5.alert1("提示", "密码的长度至少为6位");
+    return;    
+}
+if (password1 != password2) {
+    g5.alert1("提示", "两次输入的密码不一致");
+    return;
+}
+
+g5.username = username;
+g5.password = password1;
+eio.appendString16(username);
+eio.appendString16(nickname);
+eio.appendString16(password1);
+]]></script1>
+      <script2><![CDATA[var username = eio.readString16();
+var nickname = eio.readString16();
+var password = eio.readString16();
+
+password = es.getMd5(password);
+var sql,sqlResult;
+sql = "exec userCreate '" + db.encode(username) + "'" +
+    ",'" + db.encode(password) + "'" +
+    ",'" + db.encode(nickname) + "'";
+sqlResult = db.executeQuery("DB", sql);
+if (sqlResult == null) {
+    eio.appendString8("F");
+    eio.appendString16("系统繁忙，请稍后再试");
+    es.logWarning("数据库执行错误, sql=" + sql);
+    return;
+}
+db.read(sqlResult);
+if (db.getInt32(sqlResult, "errorCode") < 0) {
+    eio.appendString8("F");
+    eio.appendString16(db.getString(sqlResult, "errorString"));
+    return;
+}
+eio.appendString8("T");
+eio.appendString16(db.getString(sqlResult, "errorString"));
+
+
+]]></script2>
+      <script3>if (eio.readString8() != "T") {
+    g5.alert1("提示", "无法注册用户：" + eio.readString16());
+    return;
+}
+g5.alert1("提示", "账户注册成功，欢迎您加入GET!");                        
+login.username = ee.getEditText(ee.getControl("edit3")).trim();
+login.password = ee.getEditText(ee.getControl("edit4"));
+login();
+</script3>
+    </taskSetItem>
+    <taskSetItem name="regV2">
+      <script1><![CDATA[//userName, nickName, password, onComplete
+var chkPassword = function(psw) {
+    if ((psw.length<6) || (psw.length>20)) {
+        return "密码的长度必须在6-20位之间";
+    }
+    for (var i=0; i<psw.length; i++) {
+        var ch = psw[i];
+        if (ch==" ") return "密码中不允许出现空格字符";
+        if (ch.charCodeAt(0)>=128) return "密码中不允许出现汉字等双字节字符";
+    }
+    return "";
+}
+var r = chkPassword(regV2.password);
+if (r.length>0) {
+    g5.alert1("用户名错误提示", r);
+    return;
+}
+eio.appendString16(regV2.userName);
+eio.appendString16(regV2.nickName);
+eio.appendString16(regV2.password);
+]]></script1>
+      <script2><![CDATA[var userName = eio.readString16();
+var nickName = eio.readString16();
+var password = eio.readString16();
+
+//check username
+var chkUserName = function(userName) {
+    if ((userName.length<6) || (userName.length>20)) {
+        return "账号名的长度不能小于6或者大于20";
+    }
+    for (var i=0; i<userName.length; i++) {
+        var ch = userName[i];
+        if ((ch>="a") &amp;&amp; (ch<="z")) continue;
+        if ((ch>="A") &amp;&amp; (ch<="Z")) continue;
+        if ((ch>="0") &amp;&amp; (ch<="9")) continue;
+        if (ch=="_") continue;
+        return "账号名只能是英文或者数字";
+    }
+    //var ch = userName[0];
+    //if ((ch>="0") &amp;&amp; (ch<="9")) return "账号名的首字母不能是数字";
+    return "";
+}
+var r = chkUserName(userName);
+if (r.length>0) {
+    eio.appendString8("F");
+    eio.appendString16("账号名错误：" + r);
+    return;
+}
+
+//check nickName
+var chkNickName = function(nickName) {
+    if ((nickName.length<2) || (nickName.length>20)) {
+        return "用户名的长度不能小于2或者大于20";
+    }
+    for (var i=0; i<nickName.length; i++) {
+        var ch = nickName[i];
+        if ((ch>="a") &amp;&amp; (ch<="z")) continue;
+        if ((ch>="A") &amp;&amp; (ch<="Z")) continue;
+        if ((ch>="0") &amp;&amp; (ch<="9")) continue;
+        if (ch=="_") continue;
+        if (ch.charCodeAt(0)>256) continue;
+        return "账号名中存在非英文、数字或者汉字字符";
+    }
+    return "";
+}
+var r = chkNickName(nickName);
+if (r.length>0) {
+    eio.appendString8("F");
+    eio.appendString16("用户名错误：" + r);
+    return;
+}
+
+//check password
+var chkPassword = function(psw) {
+    if ((psw.length<6) || (psw.length>20)) {
+        return "密码的长度必须在6-20位之间";
+    }
+    for (var i=0; i<psw.length; i++) {
+        var ch = psw[i];
+        if (ch==" ") return "密码中不允许出现空格字符";
+        if (ch.charCodeAt(0)>=128) return "密码中不允许出现汉字等双字节字符" + ch.charCodeAt(0);
+    }
+    return "";
+}
+var r = chkPassword(password);
+if (r.length>0) {
+    eio.appendString8("F");
+    eio.appendString16("密码错误：" + r);
+    return;
+}
+
+password = es.getMd5(password);
+var sql,sqlResult;
+sql = "exec userCreate '" + db.encode(userName) + "'" +
+    ",'" + db.encode(password) + "'" +
+    ",'" + db.encode(nickName) + "'";
+sqlResult = db.executeQuery("DB", sql);
+if (sqlResult == null) {
+    eio.appendString8("F");
+    eio.appendString16("系统繁忙，请稍后再试");
+    es.logWarning("数据库执行错误, sql=" + sql);
+    return;
+}
+db.read(sqlResult);
+if (db.getInt32(sqlResult, "errorCode") < 0) {
+    eio.appendString8("F");
+    eio.appendString16(db.getString(sqlResult, "errorString"));
+    return;
+}
+eio.appendString8("T");
+eio.appendString16(db.getString(sqlResult, "errorString"));
+
+
+]]></script2>
+      <script3>if (eio.readString8() != "T") {
+    g5.alert1("无法注册用户", eio.readString16());
+    return;
+}
+
+if (!eb.isEmpty(regV2.onComplete)) {
+    regV2.onComplete();
+    regV2.onComplete = null;
+}
+</script3>
+    </taskSetItem>
+  </taskSet>
+  <gridLines count="0" />
+  <g5Items count="9">
+    <item name="p1" type="10">
+      <varValue>ee.getControl("panel9");</varValue>
+      <functionParam />
+      <functionCode />
+    </item>
+    <item name="popBlack" type="10">
+      <varValue>ee.getControl("panel112");</varValue>
+      <functionParam />
+      <functionCode />
+    </item>
+    <item name="iconClose" type="10">
+      <varValue><![CDATA["<g><path d=\"M13.414 12l5.793-5.793c.39-.39.39-1.023 0-1.414s-1.023-.39-1.414 0L12 10.586 6.207 4.793c-.39-.39-1.023-.39-1.414 0s-.39 1.023 0 1.414L10.586 12l-5.793 5.793c-.39.39-.39 1.023 0 1.414.195.195.45.293.707.293s.512-.098.707-.293L12 13.414l5.793 5.793c.195.195.45.293.707.293s.512-.098.707-.293c.39-.39.39-1.023 0-1.414L13.414 12z\"></path></g>";]]></varValue>
+      <functionParam />
+      <functionCode />
+    </item>
+    <item name="tiledV" type="20">
+      <varValue />
+      <functionParam>root,space,spTop,spBottom</functionParam>
+      <functionCode><![CDATA[if (eb.isEmpty(spTop)) spTop = 1;
+if (eb.isEmpty(spBottom)) spBottom = 1;
+var rect, cy = parseInt(space * spTop);
+for (var i = 0; i < root.eeChildren.length; i++) {
+    if (root.eeChildren[i].style.visibility == "hidden") continue;
+    if (i!=0) cy += space;
+    ee.setRect(root.eeChildren[i], null, cy, null, null);
+    rect = eb.getDivRectSetting(root.eeChildren[i]);
+    cy += rect.h;
+}
+cy += parseInt(space * spBottom);
+ee.setRect(root, null, null, null, cy);
+root.v_tiledVSpace = space;
+root.v_tiledSpTop = spTop;
+root.v_tiledSpBottom = spBottom;]]></functionCode>
+    </item>
+    <item name="resizeV" type="20">
+      <varValue />
+      <functionParam>div,level</functionParam>
+      <functionCode><![CDATA[var getMaxY = function(div,child) {
+    var result = 0;
+    var rect;
+    for (var i=0; i<div.eeChildren.length; i++) {
+        if ((div.eeChildren[i]!=child) &amp;&amp; (div.eeChildren[i].style.visibility == "hidden")) continue;
+        rect = eb.getDivRectSetting(div.eeChildren[i]);
+        if (rect.y + rect.h > result) result = rect.y + rect.h;
+    }
+    return result;
+}
+
+var child = null;
+for (var i=0; i<level; i++) {
+    var maxY = getMaxY(div, child);
+    ee.setRect(div, null, null, null, maxY);
+    child = div;
+    div = div.parentNode;
+}
+]]></functionCode>
+    </item>
+    <item name="tiledResizeV" type="20">
+      <varValue />
+      <functionParam>div,level</functionParam>
+      <functionCode><![CDATA[var child = null;
+for (var i=0; i<level; i++) {
+    if (!eb.isEmpty(div.v_tiledVSpace)) {
+        g5.tiledV(div, div.v_tiledVSpace, div.v_tiledSpTop, div.v_tiledSpBottom);
+    } else {
+        g5.resizeV(div, 1);
+    }
+    div = div.parentNode;
+}
+]]></functionCode>
+    </item>
+    <item name="alert1" type="20">
+      <varValue />
+      <functionParam>title,text,onComplete,onCancel</functionParam>
+      <functionCode>g5.popBlack.a7.show(
+    title, text,
+    [new g5.BStyle("#1da1f2","#1a91da","#1781c2","确定","确定","确定","#ffffff","#ffffff","#ffffff","")],
+    //[new g5.BStyle("","#e8f5fe","#d2ecfc","确定","确定","确定","#1da1f2","#1da1f2","#1da1f2","#1da1f2")],
+    onComplete,
+    onCancel
+);</functionCode>
+    </item>
+    <item name="BStyle" type="20">
+      <varValue />
+      <functionParam>color1,color2,color3,text1,text2,text3,tColor1,tColor2,tColor3,bdColor</functionParam>
+      <functionCode>this.color1 = color1;
+this.color2 = color2
+this.color3 = color3;
+this.text1 = text1;
+this.text2 = text2;
+this.text3 = text3;
+this.tColor1 = tColor1;
+this.tColor2 = tColor2;
+this.tColor3 = tColor3;
+this.bdColor = bdColor;</functionCode>
+    </item>
+    <item name="pushHistory2" type="20">
+      <varValue />
+      <functionParam>getString</functionParam>
+      <functionCode><![CDATA[var url = new URL(window.location.href);
+var header = url.origin;
+
+if (g5.notPushHistoryCount>0) {
+    g5.notPushHistoryCount--;
+    return;
+}
+window.history.pushState({},"",url.origin+getString);
+]]></functionCode>
+    </item>
+  </g5Items>
+</page>

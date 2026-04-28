@@ -1,0 +1,12 @@
+﻿启动自动递交数据库备份至github任务
+1. 修改Install-DailyTask.ps1，主要是修改密码（用完后删除),修改启动时间，等
+
+2. 点击右键用powershell运行，或者用管理员打开powershell，运行：
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "C:\GitHub\twitterG\db\Install-DailyTask.ps1"
+
+3. 测试运行
+schtasks /Run /TN "Daily_Commit_Database_Task"
+
+4.日志文件：commitLog.txt
+
+

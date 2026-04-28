@@ -1,0 +1,18 @@
+<page>
+  <controls count="1">
+    <control type="DivRoot" pathname="/divRoot">
+      <backgroundColor>ffffff</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>798</height>
+      <left>0</left>
+      <onPageCreate>window.location.href = "https://www.fistalk.com";</onPageCreate>
+      <top>0</top>
+      <width>1137</width>
+    </control>
+  </controls>
+  <taskSet count="0" />
+  <gridLines count="0" />
+  <g5Items count="0" />
+</page>

@@ -1,0 +1,273 @@
+<page>
+  <controls count="12">
+    <control type="DivRoot" pathname="/divRoot">
+      <backgroundColor>ffffff</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>797</height>
+      <left>0</left>
+      <onControlLoad>eb.processDock();
+ee.getControl("divRoot").dockX = "disabled";
+ee.getControl("divRoot").dockY = "disabled";
+
+
+</onControlLoad>
+      <top>0</top>
+      <width>439</width>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel3">
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <fontColor>1DA1F2</fontColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>20</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>57</height>
+      <heightRatio>0.0715181932245922</heightRatio>
+      <left>316</left>
+      <leftRatio>0.719817767653758</leftRatio>
+      <onClick>window.location.href = ee.getUrl("/new/reg");</onClick>
+      <sizeRatio>0.6</sizeRatio>
+      <text>注册</text>
+      <top>7</top>
+      <topRatio>0.00878293601003764</topRatio>
+      <width>95</width>
+      <widthRatio>0.216400911161731</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel4">
+      <backgroundImgMode>fill</backgroundImgMode>
+      <backgroundSkin>LRBtn9</backgroundSkin>
+      <cursor>pointer</cursor>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <fontColor>FFFFFF</fontColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>20</fontSizeAuto>
+      <height>49</height>
+      <heightRatio>0.0614805520702635</heightRatio>
+      <left>279</left>
+      <leftRatio>0.635535307517084</leftRatio>
+      <onClick>login();</onClick>
+      <sizeRatio>0.368421052631579</sizeRatio>
+      <text>登录</text>
+      <top>424</top>
+      <topRatio>0.531994981179423</topRatio>
+      <width>133</width>
+      <widthRatio>0.302961275626424</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel5">
+      <backgroundImgMode>fill</backgroundImgMode>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>13</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>59</height>
+      <heightRatio>0.0740276035131744</heightRatio>
+      <left>16</left>
+      <leftRatio>0.0364464692482916</leftRatio>
+      <sizeRatio>0.147869674185464</sizeRatio>
+      <text>登录GET</text>
+      <top>94</top>
+      <topRatio>0.117942283563363</topRatio>
+      <width>399</width>
+      <widthRatio>0.908883826879271</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel6">
+      <backgroundImgMode>fill</backgroundImgMode>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <fontColor>808080</fontColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>25</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>33</height>
+      <heightRatio>0.041405269761606</heightRatio>
+      <left>18</left>
+      <leftRatio>0.041002277904328</leftRatio>
+      <sizeRatio>0.0827067669172932</sizeRatio>
+      <text>手机号码、邮件地址或用户名</text>
+      <top>157</top>
+      <topRatio>0.196988707653701</topRatio>
+      <width>399</width>
+      <widthRatio>0.908883826879271</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel7">
+      <backgroundImgMode>fill</backgroundImgMode>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <fontColor>808080</fontColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>25</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>33</height>
+      <heightRatio>0.041405269761606</heightRatio>
+      <left>14</left>
+      <leftRatio>0.0318906605922551</leftRatio>
+      <sizeRatio>0.0827067669172932</sizeRatio>
+      <text>密码</text>
+      <top>260</top>
+      <topRatio>0.326223337515684</topRatio>
+      <width>399</width>
+      <widthRatio>0.908883826879271</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel8">
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <fontColor>808080</fontColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>25</fontSizeAuto>
+      <height>44</height>
+      <heightRatio>0.055207026348808</heightRatio>
+      <left>76</left>
+      <leftRatio>0.173120728929385</leftRatio>
+      <sizeRatio>0.148148148148148</sizeRatio>
+      <text>忘记密码？</text>
+      <top>357</top>
+      <topRatio>0.44792973651192</topRatio>
+      <width>297</width>
+      <widthRatio>0.676537585421412</widthRatio>
+    </control>
+    <control type="Edit" pathname="/divRoot/edit1">
+      <backgroundSkin>empty</backgroundSkin>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <height>44</height>
+      <heightRatio>0.055207026348808</heightRatio>
+      <inputFont>Arial</inputFont>
+      <inputFontSizeAuto>16</inputFontSizeAuto>
+      <left>21</left>
+      <leftRatio>0.0478359908883827</leftRatio>
+      <sizeRatio>0.110552763819095</sizeRatio>
+      <top>191</top>
+      <topRatio>0.239648682559599</topRatio>
+      <width>398</width>
+      <widthRatio>0.906605922551253</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/edit1/panel2">
+      <backgroundColor>1DA1F2</backgroundColor>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <fontColor>808080</fontColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>25</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>3</height>
+      <heightRatio>0.0681818181818182</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.00753768844221106</sizeRatio>
+      <top>41</top>
+      <topRatio>0.931818181818182</topRatio>
+      <width>398</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Edit" pathname="/divRoot/edit2">
+      <backgroundSkin>empty</backgroundSkin>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <height>44</height>
+      <heightRatio>0.055207026348808</heightRatio>
+      <inputFontSizeAuto>16</inputFontSizeAuto>
+      <inputPassword>true</inputPassword>
+      <left>21</left>
+      <leftRatio>0.0478359908883827</leftRatio>
+      <sizeRatio>0.110552763819095</sizeRatio>
+      <top>295</top>
+      <topRatio>0.370138017565872</topRatio>
+      <width>398</width>
+      <widthRatio>0.906605922551253</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/edit2/panel9">
+      <backgroundColor>1DA1F2</backgroundColor>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <fontColor>808080</fontColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>25</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>3</height>
+      <heightRatio>0.0681818181818182</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.00753768844221106</sizeRatio>
+      <top>41</top>
+      <topRatio>0.931818181818182</topRatio>
+      <width>398</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel1">
+      <backgroundImg>getLogoBlue.png</backgroundImg>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <height>51</height>
+      <heightRatio>0.0639899623588457</heightRatio>
+      <left>149</left>
+      <leftRatio>0.339407744874715</leftRatio>
+      <sizeRatio>0.392307692307692</sizeRatio>
+      <top>9</top>
+      <topRatio>0.0112923462986198</topRatio>
+      <width>130</width>
+      <widthRatio>0.296127562642369</widthRatio>
+    </control>
+  </controls>
+  <taskSet count="1">
+    <taskSetItem name="login">
+      <script1><![CDATA[g5.username = ee.getEditText(ee.getControl("edit1"));
+g5.password = ee.getEditText(ee.getControl("edit2"));
+if (g5.username.length <= 2) {
+    alert("请输入有效的用户名或者手机号码");
+    return;
+}
+eio.appendString8(g5.username);
+eio.appendString8(g5.password);
+
+]]></script1>
+      <script2>var username = eio.readString8();
+var password = eio.readString8();
+var passwordMd5 = es.getMd5(password);
+var sql,sqlResult;  
+
+sql = "exec login '" + db.encode(username) + "'," +
+    "'" + passwordMd5 + "'";
+sqlResult = db.executeQuery("DB", sql);
+if (sqlResult == null) {
+    eio.appendString8("F");
+    eio.appendString8("系统繁忙请稍后再试");
+    return;
+}
+db.read(sqlResult);
+if (db.getInt32(sqlResult, "errorCode")!=0) {
+    eio.appendString8("F");
+    eio.appendString8(db.getString(sqlResult, "errorString"));
+    es.logWarning("用户登录失败,username=" + username + ",password=" + password);
+    return;
+} 
+eio.appendString8("T");
+eio.appendString8(db.getString(sqlResult, "errorString"));
+es.logCommon("用户输入账户密码登录：" + username);
+</script2>
+      <script3>var resultCode=eio.readString8(); 
+if (resultCode=="F") {
+    alert("登录失败：" + eio.readString8());
+    return;
+}  
+//获取令牌
+eb.setCookie("twitterGToken", eio.readString8());  
+window.location.href = ee.getUrl("/main");
+
+
+
+</script3>
+    </taskSetItem>
+  </taskSet>
+  <gridLines count="0" />
+</page>

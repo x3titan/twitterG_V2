@@ -1,0 +1,43 @@
+<page>
+  <controls count="2">
+    <control type="DivRoot" pathname="/divRoot">
+      <backgroundColor>E6ECF0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>796</height>
+      <left>0</left>
+      <onControlLoad>ee.setAutoScroll($g("divRoot"), "hidden");</onControlLoad>
+      <top>0</top>
+      <width>1201</width>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel1">
+      <backgroundImgMode>fill</backgroundImgMode>
+      <backgroundSkin>LRBtn9</backgroundSkin>
+      <cursor>pointer</cursor>
+      <fontColor>FFFFFF</fontColor>
+      <fontFamily>微软雅黑</fontFamily>
+      <fontSize>14</fontSize>
+      <height>75</height>
+      <heightRatio>0.0942211055276382</heightRatio>
+      <left>52</left>
+      <leftRatio>0.0432972522897585</leftRatio>
+      <onClick>g5.newPhoto1 = "";
+ee.setEditText(ee.getControl("edit1"), "");
+ee.setImage(ee.getControl("panel52"), "/twitterG/main/empty.png");
+ee.setText(ee.getControl("panel45"), "发推");
+newTwitter.uplinkType = "N";
+newTwitter.uplinkId = 0;
+ee.showAni(ee.getControl("panel42"), 0);</onClick>
+      <sizeRatio>0.295275590551181</sizeRatio>
+      <text>发推</text>
+      <top>51</top>
+      <topRatio>0.064070351758794</topRatio>
+      <width>254</width>
+      <widthRatio>0.211490424646128</widthRatio>
+    </control>
+  </controls>
+  <taskSet count="0" />
+  <gridLines count="0" />
+  <g5Items count="0" />
+</page>

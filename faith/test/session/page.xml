@@ -1,0 +1,242 @@
+<page>
+  <controls count="11">
+    <control type="DivRoot" pathname="/divRoot">
+      <backgroundColor>ffffff</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>796</height>
+      <left>0</left>
+      <top>0</top>
+      <width>1175</width>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel1">
+      <backgroundSkin>button9</backgroundSkin>
+      <height>40</height>
+      <heightRatio>0.050251256281407</heightRatio>
+      <left>52</left>
+      <leftRatio>0.0457343887423043</leftRatio>
+      <onClick>setSession();</onClick>
+      <sizeRatio>0.23121387283237</sizeRatio>
+      <text>setSession</text>
+      <top>36</top>
+      <topRatio>0.0452261306532663</topRatio>
+      <width>173</width>
+      <widthRatio>0.152154793315743</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel2">
+      <backgroundSkin>button9</backgroundSkin>
+      <height>40</height>
+      <heightRatio>0.050251256281407</heightRatio>
+      <left>52</left>
+      <leftRatio>0.0457343887423043</leftRatio>
+      <onClick>getSession();</onClick>
+      <sizeRatio>0.23121387283237</sizeRatio>
+      <text>getSession</text>
+      <top>92</top>
+      <topRatio>0.115577889447236</topRatio>
+      <width>173</width>
+      <widthRatio>0.152154793315743</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel49">
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <height>61</height>
+      <heightRatio>0.0766331658291457</heightRatio>
+      <left>53</left>
+      <leftRatio>0.0454176804541768</leftRatio>
+      <sizeRatio>0.734939759036145</sizeRatio>
+      <top>167</top>
+      <topRatio>0.209798994974874</topRatio>
+      <width>79</width>
+      <widthRatio>0.0673154906731549</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel49/panel50">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <backgroundImg>img.png</backgroundImg>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>61</height>
+      <heightRatio>1</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.792207792207792</sizeRatio>
+      <top>0</top>
+      <width>79</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="FileUpload" pathname="/divRoot/panel49/fileupload1">
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>61</height>
+      <heightRatio>1</heightRatio>
+      <left>0</left>
+      <onUploadCompleteC>g5.newPhoto1 = eio.readString16();
+ee.setText(ee.getControl("panel52"), " ");
+ee.setImage(ee.getControl("panel52"), "url:" + g5.imgUrl + g5.newPhoto1, "trim", "", "");
+
+
+
+
+
+</onUploadCompleteC>
+      <onUploadCompleteS>var pos=newFileName.lastIndexOf("\\");
+var filename = newFileName.substring(pos+1);  
+eio.appendString16(filename);</onUploadCompleteS>
+      <onUploadStartC>fileExt = fileExt.toLowerCase();
+if ((fileExt != ".bmp") &amp;&amp;
+    (fileExt != ".jpg") &amp;&amp;
+    (fileExt != ".jpeg") &amp;&amp;
+    (fileExt != ".png") &amp;&amp;
+    (fileExt != ".tif") &amp;&amp;
+    (fileExt != ".tiff")) return;
+    </onUploadStartC>
+      <onUploadStartS>var sn = 123456;
+newFileName = "D:\\temp\\incoming\\img" + sn + fileExt;</onUploadStartS>
+      <sizeRatio>0.792207792207792</sizeRatio>
+      <top>0</top>
+      <width>79</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel51">
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <height>259</height>
+      <heightRatio>0.325376884422111</heightRatio>
+      <left>44</left>
+      <leftRatio>0.0373073803730738</leftRatio>
+      <sizeRatio>0.641089108910891</sizeRatio>
+      <top>263</top>
+      <topRatio>0.330402010050251</topRatio>
+      <width>385</width>
+      <widthRatio>0.327656123276561</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel51/panel52">
+      <backgroundImg>empty.png</backgroundImg>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>259</height>
+      <heightRatio>1</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.694369973190349</sizeRatio>
+      <top>0</top>
+      <width>385</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel51/panel53">
+      <backgroundSkin>bodyMask</backgroundSkin>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>259</height>
+      <heightRatio>1</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.694369973190349</sizeRatio>
+      <top>0</top>
+      <width>385</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel3">
+      <backgroundSkin>button9</backgroundSkin>
+      <height>40</height>
+      <heightRatio>0.050251256281407</heightRatio>
+      <left>246</left>
+      <leftRatio>0.216358839050132</leftRatio>
+      <onClick>searchUser();
+
+</onClick>
+      <sizeRatio>0.23121387283237</sizeRatio>
+      <text>db test</text>
+      <top>37</top>
+      <topRatio>0.0464824120603015</topRatio>
+      <width>173</width>
+      <widthRatio>0.152154793315743</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel4">
+      <backgroundSkin>button9</backgroundSkin>
+      <height>40</height>
+      <heightRatio>0.050251256281407</heightRatio>
+      <left>246</left>
+      <leftRatio>0.216358839050132</leftRatio>
+      <onClick>eb.setCookie("key1", "value1");
+window.location.href = ee.getUrl("/cookie");
+
+
+
+
+</onClick>
+      <sizeRatio>0.23121387283237</sizeRatio>
+      <text>set cookie</text>
+      <top>90</top>
+      <topRatio>0.113065326633166</topRatio>
+      <width>173</width>
+      <widthRatio>0.152154793315743</widthRatio>
+    </control>
+  </controls>
+  <taskSet count="3">
+    <taskSetItem name="setSession">
+      <script1>eio.appendString16("lskjdfls的代价a"); 
+
+</script1>
+      <script2>session.set("abc", eio.readString16());
+</script2>
+      <script3 />
+    </taskSetItem>
+    <taskSetItem name="getSession">
+      <script1 />
+      <script2>var s = session.get("abc");
+eio.appendString16(s);</script2>
+      <script3>alert(eio.readString16());</script3>
+    </taskSetItem>
+    <taskSetItem name="searchUser">
+      <script1>/*
+eio.appendString16("sljdfl;ksjaf;lsaf;");
+eio.appendString16("高度佛阿斯蒂芬是的方式安抚");
+eio.appendString16("sljdfl;ksjaf;lsaf;");
+eio.appendString16("高度佛阿斯蒂芬是的方式安抚");
+eio.appendString16("sljdfl;ksjaf;lsaf;");
+eio.appendString16("高度佛阿斯蒂芬是的方式安抚");
+eio.appendString16("sljdfl;ksjaf;lsaf;");
+eio.appendString16("高度佛阿斯蒂芬是的方式安抚");
+eio.appendString16("sljdfl;ksjaf;lsaf;");
+eio.appendString16("高度佛阿斯蒂芬是的方式安抚");
+
+*/</script1>
+      <script2><![CDATA[/*
+var searchString = eio.readString16();
+var searchString = eio.readString16();
+var searchString = eio.readString16();
+var searchString = eio.readString16();
+var searchString = eio.readString16();
+var searchString = eio.readString16();
+var sql,sqlResult;  
+*/
+
+/*
+sql = "select * from userInfo ";
+sqlResult = db.executeQuery("DB", sql);
+if (sqlResult == null) {
+    eio.appendString8("F");
+    es.logWarning("数据库执行错误, sql=" + sql);
+    return;
+}
+eio.appendString8("T");
+eio.appendDataSet(sqlResult,"id,userName,password", 0, 99999);
+*/
+
+var a = 100;
+for (var i=0; i<1000; i++ ) {
+    a+=1;
+}]]></script2>
+      <script3>if (eio.readString8() != "T") {
+    return;
+}
+g5.datasetPage = eio.readDataSet();
+</script3>
+    </taskSetItem>
+  </taskSet>
+  <gridLines count="0" />
+  <g5Items count="0" />
+</page>

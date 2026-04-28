@@ -1,0 +1,7 @@
+<EBProj>
+  <projectName>http跳转</projectName>
+  <projectItems count="1">
+    <page pathname="/main" alias="主页面" />
+  </projectItems>
+  <dbConnections count="0" />
+</EBProj>

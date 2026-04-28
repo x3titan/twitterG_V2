@@ -1,0 +1,412 @@
+<page>
+  <controls count="17">
+    <control type="DivRoot" pathname="/divRoot">
+      <backgroundColor>ffffff</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>797</height>
+      <left>0</left>
+      <onControlLoad>setTimeout(function() { ee.autoResize=false; }, 200);</onControlLoad>
+      <top>0</top>
+      <width>439</width>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel3">
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <fontColor>1DA1F2</fontColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>20</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>57</height>
+      <heightRatio>0.0715181932245922</heightRatio>
+      <left>316</left>
+      <leftRatio>0.719817767653758</leftRatio>
+      <onClick>window.location.href = ee.getUrl("/login");</onClick>
+      <sizeRatio>0.6</sizeRatio>
+      <text>登录</text>
+      <top>7</top>
+      <topRatio>0.00878293601003764</topRatio>
+      <width>95</width>
+      <widthRatio>0.216400911161731</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel4">
+      <backgroundImgMode>fill</backgroundImgMode>
+      <backgroundSkin>LRBtn9</backgroundSkin>
+      <cursor>pointer</cursor>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <fontColor>FFFFFF</fontColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>20</fontSizeAuto>
+      <height>49</height>
+      <heightRatio>0.0614805520702635</heightRatio>
+      <left>259</left>
+      <leftRatio>0.58997722095672</leftRatio>
+      <onClick>reg();</onClick>
+      <sizeRatio>0.310126582278481</sizeRatio>
+      <text>注册</text>
+      <top>454</top>
+      <topRatio>0.569636135508156</topRatio>
+      <width>158</width>
+      <widthRatio>0.359908883826879</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel5">
+      <backgroundImgMode>fill</backgroundImgMode>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>18</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>59</height>
+      <heightRatio>0.0740276035131744</heightRatio>
+      <left>8</left>
+      <leftRatio>0.0182232346241458</leftRatio>
+      <sizeRatio>0.139810426540284</sizeRatio>
+      <text>注册GPost获得世界的真实故事</text>
+      <top>61</top>
+      <topRatio>0.0765370138017566</topRatio>
+      <width>422</width>
+      <widthRatio>0.96127562642369</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel6">
+      <backgroundImgMode>fill</backgroundImgMode>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <fontColor>808080</fontColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>25</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>33</height>
+      <heightRatio>0.041405269761606</heightRatio>
+      <left>11</left>
+      <leftRatio>0.0250569476082005</leftRatio>
+      <sizeRatio>0.0827067669172932</sizeRatio>
+      <text>手机号码、邮件地址或用户名</text>
+      <top>132</top>
+      <topRatio>0.165621079046424</topRatio>
+      <width>399</width>
+      <widthRatio>0.908883826879271</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel7">
+      <backgroundImgMode>fill</backgroundImgMode>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <fontColor>808080</fontColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>25</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>33</height>
+      <heightRatio>0.041405269761606</heightRatio>
+      <left>16</left>
+      <leftRatio>0.0364464692482916</leftRatio>
+      <sizeRatio>0.192982456140351</sizeRatio>
+      <text>密码</text>
+      <top>337</top>
+      <topRatio>0.422835633626098</topRatio>
+      <width>171</width>
+      <widthRatio>0.389521640091116</widthRatio>
+    </control>
+    <control type="Edit" pathname="/divRoot/edit1">
+      <backgroundSkin>empty</backgroundSkin>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <height>44</height>
+      <heightRatio>0.055207026348808</heightRatio>
+      <inputFontSizeAuto>16</inputFontSizeAuto>
+      <left>18</left>
+      <leftRatio>0.041002277904328</leftRatio>
+      <sizeRatio>0.110552763819095</sizeRatio>
+      <top>160</top>
+      <topRatio>0.200752823086575</topRatio>
+      <width>398</width>
+      <widthRatio>0.906605922551253</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/edit1/panel2">
+      <backgroundColor>1DA1F2</backgroundColor>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <fontColor>808080</fontColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>25</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>3</height>
+      <heightRatio>0.0681818181818182</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.00753768844221106</sizeRatio>
+      <top>41</top>
+      <topRatio>0.931818181818182</topRatio>
+      <width>398</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Edit" pathname="/divRoot/edit2">
+      <backgroundSkin>empty</backgroundSkin>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <height>44</height>
+      <heightRatio>0.055207026348808</heightRatio>
+      <inputFontSizeAuto>16</inputFontSizeAuto>
+      <inputPassword>true</inputPassword>
+      <left>18</left>
+      <leftRatio>0.041002277904328</leftRatio>
+      <sizeRatio>0.271604938271605</sizeRatio>
+      <top>370</top>
+      <topRatio>0.464240903387704</topRatio>
+      <width>162</width>
+      <widthRatio>0.369020501138952</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/edit2/panel9">
+      <backgroundColor>1DA1F2</backgroundColor>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <fontColor>808080</fontColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>25</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>3</height>
+      <heightRatio>0.0681818181818182</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.0185185185185185</sizeRatio>
+      <top>41</top>
+      <topRatio>0.931818181818182</topRatio>
+      <width>162</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel8">
+      <backgroundImgMode>fill</backgroundImgMode>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <fontColor>808080</fontColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>25</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>33</height>
+      <heightRatio>0.041405269761606</heightRatio>
+      <left>220</left>
+      <leftRatio>0.501138952164009</leftRatio>
+      <sizeRatio>0.172774869109948</sizeRatio>
+      <text>确认密码</text>
+      <top>337</top>
+      <topRatio>0.422835633626098</topRatio>
+      <width>191</width>
+      <widthRatio>0.435079726651481</widthRatio>
+    </control>
+    <control type="Edit" pathname="/divRoot/edit3">
+      <backgroundSkin>empty</backgroundSkin>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <height>44</height>
+      <heightRatio>0.055207026348808</heightRatio>
+      <inputFontSizeAuto>16</inputFontSizeAuto>
+      <inputPassword>true</inputPassword>
+      <left>219</left>
+      <leftRatio>0.498861047835991</leftRatio>
+      <sizeRatio>0.223350253807107</sizeRatio>
+      <top>370</top>
+      <topRatio>0.464240903387704</topRatio>
+      <width>197</width>
+      <widthRatio>0.44874715261959</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/edit3/panel10">
+      <backgroundColor>1DA1F2</backgroundColor>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <fontColor>808080</fontColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>25</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>3</height>
+      <heightRatio>0.0681818181818182</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.0152284263959391</sizeRatio>
+      <top>41</top>
+      <topRatio>0.931818181818182</topRatio>
+      <width>197</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel11">
+      <backgroundImgMode>fill</backgroundImgMode>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <fontColor>808080</fontColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>25</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>33</height>
+      <heightRatio>0.041405269761606</heightRatio>
+      <left>11</left>
+      <leftRatio>0.0250569476082005</leftRatio>
+      <sizeRatio>0.0827067669172932</sizeRatio>
+      <text>昵称</text>
+      <top>226</top>
+      <topRatio>0.283563362609787</topRatio>
+      <width>399</width>
+      <widthRatio>0.908883826879271</widthRatio>
+    </control>
+    <control type="Edit" pathname="/divRoot/edit4">
+      <backgroundSkin>empty</backgroundSkin>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <height>44</height>
+      <heightRatio>0.055207026348808</heightRatio>
+      <inputFontSizeAuto>16</inputFontSizeAuto>
+      <left>18</left>
+      <leftRatio>0.041002277904328</leftRatio>
+      <sizeRatio>0.110552763819095</sizeRatio>
+      <top>254</top>
+      <topRatio>0.318695106649937</topRatio>
+      <width>398</width>
+      <widthRatio>0.906605922551253</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/edit4/panel12">
+      <backgroundColor>1DA1F2</backgroundColor>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <fontColor>808080</fontColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>25</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>3</height>
+      <heightRatio>0.0681818181818182</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.00753768844221106</sizeRatio>
+      <top>41</top>
+      <topRatio>0.931818181818182</topRatio>
+      <width>398</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel1">
+      <backgroundImg>getLogoBlue.png</backgroundImg>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <height>51</height>
+      <heightRatio>0.0639899623588457</heightRatio>
+      <left>142</left>
+      <leftRatio>0.323462414578588</leftRatio>
+      <sizeRatio>0.392307692307692</sizeRatio>
+      <top>9</top>
+      <topRatio>0.0112923462986198</topRatio>
+      <width>130</width>
+      <widthRatio>0.296127562642369</widthRatio>
+    </control>
+  </controls>
+  <taskSet count="2">
+    <taskSetItem name="reg">
+      <script1><![CDATA[//check
+var username = ee.getEditText(ee.getControl("edit1")).trim();
+var nickname = ee.getEditText(ee.getControl("edit4"));
+var password1 = ee.getEditText(ee.getControl("edit2"));
+var password2 = ee.getEditText(ee.getControl("edit3"));
+if (username.length < 3) {
+    alert("请输入有效的用户名,用户名长度至少为3个英文或者汉字字母");
+    return;
+}
+if (nickname.length < 3) {
+    alert("昵称需要至少3个英文字母或者汉字长度");
+    return;
+}
+if (password1.length<6) {
+    alert("密码的长度至少为6位");
+    return;    
+}
+if (password1 != password2) {
+    alert("两次输入的密码不一致");
+    return;
+}
+
+g5.username = username;
+g5.password = password1;
+eio.appendString16(username);
+eio.appendString16(nickname);
+eio.appendString16(password1);
+]]></script1>
+      <script2><![CDATA[var username = eio.readString16();
+var nickname = eio.readString16();
+var password = eio.readString16();
+
+password = es.getMd5(password);
+var sql,sqlResult;
+sql = "exec userCreate '" + db.encode(username) + "'" +
+    ",'" + db.encode(password) + "'" +
+    ",'" + db.encode(nickname) + "'";
+sqlResult = db.executeQuery("DB", sql);
+if (sqlResult == null) {
+    eio.appendString8("F");
+    eio.appendString16("系统繁忙，请稍后再试");
+    es.logWarning("数据库执行错误, sql=" + sql);
+    return;
+}
+db.read(sqlResult);
+if (db.getInt32(sqlResult, "errorCode") < 0) {
+    eio.appendString8("F");
+    eio.appendString16(db.getString(sqlResult, "errorString"));
+    return;
+}
+eio.appendString8("T");
+eio.appendString16(db.getString(sqlResult, "errorString"));
+
+
+]]></script2>
+      <script3>if (eio.readString8() != "T") {
+    alert("无法注册用户：" + eio.readString16());
+    return;
+}                        
+login();
+</script3>
+    </taskSetItem>
+    <taskSetItem name="login">
+      <script1>eio.appendString8(g5.username);
+eio.appendString8(g5.password);
+
+</script1>
+      <script2>var username = eio.readString8();
+var password = eio.readString8();
+var passwordMd5 = es.getMd5(password);
+var sql,sqlResult;  
+
+sql = "exec login '" + db.encode(username) + "'," +
+    "'" + passwordMd5 + "'";
+sqlResult = db.executeQuery("DB", sql);
+if (sqlResult == null) {
+    eio.appendString8("F");
+    eio.appendString8("系统繁忙请稍后再试");
+    return;
+}
+db.read(sqlResult);
+if (db.getInt32(sqlResult, "errorCode")!=0) {
+    eio.appendString8("F");
+    eio.appendString8(db.getString(sqlResult, "errorString"));
+    es.logWarning("用户登录失败,username=" + username + ",password=" + password);
+    return;
+} 
+eio.appendString8("T");
+eio.appendString8(db.getString(sqlResult, "errorString"));
+es.logCommon("新用户注册账户密码登录：" + username);
+</script2>
+      <script3>var resultCode=eio.readString8(); 
+if (resultCode=="F") {
+    alert("登录失败：" + eio.readString8());
+    return;
+}  
+//获取令牌
+eb.setCookie("twitterGToken", eio.readString8());  
+window.location.href = ee.getUrl("/main");
+
+
+
+</script3>
+    </taskSetItem>
+  </taskSet>
+  <gridLines count="0" />
+</page>

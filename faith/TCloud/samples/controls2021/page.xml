@@ -1,0 +1,221 @@
+<page>
+  <controls count="5">
+    <control type="DivRoot" pathname="/divRoot">
+      <backgroundColor>F2F2FF</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>796</height>
+      <left>0</left>
+      <top>0</top>
+      <width>1137</width>
+      <widthRatio>s</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel1">
+      <__U_editFontColor>404040</__U_editFontColor>
+      <__U_editFontFamily>'Segoe UI', Meiryo, system-ui, -apple-system, BlinkMacSystemFont, sans-serif</__U_editFontFamily>
+      <__U_editFontSize>12pt</__U_editFontSize>
+      <__U_editMaxY>300px</__U_editMaxY>
+      <__U_editMinY>100px</__U_editMinY>
+      <__U_onChange-sender-value>alert("提示消息");</__U_onChange-sender-value>
+      <backgroundColor>FFFFFF</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <fontColor>404040</fontColor>
+      <fontFamily>'Segoe UI', Meiryo, system-ui, -apple-system, BlinkMacSystemFont, sans-serif</fontFamily>
+      <fontSize>12</fontSize>
+      <hAlign>left</hAlign>
+      <height>128</height>
+      <heightRatio>0.160804020100503</heightRatio>
+      <left>117</left>
+      <leftRatio>0.100949094046592</leftRatio>
+      <onChange>sadfasdfsaf
+sadfsdfaa
+</onChange>
+      <onCreate>sender.contentEditable = true;
+sender.style.border = "none";
+sender.style.outline = "none";
+sender.style.height = "";
+sender.style.minHeight = sender.editMinY;
+sender.style.maxHeight = sender.editMaxY;
+sender.style.overflowY = "auto";
+sender.style.fontFamily = sender.editFontFamily;
+sender.style.fontSize = sender.editFontSize;
+sender.style.color = "#" + sender.editFontColor;
+sender.style.wordBreak = "break-all";
+sender.style.wordWrap = "break-word";
+sender.style.whiteSpace = "normal";
+sender.innerHTML = "";
+sender.onkeyup = function() {
+    console.log("change");
+}
+
+sender.onfocus = function() {
+}
+
+sender.onblur = function() {
+}
+
+
+        
+</onCreate>
+      <sizeRatio>0.934306569343066</sizeRatio>
+      <text>a</text>
+      <top>51</top>
+      <topRatio>0.064070351758794</topRatio>
+      <userProperty>//#P:editFontFamily|多行文字录入V2|'Segoe UI', Meiryo, system-ui, -apple-system, BlinkMacSystemFont, sans-serif|string||用户输入文字的字体样式
+//#P:editFontColor|多行文字录入V2|404040|color||用户输入文字的字体颜色
+//#P:editFontSize|多行文字录入V2|12pt|string||用户输入文字的大小
+//#P:editMinY|多行文字录入V2|100px|string||编辑框最小高度
+//#P:editMaxY|多行文字录入V2|300px|string||编辑框最大高度
+//#P:onChange(sender,value)|多行文字录入V2||jsMix||内容变化触发
+
+
+</userProperty>
+      <v_color1>FFC0C0</v_color1>
+      <v_Str>as223</v_Str>
+      <vAlign>top</vAlign>
+      <width>137</width>
+      <widthRatio>0.118205349439172</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel2">
+      <__U_editFontColor>404040</__U_editFontColor>
+      <__U_editFontFamily>'Segoe UI', Meiryo, system-ui, -apple-system, BlinkMacSystemFont, sans-serif</__U_editFontFamily>
+      <__U_editFontSize>12pt</__U_editFontSize>
+      <__U_editMaxY>300px</__U_editMaxY>
+      <__U_onFocusChange-sender-isFocus />
+      <__U_onHeightChange-sender-oldH-newH />
+      <__U_onInputChange-sender-oldText-newText />
+      <backgroundSkin>edit1</backgroundSkin>
+      <height>96</height>
+      <heightRatio>0.120603015075377</heightRatio>
+      <left>309</left>
+      <leftRatio>0.271767810026385</leftRatio>
+      <onCreate>//public
+sender.currentText = "";
+sender.getEditText = function() {
+    return this.currentText;
+}
+sender.setEditText = function(text) {
+    this.c_edit.innerText = text;
+    this.f_onChange();
+    this.refreshFocus();
+}
+
+//protected
+sender.c_label = sender.eeChildren[0];
+sender.c_edit = sender.eeChildren[1];
+
+//private
+var e = sender.c_edit;
+e.contentEditable = true;
+e.style.border = "none";
+e.style.outline = "none";
+e.style.height = "";
+e.style.minHeight = (eb.getDivRectSetting(sender).h - e.outerTop - e.outerBottom) + "px";
+e.style.maxHeight = sender.editMaxY;
+e.style.overflowY = "auto";
+e.style.fontFamily = sender.editFontFamily;
+e.style.fontSize = sender.editFontSize;
+e.style.color = "#" + sender.editFontColor;
+e.style.wordBreak = "break-all";
+e.style.wordWrap = "break-word";
+e.style.whiteSpace = "normal";
+e.innerHTML = "";
+eb.setDivRect(e, e.outerLeft, e.outerTop, eb.getDivRectSetting(sender).w - e.outerLeft - e.outerRight, null);
+sender.v_lastH = eb.getDivRectSetting(sender).h;
+
+sender.refreshH = function() {
+    if (this.v_lastH!=eb.getDivRect(sender.c_edit).h+e.outerTop+e.outerBottom) {
+        var lastH = this.v_lastH;
+        this.v_lastH = eb.getDivRect(sender.c_edit).h+e.outerTop+e.outerBottom;
+        ee.setRect(this,null,null,null,this.v_lastH);
+        sender.onHeightChange(this, lastH, this.v_lastH);
+    }
+}
+
+sender.f_onChange = function() {
+    this.refreshH();
+    var oldText = this.currentText;
+    this.currentText = this.c_edit.innerText;
+    ee.setVisible(this.c_label, !this.c_edit.innerText); 
+    this.onInputChange(this, oldText, this.currentText);
+}
+
+e.oninput = function() {
+    sender.f_onChange();
+}
+
+e.onpaste = function() {
+    sender.f_onChange();
+}
+
+e.onfocus = function() {
+    onFocusChange(sender, true);
+}
+
+e.onblur = function() {
+    onFocusChange(sender, false);
+}
+</onCreate>
+      <sizeRatio>0.344086021505376</sizeRatio>
+      <top>86</top>
+      <topRatio>0.108040201005025</topRatio>
+      <userProperty>//#P:editFontFamily|多行文字录入V2|'Segoe UI', Meiryo, system-ui, -apple-system, BlinkMacSystemFont, sans-serif|string||用户输入文字的字体样式
+//#P:editFontColor|多行文字录入V2|404040|color||用户输入文字的字体颜色
+//#P:editFontSize|多行文字录入V2|12pt|string||用户输入文字的大小
+//#P:editMaxY|多行文字录入V2|300px|string||编辑框最大高度
+//#P:onHeightChange(sender,oldH,newH)|多行文字录入V2||jsMix||由于用户的输入导致编辑框产生的高度变化。sender:触发事件的控件，oldH:旧的高度，newH:新的高度
+//#P:onInputChange(sender,oldText,newText)|多行文字录入V2||jsMix||由于用户的输入导致内容改变。sender:触发事件的控件，oldText:旧的内容，newText:新的内容
+//#P:onFocusChange(sender,isFocus)|多行文字录入V2||jsMix||焦点发生变化。sender:触发事件的控件，isFocus:是否触发了焦点
+
+
+
+</userProperty>
+      <width>279</width>
+      <widthRatio>0.245382585751979</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel2/panel4">
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <fontColor>C0C0C0</fontColor>
+      <fontFamily>'Segoe UI', Meiryo, system-ui, -apple-system, BlinkMacSystemFont, sans-serif</fontFamily>
+      <fontSize>14</fontSize>
+      <height>96</height>
+      <heightRatio>1</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.344086021505376</sizeRatio>
+      <text>有什么新鲜事？</text>
+      <top>0</top>
+      <width>279</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel2/panel3">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <fontColor>404040</fontColor>
+      <fontFamily>'Segoe UI', Meiryo, system-ui, -apple-system, BlinkMacSystemFont, sans-serif</fontFamily>
+      <fontSize>12</fontSize>
+      <hAlign>left</hAlign>
+      <height>62</height>
+      <heightRatio>0.645833333333333</heightRatio>
+      <left>16</left>
+      <leftRatio>0.0573476702508961</leftRatio>
+      <onCreate>
+      </onCreate>
+      <outerBottom>2</outerBottom>
+      <outerLeft>5</outerLeft>
+      <outerRight>2</outerRight>
+      <outerTop>2</outerTop>
+      <sizeRatio>0.553571428571429</sizeRatio>
+      <top>15</top>
+      <topRatio>0.15625</topRatio>
+      <v_color1>FFC0C0</v_color1>
+      <v_Str>as223</v_Str>
+      <vAlign>top</vAlign>
+      <width>112</width>
+      <widthRatio>0.401433691756272</widthRatio>
+    </control>
+  </controls>
+  <taskSet count="0" />
+  <gridLines count="0" />
+  <g5Items count="0" />
+</page>

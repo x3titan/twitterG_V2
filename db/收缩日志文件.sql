@@ -1,0 +1,17 @@
+﻿
+USE[master]  
+GO  
+ALTER DATABASE twitterG SET RECOVERY SIMPLE WITH NO_WAIT  
+GO  
+ALTER DATABASE twitterG SET RECOVERY SIMPLE   --简单模式  
+GO  
+USE twitterG  
+GO  
+DBCC SHRINKFILE (N'twitterG_log' , 2, TRUNCATEONLY)  --设置压缩后的日志大小为2M，可以自行指定  
+GO  
+USE[master]  
+GO  
+ALTER DATABASE twitterG SET RECOVERY FULL WITH NO_WAIT  
+GO  
+ALTER DATABASE twitterG SET RECOVERY FULL  --还原为完全模式  
+GO  

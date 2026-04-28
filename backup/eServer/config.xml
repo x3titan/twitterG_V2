@@ -1,0 +1,39 @@
+<?xml version="1.0" standalone="yes"?>
+<root>
+  <FMain width="942" height="854" left="159" top="109" windowState="Minimized" />
+  <projectCount>1</projectCount>
+  <project0>C:\GitHub\twitterG\faith</project0>
+  <defaultPage>/faith/pc/main</defaultPage>
+  <serverRoot>D:\eServer</serverRoot>
+  <servicePort>80</servicePort>
+  <virtualFolderCount>3</virtualFolderCount>
+  <virtualFolder0>
+    <diskFolder>c:\www\incoming</diskFolder>
+    <virtualFolder>/incoming</virtualFolder>
+  </virtualFolder0>
+  <virtualFolder1>
+    <diskFolder>C:\www\well-known</diskFolder>
+    <virtualFolder>/.well-known</virtualFolder>
+  </virtualFolder1>
+  <virtualFolder2>
+    <diskFolder>C:\www\httpRoot</diskFolder>
+    <virtualFolder>/</virtualFolder>
+  </virtualFolder2>
+  <listView1Col0Width>130</listView1Col0Width>
+  <listView1Col1Width>259</listView1Col1Width>
+  <listView1Col2Width>164</listView1Col2Width>
+  <listView1Col3Width>354</listView1Col3Width>
+  <httpsMode>false</httpsMode>
+  <servicePortHttps>443</servicePortHttps>
+  <sslCerFullChainFileName>c:\\temp\\v\\fullchain.pem</sslCerFullChainFileName>
+  <sslCerPrivateKeyFileName>c:\\temp\\v\\privkey.pem</sslCerPrivateKeyFileName>
+  <autoStart>true</autoStart>
+  <Script2WarningTimeMs>1000</Script2WarningTimeMs>
+  <virtualUrlListCount>3</virtualUrlListCount>
+  <virtualUrl0VirtualUrl>/</virtualUrl0VirtualUrl>
+  <virtualUrl0TargetUrl>/faith/pc/new</virtualUrl0TargetUrl>
+  <virtualUrl1VirtualUrl>/login</virtualUrl1VirtualUrl>
+  <virtualUrl1TargetUrl>/faith/pc/new</virtualUrl1TargetUrl>
+  <virtualUrl2VirtualUrl>/home</virtualUrl2VirtualUrl>
+  <virtualUrl2TargetUrl>/faith/pc/main</virtualUrl2TargetUrl>
+</root>

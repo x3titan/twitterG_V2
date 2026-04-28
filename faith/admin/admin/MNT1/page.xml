@@ -1,0 +1,669 @@
+<page>
+  <controls count="11">
+    <control type="DivRoot" pathname="/divRoot">
+      <backgroundColor>ffffff</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>796</height>
+      <left>0</left>
+      <pageHead><![CDATA[<style>
+.buttonBlue {
+    background-color:#30b5ef;
+    transition: background-color 1.0s;
+}
+.buttonBlue:hover{
+    background-color:#289ccf;
+    transition: background-color 0.3s;
+}
+   
+.buttonSelectBlue {
+    background-color: ;
+    transition: background-color 0.3s;
+}
+.buttonSelectBlue:hover{
+    background-color:#e0e0ff;
+    transition: background-color 0.6s;
+}
+
+
+.buttonGray {
+    background-color: ;
+    transition: background-color 0.6s;
+}
+.buttonGray:hover{
+    background-color:#f0f0ff;
+    transition: background-color 0.3s;
+}
+
+</style>]]></pageHead>
+      <top>0</top>
+      <width>1087</width>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel38">
+      <backgroundSkin>empty</backgroundSkin>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <fontBold>true</fontBold>
+      <fontColor>198DC9</fontColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSize>14</fontSize>
+      <hAlign>left</hAlign>
+      <height>796</height>
+      <heightRatio>1</heightRatio>
+      <layerName>p1 主页透明弹窗</layerName>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <onClick><![CDATA[for (var i=0; i<sender.eeChildren.length; i++) {
+    if (sender.eeChildren[i].close) {
+        sender.eeChildren[i].close();
+    } else {
+        ee.setVisible(sender.eeChildren[i], false);
+    }
+}
+ee.setVisible(sender, false);]]></onClick>
+      <onCreate>sender.a1 = ee.getControl("panel39");</onCreate>
+      <sizeRatio>0.834254143646409</sizeRatio>
+      <top>0</top>
+      <width>1087</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel38/panel39">
+      <backgroundColor>FAFAFA</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <height>482</height>
+      <heightRatio>0.63841059602649</heightRatio>
+      <layerName>a1 弹出菜单</layerName>
+      <layerVisible>false</layerVisible>
+      <left>167</left>
+      <leftRatio>0.184530386740331</leftRatio>
+      <onCreate><![CDATA[sender.c_items = new Array();
+sender.style.boxSizing="border-box";
+sender.style.borderWidth = "1px";
+sender.style.borderColor = "#a0a0a0";
+sender.style.borderStyle = "solid";
+sender.style.borderRadius = "10px";
+sender.style.boxShadow  = "5px 5px 10px #d0d0d0";
+
+sender.show = function(refDiv, list, onComplete) {
+    var options = list.split(";");
+    var i = 0;
+    while (i<options.length) {
+        if (options[i].trim()=="") {
+            options.splice(i, 1);
+        } else {
+            i++;
+        }
+    }
+    this.itemsClear();
+    var root;
+    var maxX = 0;
+    for (var i=0; i<options.length; i++) {
+        root = this.itemsAdd(options[i].split(","));
+        root.v_index = i;
+        this.c_items.push(root);
+        var rect = eb.getDivRectSetting(root);
+        if (rect.w>maxX) maxX = rect.w;
+    }
+    this.v_result = new Array();
+    this.v_resultIndex = -1;
+    this.f_onComplete = onComplete;
+    ee.setRect(this,null,null,parseInt(maxX*1.3),null);
+    eb.processDock();
+    ee.tiledV(this, 0, 10, 10);
+    ee.tiledResizeV(this, 1);
+    var rect = g5.getRectAbs(refDiv);
+    if (rect.y > eb.getDivRect(ee.getControl("divRoot")).h/2) {
+        ee.setRect(this, rect.x - 50, rect.y - eb.getDivRect(this).h - 10, null, null);
+    } else {
+        ee.setRect(this, rect.x - 50, rect.y+rect.h+10, null, null);
+    }
+    ee.setVisible(this, true);
+    ee.setVisible(this.parentNode, true);
+}
+
+sender.close = function() {
+    ee.setVisible(this, false);
+    this.f_onComplete(this.v_resultIndex, this.v_result);
+}
+
+sender.itemsClear = function() {
+    while (this.c_items.length>0) {
+        ee.removeControl(this.c_items[this.c_items.length-1]);
+        this.c_items.splice(this.c_items.length-1, 1);
+    }
+}
+
+sender.itemsAdd = function(value) {
+    var c;
+    var root;
+    root = createPanel(this, this.id + "panel" + value[1], "", 10, 10, 1, 50);
+    root.v_value = value;
+    root.className = "buttonSelectBlue";
+    root.style.cursor = "pointer";
+    eb.setDock(root,"fill","disabled");
+    eb.setOuter(root,0,0,1,0);
+    ee.setOnClick(root, function(senderBtn,event) {
+        sender.v_result = root.v_value;
+        sender.v_resultIndex = root.v_index;
+        //window.event? window.event.cancelBubble = true : event.stopPropagation();
+    });
+    
+    c = createPanel(root, root.id+"panel16", "", 10, 10, 10, 22);
+    addText(c, root.v_value[0], "left", "middle", "微软雅黑", 12, "14171a", "bold");
+    c.label.style.whiteSpace = "nowrap";
+    eb.setDock(c,"fill","disabled");
+    eb.setOuter(c,10,0,10,0);
+    var rect = eb.getDivRect(c.label);
+    ee.setRect(root, null, null, rect.w + 20, null);
+
+    return root;
+}
+]]></onCreate>
+      <sizeRatio>1.19012345679012</sizeRatio>
+      <top>101</top>
+      <topRatio>0.133774834437086</topRatio>
+      <width>405</width>
+      <widthRatio>0.447513812154696</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel6">
+      <backgroundColor>8ED0F9</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontColor>1DA1F2</fontColor>
+      <fontFamily>'Segoe UI', Meiryo, system-ui, -apple-system, BlinkMacSystemFont, sans-serif</fontFamily>
+      <height>33</height>
+      <heightRatio>0.0437086092715232</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>66</left>
+      <leftRatio>0.0729281767955801</leftRatio>
+      <onClick><![CDATA[getSiteMap.onComplete = function(dataset) {
+    var xml = "";
+    xml += "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
+    xml += "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n";
+    
+    for (var i=0; i<dataset.rowCount-1; i++) {
+        xml += "  <url>\n";
+        xml += "    <loc>https://fistalk.com/msg/" + dataset.getData(0,i) + "</loc>\n";
+        xml += "    <lastmod>" + dataset.getData(1,i).substr(0,10) + "</lastmod>\n";
+        xml += "  </url>\n";
+    }
+    
+    xml += "</urlset>\n";
+    
+    var filename = "siteMap2.xml";
+    var aLink = document.createElement("a");
+    var bb = new Blob([xml], {type: "text/plain;charset=utf-8;"});
+    aLink.setAttribute("href", window.URL.createObjectURL(bb));
+    aLink.setAttribute("download", filename);
+    aLink.dataset.downloadurl = ["text/plain;charset=utf-8;", aLink.download, aLink.href].join(":");
+    aLink.draggable = true; 
+    aLink.classList.add("dragout");
+    
+    aLink.click();
+}
+getSiteMap();
+
+
+
+]]></onClick>
+      <onCreate>g5.initButtonV3(sender,[
+    new g5.BStyle("#ffffff","#e8f5fe","#d2ecfc","","","","#1da1f2","#1da1f2","#1da1f2","#1da1f2")
+]);
+sender.style.borderRadius = parseInt(eb.getDivRect(sender).h/2) + "px";
+sender.style.boxShadow = "2px 2px 4px #a0a0a0";
+
+
+
+</onCreate>
+      <sizeRatio>0.203703703703704</sizeRatio>
+      <text>生成网站地图</text>
+      <top>37</top>
+      <topRatio>0.0490066225165563</topRatio>
+      <width>162</width>
+      <widthRatio>0.179005524861878</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel2">
+      <backgroundColor>D6D6F0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <height>170</height>
+      <heightRatio>0.21356783919598</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>43</left>
+      <leftRatio>0.0395584176632935</leftRatio>
+      <onCreate>sender.style.borderWidth = "1px";
+sender.style.borderColor = "#1da1f2";
+sender.style.borderStyle = "solid";
+sender.style.borderRadius = "10px";</onCreate>
+      <sizeRatio>0.331384015594542</sizeRatio>
+      <top>125</top>
+      <topRatio>0.157035175879397</topRatio>
+      <width>513</width>
+      <widthRatio>0.471941122355106</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel2/panel452">
+      <backgroundColor>EBEEFA</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <height>83</height>
+      <heightRatio>0.488235294117647</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>10</left>
+      <leftRatio>0.0194931773879142</leftRatio>
+      <onCreate>sender.style.borderWidth = "1px";
+sender.style.borderColor = "#1da1f2";
+sender.style.borderStyle = "solid";
+sender.style.borderRadius = "5px";</onCreate>
+      <outerLeft>10</outerLeft>
+      <outerRight>10</outerRight>
+      <sizeRatio>0.17184265010352</sizeRatio>
+      <top>14</top>
+      <topRatio>0.0823529411764706</topRatio>
+      <width>493</width>
+      <widthRatio>0.941520467836257</widthRatio>
+    </control>
+    <control type="Edit" pathname="/divRoot/panel2/panel452/edit15">
+      <backgroundColor>F5F5FA</backgroundColor>
+      <backgroundSkin>empty</backgroundSkin>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <fontColor>808080</fontColor>
+      <fontFamily>微软雅黑</fontFamily>
+      <fontSize>14</fontSize>
+      <hAlign>left</hAlign>
+      <height>43</height>
+      <heightRatio>0.518072289156627</heightRatio>
+      <inputFont>微软雅黑</inputFont>
+      <inputFontSize>12</inputFontSize>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <note>c_edit</note>
+      <onChange>g5.p2.p25.refreshProgress(g5.p2.p25.c_edit, g5.p2.p25.c_rProgress, 50);</onChange>
+      <onCreate>sender._input.style.resize = "none";</onCreate>
+      <sizeRatio>0.100467289719626</sizeRatio>
+      <text>月份格式如：2024-01</text>
+      <top>40</top>
+      <topRatio>0.481927710843373</topRatio>
+      <vAlign>top</vAlign>
+      <width>493</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel2/panel452/edit15/panel455">
+      <backgroundColor>657786</backgroundColor>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <fontColor>808080</fontColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>25</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>2</height>
+      <heightRatio>0.0465116279069767</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.00357142857142857</sizeRatio>
+      <top>41</top>
+      <topRatio>0.953488372093023</topRatio>
+      <width>493</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel2/panel452/edit15/panel456">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>top</dockY>
+      <fontColor>808080</fontColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>25</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>1</height>
+      <heightRatio>0.0232558139534884</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.00178571428571429</sizeRatio>
+      <top>0</top>
+      <width>493</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel2/panel452/panel457">
+      <backgroundImgMode>fill</backgroundImgMode>
+      <fontColor>808080</fontColor>
+      <fontFamily>微软雅黑</fontFamily>
+      <fontSize>12</fontSize>
+      <hAlign>left</hAlign>
+      <height>28</height>
+      <heightRatio>0.337349397590361</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>10</left>
+      <leftRatio>0.0233644859813084</leftRatio>
+      <sizeRatio>0.168674698795181</sizeRatio>
+      <text>月份</text>
+      <top>7</top>
+      <topRatio>0.0843373493975904</topRatio>
+      <width>166</width>
+      <widthRatio>0.38785046728972</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel2/panel1">
+      <backgroundColor>8ED0F9</backgroundColor>
+      <cursor>pointer</cursor>
+      <dockX>right</dockX>
+      <fontColor>1DA1F2</fontColor>
+      <fontFamily>'Segoe UI', Meiryo, system-ui, -apple-system, BlinkMacSystemFont, sans-serif</fontFamily>
+      <height>33</height>
+      <heightRatio>0.194117647058824</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>331</left>
+      <leftRatio>0.664717348927875</leftRatio>
+      <onClick><![CDATA[getSiteMapV2.month = ee.getEditText(ee.getControl("edit15"));
+getSiteMapV2.onComplete = function(dataset) {
+    var xml = "";
+    xml += "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
+    xml += "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n";
+    
+    for (var i=0; i<dataset.rowCount-1; i++) {
+        xml += "  <url>\n";
+        xml += "    <loc>https://fistalk.com/msg/" + dataset.getData(0,i) + "</loc>\n";
+        xml += "    <lastmod>" + dataset.getData(1,i).substr(0,10) + "</lastmod>\n";
+        xml += "  </url>\n";
+    }
+    
+    xml += "</urlset>\n";
+    
+    var filename = "siteMap" + getSiteMapV2.month + ".xml";
+    var aLink = document.createElement("a");
+    var bb = new Blob([xml], {type: "text/plain;charset=utf-8;"});
+    aLink.setAttribute("href", window.URL.createObjectURL(bb));
+    aLink.setAttribute("download", filename);
+    aLink.dataset.downloadurl = ["text/plain;charset=utf-8;", aLink.download, aLink.href].join(":");
+    aLink.draggable = true; 
+    aLink.classList.add("dragout");
+    
+    aLink.click();
+}
+getSiteMapV2();
+
+
+
+]]></onClick>
+      <onCreate>g5.initButtonV3(sender,[
+    new g5.BStyle("#ffffff","#e8f5fe","#d2ecfc","","","","#1da1f2","#1da1f2","#1da1f2","#1da1f2")
+]);
+sender.style.borderRadius = parseInt(eb.getDivRect(sender).h/2) + "px";
+sender.style.boxShadow = "2px 2px 4px #a0a0a0";
+
+
+
+</onCreate>
+      <outerRight>20</outerRight>
+      <sizeRatio>0.203703703703704</sizeRatio>
+      <text>生成网站地图</text>
+      <top>115</top>
+      <topRatio>0.676470588235294</topRatio>
+      <width>162</width>
+      <widthRatio>0.315789473684211</widthRatio>
+    </control>
+  </controls>
+  <taskSet count="2">
+    <taskSetItem name="getSiteMap">
+      <script1>//onComplete(dataset)
+eio.appendString8(eb.getCookie("FAToken")); 
+</script1>
+      <script2><![CDATA[var token = eio.readString8();
+
+
+var sql,sqlResult;
+sql = "exec getUserInfoBySessionAdmin '" + db.encode(token) + "'";
+sqlResult = db.executeQuery("DB", sql);
+if (sqlResult == null) {
+    eio.appendString8("F");
+    es.logWarning("数据库执行错误, sql=" + sql);
+    return;
+}
+db.read(sqlResult);
+if (db.getString(sqlResult, "sessionId").length < 5) {
+    eio.appendString8("F");
+    eio.appendString8("token失效");
+    es.logWarning("用户token失效, sql=" + sql);
+    return;
+}   
+var userId = db.getString(sqlResult, "id");
+var userName = db.getString(sqlResult, "userName");
+
+sql =
+    "SELECT   TOP (100) PERCENT dbo.tContent.id,   " +
+    "                CONVERT(VARCHAR(50), dbo.tContent.regDatetime, 120) AS regDatetime " +
+    "FROM      dbo.tContent " +
+    "ORDER BY dbo.tContent.id DESC;";
+
+sqlResult = db.executeQuery("DB", sql);
+if (sqlResult == null) {
+    eio.appendString8("F");
+    es.logWarning("数据库执行错误, sql=" + sql);
+    return;
+}
+eio.appendString8("T");
+eio.appendDataSet(sqlResult,
+    "id,regDateTime",
+    0, 500000);
+
+
+]]></script2>
+      <script3>if (eio.readString8() != "T") {
+    return;
+}
+getSiteMap.dataset = eio.readDataSet();
+getSiteMap.onComplete(getSiteMap.dataset); 
+
+
+
+</script3>
+    </taskSetItem>
+    <taskSetItem name="getSiteMapV2">
+      <script1>//month, onComplete(dataset)
+eio.appendString8(eb.getCookie("FAToken")); 
+eio.appendString8(getSiteMapV2.month);
+</script1>
+      <script2><![CDATA[var token = eio.readString8();
+var mon = eio.readString8();
+
+var sql,sqlResult;
+sql = "exec getUserInfoBySessionAdmin '" + db.encode(token) + "'";
+sqlResult = db.executeQuery("DB", sql);
+if (sqlResult == null) {
+    eio.appendString8("F");
+    es.logWarning("数据库执行错误, sql=" + sql);
+    return;
+}
+db.read(sqlResult);
+if (db.getString(sqlResult, "sessionId").length < 5) {
+    eio.appendString8("F");
+    eio.appendString8("token失效");
+    es.logWarning("用户token失效, sql=" + sql);
+    return;
+}   
+var userId = db.getString(sqlResult, "id");
+var userName = db.getString(sqlResult, "userName");
+
+sql =
+    "SELECT   TOP (100) PERCENT dbo.tContent.id,   " +
+    "                CONVERT(VARCHAR(50), dbo.tContent.regDatetime, 120) AS regDatetime " +
+    "FROM      dbo.tContent " +
+    "where CONVERT(VARCHAR(50), dbo.tContent.regDatetime, 120) like '" + db.encode(mon) + "-%' " +
+    "ORDER BY dbo.tContent.id DESC;";
+
+sqlResult = db.executeQuery("DB", sql);
+if (sqlResult == null) {
+    eio.appendString8("F");
+    es.logWarning("数据库执行错误, sql=" + sql);
+    return;
+}
+eio.appendString8("T");
+eio.appendDataSet(sqlResult,
+    "id,regDateTime",
+    0, 500000);
+
+
+]]></script2>
+      <script3>if (eio.readString8() != "T") {
+    return;
+}
+getSiteMapV2.dataset = eio.readDataSet();
+getSiteMapV2.onComplete(getSiteMapV2.dataset); 
+
+
+
+</script3>
+    </taskSetItem>
+  </taskSet>
+  <gridLines count="0" />
+  <g5Items count="5">
+    <item name="imgUrl" type="10">
+      <varValue>"/incoming/";</varValue>
+      <functionParam />
+      <functionCode />
+    </item>
+    <item name="tableClick" type="20">
+      <varValue />
+      <functionParam>sender</functionParam>
+      <functionCode><![CDATA[//鼠标点击行激活处理,接口：valid,y
+var c, x, y;
+for (y = 0; y < g5.pageSize; y++) {
+    for (x = 0; x < 9; x++) {
+        c = ee.getTableCell(ee.getControl("tablebody2"), x, y);
+        c.style.backgroundColor = "";    
+    }
+}
+for (x = 0; x < 9; x++) {
+    c = ee.getTableCell(ee.getControl("tablebody2"), x, sender.rowIndex);
+    c.style.backgroundColor = "#E0EEFF";
+}
+g5.tableClick.valid = false;
+if (eb.isEmpty(query.dataset)) return;
+g5.tableClick.y = sender.rowIndex;
+if (g5.tableClick.y>=query.dataset.rowCount) return;
+g5.tableClick.valid = true;
+]]></functionCode>
+    </item>
+    <item name="getRectAbs" type="20">
+      <varValue />
+      <functionParam>div</functionParam>
+      <functionCode>var rect = eb.getDivRect(div);
+var result = eb.getDivRect(div);
+while (true) {
+    div = div.parentNode;
+    if (eb.isEmpty(div)) break;
+    if (div.id == "divRoot") break;
+    rect = eb.getDivRect(div);
+    result.x+=rect.x-div.scrollLeft;
+    result.y+=rect.y-div.scrollTop;
+}
+result.y -= document.documentElement.scrollTop;
+return result;</functionCode>
+    </item>
+    <item name="BStyle" type="20">
+      <varValue />
+      <functionParam>color1,color2,color3,text1,text2,text3,tColor1,tColor2,tColor3,bdColor</functionParam>
+      <functionCode>this.color1 = color1;
+this.color2 = color2
+this.color3 = color3;
+this.text1 = text1;
+this.text2 = text2;
+this.text3 = text3;
+this.tColor1 = tColor1;
+this.tColor2 = tColor2;
+this.tColor3 = tColor3;
+this.bdColor = bdColor;</functionCode>
+    </item>
+    <item name="initButtonV3" type="20">
+      <varValue />
+      <functionParam>sender,v_style</functionParam>
+      <functionCode><![CDATA[sender.v_style = v_style;
+
+sender.init = function(index) {
+    this.v_index = index;
+    this.style.backgroundColor = this.v_style[index].color1;
+    this.setTextCurrent(this.v_style[index].text1);
+    this.setTextColor(this.v_style[index].tColor1);
+    if (this.v_style[index].bdColor=="") {
+        this.style.borderWidth = "0px";
+        if (this.label) eb.setDivRect(this.label.parentNode,0,0,null,null);
+    } else {
+        this.style.boxSizing="border-box";
+        this.style.borderWidth = "1px";
+        this.style.borderColor = this.v_style[index].bdColor;
+        this.style.borderStyle = "solid";
+        if (this.label) eb.setDivRect(this.label.parentNode,-1,-1,null,null);
+    }
+    //this.style.borderRadius = parseInt(eb.getDivRect(this).h/2) + "px";
+    if (this.c_cover) ee.removeControl(this.c_cover);
+    this.c_cover = createPanel(this, "", "#00000001", 0, 0, 1, 1);
+    eb.setDock(this.c_cover,"fill","fill");
+}
+
+sender.setText = function(text1, styleIndex, text2, text3) {
+    if (!styleIndex) styleIndex = 0;
+    if (!text2) text2 = text1;
+    if (!text3) text3 = text2;
+    this.v_style[styleIndex].text1 = text1;
+    this.v_style[styleIndex].text2 = text2;
+    this.v_style[styleIndex].text3 = text3;
+    this.setTextCurrent(text1);
+}
+
+sender.setTextCurrent = function(text) {
+    var index = this.v_index;
+    if ((this.v_style[index].text1.length>0) || (this.v_style[index].text2.length>0) || (this.v_style[index].text3.length>0)) {
+        ee.setText(this,text);
+    }
+}
+
+sender.setTextColor = function(color) {
+    var index = this.v_index;
+    if ((this.v_style[index].tColor1.length>0) || (this.v_style[index].tColor2.length>0) || (this.v_style[index].tColor3.length>0)) {
+        ee.setTextColor(this, color);
+    }
+}
+
+ee.setOnMouseEnter(sender, function(sender,event) { 
+    var s =sender.v_style[sender.v_index];
+    sender.style.backgroundColor = s.color2;
+    this.setTextCurrent(s.text2);
+    this.setTextColor(s.tColor2);
+});
+ee.setOnMouseLeave(sender, function(sender,event) { 
+    var s =sender.v_style[sender.v_index];
+    sender.style.backgroundColor = s.color1;
+    this.setTextCurrent(s.text1);
+    this.setTextColor(s.tColor1);
+});
+sender.eeMouseDown = function(sender,event,x,y) {
+    var s =sender.v_style[sender.v_index];
+    sender.style.backgroundColor = s.color3;
+    this.setTextCurrent(s.text3);
+    this.setTextColor(s.tColor3);
+}
+sender.eeMouseUp = function(sender,event,x,y) {
+    var s =sender.v_style[sender.v_index];
+    if ("ontouchstart" in window) {
+        sender.style.backgroundColor = s.color1;
+        this.setTextCurrent(s.text1);
+        this.setTextColor(s.tColor1);
+    } else {
+        sender.style.backgroundColor = s.color2;
+        this.setTextCurrent(s.text2);
+        this.setTextColor(s.tColor2);
+    }
+}
+sender.eeOnClickCancel = function(sender,event) {
+    var s =sender.v_style[sender.v_index];
+    sender.style.backgroundColor = s.color1;
+    this.setTextCurrent(s.text1);
+    this.setTextColor(s.tColor1);
+}
+eb.initMouseEvent(sender);
+
+sender.init(0);]]></functionCode>
+    </item>
+  </g5Items>
+</page>

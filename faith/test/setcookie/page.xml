@@ -1,0 +1,128 @@
+<page>
+  <controls count="6">
+    <control type="DivRoot" pathname="/divRoot">
+      <backgroundColor>ffffff</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>796</height>
+      <left>0</left>
+      <top>0</top>
+      <width>1087</width>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel4">
+      <backgroundSkin>button9</backgroundSkin>
+      <height>40</height>
+      <heightRatio>0.050251256281407</heightRatio>
+      <left>81</left>
+      <leftRatio>0.0656934306569343</leftRatio>
+      <onClick>eb.setCookie("key1", "value1");
+window.location.href = ee.getUrl("/test/getcookie");
+
+
+
+
+</onClick>
+      <sizeRatio>0.23121387283237</sizeRatio>
+      <text>set cookie</text>
+      <top>56</top>
+      <topRatio>0.0703517587939698</topRatio>
+      <width>173</width>
+      <widthRatio>0.140308191403082</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel1">
+      <backgroundSkin>button9</backgroundSkin>
+      <height>40</height>
+      <heightRatio>0.050251256281407</heightRatio>
+      <left>72</left>
+      <leftRatio>0.0583941605839416</leftRatio>
+      <onClick>setSession();</onClick>
+      <sizeRatio>0.23121387283237</sizeRatio>
+      <text>setSession</text>
+      <top>140</top>
+      <topRatio>0.175879396984925</topRatio>
+      <width>173</width>
+      <widthRatio>0.140308191403082</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel49">
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <height>61</height>
+      <heightRatio>0.0766331658291457</heightRatio>
+      <left>157</left>
+      <leftRatio>0.144363341443633</leftRatio>
+      <sizeRatio>0.734939759036145</sizeRatio>
+      <top>251</top>
+      <topRatio>0.315326633165829</topRatio>
+      <width>73</width>
+      <widthRatio>0.0673154906731549</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel49/panel50">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <backgroundImg>img.png</backgroundImg>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>61</height>
+      <heightRatio>1</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.734939759036145</sizeRatio>
+      <top>0</top>
+      <width>73</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="FileUpload" pathname="/divRoot/panel49/fileupload1">
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>61</height>
+      <heightRatio>1</heightRatio>
+      <left>0</left>
+      <onUploadCompleteC>g5.newPhoto1 = eio.readString16();
+ee.setText(ee.getControl("panel52"), " ");
+ee.setImage(ee.getControl("panel52"), "url:" + g5.imgUrl + g5.newPhoto1, "trim", "", "");
+
+
+
+
+
+</onUploadCompleteC>
+      <onUploadCompleteS>var pos=newFileName.lastIndexOf("\\");
+var filename = newFileName.substring(pos+1);  
+eio.appendString16(filename);</onUploadCompleteS>
+      <onUploadStartC>fileExt = fileExt.toLowerCase();
+if ((fileExt != ".bmp") &amp;&amp;
+    (fileExt != ".jpg") &amp;&amp;
+    (fileExt != ".jpeg") &amp;&amp;
+    (fileExt != ".png") &amp;&amp;
+    (fileExt != ".tif") &amp;&amp;
+    (fileExt != ".tiff")) return;
+    </onUploadStartC>
+      <onUploadStartS>var sn = 123456;
+newFileName = "D:\\temp\\incoming\\img" + sn + fileExt;</onUploadStartS>
+      <sizeRatio>0.734939759036145</sizeRatio>
+      <top>0</top>
+      <width>73</width>
+      <widthRatio>1</widthRatio>
+    </control>
+  </controls>
+  <taskSet count="1">
+    <taskSetItem name="setSession">
+      <script1>eio.appendString16("lskjdfls的代价a");
+</script1>
+      <script2>session.set("abc", eio.readString16());
+eio.appendString16("sljf;sadlf");
+eio.appendString16("sljf;sadlf");
+eio.appendString16("sljf;sadlf");
+
+</script2>
+      <script3>eio.readString16();
+eio.readString16();
+</script3>
+    </taskSetItem>
+  </taskSet>
+  <gridLines count="0" />
+  <g5Items count="0" />
+</page>

@@ -1,0 +1,249 @@
+<page>
+  <controls count="8">
+    <control type="DivRoot" pathname="/divRoot">
+      <backgroundColor>ffffff</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>796</height>
+      <left>0</left>
+      <onControlLoad><![CDATA[g5.p1 = ee.getControl("panel2");
+g5.p2 = ee.getControl("panel3");
+g5.p3 = ee.getControl("panel4");
+g5.mainDiv = ee.getControl("panel1");
+
+g5.lastWidth = 0;
+g5.refreshMain = function() {
+    var cw = $g("divRoot").offsetWidth;    
+    if (g5.lastWidth == cw) return;
+    g5.lastWidth = cw;
+    var p1w = eb.getDivRect(g5.p1).w;
+    var p2w = eb.getDivRect(g5.p2).w;
+    var p3w = eb.getDivRect(g5.p3).w;
+    if (cw >= 300+600+400) {
+        p1w = 300;
+        p2w = 600;
+        p3w = 400;
+    } else if (cw >= 80+600+400) {
+        p1w = 80;
+        p2w = 600;
+        p3w = 400;
+    } else if (cw >= 80+600+330) {
+        p1w = 80;
+        p2w = 600;
+        p3w = 330;
+    } else if (cw >= 80+600) {
+        p1w = 80;
+        p2w = 600;
+        p3w = 0;
+    } else {
+        p1w = 80;
+        p2w = cw-80;
+        p3w = 0;
+    }
+    var left = parseInt((cw - p1w - p2w - p3w) / 2);
+    ee.setRect(g5.p1,left,null,p1w,null);
+    ee.setRect(g5.p2,left+p1w,null,p2w,null);
+    ee.setRect(g5.p3,left+p1w+p2w,null,p3w,null);
+}
+setInterval(function() {g5.refreshMain();}, 100);
+
+g5.lastScrollY = g5.mainDiv.scrollTop;
+/*
+eb.addEvent(g5.mainDiv, "scroll", function() {
+    var temp = g5.mainDiv.scrollTop;
+    var dy = temp - g5.lastScrollY;
+    g5.lastScrollY = temp;
+    var ch = $g("divRoot").offsetHeight;
+    var p3h = eb.getDivRect(g5.p3).h;
+    temp = eb.getDivRect(g5.p3).y;
+    if (p3h<=ch) {
+        if (temp!=0) eb.setDivRect(g5.p3,null,0,null,null);
+        return;
+    }
+    var temp1 = temp;
+    if (dy>0) {
+        temp1 = temp - dy;
+        if (temp1<ch-p3h) temp1 = ch-p3h;
+    } else if (dy<0) {
+        temp1 = temp - dy;
+        if (temp1>0) temp1 = 0;        
+    }
+    if (temp!=temp1) eb.setDivRect(g5.p3,null,temp1,null,null);
+}, false);
+*/
+
+eb.addEvent(g5.mainDiv, "scroll", function() {
+    var viewPortY = g5.mainDiv.scrollTop;
+    var dy = viewPortY - g5.lastScrollY;
+    g5.lastScrollY = viewPortY
+    var viewPortH = $g("divRoot").offsetHeight;
+    var p3h = eb.getDivRect(g5.p3).h;
+    p3y = eb.getDivRect(g5.p3).y;
+    if (p3h<=viewPortH) {
+        eb.setDivRect(g5.p3,null,viewPortY,null,null);
+        return;
+    }
+    var newY = p3y;
+    if (dy>0) {
+        if (newY+p3h<viewPortY+viewPortH) {
+            newY = viewPortY+viewPortH-p3h;
+        }
+    } else if (dy<0) {
+        if (newY>viewPortY) {
+            newY = viewPortY;
+        }
+    }
+    if (newY!=p3y) eb.setDivRect(g5.p3,null,newY,null,null);
+}, false);
+    
+var cc = ee.getControl("button1");
+var icon = "<g><path d=\"M22.58 7.35L12.475 1.897c-.297-.16-.654-.16-.95 0L1.425 7.35c-.486.264-.667.87-.405 1.356.18.335.525.525.88.525.16 0 .324-.038.475-.12l.734-.396 1.59 11.25c.216 1.214 1.31 2.062 2.66 2.062h9.282c1.35 0 2.444-.848 2.662-2.088l1.588-11.225.737.398c.485.263 1.092.082 1.354-.404.263-.486.08-1.093-.404-1.355zM12 15.435c-1.795 0-3.25-1.455-3.25-3.25s1.455-3.25 3.25-3.25 3.25 1.455 3.25 3.25-1.455 3.25-3.25 3.25z\"></path></g>";
+ee.setText(cc.status1, "<svg viewBox='0 2 24 24' style='height: 1.75rem;color: rgba(0,0,0,1.00);fill: currentcolor;vertical-align:middle;'>"+ icon +"</svg>  主页");
+ee.setTextColor(cc.status1, "rgb(0,0,0)");
+ee.setText(cc.status2, "<svg viewBox='0 2 24 24' style='height: 1.75rem;color: rgba(29,161,242,1.00);fill: currentcolor;vertical-align:middle;'>"+ icon +"</svg>  主页");
+ee.setTextColor(cc.status2, "rgb(29,161,242)");
+ee.setText(cc.status3, "<svg viewBox='0 2 24 24' style='height: 1.75rem;color: rgba(29,161,242,1.00);fill: currentcolor;vertical-align:middle;'>"+ icon +"</svg>  主页");
+ee.setTextColor(cc.status3, "rgb(29,161,242)");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+]]></onControlLoad>
+      <top>0</top>
+      <width>1201</width>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel1">
+      <autoScroll>true</autoScroll>
+      <backgroundColor>FFE0C0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>796</height>
+      <heightRatio>1</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.640901771336554</sizeRatio>
+      <top>0</top>
+      <width>1201</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel1/panel3">
+      <bgColorEnabled>true</bgColorEnabled>
+      <fontBold>true</fontBold>
+      <fontFamily>Helvetica</fontFamily>
+      <fontSize>100</fontSize>
+      <height>2722</height>
+      <heightRatio>3.41959798994975</heightRatio>
+      <left>411</left>
+      <leftRatio>0.330917874396135</leftRatio>
+      <sizeRatio>5.06890130353818</sizeRatio>
+      <text>P2</text>
+      <top>0</top>
+      <width>537</width>
+      <widthRatio>0.432367149758454</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel1/panel4">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <fontBold>true</fontBold>
+      <fontFamily>Helvetica</fontFamily>
+      <fontSize>100</fontSize>
+      <height>722</height>
+      <heightRatio>0.907035175879397</heightRatio>
+      <left>955</left>
+      <leftRatio>0.768921095008052</leftRatio>
+      <sizeRatio>2.66420664206642</sizeRatio>
+      <text>P3</text>
+      <top>0</top>
+      <width>271</width>
+      <widthRatio>0.218196457326892</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel2">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <fontBold>true</fontBold>
+      <fontFamily>Helvetica</fontFamily>
+      <fontSize>100</fontSize>
+      <height>722</height>
+      <heightRatio>0.907035175879397</heightRatio>
+      <left>136</left>
+      <leftRatio>0.113238967527061</leftRatio>
+      <sizeRatio>2.66420664206642</sizeRatio>
+      <text>P1</text>
+      <top>-1</top>
+      <topRatio>-0.00125628140703518</topRatio>
+      <width>271</width>
+      <widthRatio>0.225645295587011</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel2/panel5">
+      <fontBold>true</fontBold>
+      <fontFamily>微软雅黑</fontFamily>
+      <fontSize>17</fontSize>
+      <height>34</height>
+      <heightRatio>0.0470914127423823</heightRatio>
+      <left>42</left>
+      <leftRatio>0.154981549815498</leftRatio>
+      <sizeRatio>0.171717171717172</sizeRatio>
+      <text><![CDATA[<svg viewBox="0 2 24 24" style="height: 1.75rem;color: rgba(29,161,242,1.00);fill: currentcolor;vertical-align:middle;" ><g><path d="M22.58 7.35L12.475 1.897c-.297-.16-.654-.16-.95 0L1.425 7.35c-.486.264-.667.87-.405 1.356.18.335.525.525.88.525.16 0 .324-.038.475-.12l.734-.396 1.59 11.25c.216 1.214 1.31 2.062 2.66 2.062h9.282c1.35 0 2.444-.848 2.662-2.088l1.588-11.225.737.398c.485.263 1.092.082 1.354-.404.263-.486.08-1.093-.404-1.355zM12 15.435c-1.795 0-3.25-1.455-3.25-3.25s1.455-3.25 3.25-3.25 3.25 1.455 3.25 3.25-1.455 3.25-3.25 3.25z"></path></g></svg>  主页]]></text>
+      <top>55</top>
+      <topRatio>0.0761772853185596</topRatio>
+      <width>198</width>
+      <widthRatio>0.730627306273063</widthRatio>
+    </control>
+    <control type="Button" pathname="/divRoot/panel2/button1">
+      <backgroundSkin1>LRBtn12</backgroundSkin1>
+      <backgroundSkin2>twitterG008</backgroundSkin2>
+      <fontBold>true</fontBold>
+      <fontColor2>0000C0</fontColor2>
+      <fontFamily>微软雅黑</fontFamily>
+      <fontSize>16</fontSize>
+      <height>39</height>
+      <heightRatio>0.054016620498615</heightRatio>
+      <left>37</left>
+      <leftRatio>0.136531365313653</leftRatio>
+      <sizeRatio>0.256578947368421</sizeRatio>
+      <text>主页</text>
+      <top>132</top>
+      <topRatio>0.182825484764543</topRatio>
+      <width>152</width>
+      <widthRatio>0.560885608856089</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel2/panel144">
+      <backgroundImg>getLogo2.png</backgroundImg>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <height>65</height>
+      <heightRatio>0.0900277008310249</heightRatio>
+      <left>101</left>
+      <leftRatio>0.372693726937269</leftRatio>
+      <onClick>ee.getControl("panel144").style.borderRadius = "50%";</onClick>
+      <sizeRatio>0.747126436781609</sizeRatio>
+      <top>484</top>
+      <topRatio>0.670360110803324</topRatio>
+      <width>87</width>
+      <widthRatio>0.321033210332103</widthRatio>
+    </control>
+  </controls>
+  <taskSet count="0" />
+  <gridLines count="0" />
+</page>

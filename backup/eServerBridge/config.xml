@@ -1,0 +1,31 @@
+<?xml version="1.0" standalone="yes"?>
+<root>
+  <FMain width="808" height="666" left="160" top="283" windowState="Normal" />
+  <projectCount>1</projectCount>
+  <project0>C:\GitHub\twitterG\blankPage</project0>
+  <defaultPage>/blankPage/main</defaultPage>
+  <serverRoot>D:\eServer</serverRoot>
+  <servicePort>80</servicePort>
+  <virtualFolderCount>0</virtualFolderCount>
+  <virtualFolder0>
+    <diskFolder>c:\www\incoming</diskFolder>
+    <virtualFolder>/incoming</virtualFolder>
+  </virtualFolder0>
+  <virtualFolder1>
+    <diskFolder>C:\www\well-known</diskFolder>
+    <virtualFolder>/.well-known</virtualFolder>
+  </virtualFolder1>
+  <virtualFolder2>
+    <diskFolder>C:\www\eServerBridge\httpRootBridge</diskFolder>
+    <virtualFolder>/</virtualFolder>
+  </virtualFolder2>
+  <listView1Col0Width>130</listView1Col0Width>
+  <listView1Col1Width>259</listView1Col1Width>
+  <listView1Col2Width>164</listView1Col2Width>
+  <listView1Col3Width>354</listView1Col3Width>
+  <httpsMode>false</httpsMode>
+  <servicePortHttps>443</servicePortHttps>
+  <sslCerFullChainFileName>c:\\temp\\v\\fullchain.pem</sslCerFullChainFileName>
+  <sslCerPrivateKeyFileName>c:\\temp\\v\\privkey.pem</sslCerPrivateKeyFileName>
+  <autoStart>true</autoStart>
+</root>

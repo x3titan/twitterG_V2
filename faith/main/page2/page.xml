@@ -1,0 +1,219 @@
+<page>
+  <controls count="9">
+    <control type="DivRoot" pathname="/divRoot">
+      <backgroundColor>E6ECF0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>797</height>
+      <left>0</left>
+      <onControlLoad><![CDATA[g5.imgUrl = "/incoming/";
+g5.itemsPage2 = new Array();
+
+g5.appendItemPage2 = function(parent, username, nickname, userPhoto) {
+    //v_username
+    //c_userphoto, c_label
+    var hd = "e" + g5.itemsPage2.length + "_";
+    if (eb.isEmpty(userPhoto)) userPhoto = "";
+    var w = eb.getDivRect(parent).w;
+    var h = eb.getDivRect(parent).h;
+    var y = 0;
+    if (g5.itemsPage2.length > 0) {
+        y = eb.getDivRect(g5.itemsPage2[g5.itemsPage2.length-1]).y + eb.getDivRect(g5.itemsPage2[g5.itemsPage2.length-1]).h;
+    }
+    y += 2; //v-space
+    
+    c = createPanel($g("ee_divRoot"), hd+"panel12", "FFFFFF", 0, y, w, h*0.100376411543287);
+    var root = c;
+    g5.itemsPage2.push(root);
+    root.v_username = username;
+    eb.setDock(c,"disabled","disabled");
+    c = createPanel($g(hd+"panel12"), hd+"panel13", "", 13, 10, 57, 59);
+    eb.setDock(c,"ratio","ratio");
+    c.leftRatio=0.0296127562642369;
+    c.widthRatio=0.129840546697039;
+    c.topRatio=0.125;
+    c.heightRatio=0.7375;
+    c = createPanel($g(hd+"panel13"), hd+"panel14", "", 0, 0, 57, 59);
+    root.c_userphoto = c;
+    if (userPhoto == "") {
+        ee.setImage(c,"/twitterG/main/user.png","trim","","")
+    } else {
+        ee.setImage(c,"url:" + g5.imgUrl + userPhoto,"trim","","")
+    }
+    eb.setDock(c,"fill","fill");
+    c = createPanel($g(hd+"panel13"), hd+"panel15", "", 0, 0, 57, 59);
+    ee.setImage(c,"/twitterG/main/page2/cirMask.png","trim","","")
+    eb.setDock(c,"fill","fill");
+    c = createPanel($g(hd+"panel12"), hd+"panel16", "", 86, 18, 347, 43);
+    root.c_label = c;
+    addText(c, "<b>" + nickname + "</b>@" + username, "left", "middle", "Helvetica", 9, "000000", "normal");
+    eb.setFontSizeAuto(c, 20);
+    eb.setDock(c,"ratio","ratio");
+    c.leftRatio=0.195899772209567;
+    c.widthRatio=0.790432801822323;
+    c.topRatio=0.225;
+    c.heightRatio=0.5375;
+    
+    eb.processDock();
+}]]></onControlLoad>
+      <top>0</top>
+      <width>439</width>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel12">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>ratio</dockY>
+      <height>80</height>
+      <heightRatio>0.100376411543287</heightRatio>
+      <left>0</left>
+      <leftRatio>0.00227790432801822</leftRatio>
+      <sizeRatio>0.182232346241458</sizeRatio>
+      <top>519</top>
+      <topRatio>0.651191969887077</topRatio>
+      <width>439</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel12/panel13">
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <height>59</height>
+      <heightRatio>0.7375</heightRatio>
+      <left>13</left>
+      <leftRatio>0.0296127562642369</leftRatio>
+      <sizeRatio>1.03508771929825</sizeRatio>
+      <top>10</top>
+      <topRatio>0.125</topRatio>
+      <width>57</width>
+      <widthRatio>0.129840546697039</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel12/panel13/panel14">
+      <backgroundImg>CPY0000.jpg</backgroundImg>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>59</height>
+      <heightRatio>1</heightRatio>
+      <left>0</left>
+      <sizeRatio>1.03508771929825</sizeRatio>
+      <top>0</top>
+      <width>57</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel12/panel13/panel15">
+      <backgroundImg>cirMask.png</backgroundImg>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>59</height>
+      <heightRatio>1</heightRatio>
+      <left>0</left>
+      <sizeRatio>1.03508771929825</sizeRatio>
+      <top>0</top>
+      <width>57</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel12/panel16">
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <fontFamily>Helvetica</fontFamily>
+      <fontSizeAuto>20</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>43</height>
+      <heightRatio>0.5375</heightRatio>
+      <left>86</left>
+      <leftRatio>0.195899772209567</leftRatio>
+      <sizeRatio>0.123919308357349</sizeRatio>
+      <text>Annie@annie257</text>
+      <top>18</top>
+      <topRatio>0.225</topRatio>
+      <width>347</width>
+      <widthRatio>0.790432801822323</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel1">
+      <backgroundSkin>button1001</backgroundSkin>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <height>50</height>
+      <heightRatio>0.0627352572145546</heightRatio>
+      <left>2</left>
+      <leftRatio>0.00455580865603645</leftRatio>
+      <onClick>//g5.appendItem("username", "contentId", "userPhoto", "photo1", "text");
+g5.appendItemPage2(
+    ee.getControl("divRoot"),
+    "davidKing", "鱼香肉丝", "img1021.jpg"
+    );
+
+
+//var s = "You know how I always say you can get free stuff? Well now is the time to follow me if your're not already !! Jolly Hohn is here and he's ready to give away some serious prizes for 12Daysof Magenta!! So be sure to follow me and getting ready to win some amazing gear!";
+//ee.setText(ee.getControl("panel2"), s);
+//var rect = eb.getDivRect(ee.getControl("panel2").label);
+//ee.setRect(ee.getControl("panel2"), null, null, null, rect.h);
+
+
+
+
+
+
+
+
+</onClick>
+      <sizeRatio>0.909090909090909</sizeRatio>
+      <top>688</top>
+      <topRatio>0.863237139272271</topRatio>
+      <width>55</width>
+      <widthRatio>0.125284738041002</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel2">
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <height>269</height>
+      <heightRatio>0.337515683814304</heightRatio>
+      <left>17</left>
+      <leftRatio>0.0387243735763098</leftRatio>
+      <onClick><![CDATA[var c = ee.getControl("panel2");
+ee.setText(c,
+    "<iframe width='260' height='115' src='https://www.youtube.com/embed/yJG3WMG1dak' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>"
+);
+
+
+
+]]></onClick>
+      <sizeRatio>0.670822942643391</sizeRatio>
+      <top>67</top>
+      <topRatio>0.0840652446675031</topRatio>
+      <width>401</width>
+      <widthRatio>0.913439635535307</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel3">
+      <backgroundSkin>button1001</backgroundSkin>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <height>50</height>
+      <heightRatio>0.0627352572145546</heightRatio>
+      <left>80</left>
+      <leftRatio>0.182232346241458</leftRatio>
+      <onClick><![CDATA[var c = ee.getControl("panel2");
+ee.setText(c,
+    "<video width='320' height='240' controls autoplay = 'autoplay' loop = 'loop'>  " +
+    "<source src='/eengine/cache/twitterG/login/get.mp4' type='video/mp4'> " +
+    //"<source src="movie.ogg" type="video/ogg"> " +
+    //"<source src="movie.webm" type="video/webm">   " +
+    "    您的浏览器不支持 video 标签。 " +
+    "</video> " 
+    );
+
+
+
+
+]]></onClick>
+      <sizeRatio>0.909090909090909</sizeRatio>
+      <top>686</top>
+      <topRatio>0.860727728983689</topRatio>
+      <width>55</width>
+      <widthRatio>0.125284738041002</widthRatio>
+    </control>
+  </controls>
+  <taskSet count="0" />
+  <gridLines count="0" />
+</page>

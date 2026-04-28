@@ -1,0 +1,180 @@
+<page>
+  <controls count="7">
+    <control type="DivRoot" pathname="/divRoot">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>796</height>
+      <left>0</left>
+      <top>0</top>
+      <width>1212</width>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel1">
+      <backgroundSkin>button1001</backgroundSkin>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <height>34</height>
+      <heightRatio>0.042713567839196</heightRatio>
+      <left>54</left>
+      <leftRatio>0.0445544554455446</leftRatio>
+      <onClick>ee.getControl("panel2").refresh();
+
+
+
+
+
+
+
+</onClick>
+      <sizeRatio>0.288135593220339</sizeRatio>
+      <top>585</top>
+      <topRatio>0.734924623115578</topRatio>
+      <width>118</width>
+      <widthRatio>0.0973597359735974</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel2">
+      <backgroundColor>EAEAF4</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <height>508</height>
+      <heightRatio>0.638190954773869</heightRatio>
+      <left>84</left>
+      <leftRatio>0.0693069306930693</leftRatio>
+      <onCreate><![CDATA[sender.innerHTML = "<svg><path fill=\"none\"></path><path fill=\"none\"></path></svg>";
+sender.v_x = 30;
+sender.v_y = 30;
+sender.v_r = 25;
+sender.v_color = "#fd30ae";
+sender.v_bgColor = "#e0e0e0";
+sender.v_width = "10px";
+sender.v_progress = "0.8";
+sender.refresh = function(progress) {
+    var path = this.childNodes[0].childNodes[0];
+    path.style.stroke=sender.v_bgColor;
+    path.style.strokeWidth=sender.v_width;
+    var des = ["M",this.v_x,this.v_y-this.v_r,"A",this.v_r,this.v_r,0,1,1,this.v_x-0.0001,this.v_y-this.v_r];
+    path.setAttribute("d", des.join(" "));
+    
+    if (!eb.isEmpty(progress)) this.v_progress = progress;
+    path = this.childNodes[0].childNodes[1];
+    var ag = 90+360-this.v_progress*360;  
+    var ag = ag*(Math.PI/180);
+    var dx = (this.v_x+(Math.cos(ag)*this.v_r)).toFixed(2);
+    var dy = (this.v_y-(Math.sin(ag)*this.v_r)).toFixed(2);
+    var opt = window.Number(this.v_progress>0.5);
+    des = ["M",this.v_x,(this.v_y-this.v_r)+"","A",this.v_r,this.v_r,0,opt,1,dx,dy];
+    path.style.stroke=sender.v_color;
+    path.style.strokeWidth=sender.v_width;
+    path.setAttribute("d", des.join(" "));
+}
+
+
+
+]]></onCreate>
+      <sizeRatio>0.66232073011734</sizeRatio>
+      <top>44</top>
+      <topRatio>0.0552763819095477</topRatio>
+      <width>767</width>
+      <widthRatio>0.632838283828383</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel3">
+      <backgroundSkin>button1001</backgroundSkin>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <height>50</height>
+      <heightRatio>0.0628140703517588</heightRatio>
+      <left>352</left>
+      <leftRatio>0.29042904290429</leftRatio>
+      <onClick>var path =  $g("ring");
+var descriptions = ["M", 100,100, "L", 400,400];
+path.setAttribute("d", descriptions.join(" "));
+
+
+
+
+
+
+
+</onClick>
+      <sizeRatio>0.328947368421053</sizeRatio>
+      <top>606</top>
+      <topRatio>0.761306532663317</topRatio>
+      <width>152</width>
+      <widthRatio>0.125412541254125</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel4">
+      <backgroundSkin>button1001</backgroundSkin>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <height>34</height>
+      <heightRatio>0.042713567839196</heightRatio>
+      <left>54</left>
+      <leftRatio>0.0445544554455446</leftRatio>
+      <onClick>ee.getControl("panel2").refresh(0.9999);
+
+
+
+
+
+
+
+</onClick>
+      <sizeRatio>0.288135593220339</sizeRatio>
+      <top>630</top>
+      <topRatio>0.791457286432161</topRatio>
+      <width>118</width>
+      <widthRatio>0.0973597359735974</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel5">
+      <backgroundSkin>button1001</backgroundSkin>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <height>34</height>
+      <heightRatio>0.042713567839196</heightRatio>
+      <left>54</left>
+      <leftRatio>0.0445544554455446</leftRatio>
+      <onClick>ee.getControl("panel2").v_color = "#308050";
+ee.getControl("panel2").v_width = "5px";
+ee.getControl("panel2").refresh(0.49);
+
+
+
+
+
+
+
+                    </onClick>
+      <sizeRatio>0.288135593220339</sizeRatio>
+      <top>674</top>
+      <topRatio>0.846733668341708</topRatio>
+      <width>118</width>
+      <widthRatio>0.0973597359735974</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel6">
+      <backgroundSkin>button1001</backgroundSkin>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <height>34</height>
+      <heightRatio>0.042713567839196</heightRatio>
+      <left>54</left>
+      <leftRatio>0.0445544554455446</leftRatio>
+      <onClick>ee.getControl("panel2").refresh(0.501);
+
+
+
+
+
+
+
+</onClick>
+      <sizeRatio>0.288135593220339</sizeRatio>
+      <top>719</top>
+      <topRatio>0.903266331658292</topRatio>
+      <width>118</width>
+      <widthRatio>0.0973597359735974</widthRatio>
+    </control>
+  </controls>
+  <taskSet count="0" />
+  <gridLines count="0" />
+  <g5Items count="0" />
+</page>

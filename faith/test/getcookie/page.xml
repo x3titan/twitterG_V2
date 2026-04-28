@@ -1,0 +1,54 @@
+<page>
+  <controls count="3">
+    <control type="DivRoot" pathname="/divRoot">
+      <backgroundColor>ffffff</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>796</height>
+      <left>0</left>
+      <top>0</top>
+      <width>1233</width>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel4">
+      <backgroundSkin>button9</backgroundSkin>
+      <height>40</height>
+      <heightRatio>0.050251256281407</heightRatio>
+      <left>71</left>
+      <leftRatio>0.0575831305758313</leftRatio>
+      <onClick>alert(eb.getCookie("key1"));
+
+
+
+
+</onClick>
+      <sizeRatio>0.23121387283237</sizeRatio>
+      <text>get cookie</text>
+      <top>91</top>
+      <topRatio>0.114321608040201</topRatio>
+      <width>173</width>
+      <widthRatio>0.140308191403082</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel1">
+      <backgroundSkin>button9</backgroundSkin>
+      <height>40</height>
+      <heightRatio>0.050251256281407</heightRatio>
+      <left>72</left>
+      <leftRatio>0.0583941605839416</leftRatio>
+      <onClick>eb.delCookie("key1");
+
+
+
+
+</onClick>
+      <sizeRatio>0.23121387283237</sizeRatio>
+      <text>delete cookie</text>
+      <top>167</top>
+      <topRatio>0.209798994974874</topRatio>
+      <width>173</width>
+      <widthRatio>0.140308191403082</widthRatio>
+    </control>
+  </controls>
+  <taskSet count="0" />
+  <gridLines count="0" />
+</page>

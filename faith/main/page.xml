@@ -1,0 +1,4876 @@
+<page>
+  <controls count="189">
+    <control type="DivRoot" pathname="/divRoot">
+      <backgroundColor>ffffff</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>796</height>
+      <left>0</left>
+      <onControlLoad><![CDATA[g5.currentPageIndex = -1;
+g5.imgUrl = "/incoming/";
+g5.itemsHome = new Array(); //home
+g5.itemsPageUser = new Array();
+g5.newUser = false;
+
+g5.changePage = function(pageIndex) {
+    if ((pageIndex<0) || (pageIndex>=4)) return false;
+    if (g5.currentPageIndex == pageIndex) return true;
+    if (g5.currentPageIndex == 0) {
+        ee.setImage(ee.getControl("panel1"), "/twitterG/main/d1.png", "fill", "", "");
+        ee.showAni(ee.getControl("layouty2"), 1);
+    } else if (g5.currentPageIndex == 1) {
+        ee.setImage(ee.getControl("panel2"), "/twitterG/main/d2.png", "fill", "", "");
+        ee.showAni(ee.getControl("layouty3"), 1);
+    } else if (g5.currentPageIndex == 2) {
+        ee.setImage(ee.getControl("panel3"), "/twitterG/main/d3.png", "fill", "", "");
+    } else if (g5.currentPageIndex == 3) {
+        ee.setImage(ee.getControl("panel4"), "/twitterG/main/d4.png", "fill", "", "");
+        ee.showAni(ee.getControl("layouty5"), 1);
+    }
+    if (pageIndex == 0) {
+        ee.setImage(ee.getControl("panel1"), "/twitterG/main/d1s.png", "fill", "", "");
+        ee.showAni(ee.getControl("layouty2"), 0);
+    } else if (pageIndex == 1) {
+        ee.setImage(ee.getControl("panel2"), "/twitterG/main/d2s.png", "fill", "", "");
+        ee.showAni(ee.getControl("layouty3"), 0);
+    } else if (pageIndex == 2) {
+        ee.setImage(ee.getControl("panel3"), "/twitterG/main/d3s.png", "fill", "", "");
+    } else if (pageIndex == 3) {
+        ee.setImage(ee.getControl("panel4"), "/twitterG/main/d4s.png", "fill", "", "");
+        ee.showAni(ee.getControl("layouty5"), 0);
+    }
+    g5.currentPageIndex = pageIndex;
+    return true;
+}
+
+g5.changePage2 = function(pageIndex) {
+    if ((pageIndex<0) || (pageIndex>=2)) return false;
+    ee.setVisible(ee.getControl("panel132"), false);
+    ee.setVisible(ee.getControl("panel133"), false);
+    ee.setVisible(ee.getControl("panel128"), false);
+    ee.setVisible(ee.getControl("panel129"), false);
+    ee.setTextColor(ee.getControl("layoutxitem15"), "#808080");
+    ee.setTextColor(ee.getControl("layoutxitem16"), "#808080");
+    if (pageIndex == 0) {
+        ee.setVisible(ee.getControl("panel132"), true);
+        ee.setVisible(ee.getControl("panel128"), true);
+        ee.setTextColor(ee.getControl("layoutxitem15"), "#1C94E0");
+    } else if (pageIndex == 1) {
+        ee.setVisible(ee.getControl("panel133"), true);
+        ee.setVisible(ee.getControl("panel129"), true);
+        ee.setTextColor(ee.getControl("layoutxitem16"), "#1C94E0");
+    }
+}
+g5.changePage2(0);
+
+g5.refreshUserInfo = function() {
+    var s;
+    if (eb.isEmpty(g5.userName)) return;
+    s = "<b>" + g5.nickName + "</b><br/>";
+    s += "@" + g5.userName;
+    ee.setText(ee.getControl("panel31"), s);
+    ee.setEditText(ee.getControl("edit2"), g5.nickName);
+    ee.setEditText(ee.getControl("edit3"), g5.userNote);
+    ee.setEditText(ee.getControl("edit4"), g5.userHomepage);
+    
+    if (g5.photo == "") {
+        ee.setImage(ee.getControl("panel8"), "/twitterG/main/user.png");
+        ee.setImage(ee.getControl("panel29"), "/twitterG/main/user.png");
+        ee.setImage(ee.getControl("panel47"), "/twitterG/main/user.png");
+        ee.setImage(ee.getControl("panel59"), "/twitterG/main/user.png");
+        ee.setImage(ee.getControl("panel14"), "/twitterG/main/user.png");
+        ee.setImage(ee.getControl("panel111"), "/twitterG/main/user.png");
+    } else {
+        ee.setImage(ee.getControl("panel8"), "url:" + g5.imgUrl + g5.photo);
+        ee.setImage(ee.getControl("panel29"), "url:" + g5.imgUrl + g5.photo);
+        ee.setImage(ee.getControl("panel47"), "url:" + g5.imgUrl + g5.photo);
+        ee.setImage(ee.getControl("panel59"), "url:" + g5.imgUrl + g5.photo);
+        ee.setImage(ee.getControl("panel14"), "url:" + g5.imgUrl + g5.photo);
+        ee.setImage(ee.getControl("panel111"), "url:" + g5.imgUrl + g5.photo);
+    }
+    if (g5.titleBg == "") {
+        ee.setImage(ee.getControl("panel58"));
+    } else {
+        ee.setImage(ee.getControl("panel58"), "url:" + g5.imgUrl + g5.titleBg, "trim");
+    }
+}
+
+g5.appendItem = function(parent, startY, hd, username, nickname, times, contentId, userPhoto, photo1, text, label1, label2, label3,
+    reTimes, reContent, rePhoto1, reUserId, reUserName, reNickName, rePhoto) {
+    if (eb.isEmpty(userPhoto)) userPhoto = "";
+    if (eb.isEmpty(photo1)) photo1 = "";
+    var w = eb.getDivRect(parent).w;
+    if (eb.isEmpty(startY)) startY = 0;
+    y = startY + 2; //v-space
+    
+    //root:v_userPhoto,v_titleText,v_text,v_btn1,v_btn2,v_btn3,v_btn4,v_label1,v_label2,v_label3
+    //v_contentId
+    var c;
+    c = createPanel(parent, hd+"panel12", "FFFFFF", 0, y, w, 100);
+    var root = c;
+    root.v_contentId = contentId;
+    eb.setDock(c,"disabled","disabled");
+    //avata image box
+    c = createPanel($g(hd+"panel12"), hd+"panel13", "", w*0.0208728652751423, w*0.026369168356998, w*0.149905123339658, w*0.149905123339658);
+    eb.setDock(c,"disabled","disabled");
+    
+    //v_userPhoto
+    c = createPanel($g(hd+"panel13"), hd+"panel14", "", 0, 0, 79, 77);
+    root.v_userPhoto = c;
+    if (userPhoto == "") {
+        ee.setImage(c,"/twitterG/main/user.png","trim","","")
+    } else {
+        ee.setImage(c,"url:" + g5.imgUrl + userPhoto,"trim","","")
+    }
+    eb.setDock(c,"fill","fill");
+    eb.setOuter(c,1,1,1,1);
+    c = createPanel($g(hd+"panel13"), hd+"panel15", "", 0, 0, 79, 77);
+    ee.setImage(c,"/twitterG/main/cirMask.png","trim","","")
+    eb.setDock(c,"fill","fill");
+    
+    //v_titleText
+    c = createPanel($g(hd+"panel12"), hd+"panel16", "", w*0.18595825426945, w*0.00405679513184584, w*0.800759013282732, w*0.0872210953346856);
+    root.v_titleText = c;
+    addText(c, "<b>" + nickname + "</b>@" + username + " - " + times, "left", "middle", "黑体", 9, "000000", "normal");
+    eb.setFontSizeAuto(c, 22);
+    eb.setDock(c,"disabled","disabled");
+    c.v_username = username
+    ee.setOnClick(c,function(sender,event) {
+        showUserPage.userName=sender.v_username;
+        showUserPage();
+    });
+    //v_text
+    c = createPanel($g(hd+"panel12"), hd+"panel17", "", w*0.18595825426945, w*0.0872210953346856, w*0.77988614800759, w*0.0547667342799189);
+    root.v_text = c;
+    addText(c, text, "left", "top", "黑体", 9, "000000", "normal");
+    eb.setFontSizeAuto(c, 25);
+    eb.setDock(c,"disabled","disabled");
+    eb.processDock();
+    var rect = eb.getDivRect(c.label);
+    ee.setRect(c, null, null, null, rect.h);
+    rect = eb.getDivRect(c);
+    var cy = rect.y + rect.h + 0.03*w;
+    
+    //photo1
+    if (photo1 != "") {
+        c = createPanel($g(hd+"panel12"), hd+"panel18", "", w*0.18595825426945, cy, w*0.787476280834915, w*0.474645030425964);
+        cy += w*0.474645030425964 + w*0.03;
+        eb.setDock(c,"disabled","disabled");
+        c = createPanel($g(hd+"panel18"), hd+"panel19", "", 0, 0, 415, 234);
+        if (photo1.substr(0,4) == "?YTB") {
+            ee.setText(c,
+                "<iframe width='" + parseInt(w*0.787476280834915) + "' height='" + parseInt(w*0.474645030425964) + "' src='https://www.youtube.com/embed/" +
+                photo1.substr(4, photo1.length) + 
+                "' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>"
+            );
+        } else {
+            ee.setImage(c,"url:" + g5.imgUrl + photo1,"trim","","");
+        }
+        eb.setDock(c,"fill","fill");
+        c = createPanel($g(hd+"panel18"), hd+"panel20", "", 0, 0, 415, 234);
+        addSkin(c, "/twitterG/skins/bodyMask.png","9x",57,56,19,20,20,18,19,20,20,18);
+        eb.setDock(c,"fill","fill");
+        c.style.pointerEvents = "none";
+    }
+    
+    if (reUserName != "") {
+        var p1ratio = 2.64;
+        c = createPanel($g(hd+"panel12"), hd+"panel2", "", w*0.18595825426945, cy, w*0.787476280834915, 100);
+        eb.setDock(c,"disabled","disabled");
+        var p1w = eb.getDivRect(c).w;
+        var p1h = p1w / p1ratio;
+        c = createPanel($g(hd+"panel2"), hd+"panel6", "", 0, 0, p1w, 100);
+        eb.setDock(c,"disabled","disabled");
+        c = createPanel($g(hd+"panel6"), hd+"panel8", "", p1w*0.0289156626506024, p1h*0.044585987261146, p1w*0.0987951807228916, p1w*0.0987951807228916);
+        eb.setDock(c,"disabled","disabled");
+        //rePhoto
+        c = createPanel($g(hd+"panel8"), hd+"panel9", "", 1, 1, 39, 39);
+        eb.setOuter(c,1,1,1,1);
+        if (rePhoto == "") {
+            ee.setImage(c,"/twitterG/main/user.png","trim","","")
+        } else {
+            ee.setImage(c,"url:" + g5.imgUrl + rePhoto,"trim","","")
+        }
+        eb.setDock(c,"fill","fill");
+        c = createPanel($g(hd+"panel8"), hd+"panel10", "", 0, 0, 41, 41);
+        ee.setImage(c,"/twitterG/main/page1/cirMask.png","trim","","");
+        eb.setDock(c,"fill","fill");
+        //reUserName,reNickName,reTime
+        c = createPanel($g(hd+"panel6"), hd+"panel11", "", p1w*0.146987951807229, p1h*0.0573248407643312, p1w*0.833734939759036, p1h*0.229299363057325);
+        addText(c, "<b>" + reNickName + "</b>@" + reUserName + " - " + reTimes, "left", "middle", "黑体", 9, "000000", "normal");
+        eb.setFontSizeAuto(c, 24);
+        eb.setDock(c,"disabled","disabled");
+        c.v_username = reUserName;
+        ee.setOnClick(c,function(sender,event) {
+            showUserPage.userName=sender.v_username;
+            showUserPage();
+        });
+        //reContent
+        c = createPanel($g(hd+"panel6"), hd+"panel25", "", p1w*0.0385542168674699, p1h*0.331210191082803, p1w*0.927710843373494, 10);
+        addText(c, reContent, "left", "top", "黑体", 9, "000000", "normal");
+        eb.setFontSizeAuto(c, 25);
+        eb.setDock(c,"disabled","disabled");
+        eb.processDock();
+        rect = eb.getDivRect(c.label);
+        ee.setRect(c, null, null, null, rect.h);
+        rect = eb.getDivRect(c);
+        var p1y = rect.y + rect.h + p1h * 0.05;
+        //rePhoto1
+        if (rePhoto1 != "") {
+            c = createPanel($g(hd+"panel6"), hd+"panel26", "", 0, p1y, p1w, parseInt(p1w*0.7));
+            if (rePhoto1.substr(0,4) == "?YTB") {
+              ee.setText(c,
+                    "<iframe width='" + parseInt(p1w) + "' height='" + parseInt(p1w*0.7) + "' src='https://www.youtube.com/embed/" +
+                    rePhoto1.substr(4, rePhoto1.length) + 
+                    "' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>"
+                );
+            } else {
+                ee.setImage(c,"url:" + g5.imgUrl + rePhoto1,"trim","","");
+            }
+            eb.setDock(c,"disabled","disabled");
+            p1y += eb.getDivRect(c).h;
+        }
+        c = createPanel($g(hd+"panel2"), hd+"panel7", "", 0, 0, p1w, p1y);
+        addSkin(c, "/twitterG/skins/bodyMask1.png","9x",57,56,19,20,20,18,19,20,20,18);
+        eb.setDock(c,"disabled","disabled");
+        c.style.pointerEvents = "none";
+        c = $g(hd+"panel2");
+        ee.setRect(c, null, null, null, p1y);
+        c = $g(hd+"panel6");
+        ee.setRect(c, null, null, null, p1y);
+        cy += p1y + w*0.03;
+    }    
+    
+    //4 button
+    c = createPanel($g(hd+"panel12"), hd+"panel21", "", w*0.18595825426945, cy, w*0.0645161290322581, w*0.062);
+    root.v_btn1 = c;
+    ee.setImage(c,"/twitterG/main/e1.png","fill","","")
+    eb.setDock(c,"disabled","disabled");
+    ee.setOnClick(c,function(sender,event) {
+        g5.newPhoto1 = "";
+        ee.setEditText(ee.getControl("edit1"), "");
+        ee.setImage(ee.getControl("panel52"), "/twitterG/main/empty.png");
+        ee.setText(ee.getControl("panel45"), "回复");
+        g5.uplinkType = "R";
+        g5.uplinkId = sender.parentNode.v_contentId;
+        ee.showAni(ee.getControl("panel42"), 0);
+    });
+    c = createPanel($g(hd+"panel12"), hd+"panel22", "", w*0.402277039848197, cy, w*0.0645161290322581, w*0.062);
+    root.v_btn2 = c;
+    ee.setImage(c,"/twitterG/main/e2.png","fill","","")
+    eb.setDock(c,"disabled","disabled");
+    ee.setOnClick(c,function(sender,event) {
+        g5.newPhoto1 = "";
+        ee.setEditText(ee.getControl("edit1"), "");
+        ee.setImage(ee.getControl("panel52"), "/twitterG/main/empty.png");
+        ee.setText(ee.getControl("panel45"), "转发");
+        g5.uplinkType = "F";
+        g5.uplinkId = sender.parentNode.v_contentId;
+        ee.showAni(ee.getControl("panel42"), 0);
+    });
+    c = createPanel($g(hd+"panel12"), hd+"panel23", "", w*0.616698292220114, cy, w*0.0645161290322581, w*0.062);
+    root.v_btn3 = c;
+    ee.setImage(c,"/twitterG/main/e3.png","fill","","")
+    eb.setDock(c,"disabled","disabled");
+    c = createPanel($g(hd+"panel12"), hd+"panel24", "", w*0.833017077798861, cy, w*0.064516129032258, w*0.062);
+    root.v_btn4 = c;
+    ee.setImage(c,"/twitterG/main/e4.png","fill","","")
+    eb.setDock(c,"disabled","disabled");
+    //3 label
+    c = createPanel($g(hd+"panel12"), hd+"panel3", "", w*0.25426944971537, cy, w*0.111954459203036, w*0.062);
+    root.v_label1 = c;
+    addText(c, label1, "left", "middle", "黑体", 9, "808080", "normal");
+    eb.setFontSizeAuto(c, 30);
+    eb.setDock(c,"disabled","disabled");
+    c = createPanel($g(hd+"panel12"), hd+"panel4", "", w*0.472485768500949, cy, w*0.12523719165085, w*0.062);
+    root.v_label2 = c;
+    addText(c, label2, "left", "middle", "黑体", 9, "808080", "normal");
+    eb.setFontSizeAuto(c, 30);
+    eb.setDock(c,"disabled","disabled");
+    c = createPanel($g(hd+"panel12"), hd+"panel5", "", w*0.685009487666034, cy, w*0.123339658444023, w*0.062);
+    root.v_label3 = c;
+    addText(c, label3, "left", "middle", "黑体", 9, "808080", "normal");
+    eb.setFontSizeAuto(c, 30);
+    eb.setDock(c,"disabled","disabled");
+    //set total height
+    rect = eb.getDivRect(root.v_btn1);
+    eb.setDivRect(root, null, null, null, rect.y + rect.h + 0.03*w);
+    
+    eb.processDock()
+    return root;
+}
+
+g5.itemsPage2 = new Array();
+g5.appendItemPage2 = function(parent, username, nickname, userPhoto) {
+    //v_username
+    //c_userphoto, c_label
+    var hd = "f" + g5.itemsPage2.length + "_";
+    if (eb.isEmpty(userPhoto)) userPhoto = "";
+    var w = eb.getDivRect(parent).w;
+    var h = eb.getDivRect(parent).h;
+    var y = 0;
+    if (g5.itemsPage2.length > 0) {
+        y = eb.getDivRect(g5.itemsPage2[g5.itemsPage2.length-1]).y + eb.getDivRect(g5.itemsPage2[g5.itemsPage2.length-1]).h;
+    }
+    y += 2; //v-space
+    
+    c = createPanel(parent, hd+"panel12", "FFFFFF", 0, y, w, parseInt(w/5.4875));
+    var root = c;
+    ee.setOnClick(c,function(sender,event) {
+        showUserPage.userName=sender.v_username;
+        showUserPage();
+    });
+    g5.itemsPage2.push(root);
+    root.v_username = username;
+    eb.setDock(c,"disabled","disabled");
+    c = createPanel($g(hd+"panel12"), hd+"panel13", "", 13, 10, 57, 59);
+    eb.setDock(c,"ratio","ratio");
+    c.leftRatio=0.0296127562642369;
+    c.widthRatio=0.129840546697039;
+    c.topRatio=0.125;
+    c.heightRatio=0.7375;
+    c = createPanel($g(hd+"panel13"), hd+"panel14", "", 0, 0, 57, 59);
+    root.c_userphoto = c;
+    if (userPhoto == "") {
+        ee.setImage(c,"/twitterG/main/user.png","trim","","")
+    } else {
+        ee.setImage(c,"url:" + g5.imgUrl + userPhoto,"trim","","")
+    }
+    eb.setDock(c,"fill","fill");
+    eb.setOuter(c,1,1,1,1);
+    c = createPanel($g(hd+"panel13"), hd+"panel15", "", 0, 0, 57, 59);
+    ee.setImage(c,"/twitterG/main/page2/cirMask.png","trim","","")
+    eb.setDock(c,"fill","fill");
+    c = createPanel($g(hd+"panel12"), hd+"panel16", "", 86, 18, 347, 43);
+    root.c_label = c;
+    addText(c, "<b>" + nickname + "</b>@" + username, "left", "middle", "Helvetica", 9, "000000", "normal");
+    eb.setFontSizeAuto(c, 20);
+    eb.setDock(c,"ratio","ratio");
+    c.leftRatio=0.195899772209567;
+    c.widthRatio=0.790432801822323;
+    c.topRatio=0.225;
+    c.heightRatio=0.5375;
+    
+    eb.processDock();
+}
+
+g5.getMins = function(mins) {
+    mins = parseInt(mins);
+    if (mins<60) {
+        return mins+"分钟";
+    } else if (mins<60*24) {
+        return parseInt(mins/60) + "小时" + (mins%60) + "分钟";
+    } else {
+        return parseInt(mins/(60*24)) + "天" + parseInt((mins%(60*24))/60) + "小时";
+    }
+}
+
+g5.refreshPage1 = function() {
+    if (eb.isEmpty(g5.datasetHome)) return;
+    var i, item;
+    var root = ee.getControl("layoutyitem4"); 
+    //new user ?
+    if (g5.datasetHome.rowCount <= 0) {
+        g5.newUser = true;
+        ee.showAni(ee.getControl("layouty4"), 0);
+        searchUser();
+        return;    
+    }
+    g5.newUser = false;
+    
+    var cy = 0;
+    if (updateHomepage.needRefresh) {
+        for (i=0; i<g5.itemsHome.length; i++) ee.removeControl(g5.itemsHome[i]);
+        g5.itemsHome = new Array();
+    } else {
+        if (g5.itemsHome.length>0) {
+            var rect = eb.getDivRect(g5.itemsHome[g5.itemsHome.length-1]);
+            cy = 2 + rect.y + rect.h;
+        }
+    }
+    for (i=0; i< g5.datasetHome.rowCount; i++) {
+        //"id,mins,userId,content,photo1,replyCount,forwardCount,likeCount,userName,nickName,photo" +
+        //",reMins(11),reContent,rePhoto1,reUserId,reUserName,reNickName,rePhoto"
+        //    reTimes, reContent, rePhoto1, reUserId, reUserName, reNickName, rePhoto
+        item = g5.appendItem(
+            root,
+            cy, "page1_" + g5.itemsHome.length + "_",
+            g5.datasetHome.getData(8,i),
+            g5.datasetHome.getData(9,i),
+            g5.getMins(g5.datasetHome.getData(1,i)),
+            g5.datasetHome.getData(0,i),
+            g5.datasetHome.getData(10,i),
+            g5.datasetHome.getData(4,i),
+            g5.datasetHome.getData(3,i),
+            g5.datasetHome.getData(5,i),
+            g5.datasetHome.getData(6,i),
+            g5.datasetHome.getData(7,i),
+            g5.getMins(g5.datasetHome.getData(11,i)),
+            g5.datasetHome.getData(12,i),
+            g5.datasetHome.getData(13,i),
+            g5.datasetHome.getData(14,i),
+            g5.datasetHome.getData(15,i),
+            g5.datasetHome.getData(16,i),
+            g5.datasetHome.getData(17,i)
+            );
+        g5.itemsHome.push(item);
+        cy += 2 + eb.getDivRect(item).h;    
+    }    
+}
+
+g5.refreshPage2 = function() {
+    if (eb.isEmpty(g5.datasetPage2)) return;
+    var i;
+    var root = ee.getControl("panel128"); 
+    if (g5.newUser) {
+        root = ee.getControl("layoutyitem8");
+    }
+    
+    for (i=0; i<g5.itemsPage2.length; i++) ee.removeControl(g5.itemsPage2[i]);
+    g5.itemsPage2 = new Array();
+    for (i=0; i< g5.datasetPage2.rowCount; i++) {
+        //function(parent, username, nickname, userPhoto)
+        //dataset: id,userName,nickName,photo"
+        g5.appendItemPage2(
+            root,
+            g5.datasetPage2.getData(1,i),
+            g5.datasetPage2.getData(2,i),
+            g5.datasetPage2.getData(3,i));
+    }    
+}
+
+g5.changePage(0);
+eb.setTouchEnabled(true);
+eb.setAlpha(ee.getControl("fileupload1"), 1);
+eb.setAlpha(ee.getControl("fileupload2"), 1);
+eb.setAlpha(ee.getControl("fileupload3"), 1);
+getUserInfo();
+eb.processDock();
+ee.getControl("divRoot").dockX = "disabled";
+ee.getControl("divRoot").dockY = "disabled";
+//setTimeout(function() { ee.autoResize=false; }, 200);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                            ]]></onControlLoad>
+      <onSlideLeft>if (ee.getControl("panel26").style.visibility != "hidden") {
+    ee.showAni(ee.getControl("panel26"), 1);               
+    ee.showAni(ee.getControl("panel27"), 1);
+}
+
+</onSlideLeft>
+      <onSlideRight>ee.setVisible(ee.getControl("panel26"), true);
+eb.setAlpha(ee.getControl("panel26"), 100);
+ee.showAni(ee.getControl("panel27"), 0);</onSlideRight>
+      <onSlideUp><![CDATA[var c;
+c = ee.getControl("layoutyitem4");
+if (c.clientHeight+c.scrollTop >= c.scrollHeight) {
+    if (g5.currentPageIndex == 0) {
+        updateHomepage();
+    }    
+}
+c = ee.getControl("panel129");
+if (c.clientHeight+c.scrollTop >= c.scrollHeight) {
+    if (g5.currentPageIndex == 1) {
+        searchTwitter();
+    }    
+}
+
+]]></onSlideUp>
+      <top>0</top>
+      <width>438</width>
+    </control>
+    <control type="LayoutY" pathname="/divRoot/layouty1">
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <fieldCount>2</fieldCount>
+      <height>796</height>
+      <heightRatio>1</heightRatio>
+      <left>0</left>
+      <sizeRatio>1.81735159817352</sizeRatio>
+      <top>0</top>
+      <width>438</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="LayoutYItem" pathname="/divRoot/layouty1/layoutyitem1">
+      <backgroundColor>f0f0f0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <height>737</height>
+      <heightRatio>0.925879396984925</heightRatio>
+      <left>0</left>
+      <sizeRatio>1.68264840182648</sizeRatio>
+      <top>0</top>
+      <width>438</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="LayoutY" pathname="/divRoot/layouty1/layoutyitem1/layouty2">
+      <ani2Pos>leftFlyOut:左侧飞出</ani2Pos>
+      <aniPos>rightFlyIn:右侧飞入</aniPos>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <fieldCount>2</fieldCount>
+      <height>737</height>
+      <heightRatio>1</heightRatio>
+      <layerName>Page1</layerName>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <onAniEnd>updateHomepage.needRefresh = true;
+updateHomepage();
+</onAniEnd>
+      <sizeRatio>1.68264840182648</sizeRatio>
+      <top>0</top>
+      <width>438</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="LayoutYItem" pathname="/divRoot/layouty1/layoutyitem1/layouty2/layoutyitem3">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <heavy>10</heavy>
+      <height>67</height>
+      <heightRatio>0.0909090909090909</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.15296803652968</sizeRatio>
+      <top>0</top>
+      <width>438</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem1/layouty2/layoutyitem3/panel6">
+      <backgroundColor>C0C0C0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.0149253731343284</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.00228310502283105</sizeRatio>
+      <top>66</top>
+      <topRatio>0.985074626865672</topRatio>
+      <width>438</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem1/layouty2/layoutyitem3/panel7">
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <height>48</height>
+      <heightRatio>0.786885245901639</heightRatio>
+      <left>13</left>
+      <leftRatio>0.0296127562642369</leftRatio>
+      <lockRatio>true</lockRatio>
+      <onClick>ee.setVisible(ee.getControl("panel26"), true);
+eb.setAlpha(ee.getControl("panel26"), 100);
+ee.showAni(ee.getControl("panel27"), 0);
+</onClick>
+      <sizeRatio>1.02127659574468</sizeRatio>
+      <top>7</top>
+      <topRatio>0.0655737704918033</topRatio>
+      <width>47</width>
+      <widthRatio>0.107061503416856</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem1/layouty2/layoutyitem3/panel7/panel8">
+      <backgroundImg>user.png</backgroundImg>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>46</height>
+      <heightRatio>0.958333333333333</heightRatio>
+      <left>1</left>
+      <leftRatio>0.0212765957446809</leftRatio>
+      <outerBottom>1</outerBottom>
+      <outerLeft>1</outerLeft>
+      <outerRight>1</outerRight>
+      <outerTop>1</outerTop>
+      <sizeRatio>1.02222222222222</sizeRatio>
+      <top>1</top>
+      <topRatio>0.0208333333333333</topRatio>
+      <width>45</width>
+      <widthRatio>0.957446808510638</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem1/layouty2/layoutyitem3/panel7/panel9">
+      <backgroundImg>cirMask.png</backgroundImg>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>48</height>
+      <heightRatio>1</heightRatio>
+      <left>0</left>
+      <sizeRatio>1.02127659574468</sizeRatio>
+      <top>0</top>
+      <width>47</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem1/layouty2/layoutyitem3/panel10">
+      <dockX>ratio</dockX>
+      <dockY>fill</dockY>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>17</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>67</height>
+      <heightRatio>1</heightRatio>
+      <left>79</left>
+      <leftRatio>0.17995444191344</leftRatio>
+      <sizeRatio>0.628865979381443</sizeRatio>
+      <text>主页</text>
+      <top>0</top>
+      <width>97</width>
+      <widthRatio>0.220956719817768</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem1/layouty2/layoutyitem3/panel11">
+      <backgroundImg>CPY0001.jpg</backgroundImg>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <height>54</height>
+      <heightRatio>0.80327868852459</heightRatio>
+      <left>379</left>
+      <leftRatio>0.865603644646925</leftRatio>
+      <sizeRatio>0.96078431372549</sizeRatio>
+      <top>7</top>
+      <topRatio>0.0983606557377049</topRatio>
+      <width>51</width>
+      <widthRatio>0.116173120728929</widthRatio>
+    </control>
+    <control type="LayoutYItem" pathname="/divRoot/layouty1/layoutyitem1/layouty2/layoutyitem4">
+      <autoScroll>true</autoScroll>
+      <backgroundColor>E6ECF0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <height>670</height>
+      <heightRatio>0.909090909090909</heightRatio>
+      <left>0</left>
+      <onAni2End>if (updateHomepage.needRefresh)  {
+    updateHomepage();
+}</onAni2End>
+      <sizeRatio>1.5296803652968</sizeRatio>
+      <top>67</top>
+      <topRatio>0.0909090909090909</topRatio>
+      <width>438</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem1/panel25">
+      <backgroundImg>newGet.png</backgroundImg>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <height>91</height>
+      <heightRatio>0.14769647696477</heightRatio>
+      <left>338</left>
+      <leftRatio>0.772296015180266</leftRatio>
+      <lockRatio>true</lockRatio>
+      <onClick>g5.newPhoto1 = "";
+ee.setEditText(ee.getControl("edit1"), "");
+ee.setImage(ee.getControl("panel52"), "/twitterG/main/empty.png");
+ee.setText(ee.getControl("panel45"), "发推");
+g5.uplinkType = "N";
+g5.uplinkId = 0;
+ee.showAni(ee.getControl("panel42"), 0);
+</onClick>
+      <sizeRatio>0.923728813559322</sizeRatio>
+      <top>636</top>
+      <topRatio>0.849593495934959</topRatio>
+      <width>98</width>
+      <widthRatio>0.223908918406072</widthRatio>
+    </control>
+    <control type="LayoutY" pathname="/divRoot/layouty1/layoutyitem1/layouty3">
+      <ani2Pos>leftFlyOut:左侧飞出</ani2Pos>
+      <aniPos>rightFlyIn:右侧飞入</aniPos>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <fieldCount>2</fieldCount>
+      <height>737</height>
+      <heightRatio>1</heightRatio>
+      <layerName>Page2</layerName>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>1.68264840182648</sizeRatio>
+      <top>0</top>
+      <width>438</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="LayoutYItem" pathname="/divRoot/layouty1/layoutyitem1/layouty3/layoutyitem5">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <heavy>10</heavy>
+      <height>67</height>
+      <heightRatio>0.0909090909090909</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.15296803652968</sizeRatio>
+      <top>0</top>
+      <width>438</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem1/layouty3/layoutyitem5/panel12">
+      <backgroundColor>C0C0C0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.0149253731343284</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.00228310502283105</sizeRatio>
+      <top>66</top>
+      <topRatio>0.985074626865672</topRatio>
+      <width>438</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem1/layouty3/layoutyitem5/panel13">
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <height>48</height>
+      <heightRatio>0.786885245901639</heightRatio>
+      <left>13</left>
+      <leftRatio>0.0296127562642369</leftRatio>
+      <lockRatio>true</lockRatio>
+      <onClick>ee.setVisible(ee.getControl("panel26"), true);
+eb.setAlpha(ee.getControl("panel26"), 100);
+ee.showAni(ee.getControl("panel27"), 0);
+</onClick>
+      <sizeRatio>1.02127659574468</sizeRatio>
+      <top>7</top>
+      <topRatio>0.0655737704918033</topRatio>
+      <width>47</width>
+      <widthRatio>0.107061503416856</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem1/layouty3/layoutyitem5/panel13/panel14">
+      <backgroundImg>user.png</backgroundImg>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>46</height>
+      <heightRatio>0.958333333333333</heightRatio>
+      <left>1</left>
+      <leftRatio>0.0212765957446809</leftRatio>
+      <outerBottom>1</outerBottom>
+      <outerLeft>1</outerLeft>
+      <outerRight>1</outerRight>
+      <outerTop>1</outerTop>
+      <sizeRatio>1.02222222222222</sizeRatio>
+      <top>1</top>
+      <topRatio>0.0208333333333333</topRatio>
+      <width>45</width>
+      <widthRatio>0.957446808510638</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem1/layouty3/layoutyitem5/panel13/panel15">
+      <backgroundImg>cirMask.png</backgroundImg>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>48</height>
+      <heightRatio>1</heightRatio>
+      <left>0</left>
+      <sizeRatio>1.02127659574468</sizeRatio>
+      <top>0</top>
+      <width>47</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem1/layouty3/layoutyitem5/panel17">
+      <backgroundImg>config.png</backgroundImg>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <height>55</height>
+      <heightRatio>0.819672131147541</heightRatio>
+      <left>379</left>
+      <leftRatio>0.865603644646925</leftRatio>
+      <onClick>searchUser();</onClick>
+      <sizeRatio>0.925925925925926</sizeRatio>
+      <top>5</top>
+      <topRatio>0.0819672131147541</topRatio>
+      <width>54</width>
+      <widthRatio>0.123006833712984</widthRatio>
+    </control>
+    <control type="Edit" pathname="/divRoot/layouty1/layoutyitem1/layouty3/layoutyitem5/edit5">
+      <backgroundSkin>edit1</backgroundSkin>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <fontColor>808080</fontColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>24</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>37</height>
+      <heightRatio>0.552238805970149</heightRatio>
+      <inputFont>黑体</inputFont>
+      <inputFontSizeAuto>24</inputFontSizeAuto>
+      <left>78</left>
+      <leftRatio>0.178368121442125</leftRatio>
+      <sizeRatio>0.102777777777778</sizeRatio>
+      <text>搜索用户</text>
+      <top>15</top>
+      <topRatio>0.223880597014925</topRatio>
+      <width>299</width>
+      <widthRatio>0.683111954459203</widthRatio>
+    </control>
+    <control type="LayoutYItem" pathname="/divRoot/layouty1/layoutyitem1/layouty3/layoutyitem6">
+      <backgroundColor>E6ECF0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <height>670</height>
+      <heightRatio>0.909090909090909</heightRatio>
+      <left>0</left>
+      <sizeRatio>1.5296803652968</sizeRatio>
+      <top>67</top>
+      <topRatio>0.0909090909090909</topRatio>
+      <width>438</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="LayoutY" pathname="/divRoot/layouty1/layoutyitem1/layouty3/layoutyitem6/layouty7">
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <fieldCount>2</fieldCount>
+      <height>670</height>
+      <heightRatio>1</heightRatio>
+      <left>0</left>
+      <sizeRatio>1.5296803652968</sizeRatio>
+      <top>0</top>
+      <width>438</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="LayoutYItem" pathname="/divRoot/layouty1/layoutyitem1/layouty3/layoutyitem6/layouty7/layoutyitem14">
+      <backgroundColor>f0f0f0</backgroundColor>
+      <heavy>10</heavy>
+      <height>61</height>
+      <heightRatio>0.091044776119403</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.139269406392694</sizeRatio>
+      <top>0</top>
+      <width>438</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="LayoutX" pathname="/divRoot/layouty1/layoutyitem1/layouty3/layoutyitem6/layouty7/layoutyitem14/layoutx8">
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <fieldCount>2</fieldCount>
+      <height>61</height>
+      <heightRatio>1</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.139269406392694</sizeRatio>
+      <top>0</top>
+      <width>438</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="LayoutXItem" pathname="/divRoot/layouty1/layoutyitem1/layouty3/layoutyitem6/layouty7/layoutyitem14/layoutx8/layoutxitem15">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>1C94E0</fontColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>20</fontSizeAuto>
+      <height>61</height>
+      <heightRatio>1</heightRatio>
+      <left>0</left>
+      <onClick>g5.changePage2(0);</onClick>
+      <sizeRatio>0.278538812785388</sizeRatio>
+      <text>用户</text>
+      <top>0</top>
+      <width>219</width>
+      <widthRatio>0.5</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem1/layouty3/layoutyitem6/layouty7/layoutyitem14/layoutx8/layoutxitem15/panel130">
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.0163934426229508</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.0045662100456621</sizeRatio>
+      <top>60</top>
+      <topRatio>0.983606557377049</topRatio>
+      <width>219</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem1/layouty3/layoutyitem6/layouty7/layoutyitem14/layoutx8/layoutxitem15/panel132">
+      <backgroundColor>1C94E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>5</height>
+      <heightRatio>0.0819672131147541</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.0228310502283105</sizeRatio>
+      <top>56</top>
+      <topRatio>0.918032786885246</topRatio>
+      <width>219</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="LayoutXItem" pathname="/divRoot/layouty1/layoutyitem1/layouty3/layoutyitem6/layouty7/layoutyitem14/layoutx8/layoutxitem16">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>808080</fontColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>20</fontSizeAuto>
+      <height>61</height>
+      <heightRatio>1</heightRatio>
+      <left>219</left>
+      <leftRatio>0.5</leftRatio>
+      <onClick>g5.changePage2(1);</onClick>
+      <sizeRatio>0.278538812785388</sizeRatio>
+      <text>推文</text>
+      <top>0</top>
+      <width>219</width>
+      <widthRatio>0.5</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem1/layouty3/layoutyitem6/layouty7/layoutyitem14/layoutx8/layoutxitem16/panel131">
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.0163934426229508</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.0045662100456621</sizeRatio>
+      <top>60</top>
+      <topRatio>0.983606557377049</topRatio>
+      <width>219</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem1/layouty3/layoutyitem6/layouty7/layoutyitem14/layoutx8/layoutxitem16/panel133">
+      <backgroundColor>1C94E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>5</height>
+      <heightRatio>0.0819672131147541</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.0228310502283105</sizeRatio>
+      <top>56</top>
+      <topRatio>0.918032786885246</topRatio>
+      <width>219</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="LayoutYItem" pathname="/divRoot/layouty1/layoutyitem1/layouty3/layoutyitem6/layouty7/layoutyitem15">
+      <backgroundColor>d0d0d0</backgroundColor>
+      <height>609</height>
+      <heightRatio>0.908955223880597</heightRatio>
+      <left>0</left>
+      <sizeRatio>1.39041095890411</sizeRatio>
+      <top>61</top>
+      <topRatio>0.091044776119403</topRatio>
+      <width>438</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem1/layouty3/layoutyitem6/layouty7/layoutyitem15/panel128">
+      <autoScroll>true</autoScroll>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>609</height>
+      <heightRatio>1</heightRatio>
+      <layerName>Page2-1-用户</layerName>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>1.39041095890411</sizeRatio>
+      <top>0</top>
+      <width>438</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem1/layouty3/layoutyitem6/layouty7/layoutyitem15/panel129">
+      <autoScroll>true</autoScroll>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>609</height>
+      <heightRatio>1</heightRatio>
+      <layerName>Page2-2-推文</layerName>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>1.39041095890411</sizeRatio>
+      <top>0</top>
+      <width>438</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="LayoutY" pathname="/divRoot/layouty1/layoutyitem1/layouty5">
+      <ani2Pos>leftFlyOut:左侧飞出</ani2Pos>
+      <aniPos>rightFlyIn:右侧飞入</aniPos>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <fieldCount>2</fieldCount>
+      <height>737</height>
+      <heightRatio>1</heightRatio>
+      <layerName>Page4</layerName>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <onAniEnd>showChatList();</onAniEnd>
+      <sizeRatio>1.68264840182648</sizeRatio>
+      <top>0</top>
+      <width>438</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="LayoutYItem" pathname="/divRoot/layouty1/layoutyitem1/layouty5/layoutyitem9">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <heavy>10</heavy>
+      <height>67</height>
+      <heightRatio>0.0909090909090909</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.15296803652968</sizeRatio>
+      <top>0</top>
+      <width>438</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem1/layouty5/layoutyitem9/panel109">
+      <backgroundColor>C0C0C0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.0149253731343284</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.00228310502283105</sizeRatio>
+      <top>66</top>
+      <topRatio>0.985074626865672</topRatio>
+      <width>438</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem1/layouty5/layoutyitem9/panel110">
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <height>48</height>
+      <heightRatio>0.786885245901639</heightRatio>
+      <left>13</left>
+      <leftRatio>0.0296127562642369</leftRatio>
+      <lockRatio>true</lockRatio>
+      <onClick>ee.setVisible(ee.getControl("panel26"), true);
+eb.setAlpha(ee.getControl("panel26"), 100);
+ee.showAni(ee.getControl("panel27"), 0);
+</onClick>
+      <sizeRatio>1.02127659574468</sizeRatio>
+      <top>7</top>
+      <topRatio>0.0655737704918033</topRatio>
+      <width>47</width>
+      <widthRatio>0.107061503416856</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem1/layouty5/layoutyitem9/panel110/panel111">
+      <backgroundImg>user.png</backgroundImg>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>46</height>
+      <heightRatio>0.958333333333333</heightRatio>
+      <left>1</left>
+      <leftRatio>0.0212765957446809</leftRatio>
+      <outerBottom>1</outerBottom>
+      <outerLeft>1</outerLeft>
+      <outerRight>1</outerRight>
+      <outerTop>1</outerTop>
+      <sizeRatio>1.02222222222222</sizeRatio>
+      <top>1</top>
+      <topRatio>0.0208333333333333</topRatio>
+      <width>45</width>
+      <widthRatio>0.957446808510638</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem1/layouty5/layoutyitem9/panel110/panel112">
+      <backgroundImg>cirMask.png</backgroundImg>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>48</height>
+      <heightRatio>1</heightRatio>
+      <left>0</left>
+      <sizeRatio>1.02127659574468</sizeRatio>
+      <top>0</top>
+      <width>47</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem1/layouty5/layoutyitem9/panel113">
+      <backgroundImg>config.png</backgroundImg>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <height>55</height>
+      <heightRatio>0.82089552238806</heightRatio>
+      <left>379</left>
+      <leftRatio>0.865603644646925</leftRatio>
+      <sizeRatio>1.01851851851852</sizeRatio>
+      <top>5</top>
+      <topRatio>0.0746268656716418</topRatio>
+      <width>54</width>
+      <widthRatio>0.123006833712984</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem1/layouty5/layoutyitem9/panel114">
+      <dockX>ratio</dockX>
+      <dockY>fill</dockY>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>17</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>67</height>
+      <heightRatio>1</heightRatio>
+      <left>81</left>
+      <leftRatio>0.184510250569476</leftRatio>
+      <sizeRatio>0.690721649484536</sizeRatio>
+      <text>私信</text>
+      <top>0</top>
+      <width>97</width>
+      <widthRatio>0.220956719817768</widthRatio>
+    </control>
+    <control type="LayoutYItem" pathname="/divRoot/layouty1/layoutyitem1/layouty5/layoutyitem10">
+      <autoScroll>true</autoScroll>
+      <backgroundColor>FFFFFF</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <height>670</height>
+      <heightRatio>0.909090909090909</heightRatio>
+      <left>0</left>
+      <sizeRatio>1.5296803652968</sizeRatio>
+      <top>67</top>
+      <topRatio>0.0909090909090909</topRatio>
+      <width>438</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="LayoutY" pathname="/divRoot/layouty1/layoutyitem1/layouty4">
+      <ani2Pos>leftFlyOut:左侧飞出</ani2Pos>
+      <aniPos>rightFlyIn:右侧飞入</aniPos>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <fieldCount>2</fieldCount>
+      <height>737</height>
+      <heightRatio>1</heightRatio>
+      <layerName>Page5</layerName>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>1.68264840182648</sizeRatio>
+      <top>0</top>
+      <width>438</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="LayoutYItem" pathname="/divRoot/layouty1/layoutyitem1/layouty4/layoutyitem7">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <heavy>25</heavy>
+      <height>147</height>
+      <heightRatio>0.199457259158752</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.335616438356164</sizeRatio>
+      <top>0</top>
+      <width>438</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem1/layouty4/layoutyitem7/panel106">
+      <backgroundColor>C0C0C0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.00680272108843537</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.00228310502283105</sizeRatio>
+      <top>146</top>
+      <topRatio>0.993197278911565</topRatio>
+      <width>438</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem1/layouty4/layoutyitem7/panel107">
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <fontFamily>黑体</fontFamily>
+      <fontSize>24</fontSize>
+      <fontSizeAuto>24</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>127</height>
+      <heightRatio>0.864864864864865</heightRatio>
+      <left>59</left>
+      <leftRatio>0.134396355353075</leftRatio>
+      <sizeRatio>0.351648351648352</sizeRatio>
+      <text><![CDATA[欢迎您首次使用GET，在这里您可以了解在世界上发生的最真实的故事。
+我们为您推荐了众多网友关注的推文账号，您可以在看了他们的账号信息和推文后选择<b>关注</b>。
+感谢您对GET的关心和支持！]]></text>
+      <top>12</top>
+      <topRatio>0.0810810810810811</topRatio>
+      <width>363</width>
+      <widthRatio>0.829157175398633</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem1/layouty4/layoutyitem7/panel108">
+      <backgroundImg>close.png</backgroundImg>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <height>48</height>
+      <heightRatio>0.324324324324324</heightRatio>
+      <left>7</left>
+      <leftRatio>0.0159453302961276</leftRatio>
+      <onClick>ee.showAni(ee.getControl("layouty4"), 1);
+setTimeout(function() { updateHomepage(); }, 500);</onClick>
+      <sizeRatio>1</sizeRatio>
+      <top>5</top>
+      <topRatio>0.0337837837837838</topRatio>
+      <width>48</width>
+      <widthRatio>0.109339407744875</widthRatio>
+    </control>
+    <control type="LayoutYItem" pathname="/divRoot/layouty1/layoutyitem1/layouty4/layoutyitem8">
+      <autoScroll>true</autoScroll>
+      <backgroundColor>E6ECF0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <height>590</height>
+      <heightRatio>0.800542740841248</heightRatio>
+      <left>0</left>
+      <sizeRatio>1.34703196347032</sizeRatio>
+      <top>147</top>
+      <topRatio>0.199457259158752</topRatio>
+      <width>438</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem1/panel123">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <bgColorEnabled>true</bgColorEnabled>
+      <cursor>pointer</cursor>
+      <dockX>fill</dockX>
+      <dockY>ratio</dockY>
+      <fontColor>FFFFFF</fontColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>24</fontSizeAuto>
+      <height>146</height>
+      <heightRatio>0.197831978319783</heightRatio>
+      <layerName>wait</layerName>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <onClick>follow.follow = sender.follow;
+follow.userId = ee.getControl("panel16").userId;
+follow();
+
+
+
+
+</onClick>
+      <sizeRatio>0.332574031890661</sizeRatio>
+      <top>290</top>
+      <topRatio>0.392953929539295</topRatio>
+      <width>438</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem1/panel123/panel124">
+      <backgroundImg>0152395be39c37a80121ab5d479b6c.gif</backgroundImg>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <fontColor>FFFFFF</fontColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>24</fontSizeAuto>
+      <height>219</height>
+      <heightRatio>1.5</heightRatio>
+      <left>12</left>
+      <leftRatio>0.0273348519362187</leftRatio>
+      <onClick>follow.follow = sender.follow;
+follow.userId = ee.getControl("panel16").userId;
+follow();
+
+
+
+
+</onClick>
+      <sizeRatio>0.539408866995074</sizeRatio>
+      <top>-37</top>
+      <topRatio>-0.253424657534247</topRatio>
+      <width>405</width>
+      <widthRatio>0.924829157175399</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem1/panel123/panel125">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <dockX>fill</dockX>
+      <dockY>ratio</dockY>
+      <fontBold>true</fontBold>
+      <fontColor>808080</fontColor>
+      <fontFamily>Helvetica</fontFamily>
+      <fontSizeAuto>20</fontSizeAuto>
+      <height>48</height>
+      <heightRatio>0.328767123287671</heightRatio>
+      <left>0</left>
+      <onClick>follow.follow = sender.follow;
+follow.userId = ee.getControl("panel16").userId;
+follow();
+
+
+
+
+</onClick>
+      <sizeRatio>0.109339407744875</sizeRatio>
+      <text>... loading ...</text>
+      <top>75</top>
+      <topRatio>0.513698630136986</topRatio>
+      <width>438</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem1/panel123/panel126">
+      <backgroundImgMode>fill</backgroundImgMode>
+      <bgColorEnabled>true</bgColorEnabled>
+      <cursor>pointer</cursor>
+      <dockX>fill</dockX>
+      <dockY>top</dockY>
+      <fontBold>true</fontBold>
+      <fontColor>808080</fontColor>
+      <fontFamily>Helvetica</fontFamily>
+      <fontSizeAuto>20</fontSizeAuto>
+      <height>5</height>
+      <heightRatio>0.0342465753424658</heightRatio>
+      <left>0</left>
+      <onClick>follow.follow = sender.follow;
+follow.userId = ee.getControl("panel16").userId;
+follow();
+
+
+
+
+</onClick>
+      <sizeRatio>0.0114155251141553</sizeRatio>
+      <top>0</top>
+      <width>438</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem1/panel123/panel127">
+      <backgroundImgMode>fill</backgroundImgMode>
+      <bgColorEnabled>true</bgColorEnabled>
+      <cursor>pointer</cursor>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <fontBold>true</fontBold>
+      <fontColor>808080</fontColor>
+      <fontFamily>Helvetica</fontFamily>
+      <fontSizeAuto>20</fontSizeAuto>
+      <height>5</height>
+      <heightRatio>0.0342465753424658</heightRatio>
+      <left>0</left>
+      <onClick>follow.follow = sender.follow;
+follow.userId = ee.getControl("panel16").userId;
+follow();
+
+
+
+
+</onClick>
+      <sizeRatio>0.0114155251141553</sizeRatio>
+      <top>141</top>
+      <topRatio>0.965753424657534</topRatio>
+      <width>438</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="LayoutYItem" pathname="/divRoot/layouty1/layoutyitem2">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <heavy>8</heavy>
+      <height>59</height>
+      <heightRatio>0.0741206030150754</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.134703196347032</sizeRatio>
+      <top>737</top>
+      <topRatio>0.925879396984925</topRatio>
+      <width>438</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/panel1">
+      <backgroundImg>d1.png</backgroundImg>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <dockX>ratio</dockX>
+      <dockY>fill</dockY>
+      <height>59</height>
+      <heightRatio>1</heightRatio>
+      <left>27</left>
+      <leftRatio>0.061503416856492</leftRatio>
+      <onClick>g5.changePage(0);</onClick>
+      <sizeRatio>1.07272727272727</sizeRatio>
+      <top>0</top>
+      <width>55</width>
+      <widthRatio>0.125284738041002</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/panel2">
+      <backgroundImg>d2.png</backgroundImg>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <dockX>ratio</dockX>
+      <dockY>fill</dockY>
+      <height>59</height>
+      <heightRatio>1</heightRatio>
+      <left>132</left>
+      <leftRatio>0.300683371298405</leftRatio>
+      <onClick>g5.changePage(1);</onClick>
+      <sizeRatio>1.07272727272727</sizeRatio>
+      <top>0</top>
+      <width>55</width>
+      <widthRatio>0.125284738041002</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/panel3">
+      <backgroundImg>d3.png</backgroundImg>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <dockX>ratio</dockX>
+      <dockY>fill</dockY>
+      <height>59</height>
+      <heightRatio>1</heightRatio>
+      <left>235</left>
+      <leftRatio>0.537585421412301</leftRatio>
+      <onClick>g5.changePage(2);</onClick>
+      <sizeRatio>1.07272727272727</sizeRatio>
+      <top>0</top>
+      <width>55</width>
+      <widthRatio>0.125284738041002</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/panel4">
+      <backgroundImg>d4.png</backgroundImg>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <dockX>ratio</dockX>
+      <dockY>fill</dockY>
+      <height>59</height>
+      <heightRatio>1</heightRatio>
+      <left>340</left>
+      <leftRatio>0.776765375854214</leftRatio>
+      <onClick>g5.changePage(3);</onClick>
+      <sizeRatio>1.07272727272727</sizeRatio>
+      <top>0</top>
+      <width>55</width>
+      <widthRatio>0.125284738041002</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/panel5">
+      <backgroundColor>C0C0C0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>top</dockY>
+      <height>1</height>
+      <heightRatio>0.0169491525423729</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.00228310502283105</sizeRatio>
+      <top>0</top>
+      <width>438</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel26">
+      <ani2Alpha>disappear:渐变消失</ani2Alpha>
+      <backgroundColor>FFFFFF</backgroundColor>
+      <backgroundImg>dark1.png</backgroundImg>
+      <backgroundImgMode>stretch</backgroundImgMode>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>796</height>
+      <heightRatio>1</heightRatio>
+      <layerName>左侧菜单</layerName>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>1.81735159817352</sizeRatio>
+      <top>0</top>
+      <width>438</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel26/panel27">
+      <ani2Pos>leftFlyOut:左侧飞出</ani2Pos>
+      <aniPos>leftFlyIn:左侧飞入</aniPos>
+      <backgroundColor>FFFFFF</backgroundColor>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>ratio</dockX>
+      <dockY>fill</dockY>
+      <height>796</height>
+      <heightRatio>1</heightRatio>
+      <left>-2</left>
+      <leftRatio>-0.00455580865603645</leftRatio>
+      <sizeRatio>2.19559228650138</sizeRatio>
+      <top>0</top>
+      <width>362</width>
+      <widthRatio>0.826879271070615</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel26/panel27/panel28">
+      <cursor>pointer</cursor>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <height>71</height>
+      <heightRatio>0.0890840652446675</heightRatio>
+      <left>19</left>
+      <leftRatio>0.0523415977961433</leftRatio>
+      <lockRatio>true</lockRatio>
+      <sizeRatio>0.986111111111111</sizeRatio>
+      <top>19</top>
+      <topRatio>0.0238393977415307</topRatio>
+      <width>72</width>
+      <widthRatio>0.198347107438017</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel26/panel27/panel28/panel29">
+      <backgroundImg>user.png</backgroundImg>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>69</height>
+      <heightRatio>0.971830985915493</heightRatio>
+      <left>1</left>
+      <leftRatio>0.0138888888888889</leftRatio>
+      <outerBottom>1</outerBottom>
+      <outerLeft>1</outerLeft>
+      <outerRight>1</outerRight>
+      <outerTop>1</outerTop>
+      <sizeRatio>0.985714285714286</sizeRatio>
+      <top>1</top>
+      <topRatio>0.0140845070422535</topRatio>
+      <width>70</width>
+      <widthRatio>0.972222222222222</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel26/panel27/panel28/panel30">
+      <backgroundImg>cirMask.png</backgroundImg>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>71</height>
+      <heightRatio>1</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.986111111111111</sizeRatio>
+      <top>0</top>
+      <width>72</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel26/panel27/panel31">
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <fontFamily>Helvetica</fontFamily>
+      <fontSizeAuto>24</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>72</height>
+      <heightRatio>0.0903387703889586</heightRatio>
+      <left>19</left>
+      <leftRatio>0.0527522935779817</leftRatio>
+      <sizeRatio>0.211764705882353</sizeRatio>
+      <text>Annie
+@annie257</text>
+      <top>101</top>
+      <topRatio>0.1267252195734</topRatio>
+      <width>282</width>
+      <widthRatio>0.779816513761468</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel26/panel27/panel32">
+      <backgroundImg>L8.png</backgroundImg>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <height>44</height>
+      <heightRatio>0.055207026348808</heightRatio>
+      <left>311</left>
+      <leftRatio>0.859504132231405</leftRatio>
+      <sizeRatio>1.04761904761905</sizeRatio>
+      <top>99</top>
+      <topRatio>0.124215809284818</topRatio>
+      <width>42</width>
+      <widthRatio>0.115702479338843</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel26/panel27/panel33">
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <fontBold>true</fontBold>
+      <fontColor>808080</fontColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>25</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>36</height>
+      <heightRatio>0.0451693851944793</heightRatio>
+      <left>21</left>
+      <leftRatio>0.0578512396694215</leftRatio>
+      <sizeRatio>0.109422492401216</sizeRatio>
+      <text>你关注了4位推友 3位推友关注了你</text>
+      <top>173</top>
+      <topRatio>0.217063989962359</topRatio>
+      <width>328</width>
+      <widthRatio>0.90633608815427</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel26/panel27/panel34">
+      <backgroundColor>C0C0C0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>ratio</dockY>
+      <height>1</height>
+      <heightRatio>0.00125470514429109</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.00275482093663912</sizeRatio>
+      <top>228</top>
+      <topRatio>0.286072772898369</topRatio>
+      <width>362</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="LayoutX" pathname="/divRoot/panel26/panel27/layoutx1">
+      <cursor>pointer</cursor>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <fieldCount>2</fieldCount>
+      <height>43</height>
+      <heightRatio>0.0539523212045169</heightRatio>
+      <left>23</left>
+      <leftRatio>0.0633608815426997</leftRatio>
+      <onClick>ee.showAni(ee.getControl("panel54"), 0);
+</onClick>
+      <sizeRatio>0.137820512820513</sizeRatio>
+      <top>265</top>
+      <topRatio>0.332496863237139</topRatio>
+      <width>311</width>
+      <widthRatio>0.859504132231405</widthRatio>
+    </control>
+    <control type="LayoutXItem" pathname="/divRoot/panel26/panel27/layoutx1/layoutxitem1">
+      <backgroundColor>f0f0f0</backgroundColor>
+      <backgroundImg>L1.png</backgroundImg>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <heavy>25</heavy>
+      <height>43</height>
+      <heightRatio>1</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.693548387096774</sizeRatio>
+      <top>0</top>
+      <width>62</width>
+      <widthRatio>0.19935691318328</widthRatio>
+    </control>
+    <control type="LayoutXItem" pathname="/divRoot/panel26/panel27/layoutx1/layoutxitem2">
+      <backgroundColor>d0d0d0</backgroundColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>18</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>43</height>
+      <heightRatio>1</heightRatio>
+      <left>62</left>
+      <leftRatio>0.19935691318328</leftRatio>
+      <sizeRatio>0.172690763052209</sizeRatio>
+      <text>个人资料</text>
+      <top>0</top>
+      <width>249</width>
+      <widthRatio>0.80064308681672</widthRatio>
+    </control>
+    <control type="LayoutX" pathname="/divRoot/panel26/panel27/layoutx2">
+      <cursor>pointer</cursor>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <fieldCount>2</fieldCount>
+      <height>43</height>
+      <heightRatio>0.0539523212045169</heightRatio>
+      <left>23</left>
+      <leftRatio>0.0633608815426997</leftRatio>
+      <sizeRatio>0.137820512820513</sizeRatio>
+      <top>322</top>
+      <topRatio>0.404015056461731</topRatio>
+      <width>311</width>
+      <widthRatio>0.859504132231405</widthRatio>
+    </control>
+    <control type="LayoutXItem" pathname="/divRoot/panel26/panel27/layoutx2/layoutxitem3">
+      <backgroundColor>f0f0f0</backgroundColor>
+      <backgroundImg>L2.png</backgroundImg>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <heavy>25</heavy>
+      <height>43</height>
+      <heightRatio>1</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.693548387096774</sizeRatio>
+      <top>0</top>
+      <width>62</width>
+      <widthRatio>0.19935691318328</widthRatio>
+    </control>
+    <control type="LayoutXItem" pathname="/divRoot/panel26/panel27/layoutx2/layoutxitem4">
+      <backgroundColor>d0d0d0</backgroundColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>18</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>43</height>
+      <heightRatio>1</heightRatio>
+      <left>62</left>
+      <leftRatio>0.19935691318328</leftRatio>
+      <onClick>ee.showAni(ee.getControl("panel82"), 0);</onClick>
+      <sizeRatio>0.172690763052209</sizeRatio>
+      <text>话题</text>
+      <top>0</top>
+      <width>249</width>
+      <widthRatio>0.80064308681672</widthRatio>
+    </control>
+    <control type="LayoutX" pathname="/divRoot/panel26/panel27/layoutx3">
+      <cursor>pointer</cursor>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <fieldCount>2</fieldCount>
+      <height>43</height>
+      <heightRatio>0.0539523212045169</heightRatio>
+      <left>23</left>
+      <leftRatio>0.0633608815426997</leftRatio>
+      <sizeRatio>0.137820512820513</sizeRatio>
+      <top>378</top>
+      <topRatio>0.474278544542033</topRatio>
+      <width>311</width>
+      <widthRatio>0.859504132231405</widthRatio>
+    </control>
+    <control type="LayoutXItem" pathname="/divRoot/panel26/panel27/layoutx3/layoutxitem5">
+      <backgroundColor>f0f0f0</backgroundColor>
+      <backgroundImg>L3.png</backgroundImg>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <heavy>25</heavy>
+      <height>43</height>
+      <heightRatio>1</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.693548387096774</sizeRatio>
+      <top>0</top>
+      <width>62</width>
+      <widthRatio>0.19935691318328</widthRatio>
+    </control>
+    <control type="LayoutXItem" pathname="/divRoot/panel26/panel27/layoutx3/layoutxitem6">
+      <backgroundColor>d0d0d0</backgroundColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>18</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>43</height>
+      <heightRatio>1</heightRatio>
+      <left>62</left>
+      <leftRatio>0.19935691318328</leftRatio>
+      <onClick>ee.showAni(ee.getControl("panel70"), 0);</onClick>
+      <sizeRatio>0.172690763052209</sizeRatio>
+      <text>列表</text>
+      <top>0</top>
+      <width>249</width>
+      <widthRatio>0.80064308681672</widthRatio>
+    </control>
+    <control type="LayoutX" pathname="/divRoot/panel26/panel27/layoutx4">
+      <cursor>pointer</cursor>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <fieldCount>2</fieldCount>
+      <height>43</height>
+      <heightRatio>0.0539523212045169</heightRatio>
+      <left>23</left>
+      <leftRatio>0.0633608815426997</leftRatio>
+      <sizeRatio>0.137820512820513</sizeRatio>
+      <top>434</top>
+      <topRatio>0.545796737766625</topRatio>
+      <width>311</width>
+      <widthRatio>0.859504132231405</widthRatio>
+    </control>
+    <control type="LayoutXItem" pathname="/divRoot/panel26/panel27/layoutx4/layoutxitem7">
+      <backgroundColor>f0f0f0</backgroundColor>
+      <backgroundImg>L4.png</backgroundImg>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <heavy>25</heavy>
+      <height>43</height>
+      <heightRatio>1</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.693548387096774</sizeRatio>
+      <top>0</top>
+      <width>62</width>
+      <widthRatio>0.19935691318328</widthRatio>
+    </control>
+    <control type="LayoutXItem" pathname="/divRoot/panel26/panel27/layoutx4/layoutxitem8">
+      <backgroundColor>d0d0d0</backgroundColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>18</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>43</height>
+      <heightRatio>1</heightRatio>
+      <left>62</left>
+      <leftRatio>0.19935691318328</leftRatio>
+      <onClick>ee.showAni(ee.getControl("panel91"), 0);</onClick>
+      <sizeRatio>0.172690763052209</sizeRatio>
+      <text>书签</text>
+      <top>0</top>
+      <width>249</width>
+      <widthRatio>0.80064308681672</widthRatio>
+    </control>
+    <control type="LayoutX" pathname="/divRoot/panel26/panel27/layoutx5">
+      <cursor>pointer</cursor>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <fieldCount>2</fieldCount>
+      <height>43</height>
+      <heightRatio>0.0539523212045169</heightRatio>
+      <left>23</left>
+      <leftRatio>0.0633608815426997</leftRatio>
+      <sizeRatio>0.137820512820513</sizeRatio>
+      <top>490</top>
+      <topRatio>0.616060225846926</topRatio>
+      <width>311</width>
+      <widthRatio>0.859504132231405</widthRatio>
+    </control>
+    <control type="LayoutXItem" pathname="/divRoot/panel26/panel27/layoutx5/layoutxitem9">
+      <backgroundColor>f0f0f0</backgroundColor>
+      <backgroundImg>L5.png</backgroundImg>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <heavy>25</heavy>
+      <height>43</height>
+      <heightRatio>1</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.693548387096774</sizeRatio>
+      <top>0</top>
+      <width>62</width>
+      <widthRatio>0.19935691318328</widthRatio>
+    </control>
+    <control type="LayoutXItem" pathname="/divRoot/panel26/panel27/layoutx5/layoutxitem10">
+      <backgroundColor>d0d0d0</backgroundColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>18</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>43</height>
+      <heightRatio>1</heightRatio>
+      <left>62</left>
+      <leftRatio>0.19935691318328</leftRatio>
+      <onClick>ee.showAni(ee.getControl("panel97"), 0);</onClick>
+      <sizeRatio>0.172690763052209</sizeRatio>
+      <text>瞬间</text>
+      <top>0</top>
+      <width>249</width>
+      <widthRatio>0.80064308681672</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel26/panel27/panel35">
+      <backgroundColor>C0C0C0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>ratio</dockY>
+      <height>1</height>
+      <heightRatio>0.00125470514429109</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.00275482093663912</sizeRatio>
+      <top>574</top>
+      <topRatio>0.721455457967378</topRatio>
+      <width>362</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel26/panel27/panel36">
+      <cursor>pointer</cursor>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>18</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>52</height>
+      <heightRatio>0.0652446675031368</heightRatio>
+      <left>33</left>
+      <leftRatio>0.0909090909090909</leftRatio>
+      <sizeRatio>0.183745583038869</sizeRatio>
+      <text>设置隐私</text>
+      <top>595</top>
+      <topRatio>0.747804265997491</topRatio>
+      <width>282</width>
+      <widthRatio>0.779614325068871</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel26/panel27/panel37">
+      <cursor>pointer</cursor>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>18</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>52</height>
+      <heightRatio>0.0652446675031368</heightRatio>
+      <left>33</left>
+      <leftRatio>0.0909090909090909</leftRatio>
+      <onClick>eb.delCookie("twitterGToken");
+window.location.href = ee.getUrl("/new");</onClick>
+      <sizeRatio>0.183745583038869</sizeRatio>
+      <text>退出登录</text>
+      <top>651</top>
+      <topRatio>0.818067754077792</topRatio>
+      <width>282</width>
+      <widthRatio>0.779614325068871</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel26/panel27/panel38">
+      <backgroundColor>C0C0C0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>ratio</dockY>
+      <height>1</height>
+      <heightRatio>0.00125470514429109</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.00275482093663912</sizeRatio>
+      <top>724</top>
+      <topRatio>0.909661229611041</topRatio>
+      <width>362</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel26/panel27/panel39">
+      <backgroundImg>L6.png</backgroundImg>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <height>37</height>
+      <heightRatio>0.0464240903387704</heightRatio>
+      <left>8</left>
+      <leftRatio>0.0220385674931129</leftRatio>
+      <sizeRatio>0.474358974358974</sizeRatio>
+      <top>745</top>
+      <topRatio>0.936010037641154</topRatio>
+      <width>78</width>
+      <widthRatio>0.214876033057851</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel26/panel27/panel40">
+      <backgroundImg>L7.png</backgroundImg>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <height>37</height>
+      <heightRatio>0.0464240903387704</heightRatio>
+      <left>277</left>
+      <leftRatio>0.765840220385675</leftRatio>
+      <sizeRatio>0.474358974358974</sizeRatio>
+      <top>745</top>
+      <topRatio>0.936010037641154</topRatio>
+      <width>78</width>
+      <widthRatio>0.214876033057851</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel26/panel41">
+      <backgroundSkin>empty</backgroundSkin>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>18</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>795</height>
+      <heightRatio>0.998745294855709</heightRatio>
+      <left>361</left>
+      <leftRatio>0.824601366742597</leftRatio>
+      <onClick>ee.showAni(ee.getControl("panel26"), 1);               
+ee.showAni(ee.getControl("panel27"), 1);</onClick>
+      <sizeRatio>10.7567567567568</sizeRatio>
+      <top>1</top>
+      <topRatio>0.00125470514429109</topRatio>
+      <width>74</width>
+      <widthRatio>0.168564920273349</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel54">
+      <ani2Pos>rightFlyOut:右侧飞出</ani2Pos>
+      <aniPos>rightFlyIn:右侧飞入</aniPos>
+      <backgroundColor>FFFFFF</backgroundColor>
+      <backgroundImgMode>stretch</backgroundImgMode>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>796</height>
+      <heightRatio>1</heightRatio>
+      <layerName>编辑个人信息</layerName>
+      <left>0</left>
+      <sizeRatio>1.81735159817352</sizeRatio>
+      <top>0</top>
+      <width>438</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel54/panel56">
+      <backgroundImg>back.png</backgroundImg>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <height>48</height>
+      <heightRatio>0.0602258469259724</heightRatio>
+      <left>5</left>
+      <leftRatio>0.0113895216400911</leftRatio>
+      <onClick>ee.showAni(ee.getControl("panel54"), 1);</onClick>
+      <sizeRatio>0.607594936708861</sizeRatio>
+      <top>11</top>
+      <topRatio>0.013801756587202</topRatio>
+      <width>79</width>
+      <widthRatio>0.17995444191344</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel54/panel57">
+      <backgroundImgMode>fill</backgroundImgMode>
+      <backgroundSkin>LRBtn9</backgroundSkin>
+      <cursor>pointer</cursor>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <fontColor>FFFFFF</fontColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>20</fontSizeAuto>
+      <height>46</height>
+      <heightRatio>0.0577164366373902</heightRatio>
+      <left>322</left>
+      <leftRatio>0.735763097949886</leftRatio>
+      <onClick>updateUserInfo();</onClick>
+      <sizeRatio>0.442307692307692</sizeRatio>
+      <text>保存</text>
+      <top>12</top>
+      <topRatio>0.0150564617314931</topRatio>
+      <width>104</width>
+      <widthRatio>0.236902050113895</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel54/panel58">
+      <backgroundColor>0E5079</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>ratio</dockY>
+      <height>206</height>
+      <heightRatio>0.258469259723965</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.469248291571754</sizeRatio>
+      <top>69</top>
+      <topRatio>0.0865746549560853</topRatio>
+      <width>438</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel54/panel58/panel61">
+      <backgroundImg>upload.png</backgroundImg>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <height>62</height>
+      <heightRatio>0.300970873786408</heightRatio>
+      <left>178</left>
+      <leftRatio>0.405466970387244</leftRatio>
+      <sizeRatio>0.849315068493151</sizeRatio>
+      <top>68</top>
+      <topRatio>0.330097087378641</topRatio>
+      <width>73</width>
+      <widthRatio>0.16628701594533</widthRatio>
+    </control>
+    <control type="FileUpload" pathname="/divRoot/panel54/panel58/panel61/fileupload3">
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>62</height>
+      <heightRatio>1</heightRatio>
+      <left>0</left>
+      <onUploadCompleteC>if (eio.readString8() == "F") {
+    return;
+}
+getUserInfo();
+
+
+
+
+
+</onUploadCompleteC>
+      <onUploadCompleteS>var pos=newFileName.lastIndexOf("\\");
+var filename = newFileName.substring(pos+1);  
+var userName = session.get("userName");
+
+var sql,sqlResult;  
+sql = "update userInfo set titleBg = '" + db.encode(filename) + "' where userName = '" + db.encode(userName) + "'";
+if (!db.executeNoneQuery("DB", sql)) {
+    eio.appendString8("F");
+} else {
+    eio.appendString8("T");
+}</onUploadCompleteS>
+      <onUploadStartC>fileExt = fileExt.toLowerCase();
+if ((fileExt != ".bmp") &amp;&amp;
+    (fileExt != ".jpg") &amp;&amp;
+    (fileExt != ".jpeg") &amp;&amp;
+    (fileExt != ".png") &amp;&amp;
+    (fileExt != ".tif") &amp;&amp;
+    (fileExt != ".tiff")) return;
+    </onUploadStartC>
+      <onUploadStartS>var sql,sqlResult;  
+sql = "select next value for dbo.SEQImageSn as Sn";
+sqlResult = db.executeQuery("DB", sql);
+if (sqlResult == null) {
+    return;
+}
+db.read(sqlResult);
+var sn = db.getInt32(sqlResult, "Sn");
+newFileName = "c:\\www\\incoming\\img" + sn + fileExt;</onUploadStartS>
+      <sizeRatio>0.849315068493151</sizeRatio>
+      <top>0</top>
+      <width>73</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel54/panel55">
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <height>71</height>
+      <heightRatio>0.0890840652446675</heightRatio>
+      <left>14</left>
+      <leftRatio>0.0318906605922551</leftRatio>
+      <lockRatio>true</lockRatio>
+      <sizeRatio>0.986111111111111</sizeRatio>
+      <top>288</top>
+      <topRatio>0.361355081555834</topRatio>
+      <width>72</width>
+      <widthRatio>0.164009111617312</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel54/panel55/panel59">
+      <backgroundImg>user.png</backgroundImg>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>69</height>
+      <heightRatio>0.971830985915493</heightRatio>
+      <left>1</left>
+      <leftRatio>0.0138888888888889</leftRatio>
+      <outerBottom>1</outerBottom>
+      <outerLeft>1</outerLeft>
+      <outerRight>1</outerRight>
+      <outerTop>1</outerTop>
+      <sizeRatio>0.985714285714286</sizeRatio>
+      <top>1</top>
+      <topRatio>0.0140845070422535</topRatio>
+      <width>70</width>
+      <widthRatio>0.972222222222222</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel54/panel55/panel60">
+      <backgroundImg>cirMask.png</backgroundImg>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>71</height>
+      <heightRatio>1</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.986111111111111</sizeRatio>
+      <top>0</top>
+      <width>72</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel54/panel55/panel62">
+      <backgroundImg>upload.png</backgroundImg>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <height>43</height>
+      <heightRatio>0.605633802816901</heightRatio>
+      <left>14</left>
+      <leftRatio>0.194444444444444</leftRatio>
+      <sizeRatio>0.977272727272727</sizeRatio>
+      <top>15</top>
+      <topRatio>0.211267605633803</topRatio>
+      <width>44</width>
+      <widthRatio>0.611111111111111</widthRatio>
+    </control>
+    <control type="FileUpload" pathname="/divRoot/panel54/panel55/fileupload2">
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>71</height>
+      <heightRatio>1</heightRatio>
+      <left>0</left>
+      <onUploadCompleteC>if (eio.readString8() == "F") {
+    return;
+}
+getUserInfo();
+
+
+
+</onUploadCompleteC>
+      <onUploadCompleteS>var pos=newFileName.lastIndexOf("\\");
+var filename = newFileName.substring(pos+1);  
+var userName = session.get("userName");
+
+var sql,sqlResult;  
+sql = "update userInfo set photo = '" + db.encode(filename) + "' where userName = '" + db.encode(userName) + "'";
+if (!db.executeNoneQuery("DB", sql)) {
+    eio.appendString8("F");
+} else {
+    eio.appendString8("T");
+}</onUploadCompleteS>
+      <onUploadStartC>fileExt = fileExt.toLowerCase();
+if ((fileExt != ".bmp") &amp;&amp;
+    (fileExt != ".jpg") &amp;&amp;
+    (fileExt != ".jpeg") &amp;&amp;
+    (fileExt != ".png") &amp;&amp;
+    (fileExt != ".tif") &amp;&amp;
+    (fileExt != ".tiff")) return;
+    </onUploadStartC>
+      <onUploadStartS>var sql,sqlResult;  
+sql = "select next value for dbo.SEQImageSn as Sn";
+sqlResult = db.executeQuery("DB", sql);
+if (sqlResult == null) {
+    return;
+}
+db.read(sqlResult);
+var sn = db.getInt32(sqlResult, "Sn");
+newFileName = "c:\\www\\incoming\\img" + sn + fileExt;</onUploadStartS>
+      <sizeRatio>0.986111111111111</sizeRatio>
+      <top>0</top>
+      <width>72</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel54/panel63">
+      <backgroundImgMode>fill</backgroundImgMode>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <fontColor>808080</fontColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>25</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>33</height>
+      <heightRatio>0.041405269761606</heightRatio>
+      <left>18</left>
+      <leftRatio>0.041002277904328</leftRatio>
+      <sizeRatio>0.0863874345549738</sizeRatio>
+      <text>昵称或姓名</text>
+      <top>378</top>
+      <topRatio>0.474278544542033</topRatio>
+      <width>381</width>
+      <widthRatio>0.870159453302961</widthRatio>
+    </control>
+    <control type="Edit" pathname="/divRoot/panel54/edit2">
+      <backgroundSkin>empty</backgroundSkin>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <height>49</height>
+      <heightRatio>0.0614805520702635</heightRatio>
+      <inputFontSizeAuto>22</inputFontSizeAuto>
+      <left>19</left>
+      <leftRatio>0.0436432637571157</leftRatio>
+      <sizeRatio>0.102510460251046</sizeRatio>
+      <top>407</top>
+      <topRatio>0.511919698870765</topRatio>
+      <width>397</width>
+      <widthRatio>0.907020872865275</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel54/edit2/panel64">
+      <backgroundColor>1DA1F2</backgroundColor>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <fontColor>808080</fontColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>25</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>3</height>
+      <heightRatio>0.0612244897959184</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.00755667506297229</sizeRatio>
+      <top>46</top>
+      <topRatio>0.938775510204082</topRatio>
+      <width>397</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel54/panel65">
+      <backgroundImgMode>fill</backgroundImgMode>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <fontColor>808080</fontColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>25</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>33</height>
+      <heightRatio>0.041405269761606</heightRatio>
+      <left>18</left>
+      <leftRatio>0.041002277904328</leftRatio>
+      <sizeRatio>0.0863874345549738</sizeRatio>
+      <text>简介</text>
+      <top>469</top>
+      <topRatio>0.589711417816813</topRatio>
+      <width>381</width>
+      <widthRatio>0.870159453302961</widthRatio>
+    </control>
+    <control type="Edit" pathname="/divRoot/panel54/edit3">
+      <backgroundSkin>empty</backgroundSkin>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <height>122</height>
+      <heightRatio>0.153074027603513</heightRatio>
+      <inputFontSizeAuto>22</inputFontSizeAuto>
+      <left>19</left>
+      <leftRatio>0.0436432637571157</leftRatio>
+      <multiLine>true</multiLine>
+      <sizeRatio>0.255230125523013</sizeRatio>
+      <top>507</top>
+      <topRatio>0.637390213299875</topRatio>
+      <width>397</width>
+      <widthRatio>0.907020872865275</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel54/edit3/panel66">
+      <backgroundColor>1DA1F2</backgroundColor>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <fontColor>808080</fontColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>25</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>3</height>
+      <heightRatio>0.0245901639344262</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.00755667506297229</sizeRatio>
+      <top>119</top>
+      <topRatio>0.975409836065574</topRatio>
+      <width>397</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel54/panel67">
+      <backgroundImgMode>fill</backgroundImgMode>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <fontColor>808080</fontColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>25</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>33</height>
+      <heightRatio>0.041405269761606</heightRatio>
+      <left>18</left>
+      <leftRatio>0.041002277904328</leftRatio>
+      <sizeRatio>0.0863874345549738</sizeRatio>
+      <text>网页</text>
+      <top>658</top>
+      <topRatio>0.826850690087829</topRatio>
+      <width>381</width>
+      <widthRatio>0.870159453302961</widthRatio>
+    </control>
+    <control type="Edit" pathname="/divRoot/panel54/edit4">
+      <backgroundSkin>empty</backgroundSkin>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <height>45</height>
+      <heightRatio>0.0564617314930991</heightRatio>
+      <inputFontSizeAuto>22</inputFontSizeAuto>
+      <left>19</left>
+      <leftRatio>0.0436432637571157</leftRatio>
+      <sizeRatio>0.0941422594142259</sizeRatio>
+      <top>688</top>
+      <topRatio>0.864491844416562</topRatio>
+      <width>397</width>
+      <widthRatio>0.907020872865275</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel54/edit4/panel68">
+      <backgroundColor>1DA1F2</backgroundColor>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <fontColor>808080</fontColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>25</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>3</height>
+      <heightRatio>0.0666666666666667</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.00755667506297229</sizeRatio>
+      <top>42</top>
+      <topRatio>0.933333333333333</topRatio>
+      <width>397</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel16">
+      <ani2Pos>leftFlyOut:左侧飞出</ani2Pos>
+      <aniPos>rightFlyIn:右侧飞入</aniPos>
+      <autoScroll>true</autoScroll>
+      <backgroundColor>FFFFFF</backgroundColor>
+      <backgroundImgMode>stretch</backgroundImgMode>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>796</height>
+      <heightRatio>1</heightRatio>
+      <layerName>用户(个人)信息页</layerName>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>1.81735159817352</sizeRatio>
+      <top>0</top>
+      <width>438</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel16/panel19">
+      <backgroundImgMode>fill</backgroundImgMode>
+      <backgroundSkin>LRBtn9</backgroundSkin>
+      <cursor>pointer</cursor>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <fontColor>FFFFFF</fontColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>24</fontSizeAuto>
+      <height>41</height>
+      <heightRatio>0.0514429109159348</heightRatio>
+      <left>298</left>
+      <leftRatio>0.681214421252372</leftRatio>
+      <onClick>follow.follow = sender.follow;
+follow.userId = ee.getControl("panel16").userId;
+follow();
+
+
+
+
+</onClick>
+      <sizeRatio>0.261146496815287</sizeRatio>
+      <text>关注</text>
+      <top>227</top>
+      <topRatio>0.284818067754078</topRatio>
+      <width>130</width>
+      <widthRatio>0.297912713472486</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel16/panel20">
+      <backgroundColor>0E5079</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>ratio</dockY>
+      <height>206</height>
+      <heightRatio>0.258469259723965</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.390891840607211</sizeRatio>
+      <top>0</top>
+      <width>438</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel16/panel20/panel75">
+      <backgroundImgMode>fill</backgroundImgMode>
+      <backgroundSkin>body3</backgroundSkin>
+      <cursor>pointer</cursor>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <fontColor>FFFFFF</fontColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>24</fontSizeAuto>
+      <height>42</height>
+      <heightRatio>0.203883495145631</heightRatio>
+      <left>8</left>
+      <leftRatio>0.0189753320683112</leftRatio>
+      <onClick>ee.showAni(ee.getControl("panel16"), 1);</onClick>
+      <sizeRatio>0.531645569620253</sizeRatio>
+      <top>9</top>
+      <topRatio>0.0436893203883495</topRatio>
+      <width>66</width>
+      <widthRatio>0.149905123339658</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel16/panel20/panel75/panel76">
+      <backgroundImg>back1.png</backgroundImg>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>42</height>
+      <heightRatio>1</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.636363636363636</sizeRatio>
+      <top>0</top>
+      <width>66</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel16/panel22">
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <height>72</height>
+      <heightRatio>0.109159347553325</heightRatio>
+      <left>10</left>
+      <leftRatio>0.0227703984819734</leftRatio>
+      <lockRatio>true</lockRatio>
+      <sizeRatio>1.02352941176471</sizeRatio>
+      <top>225</top>
+      <topRatio>0.273525721455458</topRatio>
+      <width>71</width>
+      <widthRatio>0.161290322580645</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel16/panel22/panel23">
+      <backgroundImg>user.png</backgroundImg>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>70</height>
+      <heightRatio>0.972222222222222</heightRatio>
+      <left>1</left>
+      <leftRatio>0.0140845070422535</leftRatio>
+      <outerBottom>1</outerBottom>
+      <outerLeft>1</outerLeft>
+      <outerRight>1</outerRight>
+      <outerTop>1</outerTop>
+      <sizeRatio>1.01449275362319</sizeRatio>
+      <top>1</top>
+      <topRatio>0.0138888888888889</topRatio>
+      <width>69</width>
+      <widthRatio>0.971830985915493</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel16/panel22/panel24">
+      <backgroundImg>cirMask.png</backgroundImg>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>72</height>
+      <heightRatio>1</heightRatio>
+      <left>0</left>
+      <sizeRatio>1.01408450704225</sizeRatio>
+      <top>0</top>
+      <width>71</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel16/panel18">
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <fontBold>true</fontBold>
+      <fontFamily>黑体</fontFamily>
+      <fontSize>15</fontSize>
+      <fontSizeAuto>20</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>46</height>
+      <heightRatio>0.0577164366373902</heightRatio>
+      <left>92</left>
+      <leftRatio>0.210626185958254</leftRatio>
+      <sizeRatio>0.194092827004219</sizeRatio>
+      <text>昵称nicheng</text>
+      <top>221</top>
+      <topRatio>0.277289836888331</topRatio>
+      <width>197</width>
+      <widthRatio>0.449715370018975</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel16/panel21">
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <fontColor>808080</fontColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSize>15</fontSize>
+      <fontSizeAuto>20</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>46</height>
+      <heightRatio>0.0577164366373902</heightRatio>
+      <left>92</left>
+      <leftRatio>0.210626185958254</leftRatio>
+      <sizeRatio>0.189300411522634</sizeRatio>
+      <text>@用户名</text>
+      <top>266</top>
+      <topRatio>0.33375156838143</topRatio>
+      <width>202</width>
+      <widthRatio>0.461100569259962</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel16/panel69">
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <fontFamily>黑体</fontFamily>
+      <fontSize>15</fontSize>
+      <fontSizeAuto>24</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>31</height>
+      <heightRatio>0.0388958594730238</heightRatio>
+      <left>15</left>
+      <leftRatio>0.0341555977229602</leftRatio>
+      <sizeRatio>0.0630081300813008</sizeRatio>
+      <text>自我介绍</text>
+      <top>314</top>
+      <topRatio>0.393977415307403</topRatio>
+      <vAlign>top</vAlign>
+      <width>409</width>
+      <widthRatio>0.933586337760911</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel16/panel72">
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <fontColor>808080</fontColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSize>15</fontSize>
+      <fontSizeAuto>24</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>40</height>
+      <heightRatio>0.0501882057716437</heightRatio>
+      <left>15</left>
+      <leftRatio>0.0341555977229602</leftRatio>
+      <sizeRatio>0.0813008130081301</sizeRatio>
+      <text>48正在关注     200关注者</text>
+      <top>436</top>
+      <topRatio>0.548306148055207</topRatio>
+      <width>409</width>
+      <widthRatio>0.933586337760911</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel16/panel73">
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <fontBold>true</fontBold>
+      <fontColor>1C94E0</fontColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>24</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>39</height>
+      <heightRatio>0.0489335006273526</heightRatio>
+      <left>11</left>
+      <leftRatio>0.0246679316888046</leftRatio>
+      <sizeRatio>0.0781563126252505</sizeRatio>
+      <text> 推文</text>
+      <top>475</top>
+      <topRatio>0.59723964868256</topRatio>
+      <width>415</width>
+      <widthRatio>0.946869070208729</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel16/panel73/panel74">
+      <backgroundColor>1DA1F2</backgroundColor>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <fontColor>808080</fontColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>25</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>3</height>
+      <heightRatio>0.0769230769230769</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.0072289156626506</sizeRatio>
+      <top>36</top>
+      <topRatio>0.923076923076923</topRatio>
+      <width>415</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="LayoutX" pathname="/divRoot/panel16/layoutx6">
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <fieldCount>2</fieldCount>
+      <height>36</height>
+      <heightRatio>0.0451693851944793</heightRatio>
+      <left>15</left>
+      <leftRatio>0.0341555977229602</leftRatio>
+      <sizeRatio>0.0725806451612903</sizeRatio>
+      <top>346</top>
+      <topRatio>0.434127979924718</topRatio>
+      <width>412</width>
+      <widthRatio>0.941176470588235</widthRatio>
+    </control>
+    <control type="LayoutXItem" pathname="/divRoot/panel16/layoutx6/layoutxitem11">
+      <backgroundColor>f0f0f0</backgroundColor>
+      <backgroundImg>link.png</backgroundImg>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <heavy>10</heavy>
+      <height>36</height>
+      <heightRatio>1</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.972972972972973</sizeRatio>
+      <top>0</top>
+      <width>37</width>
+      <widthRatio>0.0898058252427184</widthRatio>
+    </control>
+    <control type="LayoutXItem" pathname="/divRoot/panel16/layoutx6/layoutxitem12">
+      <backgroundColor>d0d0d0</backgroundColor>
+      <fontColor>1C94E0</fontColor>
+      <fontFamily>Arial</fontFamily>
+      <fontSizeAuto>24</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>36</height>
+      <heightRatio>1</heightRatio>
+      <left>37</left>
+      <leftRatio>0.0898058252427184</leftRatio>
+      <sizeRatio>0.096</sizeRatio>
+      <text>主页http://www.baidu.com</text>
+      <top>0</top>
+      <width>375</width>
+      <widthRatio>0.910194174757282</widthRatio>
+    </control>
+    <control type="LayoutX" pathname="/divRoot/panel16/layoutx7">
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <fieldCount>2</fieldCount>
+      <height>36</height>
+      <heightRatio>0.0451693851944793</heightRatio>
+      <left>15</left>
+      <leftRatio>0.0341555977229602</leftRatio>
+      <sizeRatio>0.0725806451612903</sizeRatio>
+      <top>391</top>
+      <topRatio>0.490589711417817</topRatio>
+      <width>412</width>
+      <widthRatio>0.941176470588235</widthRatio>
+    </control>
+    <control type="LayoutXItem" pathname="/divRoot/panel16/layoutx7/layoutxitem13">
+      <backgroundColor>f0f0f0</backgroundColor>
+      <backgroundImg>date.png</backgroundImg>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <heavy>10</heavy>
+      <height>36</height>
+      <heightRatio>1</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.972972972972973</sizeRatio>
+      <top>0</top>
+      <width>37</width>
+      <widthRatio>0.0898058252427184</widthRatio>
+    </control>
+    <control type="LayoutXItem" pathname="/divRoot/panel16/layoutx7/layoutxitem14">
+      <backgroundColor>d0d0d0</backgroundColor>
+      <fontColor>808080</fontColor>
+      <fontFamily>Arial</fontFamily>
+      <fontSizeAuto>24</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>36</height>
+      <heightRatio>1</heightRatio>
+      <left>37</left>
+      <leftRatio>0.0898058252427184</leftRatio>
+      <sizeRatio>0.096</sizeRatio>
+      <text>2019年12月加入</text>
+      <top>0</top>
+      <width>375</width>
+      <widthRatio>0.910194174757282</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel16/panel115">
+      <backgroundImg>d4.png</backgroundImg>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <fontColor>808080</fontColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>25</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>42</height>
+      <heightRatio>0.0526976160602258</heightRatio>
+      <left>368</left>
+      <leftRatio>0.840546697038724</leftRatio>
+      <onClick>showChat.userName = showUserPage.userName;
+showChat.chatId = 0;
+if (showChat.userName == g5.userName) {
+    alert("自言自语不好吧...");
+    return;
+}
+ee.showAni(ee.getControl("panel116"), 0);</onClick>
+      <sizeRatio>0.807692307692308</sizeRatio>
+      <top>272</top>
+      <topRatio>0.341279799247177</topRatio>
+      <width>52</width>
+      <widthRatio>0.118451025056948</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel42">
+      <ani2Pos>rightFlyOut:右侧飞出</ani2Pos>
+      <aniPos>bottomFlyIn:底部飞入</aniPos>
+      <backgroundColor>FFFFFF</backgroundColor>
+      <backgroundImgMode>stretch</backgroundImgMode>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>796</height>
+      <heightRatio>1</heightRatio>
+      <layerName>发推文</layerName>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>1.81735159817352</sizeRatio>
+      <top>0</top>
+      <width>438</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel42/panel43">
+      <backgroundColor>C0C0C0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>ratio</dockY>
+      <height>1</height>
+      <heightRatio>0.00125470514429109</heightRatio>
+      <left>0</left>
+      <leftRatio>0.318906605922551</leftRatio>
+      <sizeRatio>0.00275482093663912</sizeRatio>
+      <top>77</top>
+      <topRatio>0.0966122961104141</topRatio>
+      <width>438</width>
+      <widthRatio>0.826879271070615</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel42/panel44">
+      <backgroundImg>close.png</backgroundImg>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <height>48</height>
+      <heightRatio>0.0602258469259724</heightRatio>
+      <left>15</left>
+      <leftRatio>0.0341685649202733</leftRatio>
+      <onClick>ee.setText(ee.getControl("panel52"), " ");
+ee.showAni(ee.getControl("panel42"), 1);</onClick>
+      <sizeRatio>1</sizeRatio>
+      <top>15</top>
+      <topRatio>0.0188205771643664</topRatio>
+      <width>48</width>
+      <widthRatio>0.109339407744875</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel42/panel45">
+      <backgroundImgMode>fill</backgroundImgMode>
+      <backgroundSkin>LRBtn9</backgroundSkin>
+      <cursor>pointer</cursor>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <fontColor>FFFFFF</fontColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>20</fontSizeAuto>
+      <height>46</height>
+      <heightRatio>0.0577164366373902</heightRatio>
+      <left>322</left>
+      <leftRatio>0.735763097949886</leftRatio>
+      <onClick>newTwitter();</onClick>
+      <sizeRatio>0.442307692307692</sizeRatio>
+      <text>发推</text>
+      <top>13</top>
+      <topRatio>0.0163111668757842</topRatio>
+      <width>104</width>
+      <widthRatio>0.236902050113895</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel42/panel46">
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <height>59</height>
+      <heightRatio>0.0890840652446675</heightRatio>
+      <left>22</left>
+      <leftRatio>0.0493358633776091</leftRatio>
+      <lockRatio>true</lockRatio>
+      <sizeRatio>0.986111111111111</sizeRatio>
+      <top>104</top>
+      <topRatio>0.122961104140527</topRatio>
+      <width>60</width>
+      <widthRatio>0.136622390891841</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel42/panel46/panel47">
+      <backgroundImg>user.png</backgroundImg>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>57</height>
+      <heightRatio>0.966101694915254</heightRatio>
+      <left>1</left>
+      <leftRatio>0.0166666666666667</leftRatio>
+      <outerBottom>1</outerBottom>
+      <outerLeft>1</outerLeft>
+      <outerRight>1</outerRight>
+      <outerTop>1</outerTop>
+      <sizeRatio>0.982758620689655</sizeRatio>
+      <top>1</top>
+      <topRatio>0.0169491525423729</topRatio>
+      <width>58</width>
+      <widthRatio>0.966666666666667</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel42/panel46/panel48">
+      <backgroundImg>cirMask.png</backgroundImg>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>59</height>
+      <heightRatio>1</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.983333333333333</sizeRatio>
+      <top>0</top>
+      <width>60</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Edit" pathname="/divRoot/panel42/edit1">
+      <backgroundSkin>edit1</backgroundSkin>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <height>184</height>
+      <heightRatio>0.230865746549561</heightRatio>
+      <inputFontSizeAuto>20</inputFontSizeAuto>
+      <left>105</left>
+      <leftRatio>0.239179954441913</leftRatio>
+      <multiLine>true</multiLine>
+      <sizeRatio>0.576802507836991</sizeRatio>
+      <top>99</top>
+      <topRatio>0.124215809284818</topRatio>
+      <width>318</width>
+      <widthRatio>0.726651480637813</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel42/panel49">
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <height>61</height>
+      <heightRatio>0.0765370138017566</heightRatio>
+      <left>11</left>
+      <leftRatio>0.0250569476082005</leftRatio>
+      <sizeRatio>0.734939759036145</sizeRatio>
+      <top>236</top>
+      <topRatio>0.296110414052698</topRatio>
+      <width>83</width>
+      <widthRatio>0.189066059225513</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel42/panel49/panel50">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <backgroundImg>img.png</backgroundImg>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>61</height>
+      <heightRatio>1</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.734939759036145</sizeRatio>
+      <top>0</top>
+      <width>83</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="FileUpload" pathname="/divRoot/panel42/panel49/fileupload1">
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>61</height>
+      <heightRatio>1</heightRatio>
+      <left>0</left>
+      <onUploadCompleteC>g5.newPhoto1 = eio.readString16();
+ee.setText(ee.getControl("panel52"), " ");
+ee.setImage(ee.getControl("panel52"), "url:" + g5.imgUrl + g5.newPhoto1, "trim", "", "");
+
+
+
+
+
+</onUploadCompleteC>
+      <onUploadCompleteS>var pos=newFileName.lastIndexOf("\\");
+var filename = newFileName.substring(pos+1);  
+eio.appendString16(filename);</onUploadCompleteS>
+      <onUploadStartC>fileExt = fileExt.toLowerCase();
+if ((fileExt != ".bmp") &amp;&amp;
+    (fileExt != ".jpg") &amp;&amp;
+    (fileExt != ".jpeg") &amp;&amp;
+    (fileExt != ".png") &amp;&amp;
+    (fileExt != ".tif") &amp;&amp;
+    (fileExt != ".tiff")) return;
+    </onUploadStartC>
+      <onUploadStartS>var sql,sqlResult;  
+sql = "select next value for dbo.SEQImageSn as Sn";
+sqlResult = db.executeQuery("DB", sql);
+if (sqlResult == null) {
+    return;
+}
+db.read(sqlResult);
+var sn = db.getInt32(sqlResult, "Sn");
+newFileName = "c:\\www\\incoming\\img" + sn + fileExt;</onUploadStartS>
+      <sizeRatio>0.734939759036145</sizeRatio>
+      <top>0</top>
+      <width>83</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel42/panel51">
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <height>259</height>
+      <heightRatio>0.324968632371393</heightRatio>
+      <left>20</left>
+      <leftRatio>0.0455580865603645</leftRatio>
+      <sizeRatio>0.639506172839506</sizeRatio>
+      <top>304</top>
+      <topRatio>0.381430363864492</topRatio>
+      <width>404</width>
+      <widthRatio>0.92255125284738</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel42/panel51/panel52">
+      <backgroundImg>empty.png</backgroundImg>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>259</height>
+      <heightRatio>1</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.641089108910891</sizeRatio>
+      <top>0</top>
+      <width>404</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel42/panel51/panel53">
+      <backgroundSkin>bodyMask</backgroundSkin>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>259</height>
+      <heightRatio>1</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.641089108910891</sizeRatio>
+      <top>0</top>
+      <width>404</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel42/panel105">
+      <backgroundImg>CPY0003.jpg</backgroundImg>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <height>36</height>
+      <heightRatio>0.0451693851944793</heightRatio>
+      <left>16</left>
+      <leftRatio>0.0360531309297913</leftRatio>
+      <onClick><![CDATA[var url = prompt("请输入播放地址：", "");
+if (url == null) return;
+//https://www.youtube.com/watch?v=yJG3WMG1dak
+if (url.length < "https://www.youtube.com/watch?v=".length) {
+    alert("您输入的视频地址不正确");
+    return;
+}
+if (url.substr(0, "https://www.youtube.com/watch?v=".length).toLowerCase() != "https://www.youtube.com/watch?v=") {
+    alert("您输入的视频地址不正确");
+    return;
+}
+//<iframe width='260' height='115' src='https://www.youtube.com/embed/P0NHPC9m3Wc' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>
+ee.setImage(ee.getControl("panel52"), "/twitterG/main/empty.png");
+var rect = eb.getDivRect(ee.getControl("panel52"));
+g5.newPhoto1 = url.substr("https://www.youtube.com/watch?v=".length, url.length);
+url = "<iframe width='" + rect.w + "' height='" + rect.h + "' src='https://www.youtube.com/embed/" +
+    g5.newPhoto1 + 
+    "' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>";
+g5.newPhoto1 = "?YTB" + g5.newPhoto1;
+ee.setText(ee.getControl("panel52"), url);   
+ee.getControl("panel53").style.pointerEvents = "none";
+    
+    
+
+
+]]></onClick>
+      <sizeRatio>0.418604651162791</sizeRatio>
+      <top>195</top>
+      <topRatio>0.244667503136763</topRatio>
+      <width>71</width>
+      <widthRatio>0.163187855787476</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel70">
+      <ani2Pos>leftFlyOut:左侧飞出</ani2Pos>
+      <aniPos>rightFlyIn:右侧飞入</aniPos>
+      <backgroundColor>FFFFFF</backgroundColor>
+      <backgroundImgMode>stretch</backgroundImgMode>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>796</height>
+      <heightRatio>1</heightRatio>
+      <layerName>列表</layerName>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>1.81735159817352</sizeRatio>
+      <top>0</top>
+      <width>438</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel70/panel71">
+      <backgroundImg>back.png</backgroundImg>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <height>48</height>
+      <heightRatio>0.0602258469259724</heightRatio>
+      <left>5</left>
+      <leftRatio>0.0113851992409867</leftRatio>
+      <onClick>ee.showAni(ee.getControl("panel70"), 1);</onClick>
+      <sizeRatio>0.623376623376623</sizeRatio>
+      <top>15</top>
+      <topRatio>0.0188205771643664</topRatio>
+      <width>64</width>
+      <widthRatio>0.146110056925996</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel70/panel77">
+      <backgroundColor>1DA1F2</backgroundColor>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>ratio</dockY>
+      <fontColor>808080</fontColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>25</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>3</height>
+      <heightRatio>0.00376411543287327</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.00569259962049336</sizeRatio>
+      <top>77</top>
+      <topRatio>0.0966122961104141</topRatio>
+      <width>438</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel70/panel78">
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <fontBold>true</fontBold>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>18</fontSizeAuto>
+      <height>48</height>
+      <heightRatio>0.0602258469259724</heightRatio>
+      <left>72</left>
+      <leftRatio>0.165085388994307</leftRatio>
+      <onClick>ee.showAni(ee.getControl("panel54"), 1);</onClick>
+      <sizeRatio>0.623376623376623</sizeRatio>
+      <text>列表</text>
+      <top>15</top>
+      <topRatio>0.0188205771643664</topRatio>
+      <width>64</width>
+      <widthRatio>0.146110056925996</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel70/panel79">
+      <backgroundImg>pageList1.png</backgroundImg>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <height>151</height>
+      <heightRatio>0.189460476787955</heightRatio>
+      <left>83</left>
+      <leftRatio>0.189393939393939</leftRatio>
+      <onClick>ee.showAni(ee.getControl("panel54"), 1);</onClick>
+      <sizeRatio>0.483974358974359</sizeRatio>
+      <top>596</top>
+      <topRatio>0.749058971141782</topRatio>
+      <width>259</width>
+      <widthRatio>0.590909090909091</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel70/panel80">
+      <backgroundImg>pageList2.png</backgroundImg>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <height>95</height>
+      <heightRatio>0.119196988707654</heightRatio>
+      <left>337</left>
+      <leftRatio>0.770398481973435</leftRatio>
+      <sizeRatio>0.805084745762712</sizeRatio>
+      <top>693</top>
+      <topRatio>0.870765370138018</topRatio>
+      <width>98</width>
+      <widthRatio>0.223908918406072</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel70/panel81">
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <fontBold>true</fontBold>
+      <fontColor>404040</fontColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>18</fontSizeAuto>
+      <height>71</height>
+      <heightRatio>0.0890840652446675</heightRatio>
+      <left>9</left>
+      <leftRatio>0.0208728652751423</leftRatio>
+      <onClick>ee.showAni(ee.getControl("panel54"), 1);</onClick>
+      <sizeRatio>0.141153081510934</sizeRatio>
+      <text>您还没有创建列表
+创建列表方便管理您的推文</text>
+      <top>145</top>
+      <topRatio>0.181932245922208</topRatio>
+      <width>418</width>
+      <widthRatio>0.954459203036053</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel82">
+      <ani2Pos>leftFlyOut:左侧飞出</ani2Pos>
+      <aniPos>rightFlyIn:右侧飞入</aniPos>
+      <backgroundColor>FFFFFF</backgroundColor>
+      <backgroundImgMode>stretch</backgroundImgMode>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>796</height>
+      <heightRatio>1</heightRatio>
+      <layerName>话题</layerName>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>1.81735159817352</sizeRatio>
+      <top>0</top>
+      <width>438</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel82/panel83">
+      <backgroundImg>back.png</backgroundImg>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <height>48</height>
+      <heightRatio>0.0602258469259724</heightRatio>
+      <left>5</left>
+      <leftRatio>0.0113851992409867</leftRatio>
+      <onClick>ee.showAni(ee.getControl("panel82"), 1);</onClick>
+      <sizeRatio>0.623376623376623</sizeRatio>
+      <top>15</top>
+      <topRatio>0.0188205771643664</topRatio>
+      <width>64</width>
+      <widthRatio>0.146110056925996</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel82/panel84">
+      <backgroundColor>1DA1F2</backgroundColor>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>ratio</dockY>
+      <fontColor>808080</fontColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>25</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>3</height>
+      <heightRatio>0.00376411543287327</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.00569259962049336</sizeRatio>
+      <top>77</top>
+      <topRatio>0.0966122961104141</topRatio>
+      <width>438</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel82/panel85">
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <fontBold>true</fontBold>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>18</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>48</height>
+      <heightRatio>0.0602258469259724</heightRatio>
+      <left>72</left>
+      <leftRatio>0.165085388994307</leftRatio>
+      <onClick>ee.showAni(ee.getControl("panel54"), 1);</onClick>
+      <sizeRatio>0.4</sizeRatio>
+      <text>话题</text>
+      <top>15</top>
+      <topRatio>0.0188205771643664</topRatio>
+      <widthRatio>0.227703984819734</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel82/panel87">
+      <backgroundImg>huati1.jpg</backgroundImg>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <height>169</height>
+      <heightRatio>0.212045169385194</heightRatio>
+      <left>19</left>
+      <leftRatio>0.0436432637571157</leftRatio>
+      <sizeRatio>0.342105263157895</sizeRatio>
+      <top>81</top>
+      <topRatio>0.101631116687578</topRatio>
+      <width>411</width>
+      <widthRatio>0.937381404174573</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel82/panel88">
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>24</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>131</height>
+      <heightRatio>0.164366373902133</heightRatio>
+      <left>32</left>
+      <leftRatio>0.0740037950664137</leftRatio>
+      <onClick>ee.showAni(ee.getControl("panel54"), 1);</onClick>
+      <sizeRatio>0.291759465478842</sizeRatio>
+      <text><![CDATA[<b>获取最新内容</b>在你的主页时间线上直接查看关于你关注的话题的热门推文。<b>让GET为你所用</b>获取最相关的推文、用户、事件和广告。<b>分享你感兴趣的内容</b>大家可以在你的个人资料中看到你关注的话题。]]></text>
+      <top>258</top>
+      <topRatio>0.323713927227102</topRatio>
+      <vAlign>top</vAlign>
+      <width>373</width>
+      <widthRatio>0.851992409867173</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel82/panel86">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>ratio</dockY>
+      <fontColor>808080</fontColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>25</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>10</height>
+      <heightRatio>0.0125470514429109</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.0189753320683112</sizeRatio>
+      <top>394</top>
+      <topRatio>0.49435382685069</topRatio>
+      <width>438</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel82/panel89">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>ratio</dockY>
+      <fontColor>808080</fontColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>25</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>1</height>
+      <heightRatio>0.00125470514429109</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.00189753320683112</sizeRatio>
+      <top>566</top>
+      <topRatio>0.711417816813049</topRatio>
+      <width>438</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel82/panel90">
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <fontColor>808080</fontColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>24</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>145</height>
+      <heightRatio>0.181932245922208</heightRatio>
+      <left>33</left>
+      <leftRatio>0.0759013282732448</leftRatio>
+      <onClick>ee.showAni(ee.getControl("panel54"), 1);</onClick>
+      <sizeRatio>0.336426914153132</sizeRatio>
+      <text><![CDATA[马上推出一种浏览话题的方式。你关注的话题会显示在这里。如果要查看GET认为你感兴趣的所有内容，请查看<font color="#1c94e0">你的GET数据</font>。你还可以<font color="#1c94e0">了解更多</font>关于关注话题的信息。]]></text>
+      <top>409</top>
+      <topRatio>0.514429109159348</topRatio>
+      <vAlign>top</vAlign>
+      <width>358</width>
+      <widthRatio>0.817836812144213</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel91">
+      <ani2Pos>leftFlyOut:左侧飞出</ani2Pos>
+      <aniPos>rightFlyIn:右侧飞入</aniPos>
+      <backgroundColor>FFFFFF</backgroundColor>
+      <backgroundImgMode>stretch</backgroundImgMode>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>796</height>
+      <heightRatio>1</heightRatio>
+      <layerName>书签</layerName>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>1.81735159817352</sizeRatio>
+      <top>0</top>
+      <width>438</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel91/panel92">
+      <backgroundImg>back.png</backgroundImg>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <height>48</height>
+      <heightRatio>0.0602258469259724</heightRatio>
+      <left>5</left>
+      <leftRatio>0.0113851992409867</leftRatio>
+      <onClick>ee.showAni(ee.getControl("panel91"), 1);</onClick>
+      <sizeRatio>0.623376623376623</sizeRatio>
+      <top>15</top>
+      <topRatio>0.0188205771643664</topRatio>
+      <width>64</width>
+      <widthRatio>0.146110056925996</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel91/panel94">
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <fontBold>true</fontBold>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>18</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>48</height>
+      <heightRatio>0.0602258469259724</heightRatio>
+      <left>72</left>
+      <leftRatio>0.165085388994307</leftRatio>
+      <onClick>ee.showAni(ee.getControl("panel54"), 1);</onClick>
+      <sizeRatio>0.4</sizeRatio>
+      <text>书签</text>
+      <top>15</top>
+      <topRatio>0.0188205771643664</topRatio>
+      <widthRatio>0.227703984819734</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel91/panel93">
+      <backgroundColor>EDF1FA</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>ratio</dockY>
+      <height>721</height>
+      <heightRatio>0.905897114178168</heightRatio>
+      <left>0</left>
+      <sizeRatio>1.37001897533207</sizeRatio>
+      <top>75</top>
+      <topRatio>0.0941028858218319</topRatio>
+      <width>438</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel91/panel93/panel96">
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <dockX>fill</dockX>
+      <dockY>ratio</dockY>
+      <fontBold>true</fontBold>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>18</fontSizeAuto>
+      <height>65</height>
+      <heightRatio>0.0900277008310249</heightRatio>
+      <left>0</left>
+      <leftRatio>0.0208728652751423</leftRatio>
+      <onClick>ee.showAni(ee.getControl("panel54"), 1);</onClick>
+      <sizeRatio>0.129482071713147</sizeRatio>
+      <text>您还没有添加任何推文到您的书签中</text>
+      <top>142</top>
+      <topRatio>0.196675900277008</topRatio>
+      <vAlign>top</vAlign>
+      <width>438</width>
+      <widthRatio>0.952561669829222</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel91/panel93/panel98">
+      <backgroundImgMode>fill</backgroundImgMode>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>top</dockY>
+      <fontColor>404040</fontColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>25</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>1</height>
+      <heightRatio>0.0013869625520111</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.00228310502283105</sizeRatio>
+      <top>0</top>
+      <width>438</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel91/panel93/panel95">
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <dockX>fill</dockX>
+      <dockY>ratio</dockY>
+      <fontColor>808080</fontColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>28</fontSizeAuto>
+      <height>65</height>
+      <heightRatio>0.0900277008310249</heightRatio>
+      <left>0</left>
+      <leftRatio>0.0284629981024668</leftRatio>
+      <onClick>ee.showAni(ee.getControl("panel54"), 1);</onClick>
+      <sizeRatio>0.129482071713147</sizeRatio>
+      <text>有了之后就会出现在这里</text>
+      <top>226</top>
+      <topRatio>0.313019390581717</topRatio>
+      <vAlign>top</vAlign>
+      <width>438</width>
+      <widthRatio>0.952561669829222</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel97">
+      <ani2Pos>leftFlyOut:左侧飞出</ani2Pos>
+      <aniPos>rightFlyIn:右侧飞入</aniPos>
+      <backgroundColor>FFFFFF</backgroundColor>
+      <backgroundImgMode>stretch</backgroundImgMode>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>796</height>
+      <heightRatio>1</heightRatio>
+      <layerName>瞬间</layerName>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>1.81735159817352</sizeRatio>
+      <top>0</top>
+      <width>438</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel97/panel99">
+      <backgroundImg>back.png</backgroundImg>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <height>48</height>
+      <heightRatio>0.0602258469259724</heightRatio>
+      <left>5</left>
+      <leftRatio>0.0113851992409867</leftRatio>
+      <onClick>ee.showAni(ee.getControl("panel97"), 1);</onClick>
+      <sizeRatio>0.623376623376623</sizeRatio>
+      <top>15</top>
+      <topRatio>0.0188205771643664</topRatio>
+      <width>64</width>
+      <widthRatio>0.146110056925996</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel97/panel100">
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <fontBold>true</fontBold>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>18</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>48</height>
+      <heightRatio>0.0602258469259724</heightRatio>
+      <left>72</left>
+      <leftRatio>0.165085388994307</leftRatio>
+      <onClick>ee.showAni(ee.getControl("panel54"), 1);</onClick>
+      <sizeRatio>0.4</sizeRatio>
+      <text>瞬间</text>
+      <top>15</top>
+      <topRatio>0.0188205771643664</topRatio>
+      <widthRatio>0.227703984819734</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel97/panel101">
+      <backgroundColor>EDF1FA</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>ratio</dockY>
+      <height>721</height>
+      <heightRatio>0.905897114178168</heightRatio>
+      <left>0</left>
+      <sizeRatio>1.37001897533207</sizeRatio>
+      <top>75</top>
+      <topRatio>0.0941028858218319</topRatio>
+      <width>438</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel97/panel101/panel102">
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <dockX>fill</dockX>
+      <dockY>ratio</dockY>
+      <fontBold>true</fontBold>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>18</fontSizeAuto>
+      <height>65</height>
+      <heightRatio>0.0900277008310249</heightRatio>
+      <left>0</left>
+      <onClick>ee.showAni(ee.getControl("panel54"), 1);</onClick>
+      <sizeRatio>0.123339658444023</sizeRatio>
+      <text>您还没有创建任何瞬间</text>
+      <top>142</top>
+      <topRatio>0.196675900277008</topRatio>
+      <vAlign>top</vAlign>
+      <width>438</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel97/panel101/panel103">
+      <backgroundImgMode>fill</backgroundImgMode>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>top</dockY>
+      <fontColor>404040</fontColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>25</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>1</height>
+      <heightRatio>0.0013869625520111</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.00228310502283105</sizeRatio>
+      <top>0</top>
+      <width>438</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel97/panel101/panel104">
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <dockX>fill</dockX>
+      <dockY>ratio</dockY>
+      <fontColor>808080</fontColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>28</fontSizeAuto>
+      <height>65</height>
+      <heightRatio>0.0900277008310249</heightRatio>
+      <left>0</left>
+      <onClick>ee.showAni(ee.getControl("panel54"), 1);</onClick>
+      <sizeRatio>0.123339658444023</sizeRatio>
+      <text>如果需要创建或者编辑瞬间，请登录网站。</text>
+      <top>226</top>
+      <topRatio>0.313019390581717</topRatio>
+      <vAlign>top</vAlign>
+      <width>438</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel116">
+      <ani2Pos>leftFlyOut:左侧飞出</ani2Pos>
+      <aniPos>rightFlyIn:右侧飞入</aniPos>
+      <backgroundColor>FFFFFF</backgroundColor>
+      <backgroundImgMode>stretch</backgroundImgMode>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>796</height>
+      <heightRatio>1</heightRatio>
+      <layerName>私信聊天</layerName>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <onAniEnd>showChat();</onAniEnd>
+      <sizeRatio>1.81735159817352</sizeRatio>
+      <top>0</top>
+      <width>438</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="LayoutY" pathname="/divRoot/panel116/layouty6">
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>796</height>
+      <heightRatio>1</heightRatio>
+      <left>0</left>
+      <sizeRatio>1.81735159817352</sizeRatio>
+      <top>0</top>
+      <width>438</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="LayoutYItem" pathname="/divRoot/panel116/layouty6/layoutyitem11">
+      <backgroundColor>f0f0f0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <heavy>10</heavy>
+      <height>66</height>
+      <heightRatio>0.0829145728643216</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.150684931506849</sizeRatio>
+      <top>0</top>
+      <width>438</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel116/layouty6/layoutyitem11/panel117">
+      <backgroundImg>back.png</backgroundImg>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <height>47</height>
+      <heightRatio>0.712121212121212</heightRatio>
+      <left>6</left>
+      <leftRatio>0.0136674259681093</leftRatio>
+      <onClick>ee.showAni(ee.getControl("panel116"), 1);</onClick>
+      <sizeRatio>0.635135135135135</sizeRatio>
+      <top>10</top>
+      <topRatio>0.151515151515152</topRatio>
+      <width>74</width>
+      <widthRatio>0.168564920273349</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel116/layouty6/layoutyitem11/panel118">
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>18</fontSizeAuto>
+      <hAlign>left</hAlign>
+      <height>57</height>
+      <heightRatio>0.863636363636364</heightRatio>
+      <left>82</left>
+      <leftRatio>0.186788154897494</leftRatio>
+      <onClick>ee.showAni(ee.getControl("panel54"), 1);</onClick>
+      <sizeRatio>0.271428571428571</sizeRatio>
+      <text>A</text>
+      <top>5</top>
+      <topRatio>0.0757575757575758</topRatio>
+      <width>210</width>
+      <widthRatio>0.478359908883827</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel116/layouty6/layoutyitem11/panel119">
+      <backgroundColor>C0C0C0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.0151515151515152</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.00228310502283105</sizeRatio>
+      <top>65</top>
+      <topRatio>0.984848484848485</topRatio>
+      <width>438</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="LayoutYItem" pathname="/divRoot/panel116/layouty6/layoutyitem12">
+      <autoScroll>true</autoScroll>
+      <backgroundColor>FFFFFF</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <height>664</height>
+      <heightRatio>0.834170854271357</heightRatio>
+      <left>0</left>
+      <sizeRatio>1.51598173515982</sizeRatio>
+      <top>66</top>
+      <topRatio>0.0829145728643216</topRatio>
+      <width>438</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel116/layouty6/layoutyitem12/panel122">
+      <backgroundImg>arrowR.png</backgroundImg>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <height>42</height>
+      <heightRatio>0.0631578947368421</heightRatio>
+      <left>13</left>
+      <leftRatio>0.0296127562642369</leftRatio>
+      <onClick>sendChat();</onClick>
+      <sizeRatio>0.954545454545455</sizeRatio>
+      <top>16</top>
+      <topRatio>0.0240601503759399</topRatio>
+      <width>44</width>
+      <widthRatio>0.100227790432802</widthRatio>
+    </control>
+    <control type="LayoutYItem" pathname="/divRoot/panel116/layouty6/layoutyitem13">
+      <backgroundColor>f0f0f0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <heavy>10</heavy>
+      <height>66</height>
+      <heightRatio>0.0829145728643216</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.150684931506849</sizeRatio>
+      <top>730</top>
+      <topRatio>0.917085427135678</topRatio>
+      <width>438</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel116/layouty6/layoutyitem13/panel120">
+      <backgroundColor>C0C0C0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>top</dockY>
+      <height>1</height>
+      <heightRatio>0.0151515151515152</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.00228310502283105</sizeRatio>
+      <top>0</top>
+      <width>438</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Edit" pathname="/divRoot/panel116/layouty6/layoutyitem13/edit6">
+      <backgroundSkin>edit1</backgroundSkin>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <fontColor>C0C0C0</fontColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSizeAuto>26</fontSizeAuto>
+      <height>40</height>
+      <heightRatio>0.606060606060606</heightRatio>
+      <inputFont>黑体</inputFont>
+      <inputFontSizeAuto>26</inputFontSizeAuto>
+      <left>16</left>
+      <leftRatio>0.0364464692482916</leftRatio>
+      <sizeRatio>0.112994350282486</sizeRatio>
+      <text>开始写私信</text>
+      <top>14</top>
+      <topRatio>0.212121212121212</topRatio>
+      <width>353</width>
+      <widthRatio>0.806378132118451</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel116/layouty6/layoutyitem13/panel121">
+      <backgroundImg>arrowR.png</backgroundImg>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <dockX>ratio</dockX>
+      <dockY>ratio</dockY>
+      <height>43</height>
+      <heightRatio>0.651515151515151</heightRatio>
+      <left>378</left>
+      <leftRatio>0.863325740318907</leftRatio>
+      <onClick>sendChat();</onClick>
+      <sizeRatio>0.826923076923077</sizeRatio>
+      <top>12</top>
+      <topRatio>0.181818181818182</topRatio>
+      <width>52</width>
+      <widthRatio>0.118451025056948</widthRatio>
+    </control>
+  </controls>
+  <taskSet count="11">
+    <taskSetItem name="getUserInfo">
+      <script1>g5.token = eb.getCookie("twitterGToken");
+
+eio.appendString16(g5.token);
+
+
+
+
+
+
+
+
+
+</script1>
+      <script2><![CDATA[var token = eio.readString16();
+var sql,sqlResult;  
+
+sql = "exec getUserInfoBySession '" + db.encode(token) + "'";
+sqlResult = db.executeQuery("DB", sql);
+if (sqlResult == null) {
+    eio.appendString8("F");
+    eio.appendString8("系统繁忙请稍后再试");
+    return;
+}
+db.read(sqlResult);
+if (db.getString(sqlResult, "sessionId").length < 5) {
+    eio.appendString8("F");
+    eio.appendString8("上次登录时间太久或者您更换了系统");
+    es.logCommon("用户token登录失败,token=" + token);
+    return;
+} 
+
+session.set("userName", db.getString(sqlResult,"userName"));
+var userId = db.getString(sqlResult,"id");
+
+eio.appendString8("T");
+es.logCommon("用户token登录,userName=" + db.getString(sqlResult,"userName") +
+    ",nickName=" + db.getString(sqlResult, "nickName"));
+eio.appendString8(db.getString(sqlResult,"userName"));
+eio.appendString16(db.getString(sqlResult,"nickName"));
+eio.appendString16(db.getString(sqlResult,"photo"));
+eio.appendString16(db.getString(sqlResult,"titleBg"));
+eio.appendString16(db.getString(sqlResult,"note"));
+eio.appendString16(db.getString(sqlResult,"homePage"));
+
+//new user?
+/*
+sql = "select count(*) as c from follow where userId = " + userId + " and followId <> userId";
+if (sqlResult == null) {
+    eio.appendString16("F");
+    return;
+}
+db.read(sqlResult);
+if (db.getInt32(sqlResult,"c") > 0) {
+    eio.appendString16("F");
+} else {
+    eio.appendString16("T");
+}
+*/
+]]></script2>
+      <script3>if (eio.readString8() != "T") {
+    alert(eio.readString8());
+    window.location.href = ee.getUrl("/new");
+    return;
+}
+
+g5.userName = eio.readString8();
+g5.nickName = eio.readString16();
+g5.photo = eio.readString16();
+g5.titleBg = eio.readString16();
+g5.userNote = eio.readString16();
+g5.userHomepage = eio.readString16();
+/*
+if (eio.readString16() == "F") {
+    g5.newUser = false;
+} else g5.newUser = true;
+*/
+g5.refreshUserInfo();
+updateHomepage();
+                               
+
+
+
+</script3>
+    </taskSetItem>
+    <taskSetItem name="updateUserInfo">
+      <script1><![CDATA[var nickName = ee.getEditText(ee.getControl("edit2"));
+var note = ee.getEditText(ee.getControl("edit3"));
+var homepage = ee.getEditText(ee.getControl("edit4"));
+if (nickName.length<3) {
+    alert("昵称或者姓名不能少于3个英文字母或汉字");
+    return;
+}
+eio.appendString16(g5.token);
+eio.appendString16(nickName);
+eio.appendString16(note);
+eio.appendString16(homepage);
+]]></script1>
+      <script2><![CDATA[var token = eio.readString16();
+var nickName = eio.readString16();
+var note = eio.readString16();
+var homepage = eio.readString16();
+
+var sql,sqlResult;  
+sql = "exec getUserInfoBySession '" + db.encode(token) + "'";
+sqlResult = db.executeQuery("DB", sql);
+if (sqlResult == null) {
+    eio.appendString8("F");
+    eio.appendString8("系统繁忙请稍后再试");
+    return;
+}
+db.read(sqlResult);
+if (db.getString(sqlResult, "sessionId").length < 5) {
+    eio.appendString8("F");
+    eio.appendString8("上次登录时间太久或者您更换了系统");
+    es.logCommon("用户token登录失败,token=" + token);
+    return;
+} 
+var userName =db.getString(sqlResult,"userName");
+
+sql = "update userInfo set nickName = '" + db.encode(nickName) + "'" +
+    ", note= '" + db.encode(note) + "'" +
+    ", homePage= '" + db.encode(homepage) + "'" +
+    " where userName = '" + db.encode(userName) + "'";
+if (!db.executeNoneQuery("DB", sql)) {
+    eio.appendString8("F");
+    eio.appendString8("系统繁忙请稍后再试");
+} else {
+    eio.appendString8("T");
+}    
+
+
+
+
+
+
+
+
+
+
+
+
+]]></script2>
+      <script3>if (eio.readString8() == "F") {
+    alert(eio.readString8());
+    return;
+}
+ee.showAni(ee.getControl("panel54"), 1);
+getUserInfo();</script3>
+    </taskSetItem>
+    <taskSetItem name="newTwitter">
+      <script1><![CDATA[var text = ee.getEditText(ee.getControl("edit1"));
+if (text.length<5) {
+    alert("推文不能少于5个英文字母或汉字");
+    return;
+}
+
+eio.appendString16(g5.token);
+eio.appendString16(text);
+eio.appendString16(g5.newPhoto1);
+eio.appendString16(g5.uplinkType);
+eio.appendString16(g5.uplinkId+"");
+
+
+
+
+
+
+
+]]></script1>
+      <script2><![CDATA[var token = eio.readString16();
+var text = eio.readString16();
+var photo1 = eio.readString16();
+var uplinkType = eio.readString16();
+var uplinkId = eio.readString16();
+var sql,sqlResult;  
+sql = "exec getUserInfoBySession '" + db.encode(token) + "'";
+sqlResult = db.executeQuery("DB", sql);
+if (sqlResult == null) {
+    eio.appendString8("F");
+    eio.appendString8("系统繁忙请稍后再试");
+    return;
+}
+db.read(sqlResult);
+if (db.getString(sqlResult, "sessionId").length < 5) {
+    eio.appendString8("F");
+    eio.appendString8("上次登录时间太久或者您更换了系统");
+    es.logCommon("用户token登录失败,token=" + token);
+    return;
+} 
+var userName = db.getString(sqlResult,"userName");
+var userId = db.getString(sqlResult,"id");
+
+sql = "exec twitterNew " +
+    userId + 
+    ",'" + db.encode(text) + "'" +
+    ",'" + db.encode(photo1) + "'" +
+    ",'" + db.encode(uplinkType) + "'" +
+    "," + db.encode(uplinkId);
+if (!db.executeNoneQuery("DB", sql)) {
+    eio.appendString8("F");
+    eio.appendString8("系统繁忙请稍后再试");
+} else {
+    eio.appendString8("T");
+}                      
+
+]]></script2>
+      <script3>if (eio.readString8() == "F") {
+    alert(eio.readString8());
+    return;
+}
+ee.setText(ee.getControl("panel52"), " ");
+ee.showAni(ee.getControl("panel42"), 1);
+updateHomepage();</script3>
+    </taskSetItem>
+    <taskSetItem name="updateHomepage">
+      <script1><![CDATA[eio.appendString16(g5.token);
+if (ee.getControl("layoutyitem4").eeChildren.length<=0) {
+    updateHomepage.needRefresh = true;
+}
+if (updateHomepage.needRefresh) {
+    eio.appendString16("T");
+    eio.appendString16("0");
+} else {
+    eio.appendString16("F");
+    eio.appendString16(updateHomepage.lastId);
+}
+ee.setVisible(ee.getControl("panel123"), true);
+
+
+]]></script1>
+      <script2><![CDATA[var token = eio.readString16();
+var needRefresh = eio.readString16();
+var lastId = parseInt(eio.readString16());
+var sql,sqlResult;  
+
+sql = "exec getUserInfoBySession '" + db.encode(token) + "'";
+sqlResult = db.executeQuery("DB", sql);
+if (sqlResult == null) {
+    eio.appendString8("F");
+    eio.appendString8("系统繁忙请稍后再试");
+    return;
+}
+db.read(sqlResult);
+if (db.getString(sqlResult, "sessionId").length < 5) {
+    eio.appendString8("F");
+    eio.appendString8("上次登录时间太久或者您更换了系统");
+    es.logCommon("用户token登录失败,token=" + token);
+    return;
+} 
+var userName =db.getString(sqlResult,"userName");
+var userId = db.getString(sqlResult,"id");
+var sql1 = "";
+if ((needRefresh == "F") &amp;&amp; (lastId != 0)) {
+    sql1 = "and dbo.tContent.id < " + lastId + " ";
+}
+
+sql = 
+    "SELECT TOP (3) dbo.tContent.id, DATEDIFF(minute, dbo.tContent.regDatetime,  " + 
+    "      GETDATE()) AS mins, dbo.tContent.userId, dbo.tContent.[content], dbo.tContent.photo1,  " + 
+    "      dbo.tContent.likeCount,  " + 
+    "      SUM(CASE WHEN tContent_1.uplinkType = 'R' THEN 1 ELSE 0 END) AS replyCount,  " + 
+    "      SUM(CASE WHEN tContent_1.uplinkType = 'F' THEN 1 ELSE 0 END) AS forwardCount,  " + 
+    "      dbo.userInfo.photo, dbo.userInfo.userName, dbo.userInfo.nickName,  " + 
+    "      DATEDIFF(minute, tContent_2.regDatetime, GETDATE()) AS reMins,  " + 
+    "      tContent_2.[content] AS reContent, tContent_2.photo1 AS rePhoto1,  " + 
+    "      tContent_2.userId AS reUserId, userInfo_1.userName AS reUserName,  " + 
+    "      userInfo_1.nickName AS reNickName, userInfo_1.photo AS rePhoto " + 
+    "FROM dbo.userInfo AS userInfo_1 INNER JOIN " + 
+    "      dbo.tContent AS tContent_2 ON userInfo_1.id = tContent_2.userId RIGHT OUTER JOIN " + 
+    "      dbo.tContent INNER JOIN " + 
+    "      dbo.follow ON dbo.tContent.userId = dbo.follow.followId INNER JOIN " + 
+    "      dbo.userInfo ON dbo.tContent.userId = dbo.userInfo.id ON  " + 
+    "      tContent_2.id = dbo.tContent.uplinkId LEFT OUTER JOIN " + 
+    "      dbo.tContent AS tContent_1 ON dbo.tContent.id = tContent_1.uplinkId " + 
+    "WHERE (dbo.follow.userId = " + userId + ") " + sql1 + 
+    "GROUP BY dbo.tContent.id, dbo.tContent.regDatetime, dbo.tContent.userId,  " + 
+    "      dbo.tContent.[content], dbo.tContent.photo1, dbo.tContent.likeCount,  " + 
+    "      dbo.userInfo.photo, dbo.userInfo.userName, dbo.userInfo.nickName,  " + 
+    "      tContent_2.regDatetime, tContent_2.[content], tContent_2.photo1, tContent_2.userId,  " + 
+    "      userInfo_1.userName, userInfo_1.nickName, userInfo_1.photo " + 
+    "ORDER BY dbo.tContent.id DESC     "; 
+    
+
+sqlResult = db.executeQuery("DB", sql);
+if (sqlResult == null) {
+    eio.appendString8("F");
+    es.logWarning("数据库执行错误, sql=" + sql);
+    return;
+}
+eio.appendString8("T");
+eio.appendDataSet(sqlResult,"id,mins,userId,content,photo1,replyCount,forwardCount,likeCount,userName,nickName,photo" +
+    ",reMins,reContent,rePhoto1,reUserId,reUserName,reNickName,rePhoto", 0, 99999); 
+]]></script2>
+      <script3><![CDATA[if (eio.readString8() != "T") {
+    ee.setVisible(ee.getControl("panel123"), false);
+    return;
+}
+g5.datasetHome = eio.readDataSet();
+if (g5.datasetHome.rowCount >= 0) {
+    updateHomepage.lastId = g5.datasetHome.getData(0, g5.datasetHome.rowCount - 1);
+} else {
+    updateHomepage.lastId = "0";
+}
+g5.refreshPage1();
+updateHomepage.needRefresh = false;
+ee.setVisible(ee.getControl("panel123"), false);
+                        
+]]></script3>
+    </taskSetItem>
+    <taskSetItem name="searchUser">
+      <script1>var searchString = ee.getEditText(ee.getControl("edit5"));
+eio.appendString16(searchString);
+ee.setVisible(ee.getControl("panel123"), true);
+
+</script1>
+      <script2>var searchString = eio.readString16();
+var sql,sqlResult;  
+
+sql = "select * from userInfo ";
+if (searchString != "") {
+    sql += "where (userName like '%" + db.encode(searchString) + "%') " +
+        " or (nickName like '%" + db.encode(searchString) + "%') ";
+}
+sqlResult = db.executeQuery("DB", sql);
+if (sqlResult == null) {
+    eio.appendString8("F");
+    es.logWarning("数据库执行错误, sql=" + sql);
+    return;
+}
+eio.appendString8("T");
+eio.appendDataSet(sqlResult,"id,userName,nickName,photo", 0, 99999);
+</script2>
+      <script3>if (eio.readString8() != "T") {
+    return;
+}
+g5.datasetPage2 = eio.readDataSet();
+g5.refreshPage2();
+searchTwitter.needRefresh = true;
+searchTwitter();</script3>
+    </taskSetItem>
+    <taskSetItem name="searchTwitter">
+      <script1><![CDATA[var searchString = ee.getEditText(ee.getControl("edit5"));
+eio.appendString16(searchString);
+if (ee.getControl("panel129").eeChildren.length<=0) {
+    searchTwitter.needRefresh = true;
+}
+if (searchTwitter.needRefresh) {
+    eio.appendString16("T");
+    eio.appendString16("0");
+} else {
+    eio.appendString16("F");
+    eio.appendString16(searchTwitter.lastId);
+}
+ee.setVisible(ee.getControl("panel123"), true);
+
+
+]]></script1>
+      <script2><![CDATA[var searchString = eio.readString16();
+var needRefresh = eio.readString16();
+var lastId = parseInt(eio.readString16());
+var sql,sqlResult;  
+
+var cond = "";
+if ((needRefresh == "F") &amp;&amp; (lastId != 0)) {
+    cond = " (dbo.tContent.id < " + lastId + ") ";
+}
+if (searchString != "") {
+    if (cond != "") cond += "and ";
+    cond += " (dbo.tContent.content like '%" + db.encode(searchString) + "%') ";
+}
+if (cond != "") {
+    cond = "WHERE " + cond;
+}
+
+sql = 
+    "SELECT TOP (3) dbo.tContent.id, DATEDIFF(minute, dbo.tContent.regDatetime,  " + 
+    "      GETDATE()) AS mins, dbo.tContent.userId, dbo.tContent.[content], dbo.tContent.photo1,  " + 
+    "      dbo.tContent.likeCount,  " + 
+    "      SUM(CASE WHEN tContent_1.uplinkType = 'R' THEN 1 ELSE 0 END) AS replyCount,  " + 
+    "      SUM(CASE WHEN tContent_1.uplinkType = 'F' THEN 1 ELSE 0 END) AS forwardCount,  " + 
+    "      dbo.userInfo.photo, dbo.userInfo.userName, dbo.userInfo.nickName,  " + 
+    "      DATEDIFF(minute, tContent_2.regDatetime, GETDATE()) AS reMins,  " + 
+    "      tContent_2.[content] AS reContent, tContent_2.photo1 AS rePhoto1,  " + 
+    "      tContent_2.userId AS reUserId, userInfo_1.userName AS reUserName,  " + 
+    "      userInfo_1.nickName AS reNickName, userInfo_1.photo AS rePhoto " + 
+    "FROM dbo.userInfo AS userInfo_1 INNER JOIN " + 
+    "      dbo.tContent AS tContent_2 ON userInfo_1.id = tContent_2.userId RIGHT OUTER JOIN " + 
+    "      dbo.tContent INNER JOIN " + 
+    "      dbo.follow ON dbo.tContent.userId = dbo.follow.followId INNER JOIN " + 
+    "      dbo.userInfo ON dbo.tContent.userId = dbo.userInfo.id ON  " + 
+    "      tContent_2.id = dbo.tContent.uplinkId LEFT OUTER JOIN " + 
+    "      dbo.tContent AS tContent_1 ON dbo.tContent.id = tContent_1.uplinkId " + 
+    cond +
+    "GROUP BY dbo.tContent.id, dbo.tContent.regDatetime, dbo.tContent.userId,  " + 
+    "      dbo.tContent.[content], dbo.tContent.photo1, dbo.tContent.likeCount,  " + 
+    "      dbo.userInfo.photo, dbo.userInfo.userName, dbo.userInfo.nickName,  " + 
+    "      tContent_2.regDatetime, tContent_2.[content], tContent_2.photo1, tContent_2.userId,  " + 
+    "      userInfo_1.userName, userInfo_1.nickName, userInfo_1.photo " + 
+    "ORDER BY dbo.tContent.id DESC     "; 
+
+sqlResult = db.executeQuery("DB", sql);
+if (sqlResult == null) {
+    eio.appendString8("F");
+    es.logWarning("数据库执行错误, sql=" + sql);
+    return;
+}
+eio.appendString8("T");
+eio.appendDataSet(sqlResult,"id,mins,userId,content,photo1,replyCount,forwardCount,likeCount,userName,nickName,photo" +
+    ",reMins,reContent,rePhoto1,reUserId,reUserName,reNickName,rePhoto", 0, 99999); 
+]]></script2>
+      <script3><![CDATA[if (eio.readString8() != "T") {
+    ee.setVisible(ee.getControl("panel123"), false);
+    return;
+}
+searchTwitter.dataset = eio.readDataSet();
+if (searchTwitter.dataset.rowCount >= 0) {
+    searchTwitter.lastId = searchTwitter.dataset.getData(0, searchTwitter.dataset.rowCount - 1);
+} else {
+    searchTwitter.lastId = "0";
+}
+
+var i, item;
+var root = ee.getControl("panel129"); 
+var cy = 0; 
+if (eb.isEmpty(searchTwitter.items)) {
+    searchTwitter.items = new Array();
+}
+if (searchTwitter.needRefresh) {
+    for (i=0; i<searchTwitter.items.length; i++) ee.removeControl(searchTwitter.items[i]);
+    searchTwitter.items = new Array();
+} else {
+    if (searchTwitter.items.length>0) {
+        var rect = eb.getDivRect(searchTwitter.items[searchTwitter.items.length-1]);
+        cy = 2 + rect.y + rect.h;
+    }
+}
+for (i=0; i< searchTwitter.dataset.rowCount; i++) {
+    //"id,mins,userId,content,photo1,replyCount,forwardCount,likeCount,userName,nickName,photo" +
+    //",reMins(11),reContent,rePhoto1,reUserId,reUserName,reNickName,rePhoto"
+    //    reTimes, reContent, rePhoto1, reUserId, reUserName, reNickName, rePhoto
+    item = g5.appendItem(
+        root,
+        cy, "p12_" + searchTwitter.items.length + "_",
+        searchTwitter.dataset.getData(8,i),
+        searchTwitter.dataset.getData(9,i),
+        g5.getMins(searchTwitter.dataset.getData(1,i)),
+        searchTwitter.dataset.getData(0,i),
+        searchTwitter.dataset.getData(10,i),
+        searchTwitter.dataset.getData(4,i),
+        searchTwitter.dataset.getData(3,i),
+        searchTwitter.dataset.getData(5,i),
+        searchTwitter.dataset.getData(6,i),
+        searchTwitter.dataset.getData(7,i),
+        g5.getMins(searchTwitter.dataset.getData(11,i)),
+        searchTwitter.dataset.getData(12,i),
+        searchTwitter.dataset.getData(13,i),
+        searchTwitter.dataset.getData(14,i),
+        searchTwitter.dataset.getData(15,i),
+        searchTwitter.dataset.getData(16,i),
+        searchTwitter.dataset.getData(17,i)
+        );
+    searchTwitter.items.push(item);
+    cy += 2 + eb.getDivRect(item).h;    
+}    
+
+searchTwitter.needRefresh = false;
+ee.setVisible(ee.getControl("panel123"), false);
+                        
+]]></script3>
+    </taskSetItem>
+    <taskSetItem name="showUserPage">
+      <script1><![CDATA[//function(username)
+ee.setVisible(ee.getControl("panel18"), false);
+ee.setVisible(ee.getControl("panel21"), false);
+ee.setRect(ee.getControl("panel69"), null,null,null,20);
+ee.setVisible(ee.getControl("panel69"), false);
+ee.setVisible(ee.getControl("layoutx6"), false);
+ee.setVisible(ee.getControl("layoutx7"), false);
+ee.setVisible(ee.getControl("panel72"), false);
+ee.setImage(ee.getControl("panel23"), "/twitterG/main/user.png");
+ee.setImage(ee.getControl("panel20"), "/twitterG/main/empty.png");
+ee.setText(ee.getControl("panel19"), "  ");
+for (var i=0; i<g5.itemsPageUser.length; i++) {
+    ee.removeControl(g5.itemsPageUser[i]);
+}
+g5.itemsPageUser = new Array();
+ee.showAni(ee.getControl("panel16"), 0);
+
+eio.appendString16(g5.token);
+eio.appendString16(showUserPage.userName);
+]]></script1>
+      <script2><![CDATA[var token = eio.readString16();
+var username = eio.readString16();
+var sql,sqlResult;  
+
+sql = "exec getUserInfoBySession '" + db.encode(token) + "'";
+sqlResult = db.executeQuery("DB", sql);
+if (sqlResult == null) {
+    eio.appendString8("F");
+    eio.appendString8("系统繁忙请稍后再试");
+    return;
+}
+db.read(sqlResult);
+if (db.getString(sqlResult, "sessionId").length < 5) {
+    eio.appendString8("F");
+    eio.appendString8("上次登录时间太久或者您更换了系统");
+    es.logCommon("用户token登录失败,token=" + token);
+    return;
+}
+var myUserId = db.getString(sqlResult,"id");  
+
+//query user information
+sql = "select * from userInfo where userName = '" + db.encode(username) + "'";
+sqlResult = db.executeQuery("DB", sql);
+if (sqlResult == null) {
+    eio.appendString8("F");
+    eio.appendString8("系统繁忙请稍后再试");
+    return;
+}
+if (!db.read(sqlResult)) {
+    eio.appendString8("F");
+    eio.appendString8("该用户不存在");
+    return;
+}
+eio.appendString8("T");
+var userId = db.getString(sqlResult,"id");
+eio.appendString8(db.getString(sqlResult,"id"));
+eio.appendString16(db.getString(sqlResult,"userName"));
+eio.appendString16(db.getString(sqlResult,"nickName"));
+eio.appendString16(db.getString(sqlResult,"regDatetime"));
+eio.appendString16(db.getString(sqlResult,"photo"));
+eio.appendString16(db.getString(sqlResult,"titleBg"));
+eio.appendString16(db.getString(sqlResult,"note"));
+eio.appendString16(db.getString(sqlResult,"homePage"));
+
+//query follow status
+sql = "select * from follow where userId = " + myUserId + " and followId = " + userId;
+sqlResult = db.executeQuery("DB", sql);
+if (sqlResult == null) {
+    eio.appendString8("F");
+    eio.appendString8("系统繁忙请稍后再试");
+    return;
+}
+if (db.read(sqlResult)) {
+    eio.appendString16("true");
+} else {
+    eio.appendString16("false");
+}
+
+//query twitter
+sql = 
+    "SELECT TOP (30) dbo.tContent.id, DATEDIFF(minute, dbo.tContent.regDatetime,  " +
+    "      GETDATE()) AS mins, dbo.tContent.userId, dbo.tContent.[content], dbo.tContent.photo1,  " +
+    "      dbo.tContent.likeCount,  " +
+    "      SUM(CASE WHEN tContent_1.uplinkType = 'R' THEN 1 ELSE 0 END) AS replyCount,  " +
+    "      SUM(CASE WHEN tContent_1.uplinkType = 'F' THEN 1 ELSE 0 END) AS forwardCount,  " +
+    "      dbo.userInfo.photo, dbo.userInfo.userName, dbo.userInfo.nickName,  " +
+    "      DATEDIFF(minute, tContent_2.regDatetime, GETDATE()) AS reMins,  " +
+    "      tContent_2.[content] AS reContent, tContent_2.photo1 AS rePhoto1,  " +
+    "      tContent_2.userId AS reUserId, userInfo_1.userName AS reUserName,  " +
+    "      userInfo_1.nickName AS reNickName, userInfo_1.photo AS rePhoto " +
+    "FROM dbo.userInfo AS userInfo_1 INNER JOIN " +
+    "      dbo.tContent AS tContent_2 ON userInfo_1.id = tContent_2.userId RIGHT OUTER JOIN " +
+    "      dbo.tContent INNER JOIN " +
+    "      dbo.userInfo ON dbo.tContent.userId = dbo.userInfo.id ON  " +
+    "      tContent_2.id = dbo.tContent.uplinkId LEFT OUTER JOIN " +
+    "      dbo.tContent AS tContent_1 ON dbo.tContent.id = tContent_1.uplinkId " +
+    "WHERE (dbo.tContent.userId = " + userId + ") " +
+    "GROUP BY dbo.tContent.id, dbo.tContent.regDatetime, dbo.tContent.userId,  " +
+    "      dbo.tContent.[content], dbo.tContent.photo1, dbo.tContent.likeCount,  " +
+    "      dbo.userInfo.photo, dbo.userInfo.userName, dbo.userInfo.nickName,  " +
+    "      tContent_2.regDatetime, tContent_2.[content], tContent_2.photo1, tContent_2.userId,  " +
+    "      userInfo_1.userName, userInfo_1.nickName, userInfo_1.photo " +
+    "ORDER BY dbo.tContent.id DESC     ";
+    
+sqlResult = db.executeQuery("DB", sql);
+if (sqlResult == null) {
+    eio.appendString8("F");
+    es.logWarning("数据库执行错误, sql=" + sql);
+    return;
+}
+eio.appendDataSet(sqlResult,"id,mins,userId,content,photo1,replyCount,forwardCount,likeCount,userName,nickName,photo" +
+    ",reMins,reContent,rePhoto1,reUserId,reUserName,reNickName,rePhoto", 0, 99999); 
+
+
+]]></script2>
+      <script3><![CDATA[if (eio.readString8() != "T") {
+    ee.setVisible(ee.getControl("panel16"), false);
+    return;
+}
+
+var id = eio.readString8();
+var userName = eio.readString16();
+var nickName = eio.readString16();
+var regDatetime = eio.readString16();
+var photo = eio.readString16();
+var titleBg = eio.readString16();
+var note = eio.readString16();
+var homePage = eio.readString16();
+var follow = eio.readString16();
+g5.datasetPageUser = eio.readDataSet();
+
+ee.getControl("panel16").userId = id;
+ee.getControl("panel16").userName = userName;
+var rootH = eb.getDivRect(ee.getControl("panel16")).h;
+
+if (follow == "true") {
+    ee.getControl("panel19").follow = true;
+    ee.setText(ee.getControl("panel19"), "正在关注");
+} else {
+    ee.getControl("panel19").follow = false;
+    ee.setText(ee.getControl("panel19"), "关注");
+}
+
+if (photo != "") {
+    ee.setImage(ee.getControl("panel23"), "url:" + g5.imgUrl + photo);
+}
+if (titleBg != "") {
+    ee.setImage(ee.getControl("panel20"), "url:" + g5.imgUrl + titleBg);
+}
+ee.setText(ee.getControl("panel18"), nickName);
+ee.setVisible(ee.getControl("panel18"), true);
+ee.setText(ee.getControl("panel21"), "@" + userName);
+ee.setVisible(ee.getControl("panel21"), true);
+var cy = ee.getControl("panel21").topRatio + ee.getControl("panel21").heightRatio;
+var vspace = 0.005;
+cy += vspace;
+if (note != "") {
+    ee.getControl("panel69").topRatio = cy;
+    ee.setText(ee.getControl("panel69"), note);
+    ee.setVisible(ee.getControl("panel69"), true);
+    ee.getControl("panel69").heightRatio = eb.getDivRect(ee.getControl("panel69").label).h / rootH;
+    cy += vspace + ee.getControl("panel69").heightRatio;
+}
+if (homePage != "") {
+    ee.getControl("layoutx6").topRatio = cy;
+    ee.setText(ee.getControl("layoutxitem12"), homePage);
+    ee.setVisible(ee.getControl("layoutx6"), true);
+    cy += vspace + ee.getControl("layoutx6").heightRatio;
+}
+
+ee.getControl("layoutx7").topRatio = cy;
+ee.setText(ee.getControl("layoutxitem14"), 
+    regDatetime.substr(0,4) + "年" + parseInt(regDatetime.substr(5,2)) + "月" + parseInt(regDatetime.substr(8,2)) + "日" + "加入");
+ee.setVisible(ee.getControl("layoutx7"), true);
+cy += vspace + ee.getControl("layoutx7").heightRatio;
+
+ee.getControl("panel72").topRatio = cy;
+//ee.setText(ee.getControl("panel72"), note);
+ee.setVisible(ee.getControl("panel72"), true);
+cy += vspace + ee.getControl("panel72").heightRatio;
+
+ee.getControl("panel73").topRatio = cy;
+ee.setVisible(ee.getControl("panel73"), true);
+cy += vspace + ee.getControl("panel73").heightRatio;
+
+var i, item;
+var root = ee.getControl("panel16"); 
+//g5.itemsPageUser  
+var cy = cy * rootH;
+for (i=0; i< g5.datasetPageUser.rowCount; i++) {
+    /*
+    item = g5.appendItem(
+        root,
+        cy, "puser" + i + "_",
+        userName, nickName,
+        g5.getMins(g5.datasetPageUser.getData(1,i)),
+        g5.datasetPageUser.getData(0,i),
+        photo,
+        g5.datasetPageUser.getData(4,i),
+        g5.datasetPageUser.getData(3,i),
+        g5.datasetPageUser.getData(5,i),
+        g5.datasetPageUser.getData(6,i),
+        g5.datasetPageUser.getData(7,i)
+        );
+    */
+    item = g5.appendItem(
+        root,
+        cy, "puser" + i + "_",
+        g5.datasetPageUser.getData(8,i),
+        g5.datasetPageUser.getData(9,i),
+        g5.getMins(g5.datasetPageUser.getData(1,i)),
+        g5.datasetPageUser.getData(0,i),
+        g5.datasetPageUser.getData(10,i),
+        g5.datasetPageUser.getData(4,i),
+        g5.datasetPageUser.getData(3,i),
+        g5.datasetPageUser.getData(5,i),
+        g5.datasetPageUser.getData(6,i),
+        g5.datasetPageUser.getData(7,i),
+        g5.getMins(g5.datasetPageUser.getData(11,i)),
+        g5.datasetPageUser.getData(12,i),
+        g5.datasetPageUser.getData(13,i),
+        g5.datasetPageUser.getData(14,i),
+        g5.datasetPageUser.getData(15,i),
+        g5.datasetPageUser.getData(16,i),
+        g5.datasetPageUser.getData(17,i)
+        );        
+        
+    g5.itemsPageUser.push(item);
+    cy += 2 + eb.getDivRect(item).h;    
+}
+
+eb.processDock();
+
+
+
+]]></script3>
+    </taskSetItem>
+    <taskSetItem name="follow">
+      <script1>if (follow.follow) {
+    if (!confirm("您是否确定要取消关注该用户？")) return;
+    eio.appendString16("T");
+} else {
+    if (!confirm("您确定要关注该用户？")) return;
+    eio.appendString16("F");
+}
+eio.appendString16(g5.token);
+eio.appendString16(follow.userId);
+
+
+
+</script1>
+      <script2><![CDATA[var follow = eio.readString16();
+var token = eio.readString16();
+var userId = eio.readString16();
+var sql,sqlResult; 
+
+sql = "exec getUserInfoBySession '" + db.encode(token) + "'";
+sqlResult = db.executeQuery("DB", sql);
+if (sqlResult == null) {
+    eio.appendString8("F");
+    eio.appendString8("系统繁忙请稍后再试");
+    return;
+}
+db.read(sqlResult);
+if (db.getString(sqlResult, "sessionId").length < 5) {
+    eio.appendString8("F");
+    eio.appendString8("上次登录时间太久或者您更换了系统");
+    es.logCommon("用户token登录失败,token=" + token);
+    return;
+}
+var myUserId = db.getString(sqlResult,"id");
+if (myUserId == userId) {
+    eio.appendString8("F");
+    eio.appendString8("关注自己就没意思了吧？");
+    return;
+}
+
+if (follow == "T") {
+    sql = "delete follow where userId = " + myUserId + " and followId = " + userId;
+} else {
+    sql = "insert into follow (userId, followId) values (" + myUserId + "," + userId + ")";
+}
+if (!db.executeNoneQuery("DB", sql)) {
+    eio.appendString8("F");
+    eio.appendString8("系统繁忙请稍后再试");
+    return;
+}
+
+eio.appendString8("T");
+eio.appendString8(follow);
+]]></script2>
+      <script3>if (eio.readString8() != "T") {
+    alert(eio.readString8());
+    return;
+}
+var f = eio.readString8();
+if (f == "T") {
+    ee.getControl("panel19").follow = false;
+    ee.setText(ee.getControl("panel19"), "关注");
+} else {
+    ee.getControl("panel19").follow = true;
+    ee.setText(ee.getControl("panel19"), "正在关注");
+}
+</script3>
+    </taskSetItem>
+    <taskSetItem name="showChat">
+      <script1><![CDATA[var c;
+if (showChat.chatId == 0) {
+    c = ee.getControl("layoutyitem12");
+    while (c.eeChildren.length>0) ee.removeControl(c.eeChildren[0]);
+    c.scrollTop = "0px";
+}
+
+eio.appendString16(g5.token);
+eio.appendString16(showChat.userName);
+eio.appendString16(showChat.chatId + "");
+
+
+
+
+
+
+
+
+
+]]></script1>
+      <script2><![CDATA[var token = eio.readString16();
+var username = eio.readString16();
+var chatId = parseInt(eio.readString16());
+var sql,sqlResult;  
+
+sql = "exec getUserInfoBySession '" + db.encode(token) + "'";
+sqlResult = db.executeQuery("DB", sql);
+if (sqlResult == null) {
+    eio.appendString8("F");
+    eio.appendString8("系统繁忙请稍后再试");
+    return;
+}
+db.read(sqlResult);
+if (db.getString(sqlResult, "sessionId").length < 5) {
+    eio.appendString8("F");
+    eio.appendString8("上次登录时间太久或者您更换了系统");
+    es.logCommon("用户token登录失败,token=" + token);
+    return;
+} 
+var myUserId = parseInt(db.getString(sqlResult,"id"));
+eio.appendString8("T");
+eio.appendString16(db.getString(sqlResult,"id"));
+eio.appendString16(db.getString(sqlResult,"nickName"));
+eio.appendString16(db.getString(sqlResult,"userName"));
+eio.appendString16(db.getString(sqlResult,"photo"));
+
+
+sql = "select * from userInfo where userName='" + db.encode(username) + "'"; 
+sqlResult = db.executeQuery("DB", sql);
+if (sqlResult == null) {
+    eio.appendString8("F");
+    eio.appendString8("系统繁忙请稍后再试");
+    return;
+}
+if (!db.read(sqlResult)) {
+    eio.appendString8("F");
+    eio.appendString8("用户不存在");
+    return;
+}
+var userId = parseInt(db.getString(sqlResult, "id"));
+eio.appendString16(db.getString(sqlResult,"id"));
+eio.appendString16(db.getString(sqlResult,"nickName"));
+eio.appendString16(db.getString(sqlResult,"userName"));
+eio.appendString16(db.getString(sqlResult,"photo"));
+
+sql = "select top(30) * from chat where " +
+    "(sendUserId=" + myUserId + " and recvUserId=" + userId + ") " +
+    " or (sendUserId=" + userId + " and recvUserId=" + myUserId + ") ";
+if (chatId>0) {
+    sql += " and id>" + chatId + " ";
+}
+sql += " order by id";
+sqlResult = db.executeQuery("DB", sql);
+if (sqlResult == null) {
+    eio.appendString8("F");
+    eio.appendString8("系统繁忙请稍后再试");
+    return;
+}
+eio.appendDataSet(sqlResult,"id,regDatetime,sendUserId,recvUserId,content,photo1", 0, 99999);
+ 
+    
+
+
+
+
+]]></script2>
+      <script3><![CDATA[if (eio.readString8()!="T") {
+    alert(eio.readString8());
+    return;
+}
+
+showChat.myUserId = eio.readString16();
+showChat.myNickName = eio.readString16();
+showChat.myUserName = eio.readString16();
+showChat.myphoto = eio.readString16();
+showChat.chatUserId = eio.readString16();
+showChat.chatNickName = eio.readString16();
+showChat.chatUserName = eio.readString16();
+showChat.chatPhoto = eio.readString16();
+showChat.dataset = eio.readDataSet();
+
+ee.setText(ee.getControl("panel118"), 
+    "<b>" + showChat.chatNickName + "</b><br>" +
+    "@" + showChat.chatUserName
+    );
+
+var root = ee.getControl("layoutyitem12");
+var y = 0;
+var c;
+var rect;
+if (root.eeChildren.length>0) {
+    rect = eb.getDivRect(root.eeChildren[root.eeChildren.length-1]);
+    y = rect.h + rect.y;
+}
+rect = eb.getDivRect(root);
+var rw = rect.w;
+var rh = rect.h;
+y += rh * 0.05;
+var hd = "pch_";
+for (var i = 0; i < showChat.dataset.rowCount; i++) {
+    var left = true;
+    if (parseInt(showChat.dataset.getData(2,i))==parseInt(showChat.myUserId)) {
+        left = false;
+    }
+    //user photo
+    var hd1 = "u" + showChat.dataset.getData(0,i);
+    if (left) {
+        c = createPanel(root, hd+hd1+"panel13", "", parseInt(rw*0.0296), y, parseInt(rw*0.1002),  parseInt(rw*0.1002));
+    } else {
+        c = createPanel(root, hd+hd1+"panel13", "", parseInt(rw*0.8405), y, parseInt(rw*0.1002),  parseInt(rw*0.1002));
+    }
+    eb.setDock(c,"disabled","disabled");
+    c = createPanel($g(hd+hd1+"panel13"), hd+hd1+"panel14", "", 0, 0, 79, 77);
+    var photo;
+    if (left) {
+        photo = showChat.chatPhoto;
+    } else {
+        photo = showChat.myphoto
+    }
+    if (photo == "") {
+        ee.setImage(c,"/twitterG/main/user.png","trim","","")
+    } else {
+        ee.setImage(c,"url:" + g5.imgUrl + photo,"trim","","")
+    }
+    eb.setDock(c,"fill","fill");
+    eb.setOuter(c,1,1,1,1);
+    c = createPanel($g(hd+hd1+"panel13"), hd+hd1+"panel15", "", 0, 0, 79, 77);
+    ee.setImage(c,"/twitterG/main/home/cirMask.png","trim","","")
+    eb.setDock(c,"fill","fill");
+    //content
+    c = createPanel(root, hd+hd1+"panel2", "", rw*0.1549, y+rw*0.01, parseInt(rw*0.55), 45);
+    if (left) {
+        addSkin(c, "/twitterG/skins/button1.png","9x",37,36,16,16,4,4,17,2,4,32);
+    } else {
+        addSkin(c, "/twitterG/skins/twitterG002.png","9x",37,36,16,16,4,4,17,2,4,32);
+    }
+    addText(c, "a", "left", "center", "黑体", 9, "FFFFFF", "normal");
+    c.label.style.whiteSpace = "nowrap";
+    eb.setFontSizeAuto(c, 24);
+    ee.setText(c, showChat.dataset.getData(4,i));
+    eb.processDock();
+    eb.setDivRect(c.label, null, null, 10,10);
+    rect = eb.getDivRect(c.label);
+    if (rect.w > parseInt(rw*0.55)) {
+        c.label.style.whiteSpace = "pre-wrap";
+        eb.setDivRect(c.label, null, null, parseInt(rw*0.55),10);
+        rect = eb.getDivRect(c.label);
+    }
+    ee.setRect(c, null, null, rect.w + 32, rect.h + 32);
+    rect = eb.getDivRect(c);
+    if (!left) {
+        ee.setRect(c, rw*0.82 - rect.w, null, null, null)
+    }
+    y += rect.h + rw * 0.008;
+    
+    //time
+    c = createPanel(root, hd+hd1+"panel5", "", rw*0.15489, y, rw*0.65, rh*0.051127);
+    var s = showChat.dataset.getData(1,i);
+    s = parseInt(s.substr(5,2)) + "月" + parseInt(s.substr(8,2)) + "日  " + s.substr(11,8);
+    if (left) {
+        addText(c,s, "left", "middle", "黑体", 9, "808080", "bold");
+    } else {
+        addText(c,s, "right", "middle", "黑体", 9, "808080", "bold");
+    }
+    eb.setFontSizeAuto(c, 24);
+    
+    /*
+    c = createPanel($g("ee_layoutyitem12"), hd+hd1+"pl3", "", rw*0.713, y, rw * 0.8, rh * 0.0451);
+    addSkin(c, "/twitterG/skins/twitterG002.png","9x",37,36,16,16,4,4,17,2,4,32);
+    addText(c, "a", "left", "top", "黑体", 9, "FFFFFF", "normal");
+    eb.setFontSizeAuto(c, 24);
+    */
+        
+    rect = eb.getDivRect(c);
+    y += rect.h + rw * 0.03;
+
+
+}
+
+eb.processDock();]]></script3>
+    </taskSetItem>
+    <taskSetItem name="sendChat">
+      <script1><![CDATA[var content = ee.getEditText(ee.getControl("edit6"));
+if (content.length<=0) return;
+eio.appendString16(g5.token);
+eio.appendString16(showChat.chatUserId + "");
+eio.appendString16(content);]]></script1>
+      <script2><![CDATA[var token = eio.readString16();
+var chatUserId = parseInt(eio.readString16());
+var content = eio.readString16();
+var sql,sqlResult;  
+
+sql = "exec getUserInfoBySession '" + db.encode(token) + "'";
+sqlResult = db.executeQuery("DB", sql);
+if (sqlResult == null) {
+    eio.appendString8("F");
+    eio.appendString8("系统繁忙请稍后再试");
+    return;
+}
+db.read(sqlResult);
+if (db.getString(sqlResult, "sessionId").length < 5) {
+    eio.appendString8("F");
+    eio.appendString8("上次登录时间太久或者您更换了系统");
+    es.logCommon("用户token登录失败,token=" + token);
+    return;
+} 
+var myUserId = parseInt(db.getString(sqlResult,"id"));
+
+sql = "insert into chat (sendUserId, recvUserId, [content], photo1) values (" +
+    myUserId +
+    "," + chatUserId + 
+    ",'" + db.encode(content) + "'" +
+    ",'')";
+if (!db.executeNoneQuery("DB", sql)) {
+    eio.appendString8("F");
+    eio.appendString8("系统繁忙");
+    es.logCommon("sql执行错误,sql=" + sql);
+    return;
+}
+
+eio.appendString8("T");
+]]></script2>
+      <script3>if (eio.readString8() != "T") {
+    alert(eio.readString8());
+    return;
+}
+ee.setEditText(ee.getControl("edit6"), "");
+showChat();</script3>
+    </taskSetItem>
+    <taskSetItem name="showChatList">
+      <script1>eio.appendString16(g5.token);
+</script1>
+      <script2><![CDATA[var token = eio.readString16();
+var sql,sqlResult;  
+
+sql = "exec getUserInfoBySession '" + db.encode(token) + "'";
+sqlResult = db.executeQuery("DB", sql);
+if (sqlResult == null) {
+    eio.appendString8("F");
+    eio.appendString8("系统繁忙请稍后再试");
+    return;
+}
+db.read(sqlResult);
+if (db.getString(sqlResult, "sessionId").length < 5) {
+    eio.appendString8("F");
+    eio.appendString8("上次登录时间太久或者您更换了系统");
+    es.logCommon("用户token登录失败,token=" + token);
+    return;
+} 
+var myUserId = parseInt(db.getString(sqlResult,"id"));
+
+sql =
+    "SELECT TOP (30) derivedtbl_2.chatUserId, derivedtbl_2.maxId, " +
+    "      dbo.chat.regDatetime, dbo.chat.[content], dbo.chat.photo1, dbo.userInfo.nickName,  " +
+    "      dbo.userInfo.userName, dbo.userInfo.photo " +
+    "FROM (SELECT chatUserId, MAX(id) AS maxId " +
+    "        FROM (SELECT CASE WHEN sendUserId = " + myUserId + " THEN recvUserId WHEN recvUserId = " + myUserId + " " +
+    "                       THEN sendUserId ELSE - 1 END AS chatUserId, id " +                 
+    "                FROM dbo.chat AS t1 " +
+    "                WHERE (sendUserId = " + myUserId + ") OR " +
+    "                      (recvUserId = " + myUserId + ")) AS derivedtbl_1 " +
+    "        GROUP BY chatUserId) AS derivedtbl_2 INNER JOIN " +
+    "      dbo.chat ON derivedtbl_2.maxId = dbo.chat.id INNER JOIN " +
+    "      dbo.userInfo ON derivedtbl_2.chatUserId = dbo.userInfo.id " +
+    "ORDER BY derivedtbl_2.maxId DESC     ";
+sqlResult = db.executeQuery("DB", sql);
+if (sqlResult == null) {
+    eio.appendString8("F");
+    eio.appendString8("系统繁忙请稍后再试");
+    return;
+}
+eio.appendString8("T");
+eio.appendDataSet(sqlResult,"chatUserId,maxId,regDatetime,content,photo1,nickName,userName,photo", 0, 99999);
+
+
+
+
+]]></script2>
+      <script3><![CDATA[if (eio.readString8()!="T") {
+    alert(eio.readString8());
+    return;
+}
+showChatList.dataset = eio.readDataSet();
+
+var root = ee.getControl("layoutyitem10");
+var y = 0;
+var c,s,hd;
+var rect;
+rect = eb.getDivRect(root);
+var rw = rect.w;
+while (root.eeChildren.length>0) ee.removeControl(root.eeChildren[0]);
+for (var i = 0; i < showChatList.dataset.rowCount; i++) {
+    hd = "clist_" + i;
+    c = createPanel(root, hd+"panel4", "", 0, y, rw, parseInt(rw*0.1735));
+    y += parseInt(rw*0.1735);
+    c.style.cursor="pointer";
+    c.userName = showChatList.dataset.getData(6,i);
+    ee.setOnClick(c,function(sender,event) {
+        showChat.userName = sender.userName;
+        showChat.chatId = 0;
+        ee.showAni(ee.getControl("panel116"), 0);
+    });
+    c = createPanel($g(hd+"panel4"), hd+"panel2", "C0C0C0", 0, 75, 439, 1);
+    eb.setDock(c,"fill","bottom");
+    c = createPanel($g(hd+"panel4"), hd+"panel13", "", 11, 7, 62, 62);
+    eb.setDock(c,"ratio","ratio");
+    c.leftRatio=0.0250569476082005;
+    c.widthRatio=0.14123006833713;
+    c.topRatio=0.0921052631578947;
+    c.heightRatio=0.815789473684211;
+    c = createPanel($g(hd+"panel13"), hd+"panel14", "", 1, 1, 60, 60);
+    eb.setOuter(c,1,1,1,1);
+    if (showChatList.dataset.getData(7,i) == "") {
+        ee.setImage(c,"/twitterG/main/user.png","trim","","")
+    } else {
+        ee.setImage(c,"url:" + g5.imgUrl + showChatList.dataset.getData(7,i),"trim","","")
+    }    
+    eb.setDock(c,"fill","fill");
+    c = createPanel($g(hd+"panel13"), hd+"panel15", "", 0, 0, 62, 62);
+    ee.setImage(c,"/twitterG/main/page4/cirMask.png","trim","","")
+    eb.setDock(c,"fill","fill");
+    c = createPanel($g(hd+"panel4"), hd+"panel3", "", 97, 10, 246, 29);
+    addText(c, "<b>" + showChatList.dataset.getData(5,i) + "</b>" +
+        "<font color = '#A0A0A0'>@" + showChatList.dataset.getData(6,i) + "</font>",
+        "left", "middle", "黑体", 9, "000000", "normal");
+    eb.setFontSizeAuto(c, 24);
+    eb.setDock(c,"ratio","ratio");
+    c.leftRatio=0.220956719817768;
+    c.widthRatio=0.560364464692483;
+    c.topRatio=0.131578947368421;
+    c.heightRatio=0.381578947368421;
+    c = createPanel($g(hd+"panel4"), hd+"panel5", "", 97, 36, 246, 29);
+    s = showChatList.dataset.getData(3,i);
+    if (s.length > 12) {
+        s = s.substr(0,12) + "...";
+    } 
+    addText(c, s, "left", "middle", "黑体", 9, "000000", "normal");
+    eb.setFontSizeAuto(c, 24);
+    eb.setDock(c,"ratio","ratio");
+    c.leftRatio=0.220956719817768;
+    c.widthRatio=0.560364464692483;
+    c.topRatio=0.473684210526316;
+    c.heightRatio=0.381578947368421;
+    c = createPanel($g(hd+"panel4"), hd+"panel6", "", 352, 10, 85, 55);
+    s = showChatList.dataset.getData(2,i);
+    s = parseInt(s.substr(5,2)) + "月" + parseInt(s.substr(8,2)) + "日";
+    addText(c, s, "left", "middle", "黑体", 9, "808080", "normal");
+    eb.setFontSizeAuto(c, 28);
+    eb.setDock(c,"ratio","ratio");
+    c.leftRatio=0.801822323462415;
+    c.widthRatio=0.193621867881549;
+    c.topRatio=0.131578947368421;
+    c.heightRatio=0.723684210526316;
+    
+        
+}
+eb.processDock();
+
+]]></script3>
+    </taskSetItem>
+  </taskSet>
+  <gridLines count="0" />
+</page>

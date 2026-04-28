@@ -1,0 +1,98 @@
+<page>
+  <controls count="5">
+    <control type="DivRoot" pathname="/divRoot">
+      <backgroundColor>ffffff</backgroundColor>
+      <backgroundImg>login.jpg</backgroundImg>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>583</height>
+      <left>0</left>
+      <onControlLoad>eb.processDock();</onControlLoad>
+      <pageTitle>拳头聊天室</pageTitle>
+      <top>0</top>
+      <width>860</width>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel2">
+      <dockX>fill</dockX>
+      <height>239</height>
+      <heightRatio>0.300251256281407</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <note>a1</note>
+      <sizeRatio>0.210202286719437</sizeRatio>
+      <top>183</top>
+      <topRatio>0.229899497487437</topRatio>
+      <width>860</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel2/panel3">
+      <backgroundImgMode>fill</backgroundImgMode>
+      <dockX>center</dockX>
+      <fontBold>true</fontBold>
+      <fontFamily>arial</fontFamily>
+      <fontSize>24</fontSize>
+      <height>49</height>
+      <heightRatio>0.205020920502092</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>247</left>
+      <leftRatio>0.338610378188215</leftRatio>
+      <sizeRatio>0.133879781420765</sizeRatio>
+      <text><![CDATA[FIS<font color=#ff0000>T</font>ALK]]></text>
+      <top>137</top>
+      <topRatio>0.573221757322176</topRatio>
+      <width>366</width>
+      <widthRatio>0.321899736147757</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel2/panel4">
+      <backgroundImg>fist.jpg</backgroundImg>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <dockX>center</dockX>
+      <height>113</height>
+      <heightRatio>0.472803347280335</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>247</left>
+      <leftRatio>0.339489885664028</leftRatio>
+      <sizeRatio>0.30958904109589</sizeRatio>
+      <top>24</top>
+      <topRatio>0.100418410041841</topRatio>
+      <width>365</width>
+      <widthRatio>0.321020228671944</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel2/panel6">
+      <backgroundImgMode>fill</backgroundImgMode>
+      <dockX>center</dockX>
+      <fontBold>true</fontBold>
+      <fontFamily>微软雅黑</fontFamily>
+      <fontSize>16</fontSize>
+      <height>33</height>
+      <heightRatio>0.138075313807531</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>294</left>
+      <leftRatio>0.379947229551451</leftRatio>
+      <sizeRatio>0.121323529411765</sizeRatio>
+      <text>拳头聊天室</text>
+      <top>174</top>
+      <topRatio>0.728033472803347</topRatio>
+      <width>272</width>
+      <widthRatio>0.239226033421284</widthRatio>
+    </control>
+  </controls>
+  <taskSet count="0" />
+  <gridLines count="0" />
+  <g5Items count="1">
+    <item name="pushHistory2" type="20">
+      <varValue />
+      <functionParam>getString</functionParam>
+      <functionCode><![CDATA[var url = new URL(window.location.href);
+var header = url.origin;
+
+if (g5.notPushHistoryCount>0) {
+    g5.notPushHistoryCount--;
+    return;
+}
+window.history.pushState({},"",url.origin+getString);
+]]></functionCode>
+    </item>
+  </g5Items>
+</page>

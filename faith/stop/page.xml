@@ -1,0 +1,108 @@
+<page>
+  <controls count="5">
+    <control type="DivRoot" pathname="/divRoot">
+      <backgroundColor>ffffff</backgroundColor>
+      <backgroundImg>login.jpg</backgroundImg>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>766</height>
+      <left>0</left>
+      <pageHead><![CDATA[<meta name="viewport" content="width=450,user-scalable=no" />]]></pageHead>
+      <pageTitle>FISTALK停机维护公告</pageTitle>
+      <top>0</top>
+      <width>909</width>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel1">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>center</dockX>
+      <dockY>center</dockY>
+      <height>504</height>
+      <heightRatio>0.657963446475196</heightRatio>
+      <left>279</left>
+      <leftRatio>0.306930693069307</leftRatio>
+      <onCreate>sender.style.boxSizing="border-box";
+sender.style.borderWidth = "1px";
+sender.style.borderColor = "#a0a0a0";
+sender.style.borderStyle = "solid";
+sender.style.borderRadius = "10px";
+sender.style.boxShadow = "5px 5px 15px #808080";
+</onCreate>
+      <outerBottom>100</outerBottom>
+      <sizeRatio>1.44</sizeRatio>
+      <top>81</top>
+      <topRatio>0.171018276762402</topRatio>
+      <width>350</width>
+      <widthRatio>0.385038503850385</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel1/panel2">
+      <dockX>center</dockX>
+      <fontBold>true</fontBold>
+      <fontColor>800000</fontColor>
+      <fontFamily>'Segoe UI', Meiryo, system-ui, -apple-system, BlinkMacSystemFont, sans-serif</fontFamily>
+      <fontSize>18</fontSize>
+      <height>45</height>
+      <heightRatio>0.0892857142857143</heightRatio>
+      <left>27</left>
+      <leftRatio>0.0771428571428571</leftRatio>
+      <sizeRatio>0.152542372881356</sizeRatio>
+      <text>临时停机维护公告</text>
+      <top>7</top>
+      <topRatio>0.0138888888888889</topRatio>
+      <width>295</width>
+      <widthRatio>0.842857142857143</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel1/panel2/panel3">
+      <backgroundColor>800000</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <fontBold>true</fontBold>
+      <fontColor>800000</fontColor>
+      <fontFamily>'Segoe UI', Meiryo, system-ui, -apple-system, BlinkMacSystemFont, sans-serif</fontFamily>
+      <fontSize>18</fontSize>
+      <height>2</height>
+      <heightRatio>0.0444444444444444</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.00743494423791822</sizeRatio>
+      <top>43</top>
+      <topRatio>0.955555555555556</topRatio>
+      <width>295</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel1/panel4">
+      <dockX>center</dockX>
+      <fontColor>808080</fontColor>
+      <fontFamily>'Segoe UI', Meiryo, system-ui, -apple-system, BlinkMacSystemFont, sans-serif</fontFamily>
+      <fontSize>11</fontSize>
+      <hAlign>left</hAlign>
+      <height>422</height>
+      <heightRatio>0.837301587301587</heightRatio>
+      <left>34</left>
+      <leftRatio>0.0971428571428571</leftRatio>
+      <sizeRatio>1.50177935943061</sizeRatio>
+      <text><![CDATA[<b>亲爱的FISTALK用户：</b>
+　　
+为了提供更便捷、高效的服务，我们拟于近期对服务器系统和网络系统进行升级，具体时间安排如下：
+
+北京时间2022年9月27日（周二）9:30~14：00进行临时停机维护。
+
+届时您将不能正常登录本网站。
+
+※停机结束时刻有可能根据工作进度提前或者延后，若时间变更请及时关注官网公告！
+
+感谢各位对于《FISTALK》的支持与厚爱！
+
+--FISTALK技术团队]]></text>
+      <top>63</top>
+      <topRatio>0.125</topRatio>
+      <vAlign>top</vAlign>
+      <width>281</width>
+      <widthRatio>0.802857142857143</widthRatio>
+    </control>
+  </controls>
+  <taskSet count="0" />
+  <gridLines count="0" />
+  <g5Items count="0" />
+</page>

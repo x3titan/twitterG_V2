@@ -1,0 +1,628 @@
+<page>
+  <controls count="22">
+    <control type="DivRoot" pathname="/divRoot">
+      <backgroundColor>ffffff</backgroundColor>
+      <backgroundImg>xz_bn.png</backgroundImg>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>796</height>
+      <left>0</left>
+      <onControlLoad>getMyUserInfo.onComplete = function(dataset) {
+    ee.setText(ee.getControl("panel10"),dataset.getData(0,0));
+    ee.setText(ee.getControl("panel8"),dataset.getData(4,0));
+    ee.setEditText(ee.getControl("edit6"),dataset.getData(8,0));
+    ee.setEditText(ee.getControl("edit7"),dataset.getData(6,0));
+    ee.setEditText(ee.getControl("edit3"),dataset.getData(7,0));
+    ee.setEditText(ee.getControl("edit1"),dataset.getData(9,0));
+    ee.setEditText(ee.getControl("edit4"),"");
+    ee.setEditText(ee.getControl("edit5"),"");
+}
+getMyUserInfo();
+
+
+</onControlLoad>
+      <top>0</top>
+      <width>1137</width>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel1">
+      <aniAlpha>appear:渐变出现</aniAlpha>
+      <aniPos>leftFlyIn:左侧飞入</aniPos>
+      <backgroundColor>008080</backgroundColor>
+      <backgroundSkin>edit2</backgroundSkin>
+      <dockY>center</dockY>
+      <fontColor>727272</fontColor>
+      <height>614</height>
+      <heightRatio>0.771356783919598</heightRatio>
+      <left>82</left>
+      <leftRatio>0.0721196130167106</leftRatio>
+      <sizeRatio>0.990322580645161</sizeRatio>
+      <top>91</top>
+      <topRatio>0.114321608040201</topRatio>
+      <width>620</width>
+      <widthRatio>0.545294635004398</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel1/panel2">
+      <fontBold>true</fontBold>
+      <fontColor>198DC9</fontColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSize>14</fontSize>
+      <hAlign>left</hAlign>
+      <height>36</height>
+      <heightRatio>0.0586319218241042</heightRatio>
+      <left>28</left>
+      <leftRatio>0.0451612903225806</leftRatio>
+      <sizeRatio>0.115755627009646</sizeRatio>
+      <text>用户信息资料卡</text>
+      <top>14</top>
+      <topRatio>0.0228013029315961</topRatio>
+      <width>311</width>
+      <widthRatio>0.501612903225806</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel1/panel3">
+      <backgroundColor>198DC9</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <height>2</height>
+      <heightRatio>0.00325732899022801</heightRatio>
+      <left>30</left>
+      <leftRatio>0.0483870967741935</leftRatio>
+      <outerLeft>30</outerLeft>
+      <outerRight>30</outerRight>
+      <sizeRatio>0.00357142857142857</sizeRatio>
+      <top>52</top>
+      <topRatio>0.0846905537459283</topRatio>
+      <width>560</width>
+      <widthRatio>0.903225806451613</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel1/panel4">
+      <fontBold>true</fontBold>
+      <fontColor>198DC9</fontColor>
+      <hAlign>right</hAlign>
+      <height>36</height>
+      <heightRatio>0.0586319218241042</heightRatio>
+      <left>52</left>
+      <leftRatio>0.0838709677419355</leftRatio>
+      <sizeRatio>0.507042253521127</sizeRatio>
+      <text>用户ID</text>
+      <top>66</top>
+      <topRatio>0.107491856677524</topRatio>
+      <width>71</width>
+      <widthRatio>0.114516129032258</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel1/panel6">
+      <fontBold>true</fontBold>
+      <fontColor>198DC9</fontColor>
+      <hAlign>right</hAlign>
+      <height>36</height>
+      <heightRatio>0.0586319218241042</heightRatio>
+      <left>52</left>
+      <leftRatio>0.0838709677419355</leftRatio>
+      <sizeRatio>0.507042253521127</sizeRatio>
+      <text>账号</text>
+      <top>103</top>
+      <topRatio>0.167752442996743</topRatio>
+      <width>71</width>
+      <widthRatio>0.114516129032258</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel1/panel7">
+      <fontBold>true</fontBold>
+      <fontColor>198DC9</fontColor>
+      <hAlign>right</hAlign>
+      <height>36</height>
+      <heightRatio>0.0586319218241042</heightRatio>
+      <left>52</left>
+      <leftRatio>0.0838709677419355</leftRatio>
+      <sizeRatio>0.507042253521127</sizeRatio>
+      <text>备注信息</text>
+      <top>341</top>
+      <topRatio>0.555374592833876</topRatio>
+      <width>71</width>
+      <widthRatio>0.114516129032258</widthRatio>
+    </control>
+    <control type="Button" pathname="/divRoot/panel1/button1">
+      <backgroundSkin>TCloud000</backgroundSkin>
+      <backgroundSkin1>LRBtn7</backgroundSkin1>
+      <backgroundSkin2>LRBtn7</backgroundSkin2>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>FFFFFF</fontColor>
+      <fontColor1>FFFFFF</fontColor1>
+      <fontColor2>FFFFFF</fontColor2>
+      <height>39</height>
+      <heightRatio>0.0635179153094463</heightRatio>
+      <left>407</left>
+      <leftRatio>0.656451612903226</leftRatio>
+      <onClick><![CDATA[modifyMyUserInfo.nickName = ee.getEditText(ee.getControl("edit6"));
+if (modifyMyUserInfo.nickName.length<=3) {
+    alert("用户名太短，至少要3个英文字母或者汉字");
+    return;
+}
+modifyMyUserInfo.mobile = ee.getEditText(ee.getControl("edit7"));
+modifyMyUserInfo.email = ee.getEditText(ee.getControl("edit3"));
+modifyMyUserInfo.note = ee.getEditText(ee.getControl("edit1"));
+modifyMyUserInfo.passwd = ee.getEditText(ee.getControl("edit4"));
+if ((modifyMyUserInfo.passwd.length<6) &amp;&amp; (modifyMyUserInfo.passwd.length>0)) {
+    alert("密码长度至少是6位的英文字母");
+    return;
+}
+if (modifyMyUserInfo.passwd!=ee.getEditText(ee.getControl("edit5"))) {
+    alert("您两次输入的密码不一致");
+    return;
+}
+modifyMyUserInfo.onComplete = function() {
+    alert("用户信息修改完成");
+    getMyUserInfo.onComplete = function(dataset) {
+        ee.setText(ee.getControl("panel10"),dataset.getData(0,0));
+        ee.setText(ee.getControl("panel8"),dataset.getData(4,0));
+        ee.setEditText(ee.getControl("edit6"),dataset.getData(8,0));
+        ee.setEditText(ee.getControl("edit7"),dataset.getData(6,0));
+        ee.setEditText(ee.getControl("edit3"),dataset.getData(7,0));
+        ee.setEditText(ee.getControl("edit1"),dataset.getData(9,0));
+        ee.setEditText(ee.getControl("edit4"),"");
+        ee.setEditText(ee.getControl("edit5"),"");
+    }
+    getMyUserInfo();    
+}
+modifyMyUserInfo();]]></onClick>
+      <sizeRatio>0.276595744680851</sizeRatio>
+      <text>　修 改</text>
+      <top>498</top>
+      <topRatio>0.811074918566775</topRatio>
+      <width>141</width>
+      <widthRatio>0.22741935483871</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel1/button1/panel15">
+      <backgroundImg>i087_10.png</backgroundImg>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <height>18</height>
+      <heightRatio>0.461538461538462</heightRatio>
+      <left>30</left>
+      <leftRatio>0.212765957446809</leftRatio>
+      <outerBottom>5</outerBottom>
+      <outerLeft>5</outerLeft>
+      <outerRight>5</outerRight>
+      <outerTop>5</outerTop>
+      <sizeRatio>0.642857142857143</sizeRatio>
+      <top>8</top>
+      <topRatio>0.205128205128205</topRatio>
+      <width>28</width>
+      <widthRatio>0.198581560283688</widthRatio>
+    </control>
+    <control type="Edit" pathname="/divRoot/panel1/edit1">
+      <backgroundSkin>edit2</backgroundSkin>
+      <height>140</height>
+      <heightRatio>0.228013029315961</heightRatio>
+      <inputFontBold>true</inputFontBold>
+      <inputFontColor>808080</inputFontColor>
+      <left>133</left>
+      <leftRatio>0.214516129032258</leftRatio>
+      <multiLine>true</multiLine>
+      <sizeRatio>0.334928229665072</sizeRatio>
+      <top>347</top>
+      <topRatio>0.56514657980456</topRatio>
+      <width>418</width>
+      <widthRatio>0.674193548387097</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel1/panel10">
+      <fontBold>true</fontBold>
+      <fontColor>198DC9</fontColor>
+      <hAlign>left</hAlign>
+      <height>36</height>
+      <heightRatio>0.0586319218241042</heightRatio>
+      <left>133</left>
+      <leftRatio>0.214516129032258</leftRatio>
+      <sizeRatio>0.346153846153846</sizeRatio>
+      <text>0</text>
+      <top>66</top>
+      <topRatio>0.107491856677524</topRatio>
+      <width>104</width>
+      <widthRatio>0.167741935483871</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel1/panel33">
+      <fontBold>true</fontBold>
+      <fontColor>198DC9</fontColor>
+      <hAlign>right</hAlign>
+      <height>36</height>
+      <heightRatio>0.0586319218241042</heightRatio>
+      <left>52</left>
+      <leftRatio>0.0838709677419355</leftRatio>
+      <sizeRatio>0.507042253521127</sizeRatio>
+      <text>账户密码</text>
+      <top>266</top>
+      <topRatio>0.433224755700326</topRatio>
+      <width>71</width>
+      <widthRatio>0.114516129032258</widthRatio>
+    </control>
+    <control type="Edit" pathname="/divRoot/panel1/edit4">
+      <backgroundSkin>edit2</backgroundSkin>
+      <fontBold>true</fontBold>
+      <fontColor>C0C0C0</fontColor>
+      <height>36</height>
+      <heightRatio>0.0586319218241042</heightRatio>
+      <inputFontBold>true</inputFontBold>
+      <inputFontColor>808080</inputFontColor>
+      <inputPassword>true</inputPassword>
+      <left>133</left>
+      <leftRatio>0.214516129032258</leftRatio>
+      <sizeRatio>0.0861244019138756</sizeRatio>
+      <text>英文字母数字或标点符号，至少6位，区分大小写</text>
+      <top>266</top>
+      <topRatio>0.433224755700326</topRatio>
+      <width>418</width>
+      <widthRatio>0.674193548387097</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel1/panel34">
+      <fontBold>true</fontBold>
+      <fontColor>198DC9</fontColor>
+      <hAlign>right</hAlign>
+      <height>36</height>
+      <heightRatio>0.0586319218241042</heightRatio>
+      <left>52</left>
+      <leftRatio>0.0838709677419355</leftRatio>
+      <sizeRatio>0.507042253521127</sizeRatio>
+      <text>确认密码</text>
+      <top>307</top>
+      <topRatio>0.5</topRatio>
+      <width>71</width>
+      <widthRatio>0.114516129032258</widthRatio>
+    </control>
+    <control type="Edit" pathname="/divRoot/panel1/edit5">
+      <backgroundSkin>edit2</backgroundSkin>
+      <fontBold>true</fontBold>
+      <fontColor>C0C0C0</fontColor>
+      <height>36</height>
+      <heightRatio>0.0586319218241042</heightRatio>
+      <inputFontBold>true</inputFontBold>
+      <inputFontColor>808080</inputFontColor>
+      <inputPassword>true</inputPassword>
+      <left>133</left>
+      <leftRatio>0.214516129032258</leftRatio>
+      <sizeRatio>0.0861244019138756</sizeRatio>
+      <text>再次输入一遍刚才的密码</text>
+      <top>307</top>
+      <topRatio>0.5</topRatio>
+      <width>418</width>
+      <widthRatio>0.674193548387097</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel1/panel27">
+      <fontBold>true</fontBold>
+      <fontColor>198DC9</fontColor>
+      <hAlign>right</hAlign>
+      <height>36</height>
+      <heightRatio>0.0586319218241042</heightRatio>
+      <left>52</left>
+      <leftRatio>0.0838709677419355</leftRatio>
+      <sizeRatio>0.507042253521127</sizeRatio>
+      <text>用户名</text>
+      <top>145</top>
+      <topRatio>0.236156351791531</topRatio>
+      <width>71</width>
+      <widthRatio>0.114516129032258</widthRatio>
+    </control>
+    <control type="Edit" pathname="/divRoot/panel1/edit6">
+      <backgroundSkin>edit2</backgroundSkin>
+      <fontBold>true</fontBold>
+      <fontColor>C0C0C0</fontColor>
+      <height>36</height>
+      <heightRatio>0.0586319218241042</heightRatio>
+      <inputFontBold>true</inputFontBold>
+      <inputFontColor>808080</inputFontColor>
+      <left>133</left>
+      <leftRatio>0.214516129032258</leftRatio>
+      <sizeRatio>0.0861244019138756</sizeRatio>
+      <text>汉字组成的方便识别的名字，最好取真实姓名，至少2个字符或汉字</text>
+      <top>145</top>
+      <topRatio>0.236156351791531</topRatio>
+      <width>418</width>
+      <widthRatio>0.674193548387097</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel1/panel32">
+      <fontBold>true</fontBold>
+      <fontColor>198DC9</fontColor>
+      <hAlign>right</hAlign>
+      <height>36</height>
+      <heightRatio>0.0586319218241042</heightRatio>
+      <left>52</left>
+      <leftRatio>0.0838709677419355</leftRatio>
+      <sizeRatio>0.507042253521127</sizeRatio>
+      <text>联系手机</text>
+      <top>186</top>
+      <topRatio>0.302931596091205</topRatio>
+      <width>71</width>
+      <widthRatio>0.114516129032258</widthRatio>
+    </control>
+    <control type="Edit" pathname="/divRoot/panel1/edit7">
+      <backgroundSkin>edit2</backgroundSkin>
+      <fontBold>true</fontBold>
+      <fontColor>C0C0C0</fontColor>
+      <height>36</height>
+      <heightRatio>0.0586319218241042</heightRatio>
+      <inputFontBold>true</inputFontBold>
+      <inputFontColor>808080</inputFontColor>
+      <left>133</left>
+      <leftRatio>0.214516129032258</leftRatio>
+      <sizeRatio>0.0861244019138756</sizeRatio>
+      <text>方便联系的手机号码，可不填写</text>
+      <top>186</top>
+      <topRatio>0.302931596091205</topRatio>
+      <width>418</width>
+      <widthRatio>0.674193548387097</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel1/panel5">
+      <fontBold>true</fontBold>
+      <fontColor>198DC9</fontColor>
+      <hAlign>right</hAlign>
+      <height>36</height>
+      <heightRatio>0.0586319218241042</heightRatio>
+      <left>52</left>
+      <leftRatio>0.0838709677419355</leftRatio>
+      <sizeRatio>0.507042253521127</sizeRatio>
+      <text>电子邮件</text>
+      <top>226</top>
+      <topRatio>0.368078175895765</topRatio>
+      <width>71</width>
+      <widthRatio>0.114516129032258</widthRatio>
+    </control>
+    <control type="Edit" pathname="/divRoot/panel1/edit3">
+      <backgroundSkin>edit2</backgroundSkin>
+      <fontBold>true</fontBold>
+      <fontColor>C0C0C0</fontColor>
+      <height>36</height>
+      <heightRatio>0.0586319218241042</heightRatio>
+      <inputFontBold>true</inputFontBold>
+      <inputFontColor>808080</inputFontColor>
+      <left>133</left>
+      <leftRatio>0.214516129032258</leftRatio>
+      <sizeRatio>0.0861244019138756</sizeRatio>
+      <text>方便联系的手机号码，可不填写</text>
+      <top>226</top>
+      <topRatio>0.368078175895765</topRatio>
+      <width>418</width>
+      <widthRatio>0.674193548387097</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel1/panel8">
+      <fontBold>true</fontBold>
+      <fontColor>198DC9</fontColor>
+      <hAlign>left</hAlign>
+      <height>36</height>
+      <heightRatio>0.0586319218241042</heightRatio>
+      <left>132</left>
+      <leftRatio>0.212903225806452</leftRatio>
+      <sizeRatio>0.0865384615384615</sizeRatio>
+      <text>0</text>
+      <top>103</top>
+      <topRatio>0.167752442996743</topRatio>
+      <width>416</width>
+      <widthRatio>0.670967741935484</widthRatio>
+    </control>
+  </controls>
+  <taskSet count="3">
+    <taskSetItem name="modify">
+      <script1><![CDATA[var modifyUserId = ee.getText(ee.getControl("panel10"));
+var username = ee.getEditText(ee.getControl("edit2"));
+var password1 = ee.getEditText(ee.getControl("edit4"));
+var password2 = ee.getEditText(ee.getControl("edit5"));
+var nickName = ee.getEditText(ee.getControl("edit6"));
+var mobile = ee.getEditText(ee.getControl("edit7"));
+var companyId = ee.getEditText(ee.getControl("edit8"));
+var note = ee.getEditText(ee.getControl("edit1"));
+
+if ((password1 != "") || (password2 != "")) {
+    alert("系统注意到您输入了密码，修改密码必须本人操作，您无权在这里修改他人的密码，所以您输入的密码会被忽略。 ");
+}
+if (companyId != "") {
+    alert("您输入companyId是不必要的，系统将忽略您的输入");
+}
+if (nickName.length < 2) {
+    alert("修改后的昵称长度不能少于2个字符或者汉字");
+    return;
+}
+
+eio.appendString8(eb.getCookie("loginToken"));
+eio.appendInt32(parseInt(modifyUserId));
+eio.appendString8(nickName);
+eio.appendString8(mobile);
+eio.appendString16(note);
+]]></script1>
+      <script2><![CDATA[var token = eio.readString8();
+var modifyUserId = eio.readInt32();
+var nickName = eio.readString8();
+var mobile = eio.readString8();
+var note = eio.readString16(); 
+
+//获取用户信息及认证
+var sql,sqlResult;
+sql = "exec getUserInfoBySession '" + db.encode(token) + "'";
+sqlResult = db.executeQuery("DB", sql);
+if (sqlResult == null) {
+    eio.appendString8("F");
+    es.logWarning("数据库执行错误, sql=" + sql);
+    return;
+}
+db.read(sqlResult);
+if (db.getString(sqlResult, "sessionId").length < 5) {
+    eio.appendString8("F");
+    eio.appendString8("您已经长时间没有登录系统了，请返回登录页面重新登录");
+    es.logWarning("用户token失效, sql=" + sql);
+    return;
+}   
+var userId = db.getString(sqlResult, "id");
+var companyId = db.getString(sqlResult, "companyId");
+
+//修改
+sql = "exec userModify " +
+    userId + "," +
+    modifyUserId + "," +
+    "'" + db.encode(mobile) + "'," +
+    "'" + db.encode(nickName) + "'," +
+    "'" + db.encode(note) + "'";
+    
+sqlResult = db.executeQuery("DB", sql); 
+if (sqlResult == null) {
+    eio.appendString8("F");
+    es.logWarning("数据库执行错误, sql=" + sql);
+    return;
+}
+db.read(sqlResult);
+if (db.getInt32(sqlResult, "errorCode") < 0) {
+    eio.appendString8("F");
+    eio.appendString8(db.getString(sqlResult, "errorString"));
+    return;
+}
+
+eio.appendString8("T");
+eio.appendString8(db.getString(sqlResult, "errorString"));
+]]></script2>
+      <script3>if (eio.readString8() != "T") {
+    alert("无法修改用户信息：" + eio.readString8());
+    return;
+}
+
+alert("修改用户信息完成");
+ee.setVisible(ee.getControl("panel1"), false);
+query();</script3>
+    </taskSetItem>
+    <taskSetItem name="getMyUserInfo">
+      <script1>//onComplete(dataset)
+eio.appendString8(eb.getCookie("FAToken")); 
+</script1>
+      <script2><![CDATA[var token = eio.readString8();
+var searchText = eio.readString8();
+var pageSize = eio.readInt32();
+var pageCurrent = eio.readInt32();
+
+var sql,sqlResult;
+sql = "exec getUserInfoBySessionAdmin '" + db.encode(token) + "'; ";
+sql = sql + sql;
+sqlResult = db.executeQuery("DB", sql);
+if (sqlResult == null) {
+    eio.appendString8("F");
+    es.logWarning("数据库执行错误, sql=" + sql);
+    return;
+}
+db.read(sqlResult);
+if (db.getString(sqlResult, "sessionId").length < 5) {
+    eio.appendString8("F");
+    eio.appendString8("token失效");
+    es.logWarning("用户token失效, sql=" + sql);
+    return;
+}   
+
+eio.appendString8("T");
+db.nextResult(sqlResult);
+eio.appendDataSet(sqlResult,
+    //0    1       2         3               4        5        6      7     8      9     10
+    "id,status,regDatetime,lastAccessTime,userName,password,mobile,email,nickName,note,photo," +
+    // 11        12        13            14         15         16
+    "titleBg,homePage,chatRoomVideo,followCount,fansCount,lastPromptId",
+    0, 1000
+);
+
+]]></script2>
+      <script3>if (eio.readString8() != "T") {
+    alert("无法获取您需要的数据：" + eio.readString8());
+    return;
+}
+
+getMyUserInfo.dataset = eio.readDataSet();
+
+if (getMyUserInfo.onComplete) {
+    getMyUserInfo.onComplete(getMyUserInfo.dataset);
+}</script3>
+    </taskSetItem>
+    <taskSetItem name="modifyMyUserInfo">
+      <script1>//nickName,mobile,email,passwd,note,onComplete();
+eio.appendString8(eb.getCookie("FAToken")); 
+eio.appendString16(modifyMyUserInfo.nickName);
+eio.appendString16(modifyMyUserInfo.mobile);
+eio.appendString16(modifyMyUserInfo.email);
+eio.appendString16(modifyMyUserInfo.passwd);
+eio.appendString16(modifyMyUserInfo.note);
+</script1>
+      <script2><![CDATA[var token = eio.readString8();
+var nickName = eio.readString16();
+var mobile = eio.readString16();
+var email = eio.readString16();
+var passwd = eio.readString16();
+var note = eio.readString16();
+
+var sql,sqlResult;
+sql = "exec getUserInfoBySessionAdmin '" + db.encode(token) + "'; ";
+sql = sql + sql;
+sqlResult = db.executeQuery("DB", sql);
+if (sqlResult == null) {
+    eio.appendString8("F");
+    es.logWarning("数据库执行错误, sql=" + sql);
+    return;
+}
+db.read(sqlResult);
+if (db.getString(sqlResult, "sessionId").length < 5) {
+    eio.appendString8("F");
+    eio.appendString8("token失效");
+    es.logWarning("用户token失效, sql=" + sql);
+    return;
+}   
+
+var userId = db.getString(sqlResult, "id");
+var userName = db.getString(sqlResult, "userName");
+
+sql = "update userInfoAdmin set " +
+    "nickName = '" + db.encode(nickName) + "', " +
+    (passwd==""?"":"password='" + es.getMd5(passwd) + "',") +
+    "mobile = '" + db.encode(mobile) + "', " +
+    "email = '" + db.encode(email) + "', " +
+    "note = '" + db.encode(note) + "' " +
+    "where id = " + userId + "; ";
+if (!db.executeNoneQuery("DB", sql)) {
+    eio.appendString8("F");
+    es.logWarning("数据库执行错误, sql=" + sql);
+    return;
+}
+eio.appendString8("T");
+
+
+]]></script2>
+      <script3>if (eio.readString8() != "T") {
+    alert("修改用户信息失败：" + eio.readString8());
+    return;
+}
+
+modifyMyUserInfo.dataset = eio.readDataSet();
+
+if (modifyMyUserInfo.onComplete) {
+    modifyMyUserInfo.onComplete();
+}</script3>
+    </taskSetItem>
+  </taskSet>
+  <gridLines count="0" />
+  <g5Items count="2">
+    <item name="imgUrl" type="10">
+      <varValue>"/incoming/";</varValue>
+      <functionParam />
+      <functionCode />
+    </item>
+    <item name="tableClick" type="20">
+      <varValue />
+      <functionParam>sender</functionParam>
+      <functionCode><![CDATA[//鼠标点击行激活处理,接口：valid,y
+var c, x, y;
+for (y = 0; y < g5.pageSize; y++) {
+    for (x = 0; x < 7; x++) {
+        c = ee.getTableCell(ee.getControl("tablebody2"), x, y);
+        c.style.backgroundColor = "";    
+    }
+}
+for (x = 0; x < 7; x++) {
+    c = ee.getTableCell(ee.getControl("tablebody2"), x, sender.rowIndex);
+    c.style.backgroundColor = "#E0EEFF";
+}
+g5.tableClick.valid = false;
+if (eb.isEmpty(query.dataset)) return;
+g5.tableClick.y = sender.rowIndex;
+if (g5.tableClick.y>=query.dataset.rowCount) return;
+g5.tableClick.valid = true;
+]]></functionCode>
+    </item>
+  </g5Items>
+</page>

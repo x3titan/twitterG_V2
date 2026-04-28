@@ -1,0 +1,16 @@
+﻿<skin>
+  <imageType>png</imageType>
+  <displayName>圆角遮罩带边</displayName>
+  <resizableArea>
+    <left>19</left>
+    <top>20</top>
+    <width>20</width>
+    <height>18</height>
+  </resizableArea>
+  <clientArea>
+    <left>19</left>
+    <top>20</top>
+    <width>20</width>
+    <height>18</height>
+  </clientArea>
+</skin>

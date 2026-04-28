@@ -1,0 +1,19 @@
+==== [Sat 10/04/2025  3:35:51.84] START in C:\GitHub\twitterG\db ====
+Checking target...
+Remove old zip...
+Compressing...
+Git add/commit/push...
+git version 2.35.4.windows.1
+Author identity unknown
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: unable to auto-detect email address (got 'SYSTEM@EC2AMAZ-SAJ6U4U.(none)')

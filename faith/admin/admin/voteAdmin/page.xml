@@ -1,0 +1,5080 @@
+<page>
+  <controls count="280">
+    <control type="DivRoot" pathname="/divRoot">
+      <backgroundColor>ffffff</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>796</height>
+      <left>0</left>
+      <onControlLoad><![CDATA[g5.p1 = ee.getControl("panel38");
+
+//分页处理
+g5.pageSize = 10;
+g5.pageCurrent = 1;
+g5.pageCount = 1;
+g5.pageJump = function (pageNumber) {
+    if (pageNumber < 1) pageNumber = 1;
+    if (pageNumber > g5.pageCount) {
+        pageNumber = g5.pageCount;
+    }
+    if (g5.pageCurrent != pageNumber) {
+        g5.pageCurrent = pageNumber;
+        if (g5.pageCurrent > 0) {
+            query();
+        }
+    }
+}
+
+query();  
+       
+]]></onControlLoad>
+      <pageHead><![CDATA[<style>
+.buttonBlue {
+    background-color:#30b5ef;
+    transition: background-color 1.0s;
+}
+.buttonBlue:hover{
+    background-color:#289ccf;
+    transition: background-color 0.3s;
+}
+   
+.buttonSelectBlue {
+    background-color: ;
+    transition: background-color 0.3s;
+}
+.buttonSelectBlue:hover{
+    background-color:#e0e0ff;
+    transition: background-color 0.6s;
+}
+
+
+.buttonGray {
+    background-color: ;
+    transition: background-color 0.6s;
+}
+.buttonGray:hover{
+    background-color:#f0f0ff;
+    transition: background-color 0.3s;
+}
+
+</style>
+
+<style>
+.css_button1 {
+    display:inline-block;
+    padding:0.1em 0.5em 0.2em 0.5em;
+    margin:0em 0.0em -0.3em 0.0em;
+    border-radius:0.4em;
+    border: 1px solid rgba(80, 80, 250, 0.4);
+    box-sizing: border-box;
+    text-decoration:none;
+    font-family:'Roboto',sans-serif;
+    //color:#1DA1F2;
+    text-align:left;
+    transition: background-color 1.0s;
+}
+.css_button1:hover{
+    //text-decoration: underline;
+    background-color:#e0e0ff;
+    transition: background-color 0.3s;
+}
+</style>
+
+<style>
+.imgDark {
+    transition: filter 0.3s ease;
+}
+
+.imgDark:hover {
+    filter: brightness(0.8);
+}
+</style>]]></pageHead>
+      <top>0</top>
+      <width>1087</width>
+    </control>
+    <control type="LayoutX" pathname="/divRoot/layoutx3">
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>796</height>
+      <heightRatio>1</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.732290708371665</sizeRatio>
+      <top>0</top>
+      <width>1087</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="LayoutXItem" pathname="/divRoot/layoutx3/layoutxitem6">
+      <backgroundColor>f0f0f0</backgroundColor>
+      <height>796</height>
+      <heightRatio>1</heightRatio>
+      <left>0</left>
+      <sizeRatio>1.06559571619813</sizeRatio>
+      <top>0</top>
+      <width>747</width>
+      <widthRatio>0.68721251149954</widthRatio>
+    </control>
+    <control type="LayoutY" pathname="/divRoot/layoutx3/layoutxitem6/layouty1">
+      <backgroundColor>000000</backgroundColor>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>796</height>
+      <heightRatio>1</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>1.06559571619813</sizeRatio>
+      <top>0</top>
+      <width>747</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="LayoutYItem" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem1">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <heavyEnabled>false</heavyEnabled>
+      <height>60</height>
+      <heightRatio>0.0753768844221105</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0803212851405622</sizeRatio>
+      <top>0</top>
+      <width>747</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="LayoutX" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem1/layoutx1">
+      <dockX>right</dockX>
+      <fieldCount>2</fieldCount>
+      <height>35</height>
+      <heightRatio>0.583333333333333</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>392</left>
+      <leftRatio>0.524765729585007</leftRatio>
+      <outerRight>50</outerRight>
+      <sizeRatio>0.114754098360656</sizeRatio>
+      <top>13</top>
+      <topRatio>0.216666666666667</topRatio>
+      <width>305</width>
+      <widthRatio>0.408299866131191</widthRatio>
+    </control>
+    <control type="LayoutXItem" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem1/layoutx1/layoutxitem1">
+      <backgroundColor>008080</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>FFFFFF</fontColor>
+      <height>35</height>
+      <heightRatio>1</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <onClick>g5.pageJump(g5.pageCurrent-1);</onClick>
+      <sizeRatio>0.139442231075697</sizeRatio>
+      <text>上一页</text>
+      <top>0</top>
+      <width>251</width>
+      <widthRatio>0.822950819672131</widthRatio>
+    </control>
+    <control type="Edit" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem1/layoutx1/layoutxitem1/edit3">
+      <backgroundSkin>edit2</backgroundSkin>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <fontBold>true</fontBold>
+      <fontColor>C0C0C0</fontColor>
+      <height>35</height>
+      <heightRatio>1</heightRatio>
+      <inputFontBold>true</inputFontBold>
+      <inputFontColor>198DC9</inputFontColor>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.139442231075697</sizeRatio>
+      <text>请输入模糊搜索文字</text>
+      <top>0</top>
+      <width>251</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="LayoutXItem" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem1/layoutx1/layoutxitem2">
+      <backgroundColor>d0d0d0</backgroundColor>
+      <fontBold>true</fontBold>
+      <fontColor>198DC9</fontColor>
+      <heavyEnabled>false</heavyEnabled>
+      <height>35</height>
+      <heightRatio>1</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>251</left>
+      <leftRatio>0.822950819672131</leftRatio>
+      <sizeRatio>0.648148148148148</sizeRatio>
+      <top>0</top>
+      <width>54</width>
+      <widthRatio>0.177049180327869</widthRatio>
+    </control>
+    <control type="Button" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem1/layoutx1/layoutxitem2/button6">
+      <backgroundSkin>TCloud000</backgroundSkin>
+      <backgroundSkin1>LRBtn7</backgroundSkin1>
+      <backgroundSkin2>LRBtn7</backgroundSkin2>
+      <cursor>pointer</cursor>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <fontColor>FFFFFF</fontColor>
+      <fontColor1>FFFFFF</fontColor1>
+      <fontColor2>FFFFFF</fontColor2>
+      <height>35</height>
+      <heightRatio>1</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <onClick>query();</onClick>
+      <sizeRatio>0.648148148148148</sizeRatio>
+      <top>0</top>
+      <width>54</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem1/layoutx1/layoutxitem2/button6/panel119">
+      <backgroundImg>qb23.png</backgroundImg>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>23</height>
+      <heightRatio>0.657142857142857</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>5</left>
+      <leftRatio>0.0925925925925926</leftRatio>
+      <outerBottom>8</outerBottom>
+      <outerLeft>5</outerLeft>
+      <outerRight>5</outerRight>
+      <outerTop>4</outerTop>
+      <sizeRatio>0.522727272727273</sizeRatio>
+      <top>4</top>
+      <topRatio>0.114285714285714</topRatio>
+      <width>44</width>
+      <widthRatio>0.814814814814815</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem1/panel30">
+      <backgroundColor>30B5EF</backgroundColor>
+      <cursor>pointer</cursor>
+      <dockY>bottom</dockY>
+      <fontBold>true</fontBold>
+      <fontColor>808080</fontColor>
+      <height>28</height>
+      <heightRatio>0.466666666666667</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>10</left>
+      <leftRatio>0.0133868808567604</leftRatio>
+      <onClick>if (!g5.tableClick.valid) {
+    alert("请选择有效的记录进行操作");
+    return;
+}
+let voteId = query.dataset.getData(0,g5.tableClick.y);
+
+window.parent.g5.closePageByTitle("投票日志");
+window.parent.g5.appendPage("投票日志", ee.getUrl("/admin/admin/voteAdminLog?vid=" + voteId));</onClick>
+      <onCreate>sender.className = "buttonGray";
+sender.style.borderRadius = "5px";</onCreate>
+      <outerBottom>5</outerBottom>
+      <sizeRatio>0.345679012345679</sizeRatio>
+      <text>投票日志</text>
+      <top>27</top>
+      <topRatio>0.45</topRatio>
+      <width>81</width>
+      <widthRatio>0.108433734939759</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem1/panel25">
+      <backgroundColor>30B5EF</backgroundColor>
+      <cursor>pointer</cursor>
+      <dockY>bottom</dockY>
+      <fontBold>true</fontBold>
+      <fontColor>808080</fontColor>
+      <height>28</height>
+      <heightRatio>0.466666666666667</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>114</left>
+      <leftRatio>0.152610441767068</leftRatio>
+      <onClick>if (!g5.tableClick.valid) {
+    alert("请选择有效的记录进行操作");
+    return;
+}
+window.parent.g5.closePageByTitle("短文页面");
+window.parent.g5.appendPage("短文页面", "/msg/" + query.dataset.getData(2,g5.tableClick.y));
+</onClick>
+      <onCreate>sender.className = "buttonGray";
+sender.style.borderRadius = "5px";</onCreate>
+      <outerBottom>5</outerBottom>
+      <sizeRatio>0.345679012345679</sizeRatio>
+      <text>短文页面</text>
+      <top>27</top>
+      <topRatio>0.45</topRatio>
+      <width>81</width>
+      <widthRatio>0.108433734939759</widthRatio>
+    </control>
+    <control type="LayoutYItem" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2">
+      <autoScroll>true</autoScroll>
+      <backgroundColor>FF8000</backgroundColor>
+      <height>697</height>
+      <heightRatio>0.875628140703518</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.933065595716198</sizeRatio>
+      <top>60</top>
+      <topRatio>0.0753768844221105</topRatio>
+      <width>747</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="TableTitle" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tabletitle2">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <columnCount>8</columnCount>
+      <dockX>fill</dockX>
+      <height>52</height>
+      <heightRatio>0.0746054519368723</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <minHeight>370</minHeight>
+      <minWidth>300</minWidth>
+      <sizeRatio>0.069611780455154</sizeRatio>
+      <tableBody>tablebody2</tableBody>
+      <top>0</top>
+      <width>747</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="TableTitleItem" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tabletitle2/tabletitleitem12">
+      <backgroundColor>F4F4F4</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <fontBold>true</fontBold>
+      <fontColor>646464</fontColor>
+      <heavy>25</heavy>
+      <height>52</height>
+      <heightRatio>1</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.626506024096386</sizeRatio>
+      <text>投票ID</text>
+      <top>0</top>
+      <width>72</width>
+      <widthRatio>0.111111111111111</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tabletitle2/tabletitleitem12/panel18">
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.0192307692307692</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0116279069767442</sizeRatio>
+      <top>51</top>
+      <topRatio>0.980769230769231</topRatio>
+      <width>72</width>
+      <widthRatio>1.03614457831325</widthRatio>
+    </control>
+    <control type="TableTitleItem" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tabletitle2/tabletitleitem13">
+      <backgroundColor>F4F4F4</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <fontBold>true</fontBold>
+      <fontColor>646464</fontColor>
+      <heavy>40</heavy>
+      <height>52</height>
+      <heightRatio>1</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>72</left>
+      <leftRatio>0.111111111111111</leftRatio>
+      <sizeRatio>0.390977443609023</sizeRatio>
+      <text>发布时间</text>
+      <top>0</top>
+      <width>115</width>
+      <widthRatio>0.178045515394913</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tabletitle2/tabletitleitem13/panel17">
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.0192307692307692</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0072463768115942</sizeRatio>
+      <top>51</top>
+      <topRatio>0.980769230769231</topRatio>
+      <width>115</width>
+      <widthRatio>1.03759398496241</widthRatio>
+    </control>
+    <control type="TableTitleItem" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tabletitle2/tabletitleitem14">
+      <backgroundColor>F4F4F4</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <fontBold>true</fontBold>
+      <fontColor>646464</fontColor>
+      <heavy>20</heavy>
+      <height>52</height>
+      <heightRatio>1</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>187</left>
+      <leftRatio>0.289156626506024</leftRatio>
+      <sizeRatio>0.787878787878788</sizeRatio>
+      <text>文章ID</text>
+      <top>0</top>
+      <width>57</width>
+      <widthRatio>0.0883534136546185</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tabletitle2/tabletitleitem14/panel19">
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.0192307692307692</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0147058823529412</sizeRatio>
+      <top>51</top>
+      <topRatio>0.980769230769231</topRatio>
+      <width>57</width>
+      <widthRatio>1.03030303030303</widthRatio>
+    </control>
+    <control type="TableTitleItem" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tabletitle2/tabletitleitem1">
+      <backgroundColor>F4F4F4</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <fontBold>true</fontBold>
+      <fontColor>646464</fontColor>
+      <heavy>20</heavy>
+      <height>52</height>
+      <heightRatio>1</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>244</left>
+      <leftRatio>0.377510040160643</leftRatio>
+      <sizeRatio>0.776119402985075</sizeRatio>
+      <text>投票人数</text>
+      <top>0</top>
+      <width>58</width>
+      <widthRatio>0.0896921017402945</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tabletitle2/tabletitleitem1/panel20">
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.0192307692307692</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0144927536231884</sizeRatio>
+      <top>51</top>
+      <topRatio>0.980769230769231</topRatio>
+      <width>58</width>
+      <widthRatio>1.02985074626866</widthRatio>
+    </control>
+    <control type="TableTitleItem" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tabletitle2/tabletitleitem2">
+      <backgroundColor>F4F4F4</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <fontBold>true</fontBold>
+      <fontColor>646464</fontColor>
+      <heavy>20</heavy>
+      <height>52</height>
+      <heightRatio>1</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>302</left>
+      <leftRatio>0.467202141900937</leftRatio>
+      <sizeRatio>0.787878787878788</sizeRatio>
+      <text>选项数量</text>
+      <top>0</top>
+      <width>57</width>
+      <widthRatio>0.0883534136546185</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tabletitle2/tabletitleitem2/panel28">
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.0192307692307692</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0144927536231884</sizeRatio>
+      <top>51</top>
+      <topRatio>0.980769230769231</topRatio>
+      <width>57</width>
+      <widthRatio>1.04545454545455</widthRatio>
+    </control>
+    <control type="TableTitleItem" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tabletitle2/tabletitleitem3">
+      <backgroundColor>F4F4F4</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <fontBold>true</fontBold>
+      <fontColor>646464</fontColor>
+      <heavy>20</heavy>
+      <height>52</height>
+      <heightRatio>1</heightRatio>
+      <left>359</left>
+      <leftRatio>0.443105756358768</leftRatio>
+      <sizeRatio>1</sizeRatio>
+      <text>时限</text>
+      <top>0</top>
+      <width>58</width>
+      <widthRatio>0.069611780455154</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tabletitle2/tabletitleitem3/panel3">
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.0192307692307692</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.00290697674418605</sizeRatio>
+      <top>51</top>
+      <topRatio>0.980769230769231</topRatio>
+      <width>58</width>
+      <widthRatio>1.03614457831325</widthRatio>
+    </control>
+    <control type="TableTitleItem" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tabletitle2/tabletitleitem7">
+      <backgroundColor>F4F4F4</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <fontBold>true</fontBold>
+      <fontColor>646464</fontColor>
+      <heavy>15</heavy>
+      <height>52</height>
+      <heightRatio>1</heightRatio>
+      <left>417</left>
+      <leftRatio>0.547523427041499</leftRatio>
+      <sizeRatio>0.928571428571429</sizeRatio>
+      <text>结束</text>
+      <top>0</top>
+      <width>43</width>
+      <widthRatio>0.0749665327978581</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tabletitle2/tabletitleitem7/panel4">
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.0192307692307692</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <leftRatio>0.712765957446808</leftRatio>
+      <sizeRatio>0.00401606425702811</sizeRatio>
+      <top>51</top>
+      <topRatio>0.423076923076923</topRatio>
+      <width>43</width>
+      <widthRatio>2.64893617021277</widthRatio>
+    </control>
+    <control type="TableTitleItem" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tabletitle2/tabletitleitem8">
+      <backgroundColor>F4F4F4</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <fontBold>true</fontBold>
+      <fontColor>646464</fontColor>
+      <hAlign>left</hAlign>
+      <height>52</height>
+      <heightRatio>1</heightRatio>
+      <left>460</left>
+      <leftRatio>0.829986613119143</leftRatio>
+      <sizeRatio>0.409448818897638</sizeRatio>
+      <text>文章内容</text>
+      <top>0</top>
+      <width>287</width>
+      <widthRatio>0.170013386880857</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tabletitle2/tabletitleitem8/panel9">
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.0192307692307692</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <leftRatio>0.580645161290323</leftRatio>
+      <sizeRatio>0.00401606425702811</sizeRatio>
+      <top>51</top>
+      <topRatio>0.5</topRatio>
+      <width>287</width>
+      <widthRatio>2.67741935483871</widthRatio>
+    </control>
+    <control type="TableBody" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2">
+      <backgroundColor>FF0000</backgroundColor>
+      <backgroundImg>xz_bn.png</backgroundImg>
+      <height>645</height>
+      <heightRatio>0.925394548063128</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.863453815261044</sizeRatio>
+      <tableTitle>tabletitle2</tableTitle>
+      <top>52</top>
+      <topRatio>0.0746054519368723</topRatio>
+      <width>747</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="TableBodyItem" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/tablebodyitem12">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>64</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <onClick>g5.tableClick(sender);</onClick>
+      <onUpdate>if (!query.dataset) {
+    text = "";
+    return;
+}
+var y = sender.rowIndex;
+var s = query.dataset.getData(0,y);
+ee.setText(sender, s);
+</onUpdate>
+      <sizeRatio>0.771084337349398</sizeRatio>
+      <text>.</text>
+      <top>0</top>
+      <width>72</width>
+      <widthRatio>0.111111111111111</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/tablebodyitem12/panel11">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0116279069767442</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>72</width>
+      <widthRatio>1.03614457831325</widthRatio>
+    </control>
+    <control type="TableBodyItem" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/tablebodyitem13">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>64</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>72</left>
+      <leftRatio>0.111111111111111</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <onUpdate>if (!query.dataset) {
+    text = "";
+    return;
+}
+var y = sender.rowIndex;
+var s = query.dataset.getData(1,y);
+ee.setText(sender, s);
+</onUpdate>
+      <sizeRatio>0.481203007518797</sizeRatio>
+      <text>.</text>
+      <top>0</top>
+      <width>115</width>
+      <widthRatio>0.178045515394913</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/tablebodyitem13/panel12">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0072463768115942</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>115</width>
+      <widthRatio>1.03759398496241</widthRatio>
+    </control>
+    <control type="TableBodyItem" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/tablebodyitem14">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>64</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>187</left>
+      <leftRatio>0.289156626506024</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <onUpdate>if (!query.dataset) {
+    text = "";
+    return;
+}
+var y = sender.rowIndex;
+var s = query.dataset.getData(2,y);
+ee.setText(sender, s);
+</onUpdate>
+      <sizeRatio>0.96969696969697</sizeRatio>
+      <text>.</text>
+      <top>0</top>
+      <width>57</width>
+      <widthRatio>0.0883534136546185</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/tablebodyitem14/panel13">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0147058823529412</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>57</width>
+      <widthRatio>1.03030303030303</widthRatio>
+    </control>
+    <control type="TableBodyItem" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/tablebodyitem1">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>64</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>244</left>
+      <leftRatio>0.377510040160643</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <onUpdate>if (!query.dataset) {
+    text = "";
+    return;
+}
+var y = sender.rowIndex;
+var s = query.dataset.getData(4,y);
+ee.setText(sender, s);
+</onUpdate>
+      <sizeRatio>0.955223880597015</sizeRatio>
+      <text>.</text>
+      <top>0</top>
+      <width>58</width>
+      <widthRatio>0.0896921017402945</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/tablebodyitem1/panel14">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0144927536231884</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>58</width>
+      <widthRatio>1.02985074626866</widthRatio>
+    </control>
+    <control type="TableBodyItem" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/tablebodyitem2">
+      <backgroundColor>f0f0f0</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>64</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>302</left>
+      <leftRatio>0.467202141900937</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <onUpdate>if (!query.dataset) {
+    text = "";
+    return;
+}
+var y = sender.rowIndex;
+var s = query.dataset.getData(5,y);
+ee.setText(sender, s);
+</onUpdate>
+      <sizeRatio>0.96969696969697</sizeRatio>
+      <text>.</text>
+      <top>0</top>
+      <width>57</width>
+      <widthRatio>0.0883534136546185</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/tablebodyitem2/panel21">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0144927536231884</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>57</width>
+      <widthRatio>1.04545454545455</widthRatio>
+    </control>
+    <control type="TableBodyItem" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/tablebodyitem3">
+      <backgroundColor>D0D0D0</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>64</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <left>359</left>
+      <leftRatio>0.443105756358768</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <onUpdate><![CDATA[if (!query.dataset) {
+    text = "";
+    return;
+}
+var y = sender.rowIndex;
+if (y >= query.dataset.rowCount) {
+    ee.setText(sender, "");
+    return;
+}
+let s = query.dataset.getData(6,y);
+ee.setText(sender, g5.convertSeconds(s));
+]]></onUpdate>
+      <sizeRatio>1.23076923076923</sizeRatio>
+      <text>.</text>
+      <top>0</top>
+      <width>58</width>
+      <widthRatio>0.069611780455154</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/tablebodyitem3/panel1">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.00290697674418605</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>58</width>
+      <widthRatio>1.03614457831325</widthRatio>
+    </control>
+    <control type="TableBodyItem" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/tablebodyitem7">
+      <backgroundColor>D0D0D0</backgroundColor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>64</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <left>417</left>
+      <leftRatio>0.512717536813922</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <onUpdate><![CDATA[if (!query.dataset) {
+    text = "";
+    return;
+}
+var y = sender.rowIndex;
+if (y >= query.dataset.rowCount) {
+    ee.setText(sender, "");
+    return;
+}
+var s = query.dataset.getData(7,y);
+s = s=="Y"?"是":"否";
+ee.setText(sender, s);
+]]></onUpdate>
+      <sizeRatio>0.64</sizeRatio>
+      <text>.</text>
+      <top>0</top>
+      <width>43</width>
+      <widthRatio>0.133868808567604</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/tablebodyitem7/panel15">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <leftRatio>0.627659574468085</leftRatio>
+      <sizeRatio>0.00401606425702811</sizeRatio>
+      <top>63</top>
+      <topRatio>0.359375</topRatio>
+      <width>43</width>
+      <widthRatio>2.64893617021277</widthRatio>
+    </control>
+    <control type="TableBodyItem" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/tablebodyitem8">
+      <backgroundColor>D0D0D0</backgroundColor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <hAlign>left</hAlign>
+      <height>64</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <left>460</left>
+      <leftRatio>0.646586345381526</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <onUpdate>if (!query.dataset) {
+    text = "";
+    return;
+}
+var y = sender.rowIndex;
+var s = query.dataset.getData(3,y);
+ee.setText(sender, s);
+</onUpdate>
+      <sizeRatio>0.242424242424242</sizeRatio>
+      <text>.</text>
+      <top>0</top>
+      <width>287</width>
+      <widthRatio>0.353413654618474</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/tablebodyitem8/panel10">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <leftRatio>0.387096774193548</leftRatio>
+      <sizeRatio>0.00401606425702811</sizeRatio>
+      <top>63</top>
+      <topRatio>0.5625</topRatio>
+      <width>287</width>
+      <widthRatio>2.67741935483871</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp136">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>65</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.771084337349398</sizeRatio>
+      <text>.</text>
+      <top>64</top>
+      <width>72</width>
+      <widthRatio>0.111111111111111</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp136/temp28">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0116279069767442</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>72</width>
+      <widthRatio>1.03614457831325</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp138">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>65</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>72</left>
+      <leftRatio>0.111111111111111</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.481203007518797</sizeRatio>
+      <text>.</text>
+      <top>64</top>
+      <width>115</width>
+      <widthRatio>0.178045515394913</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp138/temp29">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0072463768115942</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>115</width>
+      <widthRatio>1.03759398496241</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp140">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>65</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>187</left>
+      <leftRatio>0.289156626506024</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.96969696969697</sizeRatio>
+      <text>.</text>
+      <top>64</top>
+      <width>57</width>
+      <widthRatio>0.0883534136546185</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp140/temp30">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0147058823529412</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>57</width>
+      <widthRatio>1.03030303030303</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp142">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>65</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>244</left>
+      <leftRatio>0.377510040160643</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.955223880597015</sizeRatio>
+      <text>.</text>
+      <top>64</top>
+      <width>58</width>
+      <widthRatio>0.0896921017402945</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp142/temp31">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0144927536231884</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>58</width>
+      <widthRatio>1.02985074626866</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp144">
+      <backgroundColor>f0f0f0</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>65</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>302</left>
+      <leftRatio>0.467202141900937</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.96969696969697</sizeRatio>
+      <text>.</text>
+      <top>64</top>
+      <width>57</width>
+      <widthRatio>0.0883534136546185</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp144/temp32">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0144927536231884</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>57</width>
+      <widthRatio>1.04545454545455</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp146">
+      <backgroundColor>D0D0D0</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>65</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <left>359</left>
+      <leftRatio>0.443105756358768</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>1.23076923076923</sizeRatio>
+      <text>.</text>
+      <top>64</top>
+      <width>58</width>
+      <widthRatio>0.069611780455154</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp146/temp82">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.00290697674418605</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>58</width>
+      <widthRatio>1.03614457831325</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp148">
+      <backgroundColor>D0D0D0</backgroundColor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>65</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <left>417</left>
+      <leftRatio>0.512717536813922</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.64</sizeRatio>
+      <text>.</text>
+      <top>64</top>
+      <width>43</width>
+      <widthRatio>0.133868808567604</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp148/temp118">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <leftRatio>0.627659574468085</leftRatio>
+      <sizeRatio>0.00401606425702811</sizeRatio>
+      <top>63</top>
+      <topRatio>0.359375</topRatio>
+      <width>43</width>
+      <widthRatio>2.64893617021277</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp150">
+      <backgroundColor>D0D0D0</backgroundColor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <hAlign>left</hAlign>
+      <height>65</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <left>460</left>
+      <leftRatio>0.646586345381526</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.242424242424242</sizeRatio>
+      <text>.</text>
+      <top>64</top>
+      <width>287</width>
+      <widthRatio>0.353413654618474</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp150/temp109">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <leftRatio>0.387096774193548</leftRatio>
+      <sizeRatio>0.00401606425702811</sizeRatio>
+      <top>63</top>
+      <topRatio>0.5625</topRatio>
+      <width>287</width>
+      <widthRatio>2.67741935483871</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp152">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>64</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.771084337349398</sizeRatio>
+      <text>.</text>
+      <top>129</top>
+      <width>72</width>
+      <widthRatio>0.111111111111111</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp152/temp33">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0116279069767442</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>72</width>
+      <widthRatio>1.03614457831325</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp154">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>64</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>72</left>
+      <leftRatio>0.111111111111111</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.481203007518797</sizeRatio>
+      <text>.</text>
+      <top>129</top>
+      <width>115</width>
+      <widthRatio>0.178045515394913</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp154/temp34">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0072463768115942</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>115</width>
+      <widthRatio>1.03759398496241</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp156">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>64</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>187</left>
+      <leftRatio>0.289156626506024</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.96969696969697</sizeRatio>
+      <text>.</text>
+      <top>129</top>
+      <width>57</width>
+      <widthRatio>0.0883534136546185</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp156/temp35">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0147058823529412</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>57</width>
+      <widthRatio>1.03030303030303</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp158">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>64</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>244</left>
+      <leftRatio>0.377510040160643</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.955223880597015</sizeRatio>
+      <text>.</text>
+      <top>129</top>
+      <width>58</width>
+      <widthRatio>0.0896921017402945</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp158/temp36">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0144927536231884</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>58</width>
+      <widthRatio>1.02985074626866</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp160">
+      <backgroundColor>f0f0f0</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>64</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>302</left>
+      <leftRatio>0.467202141900937</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.96969696969697</sizeRatio>
+      <text>.</text>
+      <top>129</top>
+      <width>57</width>
+      <widthRatio>0.0883534136546185</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp160/temp37">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0144927536231884</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>57</width>
+      <widthRatio>1.04545454545455</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp162">
+      <backgroundColor>D0D0D0</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>64</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <left>359</left>
+      <leftRatio>0.443105756358768</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>1.23076923076923</sizeRatio>
+      <text>.</text>
+      <top>129</top>
+      <width>58</width>
+      <widthRatio>0.069611780455154</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp162/temp38">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.00290697674418605</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>58</width>
+      <widthRatio>1.03614457831325</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp164">
+      <backgroundColor>D0D0D0</backgroundColor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>64</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <left>417</left>
+      <leftRatio>0.512717536813922</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.64</sizeRatio>
+      <text>.</text>
+      <top>129</top>
+      <width>43</width>
+      <widthRatio>0.133868808567604</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp164/temp119">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <leftRatio>0.627659574468085</leftRatio>
+      <sizeRatio>0.00401606425702811</sizeRatio>
+      <top>63</top>
+      <topRatio>0.359375</topRatio>
+      <width>43</width>
+      <widthRatio>2.64893617021277</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp166">
+      <backgroundColor>D0D0D0</backgroundColor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <hAlign>left</hAlign>
+      <height>64</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <left>460</left>
+      <leftRatio>0.646586345381526</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.242424242424242</sizeRatio>
+      <text>.</text>
+      <top>129</top>
+      <width>287</width>
+      <widthRatio>0.353413654618474</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp166/temp110">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <leftRatio>0.387096774193548</leftRatio>
+      <sizeRatio>0.00401606425702811</sizeRatio>
+      <top>63</top>
+      <topRatio>0.5625</topRatio>
+      <width>287</width>
+      <widthRatio>2.67741935483871</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp168">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>65</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.771084337349398</sizeRatio>
+      <text>.</text>
+      <top>193</top>
+      <width>72</width>
+      <widthRatio>0.111111111111111</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp168/temp39">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0116279069767442</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>72</width>
+      <widthRatio>1.03614457831325</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp170">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>65</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>72</left>
+      <leftRatio>0.111111111111111</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.481203007518797</sizeRatio>
+      <text>.</text>
+      <top>193</top>
+      <width>115</width>
+      <widthRatio>0.178045515394913</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp170/temp40">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0072463768115942</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>115</width>
+      <widthRatio>1.03759398496241</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp172">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>65</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>187</left>
+      <leftRatio>0.289156626506024</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.96969696969697</sizeRatio>
+      <text>.</text>
+      <top>193</top>
+      <width>57</width>
+      <widthRatio>0.0883534136546185</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp172/temp41">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0147058823529412</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>57</width>
+      <widthRatio>1.03030303030303</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp174">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>65</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>244</left>
+      <leftRatio>0.377510040160643</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.955223880597015</sizeRatio>
+      <text>.</text>
+      <top>193</top>
+      <width>58</width>
+      <widthRatio>0.0896921017402945</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp174/temp42">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0144927536231884</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>58</width>
+      <widthRatio>1.02985074626866</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp176">
+      <backgroundColor>f0f0f0</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>65</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>302</left>
+      <leftRatio>0.467202141900937</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.96969696969697</sizeRatio>
+      <text>.</text>
+      <top>193</top>
+      <width>57</width>
+      <widthRatio>0.0883534136546185</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp176/temp43">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0144927536231884</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>57</width>
+      <widthRatio>1.04545454545455</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp178">
+      <backgroundColor>D0D0D0</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>65</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <left>359</left>
+      <leftRatio>0.443105756358768</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>1.23076923076923</sizeRatio>
+      <text>.</text>
+      <top>193</top>
+      <width>58</width>
+      <widthRatio>0.069611780455154</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp178/temp44">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.00290697674418605</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>58</width>
+      <widthRatio>1.03614457831325</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp180">
+      <backgroundColor>D0D0D0</backgroundColor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>65</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <left>417</left>
+      <leftRatio>0.512717536813922</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.64</sizeRatio>
+      <text>.</text>
+      <top>193</top>
+      <width>43</width>
+      <widthRatio>0.133868808567604</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp180/temp120">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <leftRatio>0.627659574468085</leftRatio>
+      <sizeRatio>0.00401606425702811</sizeRatio>
+      <top>63</top>
+      <topRatio>0.359375</topRatio>
+      <width>43</width>
+      <widthRatio>2.64893617021277</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp182">
+      <backgroundColor>D0D0D0</backgroundColor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <hAlign>left</hAlign>
+      <height>65</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <left>460</left>
+      <leftRatio>0.646586345381526</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.242424242424242</sizeRatio>
+      <text>.</text>
+      <top>193</top>
+      <width>287</width>
+      <widthRatio>0.353413654618474</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp182/temp111">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <leftRatio>0.387096774193548</leftRatio>
+      <sizeRatio>0.00401606425702811</sizeRatio>
+      <top>63</top>
+      <topRatio>0.5625</topRatio>
+      <width>287</width>
+      <widthRatio>2.67741935483871</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp184">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>64</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.771084337349398</sizeRatio>
+      <text>.</text>
+      <top>258</top>
+      <width>72</width>
+      <widthRatio>0.111111111111111</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp184/temp45">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0116279069767442</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>72</width>
+      <widthRatio>1.03614457831325</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp186">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>64</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>72</left>
+      <leftRatio>0.111111111111111</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.481203007518797</sizeRatio>
+      <text>.</text>
+      <top>258</top>
+      <width>115</width>
+      <widthRatio>0.178045515394913</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp186/temp46">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0072463768115942</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>115</width>
+      <widthRatio>1.03759398496241</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp188">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>64</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>187</left>
+      <leftRatio>0.289156626506024</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.96969696969697</sizeRatio>
+      <text>.</text>
+      <top>258</top>
+      <width>57</width>
+      <widthRatio>0.0883534136546185</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp188/temp47">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0147058823529412</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>57</width>
+      <widthRatio>1.03030303030303</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp190">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>64</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>244</left>
+      <leftRatio>0.377510040160643</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.955223880597015</sizeRatio>
+      <text>.</text>
+      <top>258</top>
+      <width>58</width>
+      <widthRatio>0.0896921017402945</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp190/temp48">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0144927536231884</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>58</width>
+      <widthRatio>1.02985074626866</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp192">
+      <backgroundColor>f0f0f0</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>64</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>302</left>
+      <leftRatio>0.467202141900937</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.96969696969697</sizeRatio>
+      <text>.</text>
+      <top>258</top>
+      <width>57</width>
+      <widthRatio>0.0883534136546185</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp192/temp49">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0144927536231884</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>57</width>
+      <widthRatio>1.04545454545455</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp194">
+      <backgroundColor>D0D0D0</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>64</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <left>359</left>
+      <leftRatio>0.443105756358768</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>1.23076923076923</sizeRatio>
+      <text>.</text>
+      <top>258</top>
+      <width>58</width>
+      <widthRatio>0.069611780455154</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp194/temp50">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.00290697674418605</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>58</width>
+      <widthRatio>1.03614457831325</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp196">
+      <backgroundColor>D0D0D0</backgroundColor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>64</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <left>417</left>
+      <leftRatio>0.512717536813922</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.64</sizeRatio>
+      <text>.</text>
+      <top>258</top>
+      <width>43</width>
+      <widthRatio>0.133868808567604</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp196/temp121">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <leftRatio>0.627659574468085</leftRatio>
+      <sizeRatio>0.00401606425702811</sizeRatio>
+      <top>63</top>
+      <topRatio>0.359375</topRatio>
+      <width>43</width>
+      <widthRatio>2.64893617021277</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp198">
+      <backgroundColor>D0D0D0</backgroundColor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <hAlign>left</hAlign>
+      <height>64</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <left>460</left>
+      <leftRatio>0.646586345381526</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.242424242424242</sizeRatio>
+      <text>.</text>
+      <top>258</top>
+      <width>287</width>
+      <widthRatio>0.353413654618474</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp198/temp112">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <leftRatio>0.387096774193548</leftRatio>
+      <sizeRatio>0.00401606425702811</sizeRatio>
+      <top>63</top>
+      <topRatio>0.5625</topRatio>
+      <width>287</width>
+      <widthRatio>2.67741935483871</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp200">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>65</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.771084337349398</sizeRatio>
+      <text>.</text>
+      <top>322</top>
+      <width>72</width>
+      <widthRatio>0.111111111111111</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp200/temp51">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0116279069767442</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>72</width>
+      <widthRatio>1.03614457831325</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp202">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>65</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>72</left>
+      <leftRatio>0.111111111111111</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.481203007518797</sizeRatio>
+      <text>.</text>
+      <top>322</top>
+      <width>115</width>
+      <widthRatio>0.178045515394913</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp202/temp52">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0072463768115942</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>115</width>
+      <widthRatio>1.03759398496241</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp204">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>65</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>187</left>
+      <leftRatio>0.289156626506024</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.96969696969697</sizeRatio>
+      <text>.</text>
+      <top>322</top>
+      <width>57</width>
+      <widthRatio>0.0883534136546185</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp204/temp53">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0147058823529412</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>57</width>
+      <widthRatio>1.03030303030303</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp206">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>65</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>244</left>
+      <leftRatio>0.377510040160643</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.955223880597015</sizeRatio>
+      <text>.</text>
+      <top>322</top>
+      <width>58</width>
+      <widthRatio>0.0896921017402945</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp206/temp54">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0144927536231884</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>58</width>
+      <widthRatio>1.02985074626866</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp208">
+      <backgroundColor>f0f0f0</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>65</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>302</left>
+      <leftRatio>0.467202141900937</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.96969696969697</sizeRatio>
+      <text>.</text>
+      <top>322</top>
+      <width>57</width>
+      <widthRatio>0.0883534136546185</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp208/temp55">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0144927536231884</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>57</width>
+      <widthRatio>1.04545454545455</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp210">
+      <backgroundColor>D0D0D0</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>65</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <left>359</left>
+      <leftRatio>0.443105756358768</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>1.23076923076923</sizeRatio>
+      <text>.</text>
+      <top>322</top>
+      <width>58</width>
+      <widthRatio>0.069611780455154</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp210/temp56">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.00290697674418605</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>58</width>
+      <widthRatio>1.03614457831325</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp212">
+      <backgroundColor>D0D0D0</backgroundColor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>65</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <left>417</left>
+      <leftRatio>0.512717536813922</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.64</sizeRatio>
+      <text>.</text>
+      <top>322</top>
+      <width>43</width>
+      <widthRatio>0.133868808567604</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp212/temp122">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <leftRatio>0.627659574468085</leftRatio>
+      <sizeRatio>0.00401606425702811</sizeRatio>
+      <top>63</top>
+      <topRatio>0.359375</topRatio>
+      <width>43</width>
+      <widthRatio>2.64893617021277</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp214">
+      <backgroundColor>D0D0D0</backgroundColor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <hAlign>left</hAlign>
+      <height>65</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <left>460</left>
+      <leftRatio>0.646586345381526</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.242424242424242</sizeRatio>
+      <text>.</text>
+      <top>322</top>
+      <width>287</width>
+      <widthRatio>0.353413654618474</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp214/temp113">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <leftRatio>0.387096774193548</leftRatio>
+      <sizeRatio>0.00401606425702811</sizeRatio>
+      <top>63</top>
+      <topRatio>0.5625</topRatio>
+      <width>287</width>
+      <widthRatio>2.67741935483871</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp216">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>64</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.771084337349398</sizeRatio>
+      <text>.</text>
+      <top>387</top>
+      <width>72</width>
+      <widthRatio>0.111111111111111</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp216/temp57">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0116279069767442</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>72</width>
+      <widthRatio>1.03614457831325</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp220">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>64</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>72</left>
+      <leftRatio>0.111111111111111</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.481203007518797</sizeRatio>
+      <text>.</text>
+      <top>387</top>
+      <width>115</width>
+      <widthRatio>0.178045515394913</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp220/temp58">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0072463768115942</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>115</width>
+      <widthRatio>1.03759398496241</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp224">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>64</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>187</left>
+      <leftRatio>0.289156626506024</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.96969696969697</sizeRatio>
+      <text>.</text>
+      <top>387</top>
+      <width>57</width>
+      <widthRatio>0.0883534136546185</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp224/temp59">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0147058823529412</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>57</width>
+      <widthRatio>1.03030303030303</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp228">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>64</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>244</left>
+      <leftRatio>0.377510040160643</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.955223880597015</sizeRatio>
+      <text>.</text>
+      <top>387</top>
+      <width>58</width>
+      <widthRatio>0.0896921017402945</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp228/temp60">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0144927536231884</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>58</width>
+      <widthRatio>1.02985074626866</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp232">
+      <backgroundColor>f0f0f0</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>64</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>302</left>
+      <leftRatio>0.467202141900937</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.96969696969697</sizeRatio>
+      <text>.</text>
+      <top>387</top>
+      <width>57</width>
+      <widthRatio>0.0883534136546185</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp232/temp61">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0144927536231884</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>57</width>
+      <widthRatio>1.04545454545455</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp66">
+      <backgroundColor>D0D0D0</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>64</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <left>359</left>
+      <leftRatio>0.443105756358768</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>1.23076923076923</sizeRatio>
+      <text>.</text>
+      <top>387</top>
+      <width>58</width>
+      <widthRatio>0.069611780455154</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp66/temp62">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.00290697674418605</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>58</width>
+      <widthRatio>1.03614457831325</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp68">
+      <backgroundColor>D0D0D0</backgroundColor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>64</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <left>417</left>
+      <leftRatio>0.512717536813922</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.64</sizeRatio>
+      <text>.</text>
+      <top>387</top>
+      <width>43</width>
+      <widthRatio>0.133868808567604</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp68/temp123">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <leftRatio>0.627659574468085</leftRatio>
+      <sizeRatio>0.00401606425702811</sizeRatio>
+      <top>63</top>
+      <topRatio>0.359375</topRatio>
+      <width>43</width>
+      <widthRatio>2.64893617021277</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp70">
+      <backgroundColor>D0D0D0</backgroundColor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <hAlign>left</hAlign>
+      <height>64</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <left>460</left>
+      <leftRatio>0.646586345381526</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.242424242424242</sizeRatio>
+      <text>.</text>
+      <top>387</top>
+      <width>287</width>
+      <widthRatio>0.353413654618474</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp70/temp114">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <leftRatio>0.387096774193548</leftRatio>
+      <sizeRatio>0.00401606425702811</sizeRatio>
+      <top>63</top>
+      <topRatio>0.5625</topRatio>
+      <width>287</width>
+      <widthRatio>2.67741935483871</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp71">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>65</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.771084337349398</sizeRatio>
+      <text>.</text>
+      <top>451</top>
+      <width>72</width>
+      <widthRatio>0.111111111111111</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp71/temp63">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0116279069767442</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>72</width>
+      <widthRatio>1.03614457831325</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp73">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>65</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>72</left>
+      <leftRatio>0.111111111111111</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.481203007518797</sizeRatio>
+      <text>.</text>
+      <top>451</top>
+      <width>115</width>
+      <widthRatio>0.178045515394913</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp73/temp64">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0072463768115942</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>115</width>
+      <widthRatio>1.03759398496241</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp75">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>65</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>187</left>
+      <leftRatio>0.289156626506024</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.96969696969697</sizeRatio>
+      <text>.</text>
+      <top>451</top>
+      <width>57</width>
+      <widthRatio>0.0883534136546185</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp75/temp65">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0147058823529412</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>57</width>
+      <widthRatio>1.03030303030303</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp77">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>65</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>244</left>
+      <leftRatio>0.377510040160643</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.955223880597015</sizeRatio>
+      <text>.</text>
+      <top>451</top>
+      <width>58</width>
+      <widthRatio>0.0896921017402945</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp77/temp67">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0144927536231884</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>58</width>
+      <widthRatio>1.02985074626866</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp79">
+      <backgroundColor>f0f0f0</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>65</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>302</left>
+      <leftRatio>0.467202141900937</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.96969696969697</sizeRatio>
+      <text>.</text>
+      <top>451</top>
+      <width>57</width>
+      <widthRatio>0.0883534136546185</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp79/temp69">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0144927536231884</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>57</width>
+      <widthRatio>1.04545454545455</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp81">
+      <backgroundColor>D0D0D0</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>65</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <left>359</left>
+      <leftRatio>0.443105756358768</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>1.23076923076923</sizeRatio>
+      <text>.</text>
+      <top>451</top>
+      <width>58</width>
+      <widthRatio>0.069611780455154</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp81/temp72">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.00290697674418605</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>58</width>
+      <widthRatio>1.03614457831325</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp74">
+      <backgroundColor>D0D0D0</backgroundColor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>65</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <left>417</left>
+      <leftRatio>0.512717536813922</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.64</sizeRatio>
+      <text>.</text>
+      <top>451</top>
+      <width>43</width>
+      <widthRatio>0.133868808567604</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp74/temp124">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <leftRatio>0.627659574468085</leftRatio>
+      <sizeRatio>0.00401606425702811</sizeRatio>
+      <top>63</top>
+      <topRatio>0.359375</topRatio>
+      <width>43</width>
+      <widthRatio>2.64893617021277</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp76">
+      <backgroundColor>D0D0D0</backgroundColor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <hAlign>left</hAlign>
+      <height>65</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <left>460</left>
+      <leftRatio>0.646586345381526</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.242424242424242</sizeRatio>
+      <text>.</text>
+      <top>451</top>
+      <width>287</width>
+      <widthRatio>0.353413654618474</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp76/temp115">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <leftRatio>0.387096774193548</leftRatio>
+      <sizeRatio>0.00401606425702811</sizeRatio>
+      <top>63</top>
+      <topRatio>0.5625</topRatio>
+      <width>287</width>
+      <widthRatio>2.67741935483871</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp78">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>64</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.771084337349398</sizeRatio>
+      <text>.</text>
+      <top>516</top>
+      <width>72</width>
+      <widthRatio>0.111111111111111</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp78/temp80">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0116279069767442</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>72</width>
+      <widthRatio>1.03614457831325</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp83">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>64</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>72</left>
+      <leftRatio>0.111111111111111</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.481203007518797</sizeRatio>
+      <text>.</text>
+      <top>516</top>
+      <width>115</width>
+      <widthRatio>0.178045515394913</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp83/temp84">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0072463768115942</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>115</width>
+      <widthRatio>1.03759398496241</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp85">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>64</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>187</left>
+      <leftRatio>0.289156626506024</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.96969696969697</sizeRatio>
+      <text>.</text>
+      <top>516</top>
+      <width>57</width>
+      <widthRatio>0.0883534136546185</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp85/temp86">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0147058823529412</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>57</width>
+      <widthRatio>1.03030303030303</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp87">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>64</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>244</left>
+      <leftRatio>0.377510040160643</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.955223880597015</sizeRatio>
+      <text>.</text>
+      <top>516</top>
+      <width>58</width>
+      <widthRatio>0.0896921017402945</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp87/temp88">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0144927536231884</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>58</width>
+      <widthRatio>1.02985074626866</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp89">
+      <backgroundColor>f0f0f0</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>64</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>302</left>
+      <leftRatio>0.467202141900937</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.96969696969697</sizeRatio>
+      <text>.</text>
+      <top>516</top>
+      <width>57</width>
+      <widthRatio>0.0883534136546185</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp89/temp90">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0144927536231884</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>57</width>
+      <widthRatio>1.04545454545455</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp91">
+      <backgroundColor>D0D0D0</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>64</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <left>359</left>
+      <leftRatio>0.443105756358768</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>1.23076923076923</sizeRatio>
+      <text>.</text>
+      <top>516</top>
+      <width>58</width>
+      <widthRatio>0.069611780455154</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp91/temp92">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.00290697674418605</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>58</width>
+      <widthRatio>1.03614457831325</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp93">
+      <backgroundColor>D0D0D0</backgroundColor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>64</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <left>417</left>
+      <leftRatio>0.512717536813922</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.64</sizeRatio>
+      <text>.</text>
+      <top>516</top>
+      <width>43</width>
+      <widthRatio>0.133868808567604</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp93/temp125">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <leftRatio>0.627659574468085</leftRatio>
+      <sizeRatio>0.00401606425702811</sizeRatio>
+      <top>63</top>
+      <topRatio>0.359375</topRatio>
+      <width>43</width>
+      <widthRatio>2.64893617021277</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp94">
+      <backgroundColor>D0D0D0</backgroundColor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <hAlign>left</hAlign>
+      <height>64</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <left>460</left>
+      <leftRatio>0.646586345381526</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.242424242424242</sizeRatio>
+      <text>.</text>
+      <top>516</top>
+      <width>287</width>
+      <widthRatio>0.353413654618474</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp94/temp116">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <leftRatio>0.387096774193548</leftRatio>
+      <sizeRatio>0.00401606425702811</sizeRatio>
+      <top>63</top>
+      <topRatio>0.5625</topRatio>
+      <width>287</width>
+      <widthRatio>2.67741935483871</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp95">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>65</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.771084337349398</sizeRatio>
+      <text>.</text>
+      <top>580</top>
+      <width>72</width>
+      <widthRatio>0.111111111111111</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp95/temp96">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0116279069767442</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>72</width>
+      <widthRatio>1.03614457831325</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp97">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>65</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>72</left>
+      <leftRatio>0.111111111111111</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.481203007518797</sizeRatio>
+      <text>.</text>
+      <top>580</top>
+      <width>115</width>
+      <widthRatio>0.178045515394913</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp97/temp98">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0072463768115942</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>115</width>
+      <widthRatio>1.03759398496241</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp99">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>65</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>187</left>
+      <leftRatio>0.289156626506024</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.96969696969697</sizeRatio>
+      <text>.</text>
+      <top>580</top>
+      <width>57</width>
+      <widthRatio>0.0883534136546185</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp99/temp100">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0147058823529412</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>57</width>
+      <widthRatio>1.03030303030303</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp101">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>65</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>244</left>
+      <leftRatio>0.377510040160643</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.955223880597015</sizeRatio>
+      <text>.</text>
+      <top>580</top>
+      <width>58</width>
+      <widthRatio>0.0896921017402945</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp101/temp102">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0144927536231884</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>58</width>
+      <widthRatio>1.02985074626866</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp103">
+      <backgroundColor>f0f0f0</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>65</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>302</left>
+      <leftRatio>0.467202141900937</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.96969696969697</sizeRatio>
+      <text>.</text>
+      <top>580</top>
+      <width>57</width>
+      <widthRatio>0.0883534136546185</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp103/temp104">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0144927536231884</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>57</width>
+      <widthRatio>1.04545454545455</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp105">
+      <backgroundColor>D0D0D0</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>65</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <left>359</left>
+      <leftRatio>0.443105756358768</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>1.23076923076923</sizeRatio>
+      <text>.</text>
+      <top>580</top>
+      <width>58</width>
+      <widthRatio>0.069611780455154</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp105/temp106">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.00290697674418605</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>58</width>
+      <widthRatio>1.03614457831325</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp107">
+      <backgroundColor>D0D0D0</backgroundColor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>65</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <left>417</left>
+      <leftRatio>0.512717536813922</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.64</sizeRatio>
+      <text>.</text>
+      <top>580</top>
+      <width>43</width>
+      <widthRatio>0.133868808567604</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp107/temp126">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <leftRatio>0.627659574468085</leftRatio>
+      <sizeRatio>0.00401606425702811</sizeRatio>
+      <top>63</top>
+      <topRatio>0.359375</topRatio>
+      <width>43</width>
+      <widthRatio>2.64893617021277</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp108">
+      <backgroundColor>D0D0D0</backgroundColor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <hAlign>left</hAlign>
+      <height>65</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <left>460</left>
+      <leftRatio>0.646586345381526</leftRatio>
+      <onClick>g5.tableClick(sender);</onClick>
+      <sizeRatio>0.242424242424242</sizeRatio>
+      <text>.</text>
+      <top>580</top>
+      <width>287</width>
+      <widthRatio>0.353413654618474</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/tablebody2/temp108/temp117">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <leftRatio>0.387096774193548</leftRatio>
+      <sizeRatio>0.00401606425702811</sizeRatio>
+      <top>63</top>
+      <topRatio>0.5625</topRatio>
+      <width>287</width>
+      <widthRatio>2.67741935483871</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem2/panel5">
+      <backgroundImg>shadowY.png</backgroundImg>
+      <backgroundImgMode>stretch</backgroundImgMode>
+      <dockX>fill</dockX>
+      <dockY>top</dockY>
+      <height>18</height>
+      <heightRatio>0.0258249641319943</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <outerTop>-7</outerTop>
+      <sizeRatio>0.0240963855421687</sizeRatio>
+      <top>-7</top>
+      <topRatio>-0.0100430416068867</topRatio>
+      <width>747</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="LayoutYItem" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem6">
+      <backgroundColor>F4F4F4</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <heavy>55</heavy>
+      <heavyEnabled>false</heavyEnabled>
+      <height>39</height>
+      <heightRatio>0.0489949748743719</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0522088353413655</sizeRatio>
+      <top>757</top>
+      <topRatio>0.951005025125628</topRatio>
+      <width>747</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem6/panel16">
+      <dockY>center</dockY>
+      <fontBold>true</fontBold>
+      <fontColor>198DC9</fontColor>
+      <hAlign>left</hAlign>
+      <height>27</height>
+      <heightRatio>0.692307692307692</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>40</left>
+      <leftRatio>0.0535475234270415</leftRatio>
+      <sizeRatio>0.139896373056995</sizeRatio>
+      <text>共找到0条记录</text>
+      <top>6</top>
+      <topRatio>0.153846153846154</topRatio>
+      <width>193</width>
+      <widthRatio>0.258366800535475</widthRatio>
+    </control>
+    <control type="LayoutX" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem6/layoutx22">
+      <dockX>right</dockX>
+      <dockY>top</dockY>
+      <height>27</height>
+      <heightRatio>0.692307692307692</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>410</left>
+      <leftRatio>0.548862115127175</leftRatio>
+      <outerRight>50</outerRight>
+      <sizeRatio>0.0940766550522648</sizeRatio>
+      <top>0</top>
+      <width>287</width>
+      <widthRatio>0.384203480589023</widthRatio>
+    </control>
+    <control type="LayoutXItem" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem6/layoutx22/layoutxitem44">
+      <backgroundColor>30B5EF</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>FFFFFF</fontColor>
+      <height>27</height>
+      <heightRatio>1</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <onClick>g5.pageJump(g5.pageCurrent-1);</onClick>
+      <onCreate>sender.className = "buttonBlue";
+sender.style.backgroundColor = "";
+sender.style.borderRadius = "0px 0px 0px 5px";</onCreate>
+      <sizeRatio>0.28125</sizeRatio>
+      <text><![CDATA[<< 上一页]]></text>
+      <top>0</top>
+      <width>96</width>
+      <widthRatio>0.334494773519164</widthRatio>
+    </control>
+    <control type="LayoutXItem" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem6/layoutx22/layoutxitem45">
+      <backgroundColor>d0d0d0</backgroundColor>
+      <fontBold>true</fontBold>
+      <fontColor>30B5EF</fontColor>
+      <height>27</height>
+      <heightRatio>1</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>96</left>
+      <leftRatio>0.334494773519164</leftRatio>
+      <sizeRatio>0.284210526315789</sizeRatio>
+      <text>1/1</text>
+      <top>0</top>
+      <width>95</width>
+      <widthRatio>0.331010452961672</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem6/layoutx22/layoutxitem45/panel23">
+      <backgroundColor>30B5EF</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.037037037037037</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0105263157894737</sizeRatio>
+      <top>26</top>
+      <topRatio>0.962962962962963</topRatio>
+      <width>95</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem6/layoutx22/layoutxitem45/panel24">
+      <backgroundColor>30B5EF</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>top</dockY>
+      <height>1</height>
+      <heightRatio>0.037037037037037</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0105263157894737</sizeRatio>
+      <top>0</top>
+      <width>95</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="LayoutXItem" pathname="/divRoot/layoutx3/layoutxitem6/layouty1/layoutyitem6/layoutx22/layoutxitem50">
+      <backgroundColor>30B5EF</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>FFFFFF</fontColor>
+      <height>27</height>
+      <heightRatio>1</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>191</left>
+      <leftRatio>0.665505226480836</leftRatio>
+      <onClick>g5.pageJump(g5.pageCurrent+1);</onClick>
+      <onCreate>sender.className = "buttonBlue";
+sender.style.backgroundColor = "";
+sender.style.borderRadius = "0px 0px 5px 0px";</onCreate>
+      <sizeRatio>0.28125</sizeRatio>
+      <text><![CDATA[下一页 >>]]></text>
+      <top>0</top>
+      <width>96</width>
+      <widthRatio>0.334494773519164</widthRatio>
+    </control>
+    <control type="LayoutXItem" pathname="/divRoot/layoutx3/layoutxitem7">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <heavy>30</heavy>
+      <heavyEnabled>false</heavyEnabled>
+      <height>796</height>
+      <heightRatio>1</heightRatio>
+      <left>747</left>
+      <leftRatio>0.68721251149954</leftRatio>
+      <sizeRatio>199</sizeRatio>
+      <top>0</top>
+      <width>4</width>
+      <widthRatio>0.00367985280588776</widthRatio>
+    </control>
+    <control type="LayoutXItem" pathname="/divRoot/layoutx3/layoutxitem3">
+      <backgroundColor>f0f0f0</backgroundColor>
+      <heavy>45</heavy>
+      <height>796</height>
+      <heightRatio>1</heightRatio>
+      <left>751</left>
+      <leftRatio>0.690892364305428</leftRatio>
+      <sizeRatio>2.36904761904762</sizeRatio>
+      <top>0</top>
+      <width>336</width>
+      <widthRatio>0.309107635694572</widthRatio>
+    </control>
+    <control type="LayoutY" pathname="/divRoot/layoutx3/layoutxitem3/layouty2">
+      <backgroundColor>000000</backgroundColor>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>796</height>
+      <heightRatio>1</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>2.36904761904762</sizeRatio>
+      <top>0</top>
+      <width>336</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="LayoutYItem" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem3">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <heavyEnabled>false</heavyEnabled>
+      <height>60</height>
+      <heightRatio>0.0753768844221105</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.178571428571429</sizeRatio>
+      <top>0</top>
+      <width>336</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem3/panel2">
+      <backgroundColor>30B5EF</backgroundColor>
+      <cursor>pointer</cursor>
+      <dockY>bottom</dockY>
+      <fontBold>true</fontBold>
+      <fontColor>808080</fontColor>
+      <height>28</height>
+      <heightRatio>0.466666666666667</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>15</left>
+      <leftRatio>0.0446428571428571</leftRatio>
+      <onClick>if (!g5.tableClick.valid || !g5.tableClick2.valid) {
+    alert("请选择有效的记录进行操作");
+    return;
+}
+let voteId = query.dataset.getData(0,g5.tableClick.y);
+let optionIndex = query2.dataset.getData(0,g5.tableClick2.y);
+let voteUserId = prompt("请输入投票的用户ID：");
+if (!voteUserId) return;
+
+vote.userId = voteUserId;
+vote.voteId = voteId;
+vote.optionIndex = optionIndex;
+vote.onComplete = function() {
+    alert("虚拟投票成功");
+    query();
+    query2();
+}
+vote();
+
+</onClick>
+      <onCreate>sender.className = "buttonGray";
+sender.style.borderRadius = "5px";</onCreate>
+      <outerBottom>5</outerBottom>
+      <sizeRatio>0.345679012345679</sizeRatio>
+      <text>投票</text>
+      <top>27</top>
+      <topRatio>0.45</topRatio>
+      <width>81</width>
+      <widthRatio>0.241071428571429</widthRatio>
+    </control>
+    <control type="LayoutYItem" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4">
+      <autoScroll>true</autoScroll>
+      <backgroundColor>FF8000</backgroundColor>
+      <height>697</height>
+      <heightRatio>0.875628140703518</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>2.07440476190476</sizeRatio>
+      <top>60</top>
+      <topRatio>0.0753768844221105</topRatio>
+      <width>336</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="TableTitle" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tabletitle1">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <columnCount>3</columnCount>
+      <dockX>fill</dockX>
+      <height>52</height>
+      <heightRatio>0.0746054519368723</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <minHeight>370</minHeight>
+      <minWidth>300</minWidth>
+      <sizeRatio>0.154761904761905</sizeRatio>
+      <tableBody>tablebody1</tableBody>
+      <top>0</top>
+      <width>336</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="TableTitleItem" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tabletitle1/tabletitleitem4">
+      <backgroundColor>F4F4F4</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <fontBold>true</fontBold>
+      <fontColor>646464</fontColor>
+      <heavy>30</heavy>
+      <height>52</height>
+      <heightRatio>1</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.825396825396825</sizeRatio>
+      <text>选项序号</text>
+      <top>0</top>
+      <width>63</width>
+      <widthRatio>0.1875</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tabletitle1/tabletitleitem4/panel6">
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.0192307692307692</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0172413793103448</sizeRatio>
+      <top>51</top>
+      <topRatio>0.980769230769231</topRatio>
+      <width>63</width>
+      <widthRatio>0.920634920634921</widthRatio>
+    </control>
+    <control type="TableTitleItem" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tabletitle1/tabletitleitem5">
+      <backgroundColor>F4F4F4</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <fontBold>true</fontBold>
+      <fontColor>646464</fontColor>
+      <heavy>30</heavy>
+      <height>52</height>
+      <heightRatio>1</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>63</left>
+      <leftRatio>0.1875</leftRatio>
+      <sizeRatio>0.825396825396825</sizeRatio>
+      <text>获得票数</text>
+      <top>0</top>
+      <width>63</width>
+      <widthRatio>0.1875</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tabletitle1/tabletitleitem5/panel7">
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.0192307692307692</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0172413793103448</sizeRatio>
+      <top>51</top>
+      <topRatio>0.980769230769231</topRatio>
+      <width>63</width>
+      <widthRatio>0.920634920634921</widthRatio>
+    </control>
+    <control type="TableTitleItem" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tabletitle1/tabletitleitem6">
+      <backgroundColor>F4F4F4</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <fontBold>true</fontBold>
+      <fontColor>646464</fontColor>
+      <hAlign>left</hAlign>
+      <height>52</height>
+      <heightRatio>1</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>126</left>
+      <leftRatio>0.375</leftRatio>
+      <sizeRatio>0.247619047619048</sizeRatio>
+      <text>选项名称</text>
+      <top>0</top>
+      <width>210</width>
+      <widthRatio>0.625</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tabletitle1/tabletitleitem6/panel8">
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.0192307692307692</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.00518134715025907</sizeRatio>
+      <top>51</top>
+      <topRatio>0.980769230769231</topRatio>
+      <width>210</width>
+      <widthRatio>0.919047619047619</widthRatio>
+    </control>
+    <control type="TableBody" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1">
+      <backgroundColor>FF0000</backgroundColor>
+      <backgroundImg>xz_bn.png</backgroundImg>
+      <height>645</height>
+      <heightRatio>0.925394548063128</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>1.91964285714286</sizeRatio>
+      <tableTitle>tabletitle1</tableTitle>
+      <top>52</top>
+      <topRatio>0.0746054519368723</topRatio>
+      <width>336</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="TableBodyItem" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/tablebodyitem4">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>64</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <onClick>g5.tableClick2(sender);</onClick>
+      <onUpdate>if (!query2.dataset) {
+    text = "";
+    return;
+}
+var y = sender.rowIndex;
+var s = query2.dataset.getData(0,y);
+ee.setText(sender, s);
+</onUpdate>
+      <sizeRatio>1.01587301587302</sizeRatio>
+      <text>.</text>
+      <top>0</top>
+      <width>63</width>
+      <widthRatio>0.1875</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/tablebodyitem4/panel26">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0172413793103448</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>63</width>
+      <widthRatio>0.920634920634921</widthRatio>
+    </control>
+    <control type="TableBodyItem" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/tablebodyitem5">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>64</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>63</left>
+      <leftRatio>0.1875</leftRatio>
+      <onClick>g5.tableClick2(sender);</onClick>
+      <onUpdate>if (!query2.dataset) {
+    text = "";
+    return;
+}
+var y = sender.rowIndex;
+var s = query2.dataset.getData(2,y);
+ee.setText(sender, s);
+</onUpdate>
+      <sizeRatio>1.01587301587302</sizeRatio>
+      <text>.</text>
+      <top>0</top>
+      <width>63</width>
+      <widthRatio>0.1875</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/tablebodyitem5/panel27">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0172413793103448</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>63</width>
+      <widthRatio>0.920634920634921</widthRatio>
+    </control>
+    <control type="TableBodyItem" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/tablebodyitem6">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <hAlign>left</hAlign>
+      <height>64</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>126</left>
+      <leftRatio>0.375</leftRatio>
+      <onClick>g5.tableClick2(sender);</onClick>
+      <onUpdate>if (!query2.dataset) {
+    text = "";
+    return;
+}
+var y = sender.rowIndex;
+var s = query2.dataset.getData(1,y);
+ee.setText(sender, s);
+</onUpdate>
+      <sizeRatio>0.304761904761905</sizeRatio>
+      <text>.</text>
+      <top>0</top>
+      <width>210</width>
+      <widthRatio>0.625</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/tablebodyitem6/panel32">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.00518134715025907</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>210</width>
+      <widthRatio>0.919047619047619</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/temp217">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>65</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <onClick>g5.tableClick2(sender);</onClick>
+      <sizeRatio>1.01587301587302</sizeRatio>
+      <text>.</text>
+      <top>64</top>
+      <width>63</width>
+      <widthRatio>0.1875</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/temp217/temp1">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0172413793103448</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>63</width>
+      <widthRatio>0.920634920634921</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/temp219">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>65</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>63</left>
+      <leftRatio>0.1875</leftRatio>
+      <onClick>g5.tableClick2(sender);</onClick>
+      <sizeRatio>1.01587301587302</sizeRatio>
+      <text>.</text>
+      <top>64</top>
+      <width>63</width>
+      <widthRatio>0.1875</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/temp219/temp2">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0172413793103448</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>63</width>
+      <widthRatio>0.920634920634921</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/temp221">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <hAlign>left</hAlign>
+      <height>65</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>126</left>
+      <leftRatio>0.375</leftRatio>
+      <onClick>g5.tableClick2(sender);</onClick>
+      <sizeRatio>0.304761904761905</sizeRatio>
+      <text>.</text>
+      <top>64</top>
+      <width>210</width>
+      <widthRatio>0.625</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/temp221/temp3">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.00518134715025907</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>210</width>
+      <widthRatio>0.919047619047619</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/temp223">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>64</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <onClick>g5.tableClick2(sender);</onClick>
+      <sizeRatio>1.01587301587302</sizeRatio>
+      <text>.</text>
+      <top>129</top>
+      <width>63</width>
+      <widthRatio>0.1875</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/temp223/temp4">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0172413793103448</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>63</width>
+      <widthRatio>0.920634920634921</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/temp225">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>64</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>63</left>
+      <leftRatio>0.1875</leftRatio>
+      <onClick>g5.tableClick2(sender);</onClick>
+      <sizeRatio>1.01587301587302</sizeRatio>
+      <text>.</text>
+      <top>129</top>
+      <width>63</width>
+      <widthRatio>0.1875</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/temp225/temp5">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0172413793103448</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>63</width>
+      <widthRatio>0.920634920634921</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/temp227">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <hAlign>left</hAlign>
+      <height>64</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>126</left>
+      <leftRatio>0.375</leftRatio>
+      <onClick>g5.tableClick2(sender);</onClick>
+      <sizeRatio>0.304761904761905</sizeRatio>
+      <text>.</text>
+      <top>129</top>
+      <width>210</width>
+      <widthRatio>0.625</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/temp227/temp6">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.00518134715025907</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>210</width>
+      <widthRatio>0.919047619047619</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/temp229">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>65</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <onClick>g5.tableClick2(sender);</onClick>
+      <sizeRatio>1.01587301587302</sizeRatio>
+      <text>.</text>
+      <top>193</top>
+      <width>63</width>
+      <widthRatio>0.1875</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/temp229/temp7">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0172413793103448</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>63</width>
+      <widthRatio>0.920634920634921</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/temp231">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>65</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>63</left>
+      <leftRatio>0.1875</leftRatio>
+      <onClick>g5.tableClick2(sender);</onClick>
+      <sizeRatio>1.01587301587302</sizeRatio>
+      <text>.</text>
+      <top>193</top>
+      <width>63</width>
+      <widthRatio>0.1875</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/temp231/temp8">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0172413793103448</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>63</width>
+      <widthRatio>0.920634920634921</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/temp233">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <hAlign>left</hAlign>
+      <height>65</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>126</left>
+      <leftRatio>0.375</leftRatio>
+      <onClick>g5.tableClick2(sender);</onClick>
+      <sizeRatio>0.304761904761905</sizeRatio>
+      <text>.</text>
+      <top>193</top>
+      <width>210</width>
+      <widthRatio>0.625</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/temp233/temp9">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.00518134715025907</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>210</width>
+      <widthRatio>0.919047619047619</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/temp235">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>64</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <onClick>g5.tableClick2(sender);</onClick>
+      <sizeRatio>1.01587301587302</sizeRatio>
+      <text>.</text>
+      <top>258</top>
+      <width>63</width>
+      <widthRatio>0.1875</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/temp235/temp10">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0172413793103448</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>63</width>
+      <widthRatio>0.920634920634921</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/temp237">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>64</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>63</left>
+      <leftRatio>0.1875</leftRatio>
+      <onClick>g5.tableClick2(sender);</onClick>
+      <sizeRatio>1.01587301587302</sizeRatio>
+      <text>.</text>
+      <top>258</top>
+      <width>63</width>
+      <widthRatio>0.1875</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/temp237/temp11">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0172413793103448</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>63</width>
+      <widthRatio>0.920634920634921</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/temp239">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <hAlign>left</hAlign>
+      <height>64</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>126</left>
+      <leftRatio>0.375</leftRatio>
+      <onClick>g5.tableClick2(sender);</onClick>
+      <sizeRatio>0.304761904761905</sizeRatio>
+      <text>.</text>
+      <top>258</top>
+      <width>210</width>
+      <widthRatio>0.625</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/temp239/temp12">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.00518134715025907</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>210</width>
+      <widthRatio>0.919047619047619</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/temp241">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>65</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <onClick>g5.tableClick2(sender);</onClick>
+      <sizeRatio>1.01587301587302</sizeRatio>
+      <text>.</text>
+      <top>322</top>
+      <width>63</width>
+      <widthRatio>0.1875</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/temp241/temp13">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0172413793103448</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>63</width>
+      <widthRatio>0.920634920634921</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/temp243">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>65</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>63</left>
+      <leftRatio>0.1875</leftRatio>
+      <onClick>g5.tableClick2(sender);</onClick>
+      <sizeRatio>1.01587301587302</sizeRatio>
+      <text>.</text>
+      <top>322</top>
+      <width>63</width>
+      <widthRatio>0.1875</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/temp243/temp14">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0172413793103448</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>63</width>
+      <widthRatio>0.920634920634921</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/temp245">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <hAlign>left</hAlign>
+      <height>65</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>126</left>
+      <leftRatio>0.375</leftRatio>
+      <onClick>g5.tableClick2(sender);</onClick>
+      <sizeRatio>0.304761904761905</sizeRatio>
+      <text>.</text>
+      <top>322</top>
+      <width>210</width>
+      <widthRatio>0.625</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/temp245/temp15">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.00518134715025907</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>210</width>
+      <widthRatio>0.919047619047619</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/temp247">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>64</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <onClick>g5.tableClick2(sender);</onClick>
+      <sizeRatio>1.01587301587302</sizeRatio>
+      <text>.</text>
+      <top>387</top>
+      <width>63</width>
+      <widthRatio>0.1875</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/temp247/temp16">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0172413793103448</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>63</width>
+      <widthRatio>0.920634920634921</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/temp249">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>64</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>63</left>
+      <leftRatio>0.1875</leftRatio>
+      <onClick>g5.tableClick2(sender);</onClick>
+      <sizeRatio>1.01587301587302</sizeRatio>
+      <text>.</text>
+      <top>387</top>
+      <width>63</width>
+      <widthRatio>0.1875</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/temp249/temp17">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0172413793103448</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>63</width>
+      <widthRatio>0.920634920634921</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/temp251">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <hAlign>left</hAlign>
+      <height>64</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>126</left>
+      <leftRatio>0.375</leftRatio>
+      <onClick>g5.tableClick2(sender);</onClick>
+      <sizeRatio>0.304761904761905</sizeRatio>
+      <text>.</text>
+      <top>387</top>
+      <width>210</width>
+      <widthRatio>0.625</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/temp251/temp18">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.00518134715025907</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>210</width>
+      <widthRatio>0.919047619047619</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/temp253">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>65</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <onClick>g5.tableClick2(sender);</onClick>
+      <sizeRatio>1.01587301587302</sizeRatio>
+      <text>.</text>
+      <top>451</top>
+      <width>63</width>
+      <widthRatio>0.1875</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/temp253/temp19">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0172413793103448</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>63</width>
+      <widthRatio>0.920634920634921</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/temp255">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>65</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>63</left>
+      <leftRatio>0.1875</leftRatio>
+      <onClick>g5.tableClick2(sender);</onClick>
+      <sizeRatio>1.01587301587302</sizeRatio>
+      <text>.</text>
+      <top>451</top>
+      <width>63</width>
+      <widthRatio>0.1875</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/temp255/temp20">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0172413793103448</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>63</width>
+      <widthRatio>0.920634920634921</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/temp257">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <hAlign>left</hAlign>
+      <height>65</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>126</left>
+      <leftRatio>0.375</leftRatio>
+      <onClick>g5.tableClick2(sender);</onClick>
+      <sizeRatio>0.304761904761905</sizeRatio>
+      <text>.</text>
+      <top>451</top>
+      <width>210</width>
+      <widthRatio>0.625</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/temp257/temp21">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.00518134715025907</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>210</width>
+      <widthRatio>0.919047619047619</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/temp259">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>64</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <onClick>g5.tableClick2(sender);</onClick>
+      <sizeRatio>1.01587301587302</sizeRatio>
+      <text>.</text>
+      <top>516</top>
+      <width>63</width>
+      <widthRatio>0.1875</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/temp259/temp22">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0172413793103448</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>63</width>
+      <widthRatio>0.920634920634921</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/temp261">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>64</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>63</left>
+      <leftRatio>0.1875</leftRatio>
+      <onClick>g5.tableClick2(sender);</onClick>
+      <sizeRatio>1.01587301587302</sizeRatio>
+      <text>.</text>
+      <top>516</top>
+      <width>63</width>
+      <widthRatio>0.1875</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/temp261/temp23">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0172413793103448</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>63</width>
+      <widthRatio>0.920634920634921</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/temp263">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <hAlign>left</hAlign>
+      <height>64</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>126</left>
+      <leftRatio>0.375</leftRatio>
+      <onClick>g5.tableClick2(sender);</onClick>
+      <sizeRatio>0.304761904761905</sizeRatio>
+      <text>.</text>
+      <top>516</top>
+      <width>210</width>
+      <widthRatio>0.625</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/temp263/temp24">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.00518134715025907</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>210</width>
+      <widthRatio>0.919047619047619</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/temp265">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>65</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <onClick>g5.tableClick2(sender);</onClick>
+      <sizeRatio>1.01587301587302</sizeRatio>
+      <text>.</text>
+      <top>580</top>
+      <width>63</width>
+      <widthRatio>0.1875</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/temp265/temp25">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0172413793103448</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>63</width>
+      <widthRatio>0.920634920634921</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/temp267">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <height>65</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>63</left>
+      <leftRatio>0.1875</leftRatio>
+      <onClick>g5.tableClick2(sender);</onClick>
+      <sizeRatio>1.01587301587302</sizeRatio>
+      <text>.</text>
+      <top>580</top>
+      <width>63</width>
+      <widthRatio>0.1875</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/temp267/temp26">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.0172413793103448</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>63</width>
+      <widthRatio>0.920634920634921</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/temp269">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>545454</fontColor>
+      <hAlign>left</hAlign>
+      <height>65</height>
+      <heightRatio>0.0992248062015504</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>126</left>
+      <leftRatio>0.375</leftRatio>
+      <onClick>g5.tableClick2(sender);</onClick>
+      <sizeRatio>0.304761904761905</sizeRatio>
+      <text>.</text>
+      <top>580</top>
+      <width>210</width>
+      <widthRatio>0.625</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/tablebody1/temp269/temp27">
+      <backgroundColor>E0E0E0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.015625</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.00518134715025907</sizeRatio>
+      <top>63</top>
+      <topRatio>0.984375</topRatio>
+      <width>210</width>
+      <widthRatio>0.919047619047619</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem4/panel36">
+      <backgroundImg>shadowY.png</backgroundImg>
+      <backgroundImgMode>stretch</backgroundImgMode>
+      <dockX>fill</dockX>
+      <dockY>top</dockY>
+      <height>18</height>
+      <heightRatio>0.0258249641319943</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <outerTop>-7</outerTop>
+      <sizeRatio>0.0535714285714286</sizeRatio>
+      <top>-7</top>
+      <topRatio>-0.0100430416068867</topRatio>
+      <width>336</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="LayoutYItem" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem5">
+      <backgroundColor>F4F4F4</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <heavy>55</heavy>
+      <heavyEnabled>false</heavyEnabled>
+      <height>39</height>
+      <heightRatio>0.0489949748743719</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <sizeRatio>0.116071428571429</sizeRatio>
+      <top>757</top>
+      <topRatio>0.951005025125628</topRatio>
+      <width>336</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layoutx3/layoutxitem3/layouty2/layoutyitem5/panel37">
+      <dockY>center</dockY>
+      <fontBold>true</fontBold>
+      <fontColor>198DC9</fontColor>
+      <hAlign>left</hAlign>
+      <height>27</height>
+      <heightRatio>0.692307692307692</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>40</left>
+      <leftRatio>0.119047619047619</leftRatio>
+      <sizeRatio>0.139896373056995</sizeRatio>
+      <text>共找到0条记录</text>
+      <top>6</top>
+      <topRatio>0.153846153846154</topRatio>
+      <width>193</width>
+      <widthRatio>0.574404761904762</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel38">
+      <backgroundSkin>empty</backgroundSkin>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <fontBold>true</fontBold>
+      <fontColor>198DC9</fontColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSize>14</fontSize>
+      <hAlign>left</hAlign>
+      <height>796</height>
+      <heightRatio>1</heightRatio>
+      <layerName>p1 主页透明弹窗</layerName>
+      <layerVisible>false</layerVisible>
+      <left>0</left>
+      <onClick><![CDATA[for (var i=0; i<sender.eeChildren.length; i++) {
+    if (sender.eeChildren[i].close) {
+        sender.eeChildren[i].close();
+    } else {
+        ee.setVisible(sender.eeChildren[i], false);
+    }
+}
+ee.setVisible(sender, false);]]></onClick>
+      <onCreate>sender.a1 = ee.getControl("panel39");</onCreate>
+      <sizeRatio>0.732290708371665</sizeRatio>
+      <top>0</top>
+      <width>1087</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/panel38/panel39">
+      <backgroundColor>FAFAFA</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <height>482</height>
+      <heightRatio>0.605527638190955</heightRatio>
+      <layerName>a1 弹出菜单</layerName>
+      <layerVisible>false</layerVisible>
+      <left>167</left>
+      <leftRatio>0.153633854645814</leftRatio>
+      <onCreate><![CDATA[sender.c_items = new Array();
+sender.style.boxSizing="border-box";
+sender.style.borderWidth = "1px";
+sender.style.borderColor = "#a0a0a0";
+sender.style.borderStyle = "solid";
+sender.style.borderRadius = "10px";
+sender.style.boxShadow  = "5px 5px 10px #d0d0d0";
+
+sender.show = function(refDiv, list, onComplete) {
+    var options = list.split(";");
+    var i = 0;
+    while (i<options.length) {
+        if (options[i].trim()=="") {
+            options.splice(i, 1);
+        } else {
+            i++;
+        }
+    }
+    this.itemsClear();
+    var root;
+    var maxX = 0;
+    for (var i=0; i<options.length; i++) {
+        root = this.itemsAdd(options[i].split(","));
+        root.v_index = i;
+        this.c_items.push(root);
+        var rect = eb.getDivRectSetting(root);
+        if (rect.w>maxX) maxX = rect.w;
+    }
+    this.v_result = new Array();
+    this.v_resultIndex = -1;
+    this.f_onComplete = onComplete;
+    ee.setRect(this,null,null,parseInt(maxX*1.3),null);
+    eb.processDock();
+    ee.tiledV(this, 0, 10, 10);
+    ee.tiledResizeV(this, 1);
+    var rect = g5.getRectAbs(refDiv);
+    if (rect.y > eb.getDivRect(ee.getControl("divRoot")).h/2) {
+        ee.setRect(this, rect.x - 50, rect.y - eb.getDivRect(this).h - 10, null, null);
+    } else {
+        ee.setRect(this, rect.x - 50, rect.y+rect.h+10, null, null);
+    }
+    ee.setVisible(this, true);
+    ee.setVisible(this.parentNode, true);
+}
+
+sender.close = function() {
+    ee.setVisible(this, false);
+    this.f_onComplete(this.v_resultIndex, this.v_result);
+}
+
+sender.itemsClear = function() {
+    while (this.c_items.length>0) {
+        ee.removeControl(this.c_items[this.c_items.length-1]);
+        this.c_items.splice(this.c_items.length-1, 1);
+    }
+}
+
+sender.itemsAdd = function(value) {
+    var c;
+    var root;
+    root = createPanel(this, this.id + "panel" + value[1], "", 10, 10, 1, 50);
+    root.v_value = value;
+    root.className = "buttonSelectBlue";
+    root.style.cursor = "pointer";
+    eb.setDock(root,"fill","disabled");
+    eb.setOuter(root,0,0,1,0);
+    ee.setOnClick(root, function(senderBtn,event) {
+        sender.v_result = root.v_value;
+        sender.v_resultIndex = root.v_index;
+        //window.event? window.event.cancelBubble = true : event.stopPropagation();
+    });
+    
+    c = createPanel(root, root.id+"panel16", "", 10, 10, 10, 22);
+    addText(c, root.v_value[0], "left", "middle", "微软雅黑", 12, "14171a", "bold");
+    c.label.style.whiteSpace = "nowrap";
+    eb.setDock(c,"fill","disabled");
+    eb.setOuter(c,10,0,10,0);
+    var rect = eb.getDivRect(c.label);
+    ee.setRect(root, null, null, rect.w + 20, null);
+
+    return root;
+}
+]]></onCreate>
+      <sizeRatio>1.19012345679012</sizeRatio>
+      <top>101</top>
+      <topRatio>0.126884422110553</topRatio>
+      <width>405</width>
+      <widthRatio>0.372585096596136</widthRatio>
+    </control>
+  </controls>
+  <taskSet count="3">
+    <taskSetItem name="query">
+      <script1>eio.appendString8(eb.getCookie("FAToken")); 
+eio.appendString8(ee.getEditText(ee.getControl("edit3")));
+eio.appendInt32(g5.pageSize);
+eio.appendInt32(g5.pageCurrent);
+</script1>
+      <script2><![CDATA[var token = eio.readString8();
+var searchText = eio.readString8();
+var pageSize = eio.readInt32();
+var pageCurrent = eio.readInt32();
+
+var sql,sqlResult;
+sql = "exec getUserInfoBySessionAdmin '" + db.encode(token) + "'";
+sqlResult = db.executeQuery("DB", sql);
+if (sqlResult == null) {
+    eio.appendString8("F");
+    es.logWarning("数据库执行错误, sql=" + sql);
+    return;
+}
+db.read(sqlResult);
+if (db.getString(sqlResult, "sessionId").length < 5) {
+    eio.appendString8("F");
+    eio.appendString8("token失效");
+    es.logWarning("用户token失效, sql=" + sql);
+    return;
+}   
+var userId = db.getString(sqlResult, "id");
+var userName = db.getString(sqlResult, "userName");
+
+sql= 
+    "exec [viewAdminVoteList] " +
+    "'" + db.encode(searchText) + "'," +
+    pageCurrent + "," +
+    pageSize;
+sqlResult = db.executeQuery("DB", sql);
+if (sqlResult == null) {
+    eio.appendString8("F");
+    es.logWarning("数据库执行错误, sql=" + sql);
+    return;
+}
+eio.appendString8("T");
+db.read(sqlResult);
+eio.appendString8(db.getString(sqlResult,"count"));
+eio.appendString8(db.getString(sqlResult,"pageCount"));
+db.nextResult(sqlResult);
+eio.appendDataSet(sqlResult,
+    //0     1           2         3       4         5           6           7
+    "voteId,regDatetime,contentId,content,voteCount,optionCount,durationSec,closed",
+    0,9999
+); 
+]]></script2>
+      <script3><![CDATA[if (eio.readString8() != "T") {
+    alert("无法获取您需要的数据：" + eio.readString8());
+    return;
+}
+query.recordCount = parseInt(eio.readString8());
+g5.pageCount = parseInt(eio.readString8());
+query.dataset = eio.readDataSet();
+ee.setTableData(ee.getControl("tablebody2"), query.dataset,0);   
+ee.setText(ee.getControl("layoutxitem45"), g5.pageCurrent + "/" + g5.pageCount);
+ee.setText(ee.getControl("panel16"), "共找到" +
+    "<font color = '#d00000'>" + query.recordCount + "条</font>记录");
+]]></script3>
+    </taskSetItem>
+    <taskSetItem name="query2">
+      <script1>//voteId,onComplete
+eio.appendString8(eb.getCookie("FAToken")); 
+eio.appendString8(query2.voteId + "");
+</script1>
+      <script2><![CDATA[var token = eio.readString8();
+var voteId = parseInt(eio.readString8());
+
+var sql,sqlResult;
+sql = "exec getUserInfoBySessionAdmin '" + db.encode(token) + "'";
+sqlResult = db.executeQuery("DB", sql);
+if (sqlResult == null) {
+    eio.appendString8("F");
+    es.logWarning("数据库执行错误, sql=" + sql);
+    return;
+}
+db.read(sqlResult);
+if (db.getString(sqlResult, "sessionId").length < 5) {
+    eio.appendString8("F");
+    eio.appendString8("token失效");
+    es.logWarning("用户token失效, sql=" + sql);
+    return;
+}   
+var userId = db.getString(sqlResult, "id");
+var userName = db.getString(sqlResult, "userName");
+
+sql= 
+    "exec viewAdminVoteType " + voteId + ";";
+sqlResult = db.executeQuery("DB", sql);
+if (sqlResult == null) {
+    eio.appendString8("F");
+    es.logWarning("数据库执行错误, sql=" + sql);
+    return;
+}
+eio.appendString8("T");
+db.read(sqlResult);
+eio.appendString8(db.getString(sqlResult,"optionCount"));
+db.nextResult(sqlResult);
+eio.appendDataSet(sqlResult,
+    //0       1          2
+    "optionSn,optionName,voteCount",
+    0,9999
+); 
+]]></script2>
+      <script3><![CDATA[if (eio.readString8() != "T") {
+    alert("无法获取您需要的数据：" + eio.readString8());
+    return;
+}
+query2.recordCount = parseInt(eio.readString8());
+query2.dataset = eio.readDataSet();
+ee.setTableData(ee.getControl("tablebody1"), query2.dataset,0);   
+ee.setText(ee.getControl("panel37"), "共找到" +
+    "<font color = '#d00000'>" + query2.recordCount + "条</font>记录");
+if (query2.onComplete) {
+    query2.onComplete();
+}
+]]></script3>
+    </taskSetItem>
+    <taskSetItem name="vote">
+      <script1>//userId,voteId,optionIndex,onComplete
+vote.busy = true;
+eio.appendString16(eb.getCookie("FAToken"));
+eio.appendString8(vote.userId+"");
+eio.appendString8(vote.voteId+"");
+eio.appendByte(vote.optionIndex);
+</script1>
+      <script2><![CDATA[let token = eio.readString16();
+let voteUserId = parseInt(eio.readString8());
+let voteId = parseInt(eio.readString8());
+let optionIndex = eio.readByte();
+
+var sql,sqlResult;
+sql = "exec getUserInfoBySessionAdmin '" + db.encode(token) + "'";
+sqlResult = db.executeQuery("DB", sql);
+if (sqlResult == null) {
+    eio.appendString8("F");
+    es.logWarning("数据库执行错误, sql=" + sql);
+    return;
+}
+db.read(sqlResult);
+if (db.getString(sqlResult, "sessionId").length < 5) {
+    eio.appendString8("F");
+    eio.appendString8("token失效");
+    es.logWarning("用户token失效, sql=" + sql);
+    return;
+}   
+var userId = db.getString(sqlResult, "id");
+var userName = db.getString(sqlResult, "userName");
+
+sql = "exec vote " +
+    voteUserId + "," +
+    voteId + "," +
+    optionIndex + "; ";
+sqlResult = db.executeQuery("DB", sql);
+if (sqlResult == null) {
+    eio.appendString8("F");
+    eio.appendString8("系统繁忙请稍后再试");
+    return;
+}
+db.read(sqlResult);
+if (db.getString(sqlResult, "errorCode")!="0") {
+    eio.appendString8("F");
+    eio.appendString8(db.getString(sqlResult, "errorString"));
+    return;
+}
+eio.appendString8("T");
+
+
+
+
+
+
+
+
+
+
+
+
+
+]]></script2>
+      <script3>if (eio.readString8() == "F") {
+    vote.busy = false;
+    alert("投票失败：" + eio.readString8());
+    return;
+}
+if (vote.onComplete()) {
+    vote.onComplete();
+}
+vote.busy = false;
+
+</script3>
+    </taskSetItem>
+  </taskSet>
+  <gridLines count="0" />
+  <g5Items count="6">
+    <item name="imgUrl" type="10">
+      <varValue>"/incoming/";</varValue>
+      <functionParam />
+      <functionCode />
+    </item>
+    <item name="tableClick" type="20">
+      <varValue />
+      <functionParam>sender</functionParam>
+      <functionCode><![CDATA[//鼠标点击行激活处理,接口：valid,y
+var c, x, y;
+for (y = 0; y < g5.pageSize; y++) {
+    for (x = 0; x < 8; x++) {
+        c = ee.getTableCell(ee.getControl("tablebody2"), x, y);
+        c.style.backgroundColor = "";    
+    }
+}
+for (x = 0; x < 8; x++) {
+    c = ee.getTableCell(ee.getControl("tablebody2"), x, sender.rowIndex);
+    c.style.backgroundColor = "rgba(50, 50, 255, 0.1)"; //"#f0E0EEFF";
+}
+g5.tableClick.valid = false;
+if (eb.isEmpty(query.dataset)) return;
+g5.tableClick.y = sender.rowIndex;
+if (g5.tableClick.y>=query.dataset.rowCount) return;
+g5.tableClick.valid = true;
+
+query2.voteId = query.dataset.getData(0,g5.tableClick.y);
+query2.onComplete = function() {
+    return;
+}
+query2();
+]]></functionCode>
+    </item>
+    <item name="tableClick2" type="20">
+      <varValue />
+      <functionParam>sender</functionParam>
+      <functionCode><![CDATA[//鼠标点击行激活处理,接口：valid,y
+var c, x, y;
+for (y = 0; y < g5.pageSize; y++) {
+    for (x = 0; x < 3; x++) {
+        c = ee.getTableCell(ee.getControl("tablebody1"), x, y);
+        c.style.backgroundColor = "";    
+    }
+}
+for (x = 0; x < 3; x++) {
+    c = ee.getTableCell(ee.getControl("tablebody1"), x, sender.rowIndex);
+    c.style.backgroundColor = "rgba(50, 50, 255, 0.1)"; //"#f0E0EEFF";
+}
+g5.tableClick2.valid = false;
+if (eb.isEmpty(query2.dataset)) return;
+g5.tableClick2.y = sender.rowIndex;
+if (g5.tableClick2.y>=query2.dataset.rowCount) return;
+g5.tableClick2.valid = true;
+
+]]></functionCode>
+    </item>
+    <item name="getRectAbs" type="20">
+      <varValue />
+      <functionParam>div</functionParam>
+      <functionCode>var rect = eb.getDivRect(div);
+var result = eb.getDivRect(div);
+while (true) {
+    div = div.parentNode;
+    if (eb.isEmpty(div)) break;
+    if (div.id == "divRoot") break;
+    rect = eb.getDivRect(div);
+    result.x+=rect.x-div.scrollLeft;
+    result.y+=rect.y-div.scrollTop;
+}
+result.y -= document.documentElement.scrollTop;
+return result;</functionCode>
+    </item>
+    <item name="getUtcTime" type="20">
+      <varValue />
+      <functionParam>dbTime,returnString</functionParam>
+      <functionCode><![CDATA[//04 19 2020 10:35 UTC
+//yyyy-mm-dd hh:nn:ss
+//0123456789012345678
+if (dbTime.length!=19) return new Date();
+
+var r = new Date(Date.UTC(
+    parseInt(dbTime.substr(0,4)),
+    parseInt(dbTime.substr(5,2)) - 1,
+    parseInt(dbTime.substr(8,2)),
+    parseInt(dbTime.substr(11,2)),
+    parseInt(dbTime.substr(14,2)),
+    parseInt(dbTime.substr(17,2))
+));
+
+if (returnString) {
+    return ((r.getYear()<1000)?(r.getYear()+1900):r.getYear()) + "-" +
+        ((r.getMonth()+1)<10?"0":"") + (r.getMonth()+1) + "-" +
+        (r.getDate()<10?"0":"") + r.getDate() + " " +
+        (r.getHours()<10?"0":"") + r.getHours() + ":" +
+        (r.getMinutes()<10?"0":"") + r.getMinutes() + ":" +
+        (r.getSeconds()<10?"0":"") + r.getSeconds();
+} else {
+    return r;
+} 
+]]></functionCode>
+    </item>
+    <item name="convertSeconds" type="20">
+      <varValue />
+      <functionParam>seconds</functionParam>
+      <functionCode><![CDATA[seconds = parseInt(seconds);
+const days = Math.floor(seconds / (24 * 3600));
+seconds %= (24 * 3600);
+const hours = Math.floor(seconds / 3600);
+seconds %= 3600;
+const minutes = Math.floor(seconds / 60);
+const remainingSeconds = seconds % 60;
+
+let result = '';
+
+if (days > 0) {
+    result += `${days}天`;
+}
+if (hours > 0) {
+    result += `${hours}小时`;
+}
+if (minutes > 0) {
+    result += `${minutes}分钟`;
+}
+if (remainingSeconds > 0 || result === '') {
+    result += `${remainingSeconds}秒`;
+}
+
+return result;]]></functionCode>
+    </item>
+  </g5Items>
+</page>

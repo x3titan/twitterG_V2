@@ -1,0 +1,1397 @@
+<page>
+  <controls count="59">
+    <control type="DivRoot" pathname="/divRoot">
+      <backgroundColor>ffffff</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>796</height>
+      <left>0</left>
+      <onControlLoad>g5.token = eb.getCookie("FAToken");
+if (eb.isEmpty(g5.token)) {
+    window.location.href = ee.getUrl("/admin/login");
+    return; 
+}  
+ 
+g5.menu = new Array();
+g5.menu.push(new g5.GMenuControl()); 
+g5.GMenuControl_name = "g5.menu";
+
+g5.menu[0].self = g5.menu[0];
+//首页  
+g5.menu[0].addMenu(ee.getControl("layoutyitem7"));
+g5.menu[0].addSubMenu(ee.getControl("layoutyitem8"), 32*6+32);
+g5.menu[0].addMenu(ee.getControl("layoutyitem9"));
+g5.menu[0].addSubMenu(ee.getControl("layoutyitem10"), 95); 
+g5.menu[0].addMenu(ee.getControl("layoutyitem15"));
+g5.menu[0].addSubMenu(ee.getControl("layoutyitem4"), 95); 
+g5.menu[0].addMenu(ee.getControl("layoutyitem5"));
+g5.menu[0].addSubMenu(ee.getControl("layoutyitem13"), 120); 
+g5.menu[0].init(); 
+
+
+//创建新页面
+g5.pages = new Array();
+
+g5.divTab = ee.getControl("layoutyitem11");
+g5.divFrame = ee.getControl("layoutyitem12");
+
+//第一个菜单
+
+//ee.setVisible(ee.getControl("panel2"), true);
+g5.appendPage("主页", "/faith/default", false);
+g5.menu[0].click(0);  
+
+getUserInfo.onComplete = function() {
+    ee.setText(ee.getControl("panel24"), "管理员：" + getUserInfo.nickName + " @" + getUserInfo.userName);
+}
+
+getUserInfo(); 
+</onControlLoad>
+      <pageHead><![CDATA[<style>
+.buttonBlue {
+    background-color:#198dc9;
+    transition: background-color 1.0s;
+}
+.buttonBlue:hover{
+    background-color:#31a5e1;
+    transition: background-color 0.3s;
+}
+
+.buttonGray {
+    background-color: ;
+    transition: background-color 1.0s;
+}
+.buttonGray:hover{
+    background-color:#f8f8f8;
+    transition: background-color 0.3s;
+}
+
+
+</style>]]></pageHead>
+      <pageTitle>FAITH后台管理系统</pageTitle>
+      <top>0</top>
+      <width>1087</width>
+    </control>
+    <control type="LayoutY" pathname="/divRoot/layouty1">
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>796</height>
+      <heightRatio>1</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.724838411819021</sizeRatio>
+      <top>0</top>
+      <width>1087</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="LayoutYItem" pathname="/divRoot/layouty1/layoutyitem1">
+      <backgroundColor>EEEEEE</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <heavyEnabled>false</heavyEnabled>
+      <height>68</height>
+      <heightRatio>0.086624203821656</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.0627885503231764</sizeRatio>
+      <top>0</top>
+      <width>1087</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem1/panel17">
+      <backgroundImg>image007.png</backgroundImg>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>35</height>
+      <heightRatio>0.514705882352941</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.0323176361957525</sizeRatio>
+      <top>33</top>
+      <topRatio>0.485294117647059</topRatio>
+      <width>1087</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem1/panel3">
+      <backgroundColor>198DC9</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>top</dockY>
+      <height>9</height>
+      <heightRatio>0.132352941176471</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.00831024930747922</sizeRatio>
+      <top>0</top>
+      <width>1087</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem1/panel6">
+      <backgroundImgMode>fill</backgroundImgMode>
+      <fontBold>true</fontBold>
+      <fontColor>4571BA</fontColor>
+      <fontFamily>黑体</fontFamily>
+      <fontSize>20</fontSize>
+      <hAlign>left</hAlign>
+      <height>35</height>
+      <heightRatio>0.514705882352941</heightRatio>
+      <left>40</left>
+      <leftRatio>0.0369344413665743</leftRatio>
+      <sizeRatio>0.148936170212766</sizeRatio>
+      <text>后台管理系统</text>
+      <top>19</top>
+      <topRatio>0.279411764705882</topRatio>
+      <width>235</width>
+      <widthRatio>0.216989843028624</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem1/panel11">
+      <dockX>right</dockX>
+      <height>24</height>
+      <heightRatio>0.352941176470588</heightRatio>
+      <left>812</left>
+      <leftRatio>0.746075715604801</leftRatio>
+      <sizeRatio>0.0872727272727273</sizeRatio>
+      <top>36</top>
+      <topRatio>0.529411764705882</topRatio>
+      <width>275</width>
+      <widthRatio>0.253924284395199</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem1/panel11/panel12">
+      <backgroundImg>image004.png</backgroundImg>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <dockY>fill</dockY>
+      <height>20</height>
+      <heightRatio>0.833333333333333</heightRatio>
+      <left>52</left>
+      <leftRatio>0.189090909090909</leftRatio>
+      <onClick>g5.appendPage("消息管理", ee.pageRoot + "/getNews");
+//g5.appendPage("注册",  ee.pageRoot +"/loginApp/loginStudent1");
+//g5.appendPage("注册",  ee.pageRoot +"/loginApp");
+</onClick>
+      <outerTop>4</outerTop>
+      <sizeRatio>0.232558139534884</sizeRatio>
+      <top>4</top>
+      <topRatio>0.166666666666667</topRatio>
+      <width>86</width>
+      <widthRatio>0.312727272727273</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem1/panel11/panel7">
+      <backgroundImg>image005.png</backgroundImg>
+      <backgroundImgMode>fill</backgroundImgMode>
+      <cursor>pointer</cursor>
+      <dockY>fill</dockY>
+      <height>24</height>
+      <heightRatio>1</heightRatio>
+      <left>141</left>
+      <leftRatio>0.512727272727273</leftRatio>
+      <onClick>eb.setCookie("FAToken", "");
+window.location.href = ee.getUrl("/admin/login"); </onClick>
+      <sizeRatio>0.237623762376238</sizeRatio>
+      <top>0</top>
+      <width>101</width>
+      <widthRatio>0.367272727272727</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem1/panel11/panel15">
+      <backgroundColor>C0C0C0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockY>fill</dockY>
+      <height>24</height>
+      <heightRatio>1</heightRatio>
+      <left>139</left>
+      <leftRatio>0.505454545454545</leftRatio>
+      <sizeRatio>12</sizeRatio>
+      <top>0</top>
+      <width>2</width>
+      <widthRatio>0.00727272727272727</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem1/panel11/panel8">
+      <backgroundColor>FF0000</backgroundColor>
+      <backgroundImg>point2.png</backgroundImg>
+      <height>16</height>
+      <heightRatio>0.666666666666667</heightRatio>
+      <layerName>消息红点</layerName>
+      <leftRatio>0.363636363636364</leftRatio>
+      <onClick>g5.appendPage("消息管理", ee.pageRoot + "/getNews");</onClick>
+      <sizeRatio>1</sizeRatio>
+      <top>-3</top>
+      <topRatio>-0.125</topRatio>
+      <width>16</width>
+      <widthRatio>0.0581818181818182</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem1/panel24">
+      <backgroundColor>198DC9</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>198DC9</fontColor>
+      <fontSize>10</fontSize>
+      <hAlign>left</hAlign>
+      <height>34</height>
+      <heightRatio>0.5</heightRatio>
+      <left>232</left>
+      <leftRatio>0.214219759926131</leftRatio>
+      <onClick>g5.appendPage("账户信息", ee.getUrl("/admin/account/myAccount"));</onClick>
+      <onCreate>sender.className = "buttonGray";
+//ee.setTextColor(sender, "#ffffff");
+//var p = eb.getDivRectSetting(sender).h + "px";
+//sender.style.borderRadius = parseInt(eb.getDivRectSetting(sender).h/2) + "px";
+sender.style.borderRadius = "5px";</onCreate>
+      <sizeRatio>0.0974212034383954</sizeRatio>
+      <text>--</text>
+      <top>26</top>
+      <topRatio>0.382352941176471</topRatio>
+      <width>349</width>
+      <widthRatio>0.322253000923361</widthRatio>
+    </control>
+    <control type="LayoutYItem" pathname="/divRoot/layouty1/layoutyitem2">
+      <backgroundColor>FAFAFA</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <height>701</height>
+      <heightRatio>0.878980891719745</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.637119113573407</sizeRatio>
+      <top>68</top>
+      <topRatio>0.086624203821656</topRatio>
+      <width>1087</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="LayoutX" pathname="/divRoot/layouty1/layoutyitem2/layoutx2">
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>676</height>
+      <heightRatio>0.963768115942029</heightRatio>
+      <left>15</left>
+      <leftRatio>0.0138504155124654</leftRatio>
+      <outerBottom>10</outerBottom>
+      <outerLeft>15</outerLeft>
+      <outerRight>15</outerRight>
+      <outerTop>15</outerTop>
+      <sizeRatio>0.631528964862298</sizeRatio>
+      <top>15</top>
+      <topRatio>0.0217391304347826</topRatio>
+      <width>1057</width>
+      <widthRatio>0.972299168975069</widthRatio>
+    </control>
+    <control type="LayoutXItem" pathname="/divRoot/layouty1/layoutyitem2/layoutx2/layoutxitem1">
+      <backgroundColor>C0C0C0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <heavyEnabled>false</heavyEnabled>
+      <height>676</height>
+      <heightRatio>1</heightRatio>
+      <left>0</left>
+      <sizeRatio>3.65384615384615</sizeRatio>
+      <top>0</top>
+      <width>182</width>
+      <widthRatio>0.172839506172839</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/layoutx2/layoutxitem1/panel2">
+      <backgroundColor>EEEEEE</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>674</height>
+      <heightRatio>0.996992481203008</heightRatio>
+      <left>1</left>
+      <leftRatio>0.00549450549450549</leftRatio>
+      <outerBottom>1</outerBottom>
+      <outerLeft>1</outerLeft>
+      <outerRight>1</outerRight>
+      <outerTop>1</outerTop>
+      <sizeRatio>3.68333333333333</sizeRatio>
+      <top>1</top>
+      <topRatio>0.00150375939849624</topRatio>
+      <width>180</width>
+      <widthRatio>0.989010989010989</widthRatio>
+    </control>
+    <control type="LayoutY" pathname="/divRoot/layouty1/layoutyitem2/layoutx2/layoutxitem1/panel2/layouty3">
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <fieldCount>10</fieldCount>
+      <height>664</height>
+      <heightRatio>0.984917043740573</heightRatio>
+      <left>0</left>
+      <outerBottom>10</outerBottom>
+      <sizeRatio>3.62777777777778</sizeRatio>
+      <top>0</top>
+      <width>180</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="LayoutYItem" pathname="/divRoot/layouty1/layoutyitem2/layoutx2/layoutxitem1/panel2/layouty3/layoutyitem6">
+      <backgroundColor>198DC9</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>48A4DA</fontColor>
+      <fontItalic>true</fontItalic>
+      <fontSize>15</fontSize>
+      <hAlign>left</hAlign>
+      <heavyEnabled>false</heavyEnabled>
+      <height>3</height>
+      <heightRatio>0.00459418070444104</heightRatio>
+      <left>0</left>
+      <outerRight>8</outerRight>
+      <sizeRatio>0.0166666666666667</sizeRatio>
+      <top>0</top>
+      <width>180</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="LayoutYItem" pathname="/divRoot/layouty1/layoutyitem2/layoutx2/layoutxitem1/panel2/layouty3/layoutyitem7">
+      <backgroundColor>FFC0C0</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontColor>404040</fontColor>
+      <fontSize>14</fontSize>
+      <heavyEnabled>false</heavyEnabled>
+      <height>38</height>
+      <heightRatio>0.0581929555895865</heightRatio>
+      <left>0</left>
+      <onClick>g5.menu[0].click(0);
+
+</onClick>
+      <outerLeft>4</outerLeft>
+      <outerRight>4</outerRight>
+      <sizeRatio>0.211111111111111</sizeRatio>
+      <text>综合管理</text>
+      <top>3</top>
+      <topRatio>0.00459418070444104</topRatio>
+      <width>180</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="LayoutYItem" pathname="/divRoot/layouty1/layoutyitem2/layoutx2/layoutxitem1/panel2/layouty3/layoutyitem8">
+      <backgroundColor>E4E4E4</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <cursor>pointer</cursor>
+      <fontColor>48A4DA</fontColor>
+      <fontItalic>true</fontItalic>
+      <fontSize>13</fontSize>
+      <heavyEnabled>false</heavyEnabled>
+      <height>74</height>
+      <heightRatio>0.11144578313253</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.411111111111111</sizeRatio>
+      <top>41</top>
+      <topRatio>0.0617469879518072</topRatio>
+      <width>180</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/layoutx2/layoutxitem1/panel2/layouty3/layoutyitem8/panel5">
+      <backgroundImg>shadowY.png</backgroundImg>
+      <backgroundImgMode>stretch</backgroundImgMode>
+      <dockX>fill</dockX>
+      <dockY>top</dockY>
+      <height>18</height>
+      <heightRatio>0.36734693877551</heightRatio>
+      <left>0</left>
+      <outerTop>-7</outerTop>
+      <sizeRatio>0.1</sizeRatio>
+      <top>-7</top>
+      <topRatio>-0.142857142857143</topRatio>
+      <width>180</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/layoutx2/layoutxitem1/panel2/layouty3/layoutyitem8/panel23">
+      <backgroundColor>198DC9</backgroundColor>
+      <cursor>pointer</cursor>
+      <dockX>fill</dockX>
+      <fontColor>808080</fontColor>
+      <fontSize>10</fontSize>
+      <height>34</height>
+      <heightRatio>0.693877551020408</heightRatio>
+      <left>0</left>
+      <onClick>g5.appendPage("用户管理", ee.getUrl("/admin/admin/userAdmin"));
+</onClick>
+      <onCreate>sender.className = "buttonGray";
+//ee.setTextColor(sender, "#ffffff");
+//var p = eb.getDivRectSetting(sender).h + "px";
+//sender.style.borderRadius = parseInt(eb.getDivRectSetting(sender).h/2) + "px";
+sender.style.borderRadius = "5px";</onCreate>
+      <sizeRatio>0.188888888888889</sizeRatio>
+      <text>用户管理</text>
+      <top>12</top>
+      <topRatio>0.244897959183673</topRatio>
+      <width>180</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/layoutx2/layoutxitem1/panel2/layouty3/layoutyitem8/panel25">
+      <backgroundColor>198DC9</backgroundColor>
+      <cursor>pointer</cursor>
+      <dockX>fill</dockX>
+      <fontColor>808080</fontColor>
+      <fontSize>10</fontSize>
+      <height>34</height>
+      <heightRatio>0.693877551020408</heightRatio>
+      <left>0</left>
+      <onClick>g5.appendPage("推荐搜索", ee.getUrl("/admin/admin/recommendSearch"));
+</onClick>
+      <onCreate>sender.className = "buttonGray";
+//ee.setTextColor(sender, "#ffffff");
+//var p = eb.getDivRectSetting(sender).h + "px";
+//sender.style.borderRadius = parseInt(eb.getDivRectSetting(sender).h/2) + "px";
+sender.style.borderRadius = "5px";</onCreate>
+      <sizeRatio>0.188888888888889</sizeRatio>
+      <text>推荐搜索管理</text>
+      <top>46</top>
+      <topRatio>0.938775510204082</topRatio>
+      <width>180</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/layoutx2/layoutxitem1/panel2/layouty3/layoutyitem8/panel28">
+      <backgroundColor>198DC9</backgroundColor>
+      <cursor>pointer</cursor>
+      <dockX>fill</dockX>
+      <fontColor>808080</fontColor>
+      <fontSize>10</fontSize>
+      <height>34</height>
+      <heightRatio>0.693877551020408</heightRatio>
+      <left>0</left>
+      <onClick>g5.appendPage("推荐关注", ee.getUrl("/admin/admin/recommendUser"));
+</onClick>
+      <onCreate>sender.className = "buttonGray";
+//ee.setTextColor(sender, "#ffffff");
+//var p = eb.getDivRectSetting(sender).h + "px";
+//sender.style.borderRadius = parseInt(eb.getDivRectSetting(sender).h/2) + "px";
+sender.style.borderRadius = "5px";</onCreate>
+      <sizeRatio>0.188888888888889</sizeRatio>
+      <text>推荐关注管理</text>
+      <top>80</top>
+      <topRatio>1.63265306122449</topRatio>
+      <width>180</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/layoutx2/layoutxitem1/panel2/layouty3/layoutyitem8/panel29">
+      <backgroundColor>198DC9</backgroundColor>
+      <cursor>pointer</cursor>
+      <dockX>fill</dockX>
+      <fontColor>808080</fontColor>
+      <fontSize>10</fontSize>
+      <height>34</height>
+      <heightRatio>0.693877551020408</heightRatio>
+      <left>0</left>
+      <onClick>g5.appendPage("维护", ee.getUrl("/admin/admin/MNT1"));
+</onClick>
+      <onCreate>sender.className = "buttonGray";
+//ee.setTextColor(sender, "#ffffff");
+//var p = eb.getDivRectSetting(sender).h + "px";
+//sender.style.borderRadius = parseInt(eb.getDivRectSetting(sender).h/2) + "px";
+sender.style.borderRadius = "5px";</onCreate>
+      <sizeRatio>0.188888888888889</sizeRatio>
+      <text>维护</text>
+      <top>114</top>
+      <topRatio>2.3265306122449</topRatio>
+      <width>180</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/layoutx2/layoutxitem1/panel2/layouty3/layoutyitem8/panel30">
+      <backgroundColor>198DC9</backgroundColor>
+      <cursor>pointer</cursor>
+      <dockX>fill</dockX>
+      <fontColor>808080</fontColor>
+      <fontSize>10</fontSize>
+      <height>34</height>
+      <heightRatio>0.693877551020408</heightRatio>
+      <left>0</left>
+      <onClick>g5.appendPage("短文管理", ee.getUrl("/admin/admin/contentAdmin"));
+</onClick>
+      <onCreate>sender.className = "buttonGray";
+//ee.setTextColor(sender, "#ffffff");
+//var p = eb.getDivRectSetting(sender).h + "px";
+//sender.style.borderRadius = parseInt(eb.getDivRectSetting(sender).h/2) + "px";
+sender.style.borderRadius = "5px";</onCreate>
+      <sizeRatio>0.188888888888889</sizeRatio>
+      <text>短文管理</text>
+      <top>148</top>
+      <topRatio>3.02040816326531</topRatio>
+      <width>180</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/layoutx2/layoutxitem1/panel2/layouty3/layoutyitem8/panel14">
+      <backgroundColor>198DC9</backgroundColor>
+      <cursor>pointer</cursor>
+      <dockX>fill</dockX>
+      <fontColor>808080</fontColor>
+      <fontSize>10</fontSize>
+      <height>34</height>
+      <heightRatio>0.11038961038961</heightRatio>
+      <left>0</left>
+      <onClick>g5.appendPage("投票管理", ee.getUrl("/admin/admin/voteAdmin"));
+</onClick>
+      <onCreate>sender.className = "buttonGray";
+//ee.setTextColor(sender, "#ffffff");
+//var p = eb.getDivRectSetting(sender).h + "px";
+//sender.style.borderRadius = parseInt(eb.getDivRectSetting(sender).h/2) + "px";
+sender.style.borderRadius = "5px";</onCreate>
+      <sizeRatio>0.188888888888889</sizeRatio>
+      <text>投票管理</text>
+      <top>182</top>
+      <topRatio>0.590909090909091</topRatio>
+      <width>180</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="LayoutYItem" pathname="/divRoot/layouty1/layoutyitem2/layoutx2/layoutxitem1/panel2/layouty3/layoutyitem9">
+      <backgroundColor>F0F0F0</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontSize>14</fontSize>
+      <heavyEnabled>false</heavyEnabled>
+      <height>44</height>
+      <heightRatio>0.0673813169984686</heightRatio>
+      <left>0</left>
+      <onClick>g5.menu[0].click(1);
+</onClick>
+      <sizeRatio>0.244444444444444</sizeRatio>
+      <text>统计报表</text>
+      <top>115</top>
+      <topRatio>0.137825421133231</topRatio>
+      <width>180</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/layoutx2/layoutxitem1/panel2/layouty3/layoutyitem9/panel16">
+      <backgroundColor>C0C0C0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>top</dockY>
+      <height>2</height>
+      <heightRatio>0.0454545454545455</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.0111111111111111</sizeRatio>
+      <top>0</top>
+      <width>180</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="LayoutYItem" pathname="/divRoot/layouty1/layoutyitem2/layoutx2/layoutxitem1/panel2/layouty3/layoutyitem10">
+      <backgroundColor>E4E4E4</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <heavyEnabled>false</heavyEnabled>
+      <height>136</height>
+      <heightRatio>0.208269525267994</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.755555555555556</sizeRatio>
+      <top>159</top>
+      <topRatio>0.2052067381317</topRatio>
+      <width>180</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/layoutx2/layoutxitem1/panel2/layouty3/layoutyitem10/panel27">
+      <backgroundImg>shadowY.png</backgroundImg>
+      <backgroundImgMode>stretch</backgroundImgMode>
+      <dockX>fill</dockX>
+      <dockY>top</dockY>
+      <height>18</height>
+      <heightRatio>0.132352941176471</heightRatio>
+      <left>0</left>
+      <outerTop>-7</outerTop>
+      <sizeRatio>0.1</sizeRatio>
+      <top>-7</top>
+      <topRatio>-0.0514705882352941</topRatio>
+      <width>180</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/layoutx2/layoutxitem1/panel2/layouty3/layoutyitem10/panel21">
+      <backgroundColor>198DC9</backgroundColor>
+      <cursor>pointer</cursor>
+      <dockX>fill</dockX>
+      <fontColor>808080</fontColor>
+      <fontSize>10</fontSize>
+      <height>34</height>
+      <heightRatio>0.25</heightRatio>
+      <left>0</left>
+      <onClick>g5.appendPage("全站流量统计图", ee.getUrl("/admin/report/siteVisitCharts"));
+</onClick>
+      <onCreate>sender.className = "buttonGray";
+//ee.setTextColor(sender, "#ffffff");
+//var p = eb.getDivRectSetting(sender).h + "px";
+//sender.style.borderRadius = parseInt(eb.getDivRectSetting(sender).h/2) + "px";
+sender.style.borderRadius = "5px";</onCreate>
+      <sizeRatio>0.188888888888889</sizeRatio>
+      <text>全站流量统计图</text>
+      <top>47</top>
+      <topRatio>0.345588235294118</topRatio>
+      <width>180</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/layoutx2/layoutxitem1/panel2/layouty3/layoutyitem10/panel22">
+      <backgroundColor>198DC9</backgroundColor>
+      <cursor>pointer</cursor>
+      <dockX>fill</dockX>
+      <fontColor>808080</fontColor>
+      <fontSize>10</fontSize>
+      <height>34</height>
+      <heightRatio>0.25</heightRatio>
+      <left>0</left>
+      <onClick>g5.appendPage("全站流量表", ee.getUrl("/admin/report/siteVisitRaw"));</onClick>
+      <onCreate>sender.className = "buttonGray";
+//ee.setTextColor(sender, "#ffffff");
+//var p = eb.getDivRectSetting(sender).h + "px";
+//sender.style.borderRadius = parseInt(eb.getDivRectSetting(sender).h/2) + "px";
+sender.style.borderRadius = "5px";</onCreate>
+      <sizeRatio>0.188888888888889</sizeRatio>
+      <text>全站流量表</text>
+      <top>14</top>
+      <topRatio>0.102941176470588</topRatio>
+      <width>180</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="LayoutYItem" pathname="/divRoot/layouty1/layoutyitem2/layoutx2/layoutxitem1/panel2/layouty3/layoutyitem15">
+      <backgroundColor>F0F0F0</backgroundColor>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontSize>14</fontSize>
+      <heavyEnabled>false</heavyEnabled>
+      <height>44</height>
+      <heightRatio>0.0673813169984686</heightRatio>
+      <left>0</left>
+      <onClick>g5.menu[0].click(2);
+
+</onClick>
+      <sizeRatio>0.244444444444444</sizeRatio>
+      <text>历史记录</text>
+      <top>295</top>
+      <topRatio>0.413476263399694</topRatio>
+      <width>180</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/layoutx2/layoutxitem1/panel2/layouty3/layoutyitem15/panel4">
+      <backgroundColor>C0C0C0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>top</dockY>
+      <height>2</height>
+      <heightRatio>0.0454545454545455</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.0111111111111111</sizeRatio>
+      <top>0</top>
+      <width>180</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="LayoutYItem" pathname="/divRoot/layouty1/layoutyitem2/layoutx2/layoutxitem1/panel2/layouty3/layoutyitem4">
+      <backgroundColor>E4E4E4</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <heavyEnabled>false</heavyEnabled>
+      <height>32</height>
+      <heightRatio>0.0490045941807044</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.177777777777778</sizeRatio>
+      <top>339</top>
+      <topRatio>0.480857580398162</topRatio>
+      <width>180</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/layoutx2/layoutxitem1/panel2/layouty3/layoutyitem4/panel9">
+      <backgroundImg>shadowY.png</backgroundImg>
+      <backgroundImgMode>stretch</backgroundImgMode>
+      <dockX>fill</dockX>
+      <dockY>top</dockY>
+      <height>18</height>
+      <heightRatio>0.5625</heightRatio>
+      <left>0</left>
+      <outerTop>-7</outerTop>
+      <sizeRatio>0.1</sizeRatio>
+      <top>-7</top>
+      <topRatio>-0.21875</topRatio>
+      <width>180</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/layoutx2/layoutxitem1/panel2/layouty3/layoutyitem4/panel10">
+      <backgroundColor>198DC9</backgroundColor>
+      <cursor>pointer</cursor>
+      <dockX>fill</dockX>
+      <fontColor>808080</fontColor>
+      <fontSize>10</fontSize>
+      <height>34</height>
+      <heightRatio>1.0625</heightRatio>
+      <left>0</left>
+      <onClick>g5.appendPage("管理员操作记录", ee.getUrl("/admin/log/logAdmin"));</onClick>
+      <onCreate>sender.className = "buttonGray";
+//ee.setTextColor(sender, "#ffffff");
+//var p = eb.getDivRectSetting(sender).h + "px";
+//sender.style.borderRadius = parseInt(eb.getDivRectSetting(sender).h/2) + "px";
+sender.style.borderRadius = "5px";</onCreate>
+      <sizeRatio>0.188888888888889</sizeRatio>
+      <text>管理员操作历史记录</text>
+      <top>10</top>
+      <topRatio>0.3125</topRatio>
+      <width>180</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/layoutx2/layoutxitem1/panel2/layouty3/layoutyitem4/panel13">
+      <backgroundColor>198DC9</backgroundColor>
+      <cursor>pointer</cursor>
+      <dockX>fill</dockX>
+      <fontColor>808080</fontColor>
+      <fontSize>10</fontSize>
+      <height>34</height>
+      <heightRatio>1.0625</heightRatio>
+      <left>0</left>
+      <onClick>g5.appendPage("用户操作记录", ee.getUrl("/admin/log/logUser"));
+</onClick>
+      <onCreate>sender.className = "buttonGray";
+//ee.setTextColor(sender, "#ffffff");
+//var p = eb.getDivRectSetting(sender).h + "px";
+//sender.style.borderRadius = parseInt(eb.getDivRectSetting(sender).h/2) + "px";
+sender.style.borderRadius = "5px";</onCreate>
+      <sizeRatio>0.188888888888889</sizeRatio>
+      <text>用户操作历史记录</text>
+      <top>43</top>
+      <topRatio>1.34375</topRatio>
+      <width>180</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="LayoutYItem" pathname="/divRoot/layouty1/layoutyitem2/layoutx2/layoutxitem1/panel2/layouty3/layoutyitem5">
+      <backgroundColor>F0F0F0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <cursor>pointer</cursor>
+      <fontBold>true</fontBold>
+      <fontSize>14</fontSize>
+      <heavyEnabled>false</heavyEnabled>
+      <height>44</height>
+      <heightRatio>0.0673813169984686</heightRatio>
+      <left>0</left>
+      <onClick>g5.menu[0].click(3);</onClick>
+      <sizeRatio>0.244444444444444</sizeRatio>
+      <text>系统账号</text>
+      <top>371</top>
+      <topRatio>0.529862174578867</topRatio>
+      <width>180</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/layoutx2/layoutxitem1/panel2/layouty3/layoutyitem5/panel1">
+      <backgroundColor>C0C0C0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>top</dockY>
+      <height>2</height>
+      <heightRatio>0.0454545454545455</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.0111111111111111</sizeRatio>
+      <top>0</top>
+      <width>180</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="LayoutYItem" pathname="/divRoot/layouty1/layoutyitem2/layoutx2/layoutxitem1/panel2/layouty3/layoutyitem13">
+      <backgroundColor>f0f0f0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <heavyEnabled>false</heavyEnabled>
+      <height>28</height>
+      <heightRatio>0.0428790199081164</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.155555555555556</sizeRatio>
+      <top>415</top>
+      <topRatio>0.597243491577335</topRatio>
+      <width>180</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/layoutx2/layoutxitem1/panel2/layouty3/layoutyitem13/panel31">
+      <backgroundImg>shadowY.png</backgroundImg>
+      <backgroundImgMode>stretch</backgroundImgMode>
+      <dockX>fill</dockX>
+      <dockY>top</dockY>
+      <height>18</height>
+      <heightRatio>0.642857142857143</heightRatio>
+      <left>0</left>
+      <outerTop>-7</outerTop>
+      <sizeRatio>0.1</sizeRatio>
+      <top>-7</top>
+      <topRatio>-0.25</topRatio>
+      <width>180</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/layoutx2/layoutxitem1/panel2/layouty3/layoutyitem13/panel32">
+      <backgroundColor>198DC9</backgroundColor>
+      <cursor>pointer</cursor>
+      <dockX>fill</dockX>
+      <fontColor>808080</fontColor>
+      <fontSize>12</fontSize>
+      <height>34</height>
+      <heightRatio>1.21428571428571</heightRatio>
+      <left>0</left>
+      <onClick>g5.appendPage("后台账号管理", ee.getUrl("/admin/account/accountAdmin"));</onClick>
+      <onCreate>sender.className = "buttonGray";
+//ee.setTextColor(sender, "#ffffff");
+//var p = eb.getDivRectSetting(sender).h + "px";
+//sender.style.borderRadius = parseInt(eb.getDivRectSetting(sender).h/2) + "px";
+sender.style.borderRadius = "5px";</onCreate>
+      <sizeRatio>0.188888888888889</sizeRatio>
+      <text>后台账号管理</text>
+      <top>9</top>
+      <topRatio>0.321428571428571</topRatio>
+      <width>180</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/layoutx2/layoutxitem1/panel2/layouty3/layoutyitem13/panel33">
+      <backgroundColor>198DC9</backgroundColor>
+      <cursor>pointer</cursor>
+      <dockX>fill</dockX>
+      <fontColor>808080</fontColor>
+      <fontSize>12</fontSize>
+      <height>34</height>
+      <heightRatio>1.21428571428571</heightRatio>
+      <left>0</left>
+      <onClick>g5.appendPage("权限管理", ee.getUrl("/admin/account/accountAdmin"));</onClick>
+      <onCreate>sender.className = "buttonGray";
+//ee.setTextColor(sender, "#ffffff");
+//var p = eb.getDivRectSetting(sender).h + "px";
+//sender.style.borderRadius = parseInt(eb.getDivRectSetting(sender).h/2) + "px";
+sender.style.borderRadius = "5px";</onCreate>
+      <sizeRatio>0.188888888888889</sizeRatio>
+      <text>权限管理</text>
+      <top>40</top>
+      <topRatio>1.42857142857143</topRatio>
+      <width>180</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/layoutx2/layoutxitem1/panel2/layouty3/layoutyitem13/panel34">
+      <backgroundColor>198DC9</backgroundColor>
+      <cursor>pointer</cursor>
+      <dockX>fill</dockX>
+      <fontColor>808080</fontColor>
+      <fontSize>12</fontSize>
+      <height>34</height>
+      <heightRatio>1.21428571428571</heightRatio>
+      <left>0</left>
+      <onClick>g5.appendPage("账户信息", ee.getUrl("/admin/account/myAccount"));</onClick>
+      <onCreate>sender.className = "buttonGray";
+//ee.setTextColor(sender, "#ffffff");
+//var p = eb.getDivRectSetting(sender).h + "px";
+//sender.style.borderRadius = parseInt(eb.getDivRectSetting(sender).h/2) + "px";
+sender.style.borderRadius = "5px";</onCreate>
+      <sizeRatio>0.188888888888889</sizeRatio>
+      <text>账户信息</text>
+      <top>72</top>
+      <topRatio>2.57142857142857</topRatio>
+      <width>180</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="LayoutYItem" pathname="/divRoot/layouty1/layoutyitem2/layoutx2/layoutxitem1/panel2/layouty3/layoutyitem14">
+      <backgroundColor>F0F0F0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <height>221</height>
+      <heightRatio>0.359877488514548</heightRatio>
+      <left>0</left>
+      <sizeRatio>1.30555555555556</sizeRatio>
+      <top>443</top>
+      <topRatio>0.640122511485452</topRatio>
+      <width>180</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/layoutx2/layoutxitem1/panel2/layouty3/layoutyitem14/panel35">
+      <backgroundColor>C0C0C0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>top</dockY>
+      <height>2</height>
+      <heightRatio>0.00851063829787234</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.0111111111111111</sizeRatio>
+      <top>0</top>
+      <width>180</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="LayoutXItem" pathname="/divRoot/layouty1/layoutyitem2/layoutx2/layoutxitem4">
+      <backgroundColor>F0F0F0</backgroundColor>
+      <backgroundImgMode>stretch</backgroundImgMode>
+      <dockY>fill</dockY>
+      <heavyEnabled>false</heavyEnabled>
+      <height>676</height>
+      <heightRatio>1</heightRatio>
+      <left>182</left>
+      <leftRatio>0.172839506172839</leftRatio>
+      <sizeRatio>66.5</sizeRatio>
+      <top>0</top>
+      <width>10</width>
+      <widthRatio>0.00949667616334283</widthRatio>
+    </control>
+    <control type="Button" pathname="/divRoot/layouty1/layoutyitem2/layoutx2/layoutxitem4/button4">
+      <backgroundColor1>198DC9</backgroundColor1>
+      <backgroundColor2>4D7AB7</backgroundColor2>
+      <bgColorEnabled1>true</bgColorEnabled1>
+      <bgColorEnabled2>true</bgColorEnabled2>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <downX>0</downX>
+      <downY>0</downY>
+      <fontColor2>FFFFFF</fontColor2>
+      <fontSize>12</fontSize>
+      <height>676</height>
+      <heightRatio>1</heightRatio>
+      <left>1</left>
+      <leftRatio>0.1</leftRatio>
+      <onClick>var c = ee.getControl("layoutxitem1");
+if (eb.isEmpty(g5.leftBar)) {
+    g5.leftBar = true;
+}
+if (g5.leftBar) {
+    ee.setRect(c,0,0,1,null);
+    ee.setRect(this,-10,122,20,null);
+
+} else {
+    ee.setRect(c,0,0,208,null);
+    ee.setRect(this,0,122,20,null);
+}
+ee.setRect(c.parentNode, null, null, null, null, true);
+eb.processDock();
+g5.leftBar = !g5.leftBar;
+</onClick>
+      <outerLeft>1</outerLeft>
+      <outerRight>1</outerRight>
+      <sizeRatio>83.125</sizeRatio>
+      <top>0</top>
+      <width>8</width>
+      <widthRatio>0.8</widthRatio>
+    </control>
+    <control type="LayoutXItem" pathname="/divRoot/layouty1/layoutyitem2/layoutx2/layoutxitem3">
+      <backgroundColor>C0C0C0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <height>676</height>
+      <heightRatio>1</heightRatio>
+      <left>192</left>
+      <leftRatio>0.182336182336182</leftRatio>
+      <sizeRatio>0.772357723577236</sizeRatio>
+      <top>0</top>
+      <width>865</width>
+      <widthRatio>0.817663817663818</widthRatio>
+    </control>
+    <control type="LayoutY" pathname="/divRoot/layouty1/layoutyitem2/layoutx2/layoutxitem3/layouty4">
+      <backgroundColor>FAFAFA</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <fieldCount>2</fieldCount>
+      <height>674</height>
+      <heightRatio>0.996992481203008</heightRatio>
+      <left>1</left>
+      <leftRatio>0.00116144018583043</leftRatio>
+      <outerBottom>1</outerBottom>
+      <outerLeft>1</outerLeft>
+      <outerRight>1</outerRight>
+      <outerTop>1</outerTop>
+      <sizeRatio>0.771827706635623</sizeRatio>
+      <top>1</top>
+      <topRatio>0.00150375939849624</topRatio>
+      <width>863</width>
+      <widthRatio>0.997677119628339</widthRatio>
+    </control>
+    <control type="LayoutYItem" pathname="/divRoot/layouty1/layoutyitem2/layoutx2/layoutxitem3/layouty4/layoutyitem11">
+      <backgroundColor>F0F0F0</backgroundColor>
+      <backgroundImg>tabBg.png</backgroundImg>
+      <backgroundImgMode>stretch</backgroundImgMode>
+      <heavyEnabled>false</heavyEnabled>
+      <height>32</height>
+      <heightRatio>0.0482654600301659</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.0372526193247963</sizeRatio>
+      <top>0</top>
+      <width>863</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/layoutx2/layoutxitem3/layouty4/layoutyitem11/panel26">
+      <backgroundColor>C0C0C0</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>bottom</dockY>
+      <height>1</height>
+      <heightRatio>0.03125</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.00116414435389988</sizeRatio>
+      <top>31</top>
+      <topRatio>0.96875</topRatio>
+      <width>863</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="LayoutYItem" pathname="/divRoot/layouty1/layoutyitem2/layoutx2/layoutxitem3/layouty4/layoutyitem12">
+      <backgroundColor>FFFFFF</backgroundColor>
+      <fontSize>13</fontSize>
+      <height>642</height>
+      <heightRatio>0.951734539969834</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.734575087310827</sizeRatio>
+      <top>32</top>
+      <topRatio>0.0482654600301659</topRatio>
+      <width>863</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/layoutx2/layoutxitem3/layouty4/layoutyitem12/panel20">
+      <backgroundColor>198DC9</backgroundColor>
+      <cursor>pointer</cursor>
+      <dockX>fill</dockX>
+      <dockY>fill</dockY>
+      <height>642</height>
+      <heightRatio>1</heightRatio>
+      <left>1</left>
+      <leftRatio>0.00116414435389988</leftRatio>
+      <onClick>var c = ee.getControl("layoutxitem1");
+if (eb.isEmpty(g5.leftBar)) {
+    g5.leftBar = true;
+}
+if (g5.leftBar) {
+    ee.setRect(c,0,0,1,null);
+    ee.setRect(ee.getControl("panel14"),-10,122,20,null);
+
+} else {
+    ee.setRect(c,0,0,208,null);
+    ee.setRect(ee.getControl("panel14"),0,122,20,null);
+}
+ee.setRect(c.parentNode, null, null, null, null, true);
+eb.processDock();
+g5.leftBar = !g5.leftBar;
+</onClick>
+      <onMouseEnter>this.style.backgroundColor = "rgb(25, 141, 201)";</onMouseEnter>
+      <onMouseLeave>this.style.backgroundColor = "";</onMouseLeave>
+      <outerLeft>1</outerLeft>
+      <outerRight>1</outerRight>
+      <sizeRatio>0.736289381563594</sizeRatio>
+      <top>0</top>
+      <width>861</width>
+      <widthRatio>0.9976717112922</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/panel18">
+      <backgroundImg>shadowY.png</backgroundImg>
+      <backgroundImgMode>stretch</backgroundImgMode>
+      <dockX>fill</dockX>
+      <dockY>top</dockY>
+      <height>18</height>
+      <heightRatio>0.0260869565217391</heightRatio>
+      <left>0</left>
+      <outerTop>-7</outerTop>
+      <sizeRatio>0.0166204986149585</sizeRatio>
+      <top>-7</top>
+      <topRatio>-0.0101449275362319</topRatio>
+      <width>1087</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="LayoutYItem" pathname="/divRoot/layouty1/layoutyitem3">
+      <backgroundColor>EEEEEE</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <fontColor>808080</fontColor>
+      <heavyEnabled>false</heavyEnabled>
+      <height>27</height>
+      <heightRatio>0.0343949044585987</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.0249307479224377</sizeRatio>
+      <text>FAITH后台管理系统</text>
+      <top>769</top>
+      <topRatio>0.965605095541401</topRatio>
+      <width>1087</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem3/panel19">
+      <backgroundColor>198DC9</backgroundColor>
+      <bgColorEnabled>true</bgColorEnabled>
+      <dockX>fill</dockX>
+      <dockY>top</dockY>
+      <height>2</height>
+      <heightRatio>0.0740740740740741</heightRatio>
+      <left>0</left>
+      <sizeRatio>0.00184672206832872</sizeRatio>
+      <top>0</top>
+      <width>1087</width>
+      <widthRatio>1</widthRatio>
+    </control>
+  </controls>
+  <taskSet count="2">
+    <taskSetItem name="getUserInfo">
+      <script1>//onComplete();
+if (eb.getCookie("FAToken")=="") {
+    window.location.href = ee.getUrl("/admin/login");
+    return;
+}
+eio.appendString8(eb.getCookie("FAToken"));
+</script1>
+      <script2><![CDATA[var token = eio.readString8();
+var sql,sqlResult;
+sql = "exec getUserInfoBySessionAdmin '" + db.encode(token) + "'";
+sqlResult = db.executeQuery("DB", sql);
+if (sqlResult == null) {
+    eio.appendString8("F");
+    es.logWarning("数据库执行错误, sql=" + sql);
+    return;
+}
+db.read(sqlResult);
+if (db.getString(sqlResult, "sessionId").length < 5) {
+    eio.appendString8("F");
+    es.logWarning("用户token失效, sql=" + sql);
+    return;
+}      
+var photo1=db.getString(sqlResult,"photo1");
+es.logWarning(photo1);
+eio.appendString8("T");
+eio.appendString16(db.getString(sqlResult,"photo"));  
+eio.appendString16(db.getString(sqlResult,"userName"));
+eio.appendString16(db.getString(sqlResult,"nickName"));
+
+
+
+]]></script2>
+      <script3>if (eio.readString8()!="T") {
+    window.location.href = ee.getUrl("/admin/login");
+    return;
+}
+getUserInfo.photo = eio.readString16();
+getUserInfo.userName = eio.readString16();
+getUserInfo.nickName = eio.readString16();
+if (getUserInfo.onComplete) {
+    getUserInfo.onComplete();
+}
+
+</script3>
+    </taskSetItem>
+    <taskSetItem name="news">
+      <script1>eio.appendString8(eb.getCookie("pjToken"));
+</script1>
+      <script2><![CDATA[var token = eio.readString8();
+var sql,sqlResult;
+sql = "exec getUserInfoBySession '" + db.encode(token) + "'";
+sqlResult = db.executeQuery("PJ", sql);
+if (sqlResult == null) {
+    eio.appendString8("F");
+    es.logWarning("数据库执行错误, sql=" + sql);
+    return;
+}
+db.read(sqlResult);
+if (db.getString(sqlResult, "sessionId").length < 5) {
+    eio.appendString8("F");
+    eio.appendString8("token失效");
+    es.logWarning("用户token失效, sql=" + sql);
+    return;
+}   
+var userId = db.getString(sqlResult, "id");
+
+sql = "select count(*) as c from sendNews where status='未读' and userId="+userId;
+sqlResult = db.executeQuery("PJ", sql); 
+db.read(sqlResult)  
+var count = db.getInt32(sqlResult, "c"); 
+//es.logWarning(count);
+if(count<=0){               
+    eio.appendString8("F");
+    return;
+}  
+eio.appendString8("T");
+]]></script2>
+      <script3>var result = eio.readString8(); 
+if(result=="F"){
+   ee.setVisible(ee.getControl("panel8"),false);
+   return;
+}   
+else {
+   ee.setVisible(ee.getControl("panel8"),true); 
+}
+</script3>
+    </taskSetItem>
+  </taskSet>
+  <gridLines count="0" />
+  <g5Items count="7">
+    <item name="TAB_WIDTH" type="10">
+      <varValue>140;</varValue>
+      <functionParam />
+      <functionCode />
+    </item>
+    <item name="GMenuControl_name" type="10">
+      <varValue>"";</varValue>
+      <functionParam />
+      <functionCode />
+    </item>
+    <item name="GMenuControl_aniEnabled" type="10">
+      <varValue>false;</varValue>
+      <functionParam />
+      <functionCode />
+    </item>
+    <item name="GMenuControl" type="20">
+      <varValue />
+      <functionParam />
+      <functionCode><![CDATA[this.menuBar = new Array();
+this.addMenu = function(menu) {
+    this.menuBar.push(menu);
+}
+this.addSubMenu = function(subMenu, subMenuHeight) {
+    this.menuBar[this.menuBar.length-1].subMenu = subMenu;
+    this.menuBar[this.menuBar.length-1].subMenuHeight = subMenuHeight
+}
+this.init = function() {
+    var i;
+    for (i = 0; i < this.menuBar.length; i++) {
+        ee.setRect(this.menuBar[i].subMenu,null,null,null,1);
+        this.menuBar[i].open = false;
+        this.menuBar[i].aniEnabled = false;
+        this.menuBar[i].aniStartH = 0;
+        this.menuBar[i].aniEndH = 0;
+    }
+}
+this.click = function (index) {
+    if ((index<0)||(index>=this.menuBar.length)) return;
+    if (this.menuBar[index].open) { 
+        this.startAni(index, 1);
+    } else {
+        this.startAni(index, this.menuBar[index].subMenuHeight);
+    }
+    this.menuBar[index].open = !this.menuBar[index].open;
+    ee.setRect(this.menuBar[index].parentNode, null, null, null, null, true);
+}
+this.startAni = function (index, endH) {
+    this.menuBar[index].aniEnabled = true;
+    this.menuBar[index].aniStartH = eb.getDivRect(this.menuBar[index].subMenu).h;
+    this.menuBar[index].aniEndH = endH;
+    this.menuBar[index].aniStartTime = new Date();
+    //判断动画是否已经开始
+    if (!g5.GMenuControl_aniEnabled) {
+        g5.GMenuControl_aniEnabled = true;
+        setTimeout(this.timer, 1);
+    }
+}
+this.menusName = "";
+this.timer = function () {
+    eval("var menu = " + g5.GMenuControl_name + ";");
+    var i, mIndex;
+    for (mIndex = 0; mIndex < menu.length; mIndex++) {
+        //动画处理
+        for (i = 0; i < menu[mIndex].menuBar.length; i++) {
+            if (!menu[mIndex].menuBar[i].aniEnabled) continue;
+            var time = (new Date()).getTime() - menu[mIndex].menuBar[i].aniStartTime.getTime();
+            time = time / 600;
+            time = Math.min(Math.max(0, time), 1);
+            var pos = eb.getInterpolation("bonus", time);
+            pos = parseInt(pos*(menu[mIndex].menuBar[i].aniEndH - menu[mIndex].menuBar[i].aniStartH)+menu[mIndex].menuBar[i].aniStartH);
+            ee.setRect(menu[mIndex].menuBar[i].subMenu,null,null,null, pos);
+            //动画是否结束
+            if (time >= 1) {
+                menu[mIndex].menuBar[i].aniEnabled = false;
+            }   
+        }
+        ee.setRect(menu[mIndex].menuBar[0].parentNode, null, null, null, null, true);
+
+    }
+    //判断是否所有的动画都结束了
+    for (mIndex = 0; mIndex < menu.length; mIndex++) {
+        for (i = 0; i < menu[mIndex].menuBar.length; i++) {
+            if (menu[mIndex].menuBar[i].aniEnabled) {
+                setTimeout(menu[mIndex].timer, 1);
+                return;
+            }
+        }
+        g5.GMenuControl_aniEnabled = false;
+    }
+}]]></functionCode>
+    </item>
+    <item name="appendPage" type="20">
+      <varValue />
+      <functionParam>title,url,canClose</functionParam>
+      <functionCode><![CDATA[for (var i = 0; i < g5.pages.length; i++) {
+    if (g5.pages[i].title == title) {
+        g5.activePage(i);
+        return;
+    }
+}
+var page = new Object();
+page.title = title;
+page.url = url;
+page.active = true;
+page.divTab = createPanel(g5.divTab, "", "", g5.TAB_WIDTH * g5.pages.length, 0, g5.TAB_WIDTH, 32);
+page.divTab.style.cursor = "pointer";
+page.img1 = eb.createImg(page.divTab, "");
+page.img1.style.width = "100%";
+page.img1.style.height = "100%";
+page.divText = createPanel(page.divTab, "", "", 0, 0, g5.TAB_WIDTH, 32);
+page.text = addText(page.divText, title, "center", "middle", "微软雅黑", 9, "000000", "normal");
+page.divClose = createPanel(page.divTab, "", "", g5.TAB_WIDTH - 15, 12, 8, 8); ;
+page.divCloseImg = eb.createImg(page.divClose, "");
+page.divCloseImg.style.width = "100%";
+page.divCloseImg.style.height = "100%";
+if(canClose==undefined){
+    canClose=true;
+}
+if(!canClose){
+    ee.setVisible(page.divClose, false);
+}
+page.divFrame = document.createElement("iframe");
+page.divFrame.style.position = "absolute";
+page.divFrame.style.width = "100%";
+page.divFrame.style.height = "100%";
+page.divFrame.style.scrolling = "auto";
+page.divFrame.style.overflow = "auto";
+page.divFrame.style.overflowX = "hidden";
+page.divFrame.setAttribute("frameborder", "0", 0);
+g5.divFrame.appendChild(page.divFrame);
+page.divFrame.src = url;
+page.divTab.onclick = function () {
+    var index = -1;
+    for (var i = 0; i < g5.pages.length; i++) {
+        if (g5.pages[i].divTab == this) {
+            index = i;
+            break;
+        }
+    }
+    if (index < 0) return;
+    g5.activePage(index);
+}
+page.divClose.onclick = function () {
+    var i;
+    var index = -1;
+    for (i = 0; i < g5.pages.length; i++) {
+        if (g5.pages[i].divClose == this) {
+            index = i;
+            break;
+        }
+    }
+    if (index <= 0) return;
+    if (g5.pages[index].active) {
+        if (index + 1 < g5.pages.length) {
+            g5.activePage(index + 1);
+        } else if (index - 1 >= 0) {
+            g5.activePage(index - 1);
+        }
+    }
+    g5.pages[index].divTab.parentNode.removeChild(g5.pages[index].divTab);
+    g5.pages[index].divFrame.parentNode.removeChild(g5.pages[index].divFrame);
+    g5.pages.splice(index, 1);
+    for (i = 0; i < g5.pages.length; i++) {
+        g5.pages[i].divTab.style.left = i * g5.TAB_WIDTH + "px";
+    }
+}
+g5.pages.push(page);
+g5.activePage(g5.pages.length - 1);]]></functionCode>
+    </item>
+    <item name="activePage" type="20">
+      <varValue />
+      <functionParam>index</functionParam>
+      <functionCode><![CDATA[//激活一个tab页面
+for (var i = 0; i < g5.pages.length; i++) {
+    if (!g5.pages[i].active) {
+        continue;
+    }
+    g5.pages[i].active = false;
+    g5.pages[i].img1.src = "/cache" + ee.pageUrl + "/p2e3c1.png";
+    g5.pages[i].divCloseImg.src = "/cache" + ee.pageUrl + "/p2d3d1.png";
+    ee.setTextColor(g5.pages[i].divText, "#000000");
+    g5.pages[i].divFrame.style.zIndex = 10;
+    ee.setVisible(g5.pages[i].divFrame, false);
+}
+g5.pages[index].active = true;
+g5.pages[index].img1.src = "/cache" + ee.pageUrl + "/p2e3c2.png";
+g5.pages[index].divCloseImg.src = "/cache" + ee.pageUrl + "/p2d3d2.png";
+ee.setTextColor(g5.pages[index].divText, "#000000");
+g5.pages[index].divFrame.style.zIndex = 1000;
+ee.setVisible(g5.pages[index].divFrame, true);]]></functionCode>
+    </item>
+    <item name="closePageByTitle" type="20">
+      <varValue />
+      <functionParam>pageTitle</functionParam>
+      <functionCode><![CDATA[var i;
+var index = -1;
+for (i = 0; i < g5.pages.length; i++) {
+    if (g5.pages[i].title == pageTitle) {
+        index = i;
+        break;
+    }
+}
+if (index <= 0) return;
+if (g5.pages[index].active) {
+    if (index + 1 < g5.pages.length) {
+        g5.activePage(index + 1);
+    } else if (index - 1 >= 0) {
+        g5.activePage(index - 1);
+    }
+}
+g5.pages[index].divTab.parentNode.removeChild(g5.pages[index].divTab);
+g5.pages[index].divFrame.parentNode.removeChild(g5.pages[index].divFrame);
+g5.pages.splice(index, 1);
+for (i = 0; i < g5.pages.length; i++) {
+    g5.pages[i].divTab.style.left = i * g5.TAB_WIDTH + "px";
+}
+]]></functionCode>
+    </item>
+  </g5Items>
+</page>
