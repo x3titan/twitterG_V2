@@ -50867,6 +50867,7 @@ if (g5.itemsHome.length>0) {
       <functionCode><![CDATA[for (var i=index; i<items.length; i++) {
     ee.setRect(items[i],null,eb.getDivRectSetting(items[i]).y+dy,null,null);
 }
+g5.refreshVTop(items);
 ]]></functionCode>
     </item>
     <item name="batchMoveYPage" type="20">
@@ -51474,7 +51475,9 @@ for (i=0; i<items.length; i++) {
     <item name="refreshVTop" type="20">
       <varValue />
       <functionParam>items</functionParam>
-      <functionCode><![CDATA[for (i=0; i<items.length; i++) {
+      <functionCode><![CDATA[let i=0;
+let r;
+for (i=0; i<items.length; i++) {
     r = eb.getDivRectSetting(items[i]);
     items[i].v_top = r.y;
     items[i].v_bottom = r.y + r.h;
