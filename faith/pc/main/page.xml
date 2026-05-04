@@ -30875,7 +30875,7 @@ sender.check = function() {
     let enabled = false;
     if (this.v_mode == 0) {
         enabled =
-            ((this.c_edit.getEditText().trim().length>0) &amp;&amp; (this.c_edit.getEditText().trim().length<=3000)) ||
+            ((this.c_edit.getEditText().trim().length>0) &amp;&amp; (this.c_edit.getEditText().trim().length<=6000)) ||
             this.c_photos.v_photos.length>0;
     } else {
         enabled = this.c_vote.checkValid();
@@ -31617,7 +31617,7 @@ sender.processUserName();
 
 var newText = newText.trim();
 var c = ee.getControl("panel50");
-let MAX_LEN = 3000;
+let MAX_LEN = 6000;
 let DISPLAY_LEN = 200;
 if (newText.length<DISPLAY_LEN) {
     c.v_color = "#29a5f2";
@@ -31717,7 +31717,7 @@ sender.onSizeChange = function(sender, rectOld, rectNew) {
 
 sender.f_onChange = function() {
     if (sender.v_isIme) {
-        ee.setVisible(this.c_label, this.getPlanText().length<=0); 
+        ee.setVisible(this.c_label, this.getPlanText().length<=0);
         return;
     }
     this.refreshH();
@@ -31862,6 +31862,11 @@ sender.setCurPosAbs = function(absPos) {
 }
 
 sender.getPlanText = function() {
+    return this.c_edit.innerText
+        .replace(/\u00A0/g, " ")
+        .replace(/\n{3,}/g, "\n\n")
+        .trim();
+    /////////////////////
     var text = "";
     var addPos = function(node) {
         for (var i=0; i<node.childNodes.length; i++) {
