@@ -30875,7 +30875,7 @@ sender.check = function() {
     let enabled = false;
     if (this.v_mode == 0) {
         enabled =
-            ((this.c_edit.getEditText().trim().length>0) &amp;&amp; (this.c_edit.getEditText().trim().length<=6000)) ||
+            ((this.c_edit.getEditText().trim().length>0) &amp;&amp; (this.c_edit.getEditText().trim().length<=g5.setting.CONTENT_MAX_LEN)) ||
             this.c_photos.v_photos.length>0;
     } else {
         enabled = this.c_vote.checkValid();
@@ -31617,24 +31617,22 @@ sender.processUserName();
 
 var newText = newText.trim();
 var c = ee.getControl("panel50");
-let MAX_LEN = 6000;
-let DISPLAY_LEN = 200;
-if (newText.length<DISPLAY_LEN) {
+if (newText.length<g5.setting.CONTENT_DISPLAY_LEN) {
     c.v_color = "#29a5f2";
     c.v_r = "9";
-    c.refresh(newText.length/DISPLAY_LEN);
+    c.refresh(newText.length/g5.setting.CONTENT_DISPLAY_LEN);
     ee.setText(ee.getControl("panel45"), "");    
-} else if (newText.length<=MAX_LEN) {
+} else if (newText.length<=g5.setting.CONTENT_MAX_LEN) {
     c.v_color = "#ffad1f";
     c.v_r = "12";
-    c.refresh(newText.length/MAX_LEN);    
-    ee.setText(ee.getControl("panel45"), MAX_LEN-newText.length);    
+    c.refresh(newText.length/g5.setting.CONTENT_MAX_LEN);    
+    ee.setText(ee.getControl("panel45"), g5.setting.CONTENT_MAX_LEN-newText.length);    
     ee.setTextColor(ee.getControl("panel45"), "#ffad1f");
 } else {
     c.v_color = "#e0245e";
     c.v_r = "14";
-    c.refresh((newText.length-MAX_LEN)/100);    
-    ee.setText(ee.getControl("panel45"), MAX_LEN-newText.length);
+    c.refresh((newText.length-g5.setting.CONTENT_MAX_LEN)/100);    
+    ee.setText(ee.getControl("panel45"), g5.setting.CONTENT_MAX_LEN-newText.length);
     ee.setTextColor(ee.getControl("panel45"), "#e0245e");
 }
 sender.parentNode.check();
@@ -45163,7 +45161,16 @@ vote.busy = false;
     </taskSetItem>
   </taskSet>
   <gridLines count="0" />
-  <g5Items count="127">
+  <g5Items count="128">
+    <item name="setting" type="10">
+      <varValue>{
+CONTENT_MAX_LEN: 6000,
+CONTENT_DISPLAY_LEN: 200,
+end:""
+}</varValue>
+      <functionParam />
+      <functionCode />
+    </item>
     <item name="currentPageIndex" type="10">
       <varValue>-1;</varValue>
       <functionParam />
