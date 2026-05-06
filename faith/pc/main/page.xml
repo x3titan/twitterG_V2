@@ -330,7 +330,6 @@ a.css_button1:hover{
       <fontColor>E0E0E0</fontColor>
       <height>796</height>
       <heightRatio>1</heightRatio>
-      <layerVisible>false</layerVisible>
       <left>0</left>
       <note>mainDiv</note>
       <onCreate><![CDATA[
@@ -519,7 +518,6 @@ sender.scrollAniProcess = function() {
       <height>780</height>
       <heightRatio>0.979899497487437</heightRatio>
       <layerName>===P2===</layerName>
-      <layerVisible>false</layerVisible>
       <left>300</left>
       <leftRatio>0.251046025104603</leftRatio>
       <onCreate>sender.v_fitInner = true;
@@ -945,17 +943,17 @@ sender.check = function() {
     let enabled = false;
     if (this.v_mode == 0) {
         enabled =
-            (this.c_edit.getEditText().trim().length>0) &amp;&amp;(this.c_edit.getEditText().trim().length<=200);
+            (this.c_edit.getEditText().trim().length>0) &amp;&amp;(this.c_edit.getEditText().trim().length<=g5.setting.CONTENT_MAX_LEN);
     } else if (this.v_mode ==1) {
         enabled =
-            ((this.c_edit.getEditText().trim().length>0) &amp;&amp;(this.c_edit.getEditText().trim().length<=200)) ||
+            ((this.c_edit.getEditText().trim().length>0) &amp;&amp;(this.c_edit.getEditText().trim().length<=g5.setting.CONTENT_MAX_LEN)) ||
             this.c_photos.v_photos.length>0;
     } else {
         enabled = this.c_vote.checkValid();
         if (enabled) {
             enabled = this.c_vote.v_data.length > 1;
         }
-        enabled = enabled &amp; ((this.c_edit.getEditText().trim().length>0) &amp;&amp;(this.c_edit.getEditText().trim().length<=200));
+        enabled = enabled &amp; ((this.c_edit.getEditText().trim().length>0) &amp;&amp;(this.c_edit.getEditText().trim().length<=g5.setting.CONTENT_MAX_LEN));
     }
     this.c_button.setEnabled(enabled);
 }
@@ -2226,21 +2224,21 @@ sender.processUserName();
 g5.p2.p1.c_new.check();
 var newText = newText.trim();
 var c = ee.getControl("panel53");
-if (newText.length<180) {
+if (newText.length<g5.setting.CONTENT_DISPLAY_LEN) {
     c.v_color = "#29a5f2";
     c.v_r = "9";
-    c.refresh(newText.length/200);
+    c.refresh(newText.length/g5.setting.CONTENT_DISPLAY_LEN);
     ee.setText(ee.getControl("panel122"), "");    
-} else if (newText.length<=200) {
+} else if (newText.length<=g5.setting.CONTENT_MAX_LEN) {
     c.v_color = "#ffad1f";
     c.v_r = "12";
-    c.refresh(newText.length/200);    
-    ee.setText(ee.getControl("panel122"), 200-newText.length);    
+    c.refresh(newText.length/g5.setting.CONTENT_MAX_LEN);    
+    ee.setText(ee.getControl("panel122"), g5.setting.CONTENT_MAX_LEN-newText.length);    
     ee.setTextColor(ee.getControl("panel122"), "#ffad1f");
 } else {
     c.v_color = "#e0245e";
     c.v_r = "14";
-    c.refresh((newText.length-200)/100);    
+    c.refresh((newText.length-g5.setting.CONTENT_MAX_LEN)/100);    
     ee.setText(ee.getControl("panel122"), 200-newText.length);
     ee.setTextColor(ee.getControl("panel122"), "#e0245e");
 }
@@ -2491,6 +2489,11 @@ sender.setCurPosAbs = function(absPos) {
 }
 
 sender.getPlanText = function() {
+    return this.c_edit.innerText
+        .replace(/\u00A0/g, " ")
+        .replace(/\n{3,}/g, "\n\n")
+        .trim();
+    /////////////////////
     var text = "";
     var addPos = function(node) {
         for (var i=0; i<node.childNodes.length; i++) {
@@ -19488,7 +19491,6 @@ sender.loadRecord = function(panel, dataset, index) {
       <height>756</height>
       <heightRatio>0.969230769230769</heightRatio>
       <layerName>发短文手机版</layerName>
-      <layerVisible>false</layerVisible>
       <left>0</left>
       <onClick>window.event? window.event.cancelBubble = true : event.stopPropagation();</onClick>
       <onCreate><![CDATA[sender.c_photos = ee.getControl("panel587");
@@ -19541,7 +19543,7 @@ sender.check = function() {
     let enabled = false;
     if (this.c_p1.v_mode == 0) {
         enabled =
-            ((this.c_edit.getEditText().trim().length>0) &amp;&amp;(this.c_edit.getEditText().trim().length<=200)) ||
+            ((this.c_edit.getEditText().trim().length>0) &amp;&amp;(this.c_edit.getEditText().trim().length<=g5.setting.CONTENT_MAX_LEN)) ||
             this.c_photos.v_photos.length>0;
     } else {
         enabled = this.c_p1.c_vote.checkValid();
@@ -19878,22 +19880,22 @@ sender.processUserName();
 g5.p2.p31.check();
 var newText = newText.trim();
 var c = ee.getControl("panel580");
-if (newText.length<180) {
+if (newText.length<g5.setting.CONTENT_DISPLAY_LEN) {
     c.v_color = "#29a5f2";
     c.v_r = "9";
-    c.refresh(newText.length/200);
+    c.refresh(newText.length/g5.setting.CONTENT_DISPLAY_LEN);
     ee.setText(ee.getControl("panel581"), "");    
-} else if (newText.length<=200) {
+} else if (newText.length<=g5.setting.CONTENT_MAX_LEN) {
     c.v_color = "#ffad1f";
     c.v_r = "12";
-    c.refresh(newText.length/200);    
-    ee.setText(ee.getControl("panel581"), 200-newText.length);    
+    c.refresh(newText.length/g5.setting.CONTENT_MAX_LEN);    
+    ee.setText(ee.getControl("panel581"), g5.setting.CONTENT_MAX_LEN-newText.length);    
     ee.setTextColor(ee.getControl("panel581"), "#ffad1f");
 } else {
     c.v_color = "#e0245e";
     c.v_r = "14";
-    c.refresh((newText.length-200)/100);    
-    ee.setText(ee.getControl("panel581"), 200-newText.length);
+    c.refresh((newText.length-g5.setting.CONTENT_MAX_LEN)/100);    
+    ee.setText(ee.getControl("panel581"), g5.setting.CONTENT_MAX_LEN-newText.length);
     ee.setTextColor(ee.getControl("panel581"), "#e0245e");
 }
 ]]></__U_onInputChange-sender-key-oldText-newText-oldHtml-newHtml>
@@ -20133,6 +20135,11 @@ sender.setCurPosAbs = function(absPos) {
 }
 
 sender.getPlanText = function() {
+    return this.c_edit.innerText
+        .replace(/\u00A0/g, " ")
+        .replace(/\n{3,}/g, "\n\n")
+        .trim();
+    /////////////////////
     var text = "";
     var addPos = function(node) {
         for (var i=0; i<node.childNodes.length; i++) {
@@ -29807,6 +29814,7 @@ return false;</onClick>
       <height>796</height>
       <heightRatio>1</heightRatio>
       <layerName><![CDATA[popBlack->主界面弹窗黑色]]></layerName>
+      <layerVisible>false</layerVisible>
       <left>0</left>
       <onClick>if (!ee.isInternalNode(sender, event.target)) {
     return;
@@ -30833,6 +30841,7 @@ sender.init(0);
       <height>611</height>
       <heightRatio>0.767587939698492</heightRatio>
       <layerName>发短文</layerName>
+      <layerVisible>false</layerVisible>
       <left>331</left>
       <leftRatio>0.276987447698745</leftRatio>
       <onClick>window.event? window.event.cancelBubble = true : event.stopPropagation();</onClick>
