@@ -2421,6 +2421,8 @@ sender.getCurPosAbs = function() {
                 pos += node.childNodes[i].textContent.length;
             } else if (node.childNodes[i].nodeName.toUpperCase() == "H1") {
                 pos += node.childNodes[i].textContent.length;
+            } else {
+                pos += node.childNodes[i].textContent.length;
             }
         }
         return false;
@@ -2472,6 +2474,8 @@ sender.setCurPosAbs = function(absPos) {
                     setPos = absPos - pos;
                     return true;
                 }
+                pos += node.childNodes[i].textContent.length;
+            } else {
                 pos += node.childNodes[i].textContent.length;
             }
         }
@@ -20076,6 +20080,8 @@ sender.getCurPosAbs = function() {
                 pos += node.childNodes[i].textContent.length;
             } else if (node.childNodes[i].nodeName.toUpperCase() == "H1") {
                 pos += node.childNodes[i].textContent.length;
+            } else {
+                pos += node.childNodes[i].textContent.length;
             }
         }
         return false;
@@ -20125,6 +20131,8 @@ sender.setCurPosAbs = function(absPos) {
                     return true;
                 }
                 pos += node.childNodes[i].textContent.length;
+            } else {
+                pos += node.childNodes[i].textContent.length;
             }
         }
         return false;
@@ -20139,19 +20147,26 @@ sender.setCurPosAbs = function(absPos) {
 }
 
 sender.getPlanText = function() {
-    return this.c_edit.innerText
-        .replace(/\u00A0/g, " ")
-        .replace(/\n{3,}/g, "\n\n")
-        .trim();
-    /////////////////////
     var text = "";
     var addPos = function(node) {
         for (var i=0; i<node.childNodes.length; i++) {
-            if (node.childNodes[i].nodeName.toUpperCase() == "DIV") {
+            if ((node.childNodes[i].nodeName.toUpperCase() == "DIV")
+                || (node.childNodes[i].nodeName.toUpperCase() == "P")
+                || (node.childNodes[i].nodeName.toUpperCase() == "PRE")
+                || (node.childNodes[i].nodeName.toUpperCase() == "CODE")) {
                 if (i>0) text += "\n";
                 addPos(node.childNodes[i]);
             } else if (node.childNodes[i].nodeName.toUpperCase() == "BR") {
-            } else if (node.childNodes[i].nodeName.toUpperCase() == "SPAN") {
+            } else if (
+                (node.childNodes[i].nodeName.toUpperCase() == "SPAN")
+                || (node.childNodes[i].nodeName.toUpperCase() == "B")
+                || (node.childNodes[i].nodeName.toUpperCase() == "SUP")
+                || (node.childNodes[i].nodeName.toUpperCase() == "H2")
+                || (node.childNodes[i].nodeName.toUpperCase() == "TABLE")
+                || (node.childNodes[i].nodeName.toUpperCase() == "BUTTON")
+                || (node.childNodes[i].nodeName.toUpperCase() == "UL")
+                || (node.childNodes[i].nodeName.toUpperCase() == "I")
+                ) {
                 text += node.childNodes[i].textContent;
             } else if (node.childNodes[i].nodeName.toUpperCase() == "#TEXT") {
                 text += node.childNodes[i].textContent;
@@ -20161,6 +20176,8 @@ sender.getPlanText = function() {
                 text += node.childNodes[i].textContent;
             } else {
                 console.log("undefined node name: " + node.childNodes[i].nodeName);
+                console.log(node);
+                text += node.childNodes[i].textContent;
             }
         }
         return false;
@@ -31823,6 +31840,8 @@ sender.getCurPosAbs = function() {
                 if (addPos(node.childNodes[i])) return true;
             } else if (node.childNodes[i].nodeName == "#text") {
                 pos += node.childNodes[i].textContent.length;
+            } else {
+                pos += node.childNodes[i].textContent.length;
             }
         }
         return false;
@@ -31859,6 +31878,8 @@ sender.setCurPosAbs = function(absPos) {
                     return true;
                 }
                 pos += node.childNodes[i].textContent.length;
+            } else {
+                pos += node.childNodes[i].textContent.length;
             }
         }
         return false;
@@ -31873,21 +31894,36 @@ sender.setCurPosAbs = function(absPos) {
 }
 
 sender.getPlanText = function() {
-    return this.c_edit.innerText
-        .replace(/\u00A0/g, " ")
-        .replace(/\n{3,}/g, "\n\n")
-        .trim();
-    /////////////////////
     var text = "";
     var addPos = function(node) {
         for (var i=0; i<node.childNodes.length; i++) {
-            if (node.childNodes[i].nodeName == "DIV") {
+            if ((node.childNodes[i].nodeName.toUpperCase() == "DIV")
+                || (node.childNodes[i].nodeName.toUpperCase() == "P")
+                || (node.childNodes[i].nodeName.toUpperCase() == "PRE")
+                || (node.childNodes[i].nodeName.toUpperCase() == "CODE")) {
                 if (i>0) text += "\n";
                 addPos(node.childNodes[i]);
-            } else if (node.childNodes[i].nodeName == "BR") {
-            } else if (node.childNodes[i].nodeName == "SPAN") {
+            } else if (node.childNodes[i].nodeName.toUpperCase() == "BR") {
+            } else if (
+                (node.childNodes[i].nodeName.toUpperCase() == "SPAN")
+                || (node.childNodes[i].nodeName.toUpperCase() == "B")
+                || (node.childNodes[i].nodeName.toUpperCase() == "SUP")
+                || (node.childNodes[i].nodeName.toUpperCase() == "H2")
+                || (node.childNodes[i].nodeName.toUpperCase() == "TABLE")
+                || (node.childNodes[i].nodeName.toUpperCase() == "BUTTON")
+                || (node.childNodes[i].nodeName.toUpperCase() == "UL")
+                || (node.childNodes[i].nodeName.toUpperCase() == "I")
+                ) {
                 text += node.childNodes[i].textContent;
-            } else if (node.childNodes[i].nodeName == "#text") {
+            } else if (node.childNodes[i].nodeName.toUpperCase() == "#TEXT") {
+                text += node.childNodes[i].textContent;
+            } else if (node.childNodes[i].nodeName.toUpperCase() == "A") {
+                text += node.childNodes[i].textContent;
+            } else if (node.childNodes[i].nodeName.toUpperCase() == "H1") {
+                text += node.childNodes[i].textContent;
+            } else {
+                console.log("undefined node name: " + node.childNodes[i].nodeName);
+                console.log(node);
                 text += node.childNodes[i].textContent;
             }
         }
