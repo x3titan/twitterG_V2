@@ -538,6 +538,7 @@ ee.setVisible(sender, true);
       <height>780</height>
       <heightRatio>1</heightRatio>
       <layerName>Home主页面</layerName>
+      <layerVisible>false</layerVisible>
       <left>0</left>
       <onCreate><![CDATA[sender.v_fitInner = true;
 sender.c_bottom = ee.getControl("panel648");
@@ -3197,7 +3198,6 @@ sender.refresh = function(dataset) {
       <height>780</height>
       <heightRatio>1</heightRatio>
       <layerName>用户(个人)信息页</layerName>
-      <layerVisible>false</layerVisible>
       <left>0</left>
       <onCreate><![CDATA[sender.v_fitInner = true;
 sender.p1Items = new Array();
@@ -4371,7 +4371,6 @@ g5.initButtonV3(sender,[
       <ee_LocalName>p2sub</ee_LocalName>
       <height>374</height>
       <heightRatio>0.47948717948718</heightRatio>
-      <layerVisible>false</layerVisible>
       <left>0</left>
       <note>p2PersonSub</note>
       <onCreate><![CDATA[sender.v_fitInner = true;
@@ -4776,7 +4775,6 @@ sender.resize = function() {
       <height>274</height>
       <heightRatio>0.732620320855615</heightRatio>
       <layerName><![CDATA[  p2->聊天室]]></layerName>
-      <layerVisible>false</layerVisible>
       <left>0</left>
       <onCreate>sender.v_fitInner = true;
 </onCreate>
@@ -6866,7 +6864,8 @@ sender.renderMsg = function(root) {
         c = createPanel(root, root.id+"_msg", "", 55, cy, mainWidth-55-24, 10);
     }
     root.c_content = c; 
-    addText(c, "<font color='#6e6e6e' style='font-family:宋体,Consolas,Monaco,monospace;text-indent:-1ch;'>" + root.parentNode.displayTime(root.v_regDatetime)+ " " + g5.showCommonText(root.v_userInfo.nickName) + "</font> " + root.v_msgContent, "left", "top", "微软雅黑", 9, "000000", "normal");
+    //addText(c, "<font color='#6e6e6e' style='font-family:宋体,Consolas,Monaco,monospace;text-indent:-1ch;'>" + root.parentNode.displayTime(root.v_regDatetime)+ " " + g5.showCommonText(root.v_userInfo.nickName) + "</font> " + root.v_msgContent, "left", "top", "微软雅黑", 9, "000000", "normal");
+    addText(c, "...", "left", "top", "微软雅黑", 9, "000000", "normal");
     c.label.style.wordBreak = "break-all";
     eb.processDock();
     var rect = eb.getDivRect(c.label);
