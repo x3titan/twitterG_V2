@@ -330,6 +330,7 @@ a.css_button1:hover{
       <fontColor>E0E0E0</fontColor>
       <height>796</height>
       <heightRatio>1</heightRatio>
+      <layerVisible>false</layerVisible>
       <left>0</left>
       <note>mainDiv</note>
       <onCreate><![CDATA[
@@ -518,6 +519,7 @@ sender.scrollAniProcess = function() {
       <height>780</height>
       <heightRatio>0.979899497487437</heightRatio>
       <layerName>===P2===</layerName>
+      <layerVisible>false</layerVisible>
       <left>300</left>
       <leftRatio>0.251046025104603</leftRatio>
       <onCreate>sender.v_fitInner = true;
@@ -3198,6 +3200,7 @@ sender.refresh = function(dataset) {
       <height>780</height>
       <heightRatio>1</heightRatio>
       <layerName>用户(个人)信息页</layerName>
+      <layerVisible>false</layerVisible>
       <left>0</left>
       <onCreate><![CDATA[sender.v_fitInner = true;
 sender.p1Items = new Array();
@@ -36915,7 +36918,6 @@ sender.renderItem = function(root) {
       <height>796</height>
       <heightRatio>1</heightRatio>
       <layerName><![CDATA[Root->主界面弹窗Top]]></layerName>
-      <layerVisible>false</layerVisible>
       <left>0</left>
       <onClick>sender.close();</onClick>
       <onCreate><![CDATA[sender.style.zIndex=100;
@@ -36995,7 +36997,6 @@ if (currentDist>100) {
       <height>292</height>
       <heightRatio>0.366834170854271</heightRatio>
       <layerName><![CDATA[Root->主界面弹窗->D用户信息]]></layerName>
-      <layerVisible>false</layerVisible>
       <left>252</left>
       <leftRatio>0.210878661087866</leftRatio>
       <onClick>window.event? window.event.cancelBubble = true : event.stopPropagation();
@@ -37045,13 +37046,13 @@ sender.refresh = function() {
     }
     //nickName
     c = ee.getControl("panel271");
-    c.setText(this.v_userInfo.nickName);
+    c.setText(g5.showCommonText(this.v_userInfo.nickName));
     //userName    
     c = ee.getControl("panel270");
-    c.setText("@" + this.v_userInfo.userName);
-    //userName    
+    c.setText("@" + g5.showCommonText(this.v_userInfo.userName));
+    //note    
     c = ee.getControl("panel272");
-    c.setText(this.v_userInfo.note);
+    c.setText(g5.showCommonText(this.v_userInfo.note));
     var cy = eb.getDivRect(c).y + eb.getDivRect(c).h + 5;
     //followCount,fansCount        
     c = ee.getControl("panel273");
@@ -37100,7 +37101,7 @@ sender.refresh = function() {
     ee.setVisible(this.parentNode, true);
     ee.setVisible(this, true);
     //ee.showAni(this, 0);
-    console.log(eb.getDivRect(this).h);
+    //console.log(eb.getDivRect(this).h);
 }
 ]]></onCreate>
       <sizeRatio>0.791327913279133</sizeRatio>
@@ -48705,7 +48706,7 @@ c.style.textOverflow = "ellipsis";
 c.style.inlineBlock = "max-width";
 c.style.whiteSpace = "nowrap";
 c.style.cursor="pointer";
-c.innerHTML = root.v_userInfo.nickName;
+c.innerHTML = g5.showCommonText(root.v_userInfo.nickName);
 if (root.v_userInfo.status == "DISABLED") {
 } else if (root.v_userInfo.status == "Del") {
 } else {
@@ -48727,12 +48728,12 @@ c.style.textOverflow = "ellipsis";
 c.style.inlineBlock = "max-width";
 c.style.whiteSpace = "nowrap";
 c.style.cursor="pointer";
-c.innerHTML = "@"+root.v_userInfo.userName;
+c.innerHTML = "@"+g5.showCommonText(root.v_userInfo.userName);
 
 //note
 if (root.v_userInfo.note!="") {
     c = createPanel(root, root.id+"panel16", "", 77, cy, w-77-15, 22);
-    addText(c, root.v_userInfo.note, "left", "top", g5.fonts.n1, 12, "14171a", "normal");
+    addText(c, g5.showCommonText(root.v_userInfo.note), "left", "top", g5.fonts.n1, 12, "14171a", "normal");
     eb.processDock();
     var rect = eb.getDivRect(c.label);
     ee.setRect(c, null, null, null, rect.h);
