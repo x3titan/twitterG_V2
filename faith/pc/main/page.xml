@@ -3728,8 +3728,8 @@ sender.showByUserInfo = function(v_userInfo) {
         c.style.cursor="pointer";
         c.innerHTML = "@" + v_userInfo.userName;
     } else {
-        ee.setText(ee.getControl("panel18"), v_userInfo.nickName);
-        ee.setText(ee.getControl("panel21"), "@" + v_userInfo.userName);
+        ee.setText(ee.getControl("panel18"), g5.showCommonText(v_userInfo.nickName));
+        ee.setText(ee.getControl("panel21"), "@" + g5.showCommonText(v_userInfo.userName));
     }
     
     //note
@@ -3737,7 +3737,7 @@ sender.showByUserInfo = function(v_userInfo) {
         ee.setVisible(ee.getControl("panel69"), false);
     } else {
         ee.setRect(ee.getControl("panel69"), null, cy, null, 5);
-        ee.setText(ee.getControl("panel69"), v_userInfo.note);
+        ee.setText(ee.getControl("panel69"), g5.showCommonText(v_userInfo.note));
         ee.setVisible(ee.getControl("panel69"), true);
         ee.setRect(ee.getControl("panel69"),null,null,null, eb.getDivRect(ee.getControl("panel69").label).h);
         cy += vspace + eb.getDivRect(ee.getControl("panel69")).h;
@@ -3756,8 +3756,8 @@ sender.showByUserInfo = function(v_userInfo) {
         } else {
             hf = "http://" + h;
         }
-        ee.setText(ee.getControl("layoutxitem12"), h);
-        ee.getControl("layoutxitem12").homePage = hf;
+        ee.setText(ee.getControl("layoutxitem12"), g5.showCommonText(h));
+        ee.getControl("layoutxitem12").homePage = g5.isUrl(hf)? hf:"";
         ee.setVisible(ee.getControl("layoutx6"), true);
         cy += vspace + eb.getDivRect(ee.getControl("layoutx6")).h;
     }
@@ -3818,7 +3818,7 @@ sender.showByUserInfo = function(v_userInfo) {
         g5.changeP2(1);
         ee.setVisible(this.c_block2, true);
         ee.setRect(this.c_block2, null, cy, null, eb.getClientSize().h - eb.getDivRectSetting(g5.p4).h+3);
-        ee.setText(ee.getControl("panel475"), "您已被@" + v_userInfo.userName + "屏蔽");
+        ee.setText(ee.getControl("panel475"), "您已被@" +g5.showCommonText(v_userInfo.userName) + "屏蔽");
         var r1 = eb.getDivRectSetting(this.c_block2);
         ee.setRect(this,null,null,null,r1.y+r1.h);
         ee.resizeV(this.parentNode, 1);
@@ -3829,8 +3829,8 @@ sender.showByUserInfo = function(v_userInfo) {
         g5.changeP2(1);
         ee.setVisible(this.c_block1, true);
         ee.setRect(this.c_block1, null, cy, null, eb.getClientSize().h - eb.getDivRectSetting(g5.p4).h+3);
-        ee.setText(ee.getControl("panel253"), "@" + v_userInfo.userName + "已被屏蔽");
-        ee.setText(ee.getControl("panel254"), "是否确定要查看这些发言？查看发言不会取消屏蔽 @" + v_userInfo.userName + "。");
+        ee.setText(ee.getControl("panel253"), "@" + g5.showCommonText(v_userInfo.userName) + "已被屏蔽");
+        ee.setText(ee.getControl("panel254"), "是否确定要查看这些发言？查看发言不会取消屏蔽 @" + g5.showCommonText(v_userInfo.userName) + "。");
         var r1 = eb.getDivRectSetting(this.c_block1);
         ee.setRect(this,null,null,null,r1.y+r1.h);
         ee.resizeV(this.parentNode, 1);
@@ -4371,6 +4371,7 @@ g5.initButtonV3(sender,[
       <ee_LocalName>p2sub</ee_LocalName>
       <height>374</height>
       <heightRatio>0.47948717948718</heightRatio>
+      <layerVisible>false</layerVisible>
       <left>0</left>
       <note>p2PersonSub</note>
       <onCreate><![CDATA[sender.v_fitInner = true;
@@ -4775,6 +4776,7 @@ sender.resize = function() {
       <height>274</height>
       <heightRatio>0.732620320855615</heightRatio>
       <layerName><![CDATA[  p2->聊天室]]></layerName>
+      <layerVisible>false</layerVisible>
       <left>0</left>
       <onCreate>sender.v_fitInner = true;
 </onCreate>
@@ -12368,7 +12370,7 @@ sender.render = function(root) {
         
     //content
     c = createPanel(root, root.id + "panel5", "", 78, 38, dw-100, 29);
-    s = root.v_content;
+    s = g5.showCommonText(root.v_content);
     var ph = "/photo ";
     if (root.v_userInfo.status == "DISABLED") {
         s = g5.lang.getByCn("账户被禁封");
@@ -12388,7 +12390,7 @@ sender.render = function(root) {
         if (content.substr(0, ph.length) == ph) {
             content = g5.lang.getByCn("图片");
         }
-        this.c_content.childNodes[0].innerHTML = content;
+        this.c_content.childNodes[0].innerHTML = g5.showCommonText(content);
         var now = new Date();
         this.v_timeLabel.innerHTML =  (now.getMonth()+1) + "月" + now.getDate() + "日";
     }
@@ -45209,7 +45211,7 @@ vote.busy = false;
     </taskSetItem>
   </taskSet>
   <gridLines count="0" />
-  <g5Items count="128">
+  <g5Items count="129">
     <item name="setting" type="10">
       <varValue>{
 CONTENT_MAX_LEN: 6000,
@@ -51791,6 +51793,23 @@ g5.popBlack.a6.show(
     }
 );
 return true;]]></functionCode>
+    </item>
+    <item name="isUrl" type="20">
+      <varValue />
+      <functionParam>str</functionParam>
+      <functionCode><![CDATA[if (/[<>]/.test(str)) return false;
+if (/^\s*javascript:/i.test(str)) return false;
+if (/^\s*data:/i.test(str)) return false;
+try {
+    const url = new URL(str);
+    if (
+        url.protocol !== "http:" &amp;&amp;
+        url.protocol !== "https:"
+    ) return false;
+    return true;
+} catch {
+    return false;
+}]]></functionCode>
     </item>
   </g5Items>
 </page>
