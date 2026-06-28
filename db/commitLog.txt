@@ -887,3 +887,346 @@
 [2026-05-09 02:00:56] Zip completed
 [2026-05-09 02:01:00] git commit completed
 [2026-05-09 02:01:13] All steps completed!
+[2026-05-10 02:00:12] Processing...
+[2026-05-10 02:00:12] Directory : C:\GitHub\twitterG\db
+[2026-05-10 02:00:12] Target    : C:\GitHub\twitterG\db\twitterG.bak
+[2026-05-10 02:00:12] Zip       : C:\GitHub\twitterG\db\twitterG.zip
+[2026-05-10 02:00:57] Zip completed
+[2026-05-10 02:01:02] git commit completed
+[2026-05-10 02:01:16] All steps completed!
+[2026-05-11 02:00:10] Processing...
+[2026-05-11 02:00:10] Directory : C:\GitHub\twitterG\db
+[2026-05-11 02:00:10] Target    : C:\GitHub\twitterG\db\twitterG.bak
+[2026-05-11 02:00:10] Zip       : C:\GitHub\twitterG\db\twitterG.zip
+[2026-05-11 02:01:01] Zip completed
+[2026-05-11 02:01:06] git commit completed
+[2026-05-11 02:01:20] All steps completed!
+[2026-05-12 02:00:08] Processing...
+[2026-05-12 02:00:08] Directory : C:\GitHub\twitterG\db
+[2026-05-12 02:00:08] Target    : C:\GitHub\twitterG\db\twitterG.bak
+[2026-05-12 02:00:08] Zip       : C:\GitHub\twitterG\db\twitterG.zip
+[2026-05-12 02:00:57] Zip completed
+[2026-05-12 02:01:02] git commit completed
+[2026-05-12 02:01:16] All steps completed!
+[2026-05-13 02:00:04] Processing...
+[2026-05-13 02:00:04] Directory : C:\GitHub\twitterG\db
+[2026-05-13 02:00:04] Target    : C:\GitHub\twitterG\db\twitterG.bak
+[2026-05-13 02:00:04] Zip       : C:\GitHub\twitterG\db\twitterG.zip
+[2026-05-13 02:00:39] Zip completed
+[2026-05-13 02:00:43] git commit completed
+[2026-05-13 02:00:54] All steps completed!
+[2026-05-14 02:00:03] Processing...
+[2026-05-14 02:00:03] Directory : C:\GitHub\twitterG\db
+[2026-05-14 02:00:03] Target    : C:\GitHub\twitterG\db\twitterG.bak
+[2026-05-14 02:00:03] Zip       : C:\GitHub\twitterG\db\twitterG.zip
+[2026-05-14 02:00:39] Zip completed
+[2026-05-14 02:00:42] git commit completed
+[2026-05-14 02:00:53] All steps completed!
+[2026-05-15 02:00:03] Processing...
+[2026-05-15 02:00:03] Directory : C:\GitHub\twitterG\db
+[2026-05-15 02:00:03] Target    : C:\GitHub\twitterG\db\twitterG.bak
+[2026-05-15 02:00:03] Zip       : C:\GitHub\twitterG\db\twitterG.zip
+[2026-05-15 02:00:37] Zip completed
+[2026-05-15 02:00:41] git commit completed
+[2026-05-15 02:00:50] All steps completed!
+[2026-05-16 02:00:02] Processing...
+[2026-05-16 02:00:02] Directory : C:\GitHub\twitterG\db
+[2026-05-16 02:00:02] Target    : C:\GitHub\twitterG\db\twitterG.bak
+[2026-05-16 02:00:02] Zip       : C:\GitHub\twitterG\db\twitterG.zip
+[2026-05-16 02:00:36] Zip completed
+[2026-05-16 02:00:39] git commit completed
+[2026-05-16 02:00:48] All steps completed!
+[2026-05-17 02:00:03] Processing...
+[2026-05-17 02:00:03] Directory : C:\GitHub\twitterG\db
+[2026-05-17 02:00:03] Target    : C:\GitHub\twitterG\db\twitterG.bak
+[2026-05-17 02:00:03] Zip       : C:\GitHub\twitterG\db\twitterG.zip
+[2026-05-17 02:00:37] Zip completed
+[2026-05-17 02:00:41] git commit completed
+[2026-05-17 02:00:50] All steps completed!
+[2026-05-18 02:00:03] Processing...
+[2026-05-18 02:00:03] Directory : C:\GitHub\twitterG\db
+[2026-05-18 02:00:03] Target    : C:\GitHub\twitterG\db\twitterG.bak
+[2026-05-18 02:00:03] Zip       : C:\GitHub\twitterG\db\twitterG.zip
+[2026-05-18 02:00:40] Zip completed
+[2026-05-18 02:00:44] git commit completed
+[2026-05-18 02:00:54] All steps completed!
+[2026-05-19 02:00:03] Processing...
+[2026-05-19 02:00:03] Directory : C:\GitHub\twitterG\db
+[2026-05-19 02:00:03] Target    : C:\GitHub\twitterG\db\twitterG.bak
+[2026-05-19 02:00:03] Zip       : C:\GitHub\twitterG\db\twitterG.zip
+[2026-05-19 02:00:37] Zip completed
+[2026-05-19 02:00:41] git commit completed
+[2026-05-19 02:00:52] All steps completed!
+[2026-05-20 02:00:01] Processing...
+[2026-05-20 02:00:01] Directory : C:\GitHub\twitterG\db
+[2026-05-20 02:00:01] Target    : C:\GitHub\twitterG\db\twitterG.bak
+[2026-05-20 02:00:01] Zip       : C:\GitHub\twitterG\db\twitterG.zip
+[2026-05-20 02:00:39] Zip completed
+[2026-05-20 02:00:43] git commit completed
+[2026-05-20 02:00:54] All steps completed!
+[2026-05-21 02:00:00] Processing...
+[2026-05-21 02:00:00] Directory : C:\GitHub\twitterG\db
+[2026-05-21 02:00:00] Target    : C:\GitHub\twitterG\db\twitterG.bak
+[2026-05-21 02:00:00] Zip       : C:\GitHub\twitterG\db\twitterG.zip
+[2026-05-21 02:00:38] Zip completed
+[2026-05-21 02:00:42] git commit completed
+[2026-05-21 02:00:53] All steps completed!
+[2026-05-22 02:00:00] Processing...
+[2026-05-22 02:00:00] Directory : C:\GitHub\twitterG\db
+[2026-05-22 02:00:00] Target    : C:\GitHub\twitterG\db\twitterG.bak
+[2026-05-22 02:00:00] Zip       : C:\GitHub\twitterG\db\twitterG.zip
+[2026-05-22 02:00:36] Zip completed
+[2026-05-22 02:00:40] git commit completed
+[2026-05-22 02:00:50] All steps completed!
+[2026-05-23 02:00:01] Processing...
+[2026-05-23 02:00:01] Directory : C:\GitHub\twitterG\db
+[2026-05-23 02:00:01] Target    : C:\GitHub\twitterG\db\twitterG.bak
+[2026-05-23 02:00:01] Zip       : C:\GitHub\twitterG\db\twitterG.zip
+[2026-05-23 02:00:37] Zip completed
+[2026-05-23 02:00:41] git commit completed
+[2026-05-23 02:00:51] All steps completed!
+[2026-05-24 02:00:00] Processing...
+[2026-05-24 02:00:01] Directory : C:\GitHub\twitterG\db
+[2026-05-24 02:00:01] Target    : C:\GitHub\twitterG\db\twitterG.bak
+[2026-05-24 02:00:01] Zip       : C:\GitHub\twitterG\db\twitterG.zip
+[2026-05-24 02:00:38] Zip completed
+[2026-05-24 02:00:42] git commit completed
+[2026-05-24 02:00:51] All steps completed!
+[2026-05-25 02:00:00] Processing...
+[2026-05-25 02:00:00] Directory : C:\GitHub\twitterG\db
+[2026-05-25 02:00:00] Target    : C:\GitHub\twitterG\db\twitterG.bak
+[2026-05-25 02:00:00] Zip       : C:\GitHub\twitterG\db\twitterG.zip
+[2026-05-25 02:00:36] Zip completed
+[2026-05-25 02:00:41] git commit completed
+[2026-05-25 02:00:52] All steps completed!
+[2026-05-26 02:00:00] Processing...
+[2026-05-26 02:00:00] Directory : C:\GitHub\twitterG\db
+[2026-05-26 02:00:00] Target    : C:\GitHub\twitterG\db\twitterG.bak
+[2026-05-26 02:00:00] Zip       : C:\GitHub\twitterG\db\twitterG.zip
+[2026-05-26 02:00:37] Zip completed
+[2026-05-26 02:00:41] git commit completed
+[2026-05-26 02:00:52] All steps completed!
+[2026-05-27 02:00:00] Processing...
+[2026-05-27 02:00:01] Directory : C:\GitHub\twitterG\db
+[2026-05-27 02:00:01] Target    : C:\GitHub\twitterG\db\twitterG.bak
+[2026-05-27 02:00:01] Zip       : C:\GitHub\twitterG\db\twitterG.zip
+[2026-05-27 02:00:39] Zip completed
+[2026-05-27 02:00:43] git commit completed
+[2026-05-27 02:00:55] All steps completed!
+[2026-05-28 02:00:00] Processing...
+[2026-05-28 02:00:00] Directory : C:\GitHub\twitterG\db
+[2026-05-28 02:00:00] Target    : C:\GitHub\twitterG\db\twitterG.bak
+[2026-05-28 02:00:00] Zip       : C:\GitHub\twitterG\db\twitterG.zip
+[2026-05-28 02:00:38] Zip completed
+[2026-05-28 02:00:42] git commit completed
+[2026-05-28 02:00:51] All steps completed!
+[2026-05-29 02:00:01] Processing...
+[2026-05-29 02:00:01] Directory : C:\GitHub\twitterG\db
+[2026-05-29 02:00:01] Target    : C:\GitHub\twitterG\db\twitterG.bak
+[2026-05-29 02:00:01] Zip       : C:\GitHub\twitterG\db\twitterG.zip
+[2026-05-29 02:00:37] Zip completed
+[2026-05-29 02:00:40] git commit completed
+[2026-05-29 02:00:50] All steps completed!
+[2026-05-30 02:00:00] Processing...
+[2026-05-30 02:00:01] Directory : C:\GitHub\twitterG\db
+[2026-05-30 02:00:01] Target    : C:\GitHub\twitterG\db\twitterG.bak
+[2026-05-30 02:00:01] Zip       : C:\GitHub\twitterG\db\twitterG.zip
+[2026-05-30 02:00:37] Zip completed
+[2026-05-30 02:00:39] git commit completed
+[2026-05-30 02:00:49] All steps completed!
+[2026-05-31 02:00:01] Processing...
+[2026-05-31 02:00:01] Directory : C:\GitHub\twitterG\db
+[2026-05-31 02:00:01] Target    : C:\GitHub\twitterG\db\twitterG.bak
+[2026-05-31 02:00:01] Zip       : C:\GitHub\twitterG\db\twitterG.zip
+[2026-05-31 02:00:37] Zip completed
+[2026-05-31 02:00:40] git commit completed
+[2026-05-31 02:00:50] All steps completed!
+[2026-06-01 02:00:01] Processing...
+[2026-06-01 02:00:01] Directory : C:\GitHub\twitterG\db
+[2026-06-01 02:00:01] Target    : C:\GitHub\twitterG\db\twitterG.bak
+[2026-06-01 02:00:01] Zip       : C:\GitHub\twitterG\db\twitterG.zip
+[2026-06-01 02:00:37] Zip completed
+[2026-06-01 02:00:40] git commit completed
+[2026-06-01 02:00:50] All steps completed!
+[2026-06-02 02:00:01] Processing...
+[2026-06-02 02:00:01] Directory : C:\GitHub\twitterG\db
+[2026-06-02 02:00:01] Target    : C:\GitHub\twitterG\db\twitterG.bak
+[2026-06-02 02:00:01] Zip       : C:\GitHub\twitterG\db\twitterG.zip
+[2026-06-02 02:00:38] Zip completed
+[2026-06-02 02:00:41] git commit completed
+[2026-06-02 02:00:51] All steps completed!
+[2026-06-03 02:00:01] Processing...
+[2026-06-03 02:00:01] Directory : C:\GitHub\twitterG\db
+[2026-06-03 02:00:01] Target    : C:\GitHub\twitterG\db\twitterG.bak
+[2026-06-03 02:00:01] Zip       : C:\GitHub\twitterG\db\twitterG.zip
+[2026-06-03 02:00:38] Zip completed
+[2026-06-03 02:00:41] git commit completed
+[2026-06-03 02:00:51] All steps completed!
+[2026-06-04 02:00:01] Processing...
+[2026-06-04 02:00:01] Directory : C:\GitHub\twitterG\db
+[2026-06-04 02:00:01] Target    : C:\GitHub\twitterG\db\twitterG.bak
+[2026-06-04 02:00:01] Zip       : C:\GitHub\twitterG\db\twitterG.zip
+[2026-06-04 02:00:39] Zip completed
+[2026-06-04 02:00:42] git commit completed
+[2026-06-04 02:00:51] All steps completed!
+[2026-06-05 02:00:01] Processing...
+[2026-06-05 02:00:01] Directory : C:\GitHub\twitterG\db
+[2026-06-05 02:00:01] Target    : C:\GitHub\twitterG\db\twitterG.bak
+[2026-06-05 02:00:01] Zip       : C:\GitHub\twitterG\db\twitterG.zip
+[2026-06-05 02:00:37] Zip completed
+[2026-06-05 02:00:40] git commit completed
+[2026-06-05 02:00:49] All steps completed!
+[2026-06-06 02:00:01] Processing...
+[2026-06-06 02:00:01] Directory : C:\GitHub\twitterG\db
+[2026-06-06 02:00:01] Target    : C:\GitHub\twitterG\db\twitterG.bak
+[2026-06-06 02:00:01] Zip       : C:\GitHub\twitterG\db\twitterG.zip
+[2026-06-06 02:00:39] Zip completed
+[2026-06-06 02:00:42] git commit completed
+[2026-06-06 02:00:51] All steps completed!
+[2026-06-07 02:00:01] Processing...
+[2026-06-07 02:00:01] Directory : C:\GitHub\twitterG\db
+[2026-06-07 02:00:01] Target    : C:\GitHub\twitterG\db\twitterG.bak
+[2026-06-07 02:00:01] Zip       : C:\GitHub\twitterG\db\twitterG.zip
+[2026-06-07 02:00:37] Zip completed
+[2026-06-07 02:00:40] git commit completed
+[2026-06-07 02:00:50] All steps completed!
+[2026-06-08 02:00:01] Processing...
+[2026-06-08 02:00:01] Directory : C:\GitHub\twitterG\db
+[2026-06-08 02:00:01] Target    : C:\GitHub\twitterG\db\twitterG.bak
+[2026-06-08 02:00:01] Zip       : C:\GitHub\twitterG\db\twitterG.zip
+[2026-06-08 02:00:37] Zip completed
+[2026-06-08 02:00:40] git commit completed
+[2026-06-08 02:00:50] All steps completed!
+[2026-06-09 02:00:01] Processing...
+[2026-06-09 02:00:01] Directory : C:\GitHub\twitterG\db
+[2026-06-09 02:00:01] Target    : C:\GitHub\twitterG\db\twitterG.bak
+[2026-06-09 02:00:01] Zip       : C:\GitHub\twitterG\db\twitterG.zip
+[2026-06-09 02:00:38] Zip completed
+[2026-06-09 02:00:41] git commit completed
+[2026-06-09 02:00:51] All steps completed!
+[2026-06-10 02:00:02] Processing...
+[2026-06-10 02:00:02] Directory : C:\GitHub\twitterG\db
+[2026-06-10 02:00:02] Target    : C:\GitHub\twitterG\db\twitterG.bak
+[2026-06-10 02:00:02] Zip       : C:\GitHub\twitterG\db\twitterG.zip
+[2026-06-10 02:00:37] Zip completed
+[2026-06-10 02:00:41] git commit completed
+[2026-06-10 02:00:50] All steps completed!
+[2026-06-11 02:00:01] Processing...
+[2026-06-11 02:00:01] Directory : C:\GitHub\twitterG\db
+[2026-06-11 02:00:01] Target    : C:\GitHub\twitterG\db\twitterG.bak
+[2026-06-11 02:00:01] Zip       : C:\GitHub\twitterG\db\twitterG.zip
+[2026-06-11 02:00:36] Zip completed
+[2026-06-11 02:00:39] git commit completed
+[2026-06-11 02:00:48] All steps completed!
+[2026-06-12 02:00:02] Processing...
+[2026-06-12 02:00:02] Directory : C:\GitHub\twitterG\db
+[2026-06-12 02:00:02] Target    : C:\GitHub\twitterG\db\twitterG.bak
+[2026-06-12 02:00:02] Zip       : C:\GitHub\twitterG\db\twitterG.zip
+[2026-06-12 02:00:37] Zip completed
+[2026-06-12 02:00:41] git commit completed
+[2026-06-12 02:00:51] All steps completed!
+[2026-06-13 02:00:01] Processing...
+[2026-06-13 02:00:01] Directory : C:\GitHub\twitterG\db
+[2026-06-13 02:00:01] Target    : C:\GitHub\twitterG\db\twitterG.bak
+[2026-06-13 02:00:01] Zip       : C:\GitHub\twitterG\db\twitterG.zip
+[2026-06-13 02:00:37] Zip completed
+[2026-06-13 02:00:41] git commit completed
+[2026-06-13 02:00:51] All steps completed!
+[2026-06-14 02:00:02] Processing...
+[2026-06-14 02:00:02] Directory : C:\GitHub\twitterG\db
+[2026-06-14 02:00:02] Target    : C:\GitHub\twitterG\db\twitterG.bak
+[2026-06-14 02:00:02] Zip       : C:\GitHub\twitterG\db\twitterG.zip
+[2026-06-14 02:00:37] Zip completed
+[2026-06-14 02:00:40] git commit completed
+[2026-06-14 02:00:50] All steps completed!
+[2026-06-15 02:00:01] Processing...
+[2026-06-15 02:00:01] Directory : C:\GitHub\twitterG\db
+[2026-06-15 02:00:01] Target    : C:\GitHub\twitterG\db\twitterG.bak
+[2026-06-15 02:00:01] Zip       : C:\GitHub\twitterG\db\twitterG.zip
+[2026-06-15 02:00:39] Zip completed
+[2026-06-15 02:00:41] git commit completed
+[2026-06-15 02:00:51] All steps completed!
+[2026-06-16 02:00:01] Processing...
+[2026-06-16 02:00:02] Directory : C:\GitHub\twitterG\db
+[2026-06-16 02:00:02] Target    : C:\GitHub\twitterG\db\twitterG.bak
+[2026-06-16 02:00:02] Zip       : C:\GitHub\twitterG\db\twitterG.zip
+[2026-06-16 02:00:37] Zip completed
+[2026-06-16 02:00:40] git commit completed
+[2026-06-16 02:00:50] All steps completed!
+[2026-06-17 02:00:01] Processing...
+[2026-06-17 02:00:01] Directory : C:\GitHub\twitterG\db
+[2026-06-17 02:00:01] Target    : C:\GitHub\twitterG\db\twitterG.bak
+[2026-06-17 02:00:01] Zip       : C:\GitHub\twitterG\db\twitterG.zip
+[2026-06-17 02:00:37] Zip completed
+[2026-06-17 02:00:41] git commit completed
+[2026-06-17 02:00:52] All steps completed!
+[2026-06-18 02:00:01] Processing...
+[2026-06-18 02:00:01] Directory : C:\GitHub\twitterG\db
+[2026-06-18 02:00:01] Target    : C:\GitHub\twitterG\db\twitterG.bak
+[2026-06-18 02:00:01] Zip       : C:\GitHub\twitterG\db\twitterG.zip
+[2026-06-18 02:00:37] Zip completed
+[2026-06-18 02:00:40] git commit completed
+[2026-06-18 02:00:50] All steps completed!
+[2026-06-19 02:00:01] Processing...
+[2026-06-19 02:00:01] Directory : C:\GitHub\twitterG\db
+[2026-06-19 02:00:01] Target    : C:\GitHub\twitterG\db\twitterG.bak
+[2026-06-19 02:00:01] Zip       : C:\GitHub\twitterG\db\twitterG.zip
+[2026-06-19 02:00:37] Zip completed
+[2026-06-19 02:00:39] git commit completed
+[2026-06-19 02:00:49] All steps completed!
+[2026-06-20 02:00:00] Processing...
+[2026-06-20 02:00:00] Directory : C:\GitHub\twitterG\db
+[2026-06-20 02:00:00] Target    : C:\GitHub\twitterG\db\twitterG.bak
+[2026-06-20 02:00:00] Zip       : C:\GitHub\twitterG\db\twitterG.zip
+[2026-06-20 02:00:37] Zip completed
+[2026-06-20 02:00:40] git commit completed
+[2026-06-20 02:00:49] All steps completed!
+[2026-06-21 02:00:00] Processing...
+[2026-06-21 02:00:00] Directory : C:\GitHub\twitterG\db
+[2026-06-21 02:00:00] Target    : C:\GitHub\twitterG\db\twitterG.bak
+[2026-06-21 02:00:00] Zip       : C:\GitHub\twitterG\db\twitterG.zip
+[2026-06-21 02:00:37] Zip completed
+[2026-06-21 02:00:40] git commit completed
+[2026-06-21 02:00:49] All steps completed!
+[2026-06-22 02:00:00] Processing...
+[2026-06-22 02:00:00] Directory : C:\GitHub\twitterG\db
+[2026-06-22 02:00:00] Target    : C:\GitHub\twitterG\db\twitterG.bak
+[2026-06-22 02:00:00] Zip       : C:\GitHub\twitterG\db\twitterG.zip
+[2026-06-22 02:00:36] Zip completed
+[2026-06-22 02:00:40] git commit completed
+[2026-06-22 02:00:51] All steps completed!
+[2026-06-23 02:00:00] Processing...
+[2026-06-23 02:00:00] Directory : C:\GitHub\twitterG\db
+[2026-06-23 02:00:00] Target    : C:\GitHub\twitterG\db\twitterG.bak
+[2026-06-23 02:00:00] Zip       : C:\GitHub\twitterG\db\twitterG.zip
+[2026-06-23 02:00:39] Zip completed
+[2026-06-23 02:00:43] git commit completed
+[2026-06-23 02:00:53] All steps completed!
+[2026-06-24 02:00:00] Processing...
+[2026-06-24 02:00:00] Directory : C:\GitHub\twitterG\db
+[2026-06-24 02:00:00] Target    : C:\GitHub\twitterG\db\twitterG.bak
+[2026-06-24 02:00:00] Zip       : C:\GitHub\twitterG\db\twitterG.zip
+[2026-06-24 02:00:37] Zip completed
+[2026-06-24 02:00:40] git commit completed
+[2026-06-24 02:00:50] All steps completed!
+[2026-06-25 02:00:00] Processing...
+[2026-06-25 02:00:00] Directory : C:\GitHub\twitterG\db
+[2026-06-25 02:00:00] Target    : C:\GitHub\twitterG\db\twitterG.bak
+[2026-06-25 02:00:00] Zip       : C:\GitHub\twitterG\db\twitterG.zip
+[2026-06-25 02:00:36] Zip completed
+[2026-06-25 02:00:39] git commit completed
+[2026-06-25 02:00:48] All steps completed!
+[2026-06-26 02:00:01] Processing...
+[2026-06-26 02:00:01] Directory : C:\GitHub\twitterG\db
+[2026-06-26 02:00:01] Target    : C:\GitHub\twitterG\db\twitterG.bak
+[2026-06-26 02:00:01] Zip       : C:\GitHub\twitterG\db\twitterG.zip
+[2026-06-26 02:00:37] Zip completed
+[2026-06-26 02:00:39] git commit completed
+[2026-06-26 02:00:49] All steps completed!
+[2026-06-27 02:00:00] Processing...
+[2026-06-27 02:00:00] Directory : C:\GitHub\twitterG\db
+[2026-06-27 02:00:00] Target    : C:\GitHub\twitterG\db\twitterG.bak
+[2026-06-27 02:00:00] Zip       : C:\GitHub\twitterG\db\twitterG.zip
+[2026-06-27 02:00:36] Zip completed
+[2026-06-27 02:00:38] git commit completed
+[2026-06-27 02:00:47] All steps completed!
