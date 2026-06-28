@@ -330,7 +330,6 @@ a.css_button1:hover{
       <fontColor>E0E0E0</fontColor>
       <height>796</height>
       <heightRatio>1</heightRatio>
-      <layerVisible>false</layerVisible>
       <left>0</left>
       <note>mainDiv</note>
       <onCreate><![CDATA[
@@ -519,7 +518,6 @@ sender.scrollAniProcess = function() {
       <height>780</height>
       <heightRatio>0.979899497487437</heightRatio>
       <layerName>===P2===</layerName>
-      <layerVisible>false</layerVisible>
       <left>300</left>
       <leftRatio>0.251046025104603</leftRatio>
       <onCreate>sender.v_fitInner = true;
@@ -540,7 +538,6 @@ ee.setVisible(sender, true);
       <height>780</height>
       <heightRatio>1</heightRatio>
       <layerName>Home主页面</layerName>
-      <layerVisible>false</layerVisible>
       <left>0</left>
       <onCreate><![CDATA[sender.v_fitInner = true;
 sender.c_bottom = ee.getControl("panel648");
@@ -930,7 +927,6 @@ sender.showAlert = function(value) {
       <fontSize>20</fontSize>
       <height>429</height>
       <heightRatio>0.55</heightRatio>
-      <layerVisible>false</layerVisible>
       <left>0</left>
       <note>主页顶部发帖</note>
       <onCreate><![CDATA[sender.style.boxSizing="border-box";
@@ -2209,9 +2205,13 @@ eb.processDock();
 </__U_onHeightChange-sender-oldH-newH>
       <__U_onInputChange-sender-key-oldText-newText-oldHtml-newHtml type="jsMix"><![CDATA[var text = ee.getEditText(sender.c_edit);
 
+if (g5.isBlankTooMuch(newText)) return false;
+
+/*
 if (newText.split("\n").length-1>20) {
     return false;
 }
+*/
 
 var cp = sender.getCurPosAbs();
 var sTemp = sender.convertHtml(newText);
@@ -36918,6 +36918,7 @@ sender.renderItem = function(root) {
       <height>796</height>
       <heightRatio>1</heightRatio>
       <layerName><![CDATA[Root->主界面弹窗Top]]></layerName>
+      <layerVisible>false</layerVisible>
       <left>0</left>
       <onClick>sender.close();</onClick>
       <onCreate><![CDATA[sender.style.zIndex=100;
@@ -36997,6 +36998,7 @@ if (currentDist>100) {
       <height>292</height>
       <heightRatio>0.366834170854271</heightRatio>
       <layerName><![CDATA[Root->主界面弹窗->D用户信息]]></layerName>
+      <layerVisible>false</layerVisible>
       <left>252</left>
       <leftRatio>0.210878661087866</leftRatio>
       <onClick>window.event? window.event.cancelBubble = true : event.stopPropagation();
@@ -45076,7 +45078,7 @@ if (!eb.isEmpty(updateMain.onComplete)) {
     updateMain.needRefresh = false;
     updateMain.cancel = false;
 }
-updateMain.busy = false; 
+updateMain.busy = false;
 
                
 </script3>
@@ -45212,7 +45214,7 @@ vote.busy = false;
     </taskSetItem>
   </taskSet>
   <gridLines count="0" />
-  <g5Items count="129">
+  <g5Items count="130">
     <item name="setting" type="10">
       <varValue>{
 CONTENT_MAX_LEN: 6000,
@@ -51811,6 +51813,141 @@ try {
 } catch {
     return false;
 }]]></functionCode>
+    </item>
+    <item name="isBlankTooMuch" type="20">
+      <varValue />
+      <functionParam>text</functionParam>
+      <functionCode><![CDATA[const SCREEN_WIDTH = 30;          // 一行宽度：30个中文字符
+const SCREEN_HEIGHT = 10;         // 一屏高度：10行
+const BLANK_THRESHOLD = 10;       // 一屏有效内容少于30，算空白屏
+const MAX_BLANK_SCREENS = 2;      // 空白屏数量 > 2，判定刷屏
+
+if (typeof text !== "string") {
+    text = String(text ?? "");
+}
+
+let lines = [];
+
+let currentRenderWidth = 0;   // 当前行真实渲染占位宽度
+let currentContentWidth = 0;  // 当前行有效内容宽度
+
+function pushLine() {
+    lines.push(currentContentWidth);
+    currentRenderWidth = 0;
+    currentContentWidth = 0;
+}
+
+function isAsciiHalfWidth(char) {
+    return /^[\x00-\x7F]$/.test(char);
+}
+
+function isNormalSpace(char) {
+    return char === " ";
+}
+
+function getCharWidth(char) {
+    // 普通英文、数字、半角符号
+    if (isAsciiHalfWidth(char)) {
+        return 0.5;
+    }
+
+    // 中文、全角字符、emoji 等
+    return 1;
+}
+
+function addToken(renderWidth, contentWidth) {
+    // token 放不下当前行，就先换行
+    if (currentRenderWidth > 0 &amp;&amp; currentRenderWidth + renderWidth > SCREEN_WIDTH) {
+        pushLine();
+    }
+
+    // 如果单个 token 本身超过一行，比如超长连续空格，拆开处理
+    while (renderWidth > SCREEN_WIDTH) {
+        const remainWidth = SCREEN_WIDTH - currentRenderWidth;
+
+        if (remainWidth > 0) {
+            const ratio = remainWidth / renderWidth;
+            currentRenderWidth += remainWidth;
+            currentContentWidth += contentWidth * ratio;
+            renderWidth -= remainWidth;
+            contentWidth -= contentWidth * ratio;
+        }
+
+        pushLine();
+    }
+
+    currentRenderWidth += renderWidth;
+    currentContentWidth += contentWidth;
+
+    // 正好填满一行时，不强制 pushLine
+    // 等下一个字符进来时再换行，避免多出空行
+}
+
+for (let i = 0; i < text.length;) {
+    const char = text[i];
+
+    // 处理 Windows 换行 \r\n
+    if (char === "\r") {
+        if (text[i + 1] === "\n") {
+            i++;
+        }
+        pushLine();
+        i++;
+        continue;
+    }
+
+    // 处理普通换行 \n
+    if (char === "\n") {
+        pushLine();
+        i++;
+        continue;
+    }
+
+    // 处理连续普通空格
+    if (isNormalSpace(char)) {
+        let count = 0;
+
+        while (text[i] === " ") {
+            count++;
+            i++;
+        }
+
+        const renderWidth = count * 0.5;
+
+        // 连续空格的有效内容降权：
+        // 1个空格 = 0.5
+        // 2个及以上空格，最多算1个有效字符
+        const contentWidth = Math.min(renderWidth, 1);
+
+        addToken(renderWidth, contentWidth);
+        continue;
+    }
+
+    // 处理普通字符，包括中文、英文、数字、emoji
+    const codePoint = text.codePointAt(i);
+    const realChar = String.fromCodePoint(codePoint);
+
+    const width = getCharWidth(realChar);
+    addToken(width, width);
+
+    i += realChar.length;
+}
+
+// 最后一行也参与判断
+pushLine();
+
+let blankScreenCount = 0;
+
+for (let i = 0; i < lines.length; i += SCREEN_HEIGHT) {
+    const screenLines = lines.slice(i, i + SCREEN_HEIGHT);
+    const screenContentWidth = screenLines.reduce((sum, w) => sum + w, 0);
+
+    if (screenContentWidth < BLANK_THRESHOLD) {
+        blankScreenCount++;
+    }
+}
+
+return blankScreenCount > MAX_BLANK_SCREENS;]]></functionCode>
     </item>
   </g5Items>
 </page>
