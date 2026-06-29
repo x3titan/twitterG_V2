@@ -27,8 +27,69 @@ g5.pageJump = function (pageNumber) {
 query();  
        
 ]]></onControlLoad>
+      <pageHead><![CDATA[<style>
+.buttonBlue {
+    background-color:#30b5ef;
+    transition: background-color 1.0s;
+}
+.buttonBlue:hover{
+    background-color:#289ccf;
+    transition: background-color 0.3s;
+}
+   
+.buttonSelectBlue {
+    background-color: ;
+    transition: background-color 0.3s;
+}
+.buttonSelectBlue:hover{
+    background-color:#e0e0ff;
+    transition: background-color 0.6s;
+}
+
+
+.buttonGray {
+    background-color: ;
+    transition: background-color 0.6s;
+}
+.buttonGray:hover{
+    background-color:#f0f0ff;
+    transition: background-color 0.3s;
+}
+
+</style>
+
+<style>
+.css_button1 {
+    display:inline-block;
+    padding:0.1em 0.5em 0.2em 0.5em;
+    margin:0em 0.0em -0.3em 0.0em;
+    border-radius:0.4em;
+    border: 1px solid rgba(80, 80, 250, 0.4);
+    box-sizing: border-box;
+    text-decoration:none;
+    font-family:'Roboto',sans-serif;
+    //color:#1DA1F2;
+    text-align:left;
+    transition: background-color 1.0s;
+}
+.css_button1:hover{
+    //text-decoration: underline;
+    background-color:#e0e0ff;
+    transition: background-color 0.3s;
+}
+</style>
+
+<style>
+.imgDark {
+    transition: filter 0.3s ease;
+}
+
+.imgDark:hover {
+    filter: brightness(0.8);
+}
+</style>]]></pageHead>
       <top>0</top>
-      <width>1137</width>
+      <width>1175</width>
     </control>
     <control type="LayoutY" pathname="/divRoot/layouty1">
       <backgroundColor>000000</backgroundColor>
@@ -39,7 +100,7 @@ query();
       <left>0</left>
       <sizeRatio>0.700087950747581</sizeRatio>
       <top>0</top>
-      <width>1137</width>
+      <width>1175</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="LayoutYItem" pathname="/divRoot/layouty1/layoutyitem1">
@@ -51,7 +112,7 @@ query();
       <left>0</left>
       <sizeRatio>0.0659630606860158</sizeRatio>
       <top>0</top>
-      <width>1137</width>
+      <width>1175</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Button" pathname="/divRoot/layouty1/layoutyitem1/button2">
@@ -170,7 +231,7 @@ if (!confirm("删除操作将导致不可返回的后果，如需恢复数据只
       <fieldCount>2</fieldCount>
       <height>35</height>
       <heightRatio>0.466666666666667</heightRatio>
-      <left>782</left>
+      <left>820</left>
       <leftRatio>0.687774846086192</leftRatio>
       <outerRight>50</outerRight>
       <sizeRatio>0.114754098360656</sizeRatio>
@@ -272,7 +333,7 @@ if (!confirm("删除操作将导致不可返回的后果，如需恢复数据只
       <sizeRatio>0.599824098504837</sizeRatio>
       <top>75</top>
       <topRatio>0.0942211055276382</topRatio>
-      <width>1137</width>
+      <width>1175</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="TableTitle" pathname="/divRoot/layouty1/layoutyitem2/tabletitle2">
@@ -288,7 +349,7 @@ if (!confirm("删除操作将导致不可返回的后果，如需恢复数据只
       <sizeRatio>0.0457343887423043</sizeRatio>
       <tableBody>tablebody2</tableBody>
       <top>0</top>
-      <width>1137</width>
+      <width>1175</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="TableTitleItem" pathname="/divRoot/layouty1/layoutyitem2/tabletitle2/tabletitleitem12">
@@ -304,7 +365,7 @@ if (!confirm("删除操作将导致不可返回的后果，如需恢复数据只
       <sizeRatio>0.282608695652174</sizeRatio>
       <text>操作时间</text>
       <top>0</top>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>0.161829375549692</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tabletitle2/tabletitleitem12/panel18">
@@ -317,7 +378,7 @@ if (!confirm("删除操作将导致不可返回的后果，如需恢复数据只
       <sizeRatio>0.00543478260869565</sizeRatio>
       <top>51</top>
       <topRatio>0.980769230769231</topRatio>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="TableTitleItem" pathname="/divRoot/layouty1/layoutyitem2/tabletitle2/tabletitleitem13">
@@ -328,12 +389,12 @@ if (!confirm("删除操作将导致不可返回的后果，如需恢复数据只
       <heavy>60</heavy>
       <height>52</height>
       <heightRatio>1</heightRatio>
-      <left>184</left>
+      <left>191</left>
       <leftRatio>0.161829375549692</leftRatio>
       <sizeRatio>0.281081081081081</sizeRatio>
       <text>用户</text>
       <top>0</top>
-      <width>185</width>
+      <width>190</width>
       <widthRatio>0.162708883025506</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tabletitle2/tabletitleitem13/panel17">
@@ -346,7 +407,7 @@ if (!confirm("删除操作将导致不可返回的后果，如需恢复数据只
       <sizeRatio>0.00540540540540541</sizeRatio>
       <top>51</top>
       <topRatio>0.980769230769231</topRatio>
-      <width>185</width>
+      <width>190</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="TableTitleItem" pathname="/divRoot/layouty1/layoutyitem2/tabletitle2/tabletitleitem14">
@@ -357,12 +418,12 @@ if (!confirm("删除操作将导致不可返回的后果，如需恢复数据只
       <heavy>60</heavy>
       <height>52</height>
       <heightRatio>1</heightRatio>
-      <left>369</left>
+      <left>381</left>
       <leftRatio>0.324538258575198</leftRatio>
       <sizeRatio>0.282608695652174</sizeRatio>
       <text>管理员</text>
       <top>0</top>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>0.161829375549692</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tabletitle2/tabletitleitem14/panel19">
@@ -375,7 +436,7 @@ if (!confirm("删除操作将导致不可返回的后果，如需恢复数据只
       <sizeRatio>0.00543478260869565</sizeRatio>
       <top>51</top>
       <topRatio>0.980769230769231</topRatio>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="TableTitleItem" pathname="/divRoot/layouty1/layoutyitem2/tabletitle2/tabletitleitem1">
@@ -386,12 +447,12 @@ if (!confirm("删除操作将导致不可返回的后果，如需恢复数据只
       <heavy>40</heavy>
       <height>52</height>
       <heightRatio>1</heightRatio>
-      <left>553</left>
+      <left>572</left>
       <leftRatio>0.48636763412489</leftRatio>
       <sizeRatio>0.422764227642276</sizeRatio>
       <text>操作类型</text>
       <top>0</top>
-      <width>123</width>
+      <width>127</width>
       <widthRatio>0.108179419525066</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tabletitle2/tabletitleitem1/panel20">
@@ -404,7 +465,7 @@ if (!confirm("删除操作将导致不可返回的后果，如需恢复数据只
       <sizeRatio>0.00813008130081301</sizeRatio>
       <top>51</top>
       <topRatio>0.980769230769231</topRatio>
-      <width>123</width>
+      <width>127</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="TableTitleItem" pathname="/divRoot/layouty1/layoutyitem2/tabletitle2/tabletitleitem2">
@@ -416,12 +477,12 @@ if (!confirm("删除操作将导致不可返回的后果，如需恢复数据只
       <heavy>150</heavy>
       <height>52</height>
       <heightRatio>1</heightRatio>
-      <left>676</left>
+      <left>699</left>
       <leftRatio>0.594547053649956</leftRatio>
       <sizeRatio>0.112798264642082</sizeRatio>
       <text>操作说明</text>
       <top>0</top>
-      <width>461</width>
+      <width>476</width>
       <widthRatio>0.405452946350044</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tabletitle2/tabletitleitem2/panel28">
@@ -434,7 +495,7 @@ if (!confirm("删除操作将导致不可返回的后果，如需恢复数据只
       <sizeRatio>0.00216919739696312</sizeRatio>
       <top>51</top>
       <topRatio>0.980769230769231</topRatio>
-      <width>461</width>
+      <width>476</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="TableBody" pathname="/divRoot/layouty1/layoutyitem2/tablebody2">
@@ -448,7 +509,7 @@ if (!confirm("删除操作将导致不可返回的后果，如需恢复数据只
       <tableTitle>tabletitle2</tableTitle>
       <top>52</top>
       <topRatio>0.0762463343108504</topRatio>
-      <width>1137</width>
+      <width>1175</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="TableBodyItem" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/tablebodyitem12">
@@ -475,7 +536,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.228260869565217</sizeRatio>
       <text>.</text>
       <top>0</top>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>0.161829375549692</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/tablebodyitem12/panel11">
@@ -489,7 +550,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00543478260869565</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="TableBodyItem" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/tablebodyitem13">
@@ -500,7 +561,7 @@ ee.setText(sender, s);]]></onUpdate>
       <fontColor>545454</fontColor>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>184</left>
+      <left>191</left>
       <leftRatio>0.161829375549692</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <onUpdate><![CDATA[if (!query.dataset) {
@@ -517,7 +578,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.227027027027027</sizeRatio>
       <text>.</text>
       <top>0</top>
-      <width>185</width>
+      <width>190</width>
       <widthRatio>0.162708883025506</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/tablebodyitem13/panel12">
@@ -531,7 +592,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00540540540540541</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>185</width>
+      <width>190</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="TableBodyItem" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/tablebodyitem14">
@@ -541,7 +602,7 @@ ee.setText(sender, s);]]></onUpdate>
       <fontColor>545454</fontColor>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>369</left>
+      <left>381</left>
       <leftRatio>0.324538258575198</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <onUpdate><![CDATA[if (!query.dataset) {
@@ -558,7 +619,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.228260869565217</sizeRatio>
       <text>.</text>
       <top>0</top>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>0.161829375549692</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/tablebodyitem14/panel13">
@@ -572,7 +633,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00543478260869565</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="TableBodyItem" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/tablebodyitem1">
@@ -582,7 +643,7 @@ ee.setText(sender, s);]]></onUpdate>
       <fontColor>545454</fontColor>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>553</left>
+      <left>572</left>
       <leftRatio>0.48636763412489</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <onUpdate><![CDATA[if (!query.dataset) {
@@ -600,6 +661,8 @@ var t2 = query.dataset.getData(5,y);
 if (t1 == "ADMIN") {
     t1 = "管理员";
 } else if (t1 == "USER") {
+    t1 = "用户";
+} else if (t1 == "U2") {
     t1 = "用户";
 }
 if (t2 == "DISABLED") {
@@ -625,7 +688,7 @@ ee.setText(sender, t1 + "/" + t2);
       <sizeRatio>0.341463414634146</sizeRatio>
       <text>.</text>
       <top>0</top>
-      <width>123</width>
+      <width>127</width>
       <widthRatio>0.108179419525066</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/tablebodyitem1/panel14">
@@ -639,7 +702,7 @@ ee.setText(sender, t1 + "/" + t2);
       <sizeRatio>0.00813008130081301</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>123</width>
+      <width>127</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="TableBodyItem" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/tablebodyitem2">
@@ -649,24 +712,45 @@ ee.setText(sender, t1 + "/" + t2);
       <hAlign>left</hAlign>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>676</left>
+      <left>699</left>
       <leftRatio>0.594547053649956</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <onUpdate><![CDATA[if (!query.dataset) {
     text = "";
     return;
 }
-var y = sender.rowIndex;
+let y = sender.rowIndex;
 if (y >= query.dataset.rowCount) {
     ee.setText(sender, "");
     return;
 }
-var s = query.dataset.getData(9,y);
-ee.setText(sender, s);]]></onUpdate>
+let s = "";
+let note = query.dataset.getData(9,y);
+let t1 = query.dataset.getData(4,y);
+let t2 = query.dataset.getData(5,y);
+
+if (t1=="U2") {
+    s = "<spawn id='refLink' class='css_button1'>" + t2 + " " + note + "</spawn>";
+} else {
+    s = note;
+    ee.setText(sender, s);
+    return;
+}
+
+if (note == "") return;
+ee.setText(sender, s);
+
+let c = sender.querySelector("#refLink");
+ee.setOnClick(c, function(sender, event) {
+    window.parent.g5.closePageByTitle(t2);
+    window.parent.g5.appendPage("t2", note);
+});
+
+]]></onUpdate>
       <sizeRatio>0.0911062906724512</sizeRatio>
       <text>.</text>
       <top>0</top>
-      <width>461</width>
+      <width>476</width>
       <widthRatio>0.405452946350044</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/tablebodyitem2/panel21">
@@ -680,7 +764,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00216919739696312</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>461</width>
+      <width>476</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp113">
@@ -696,7 +780,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.228260869565217</sizeRatio>
       <text>.</text>
       <top>42</top>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>0.161829375549692</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp113/temp1">
@@ -710,7 +794,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00543478260869565</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp115">
@@ -721,13 +805,13 @@ ee.setText(sender, s);]]></onUpdate>
       <fontColor>545454</fontColor>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>184</left>
+      <left>191</left>
       <leftRatio>0.161829375549692</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <sizeRatio>0.227027027027027</sizeRatio>
       <text>.</text>
       <top>42</top>
-      <width>185</width>
+      <width>190</width>
       <widthRatio>0.162708883025506</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp115/temp2">
@@ -741,7 +825,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00540540540540541</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>185</width>
+      <width>190</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp117">
@@ -751,13 +835,13 @@ ee.setText(sender, s);]]></onUpdate>
       <fontColor>545454</fontColor>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>369</left>
+      <left>381</left>
       <leftRatio>0.324538258575198</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <sizeRatio>0.228260869565217</sizeRatio>
       <text>.</text>
       <top>42</top>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>0.161829375549692</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp117/temp3">
@@ -771,7 +855,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00543478260869565</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp119">
@@ -781,13 +865,13 @@ ee.setText(sender, s);]]></onUpdate>
       <fontColor>545454</fontColor>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>553</left>
+      <left>572</left>
       <leftRatio>0.48636763412489</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <sizeRatio>0.341463414634146</sizeRatio>
       <text>.</text>
       <top>42</top>
-      <width>123</width>
+      <width>127</width>
       <widthRatio>0.108179419525066</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp119/temp4">
@@ -801,7 +885,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00813008130081301</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>123</width>
+      <width>127</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp121">
@@ -811,13 +895,13 @@ ee.setText(sender, s);]]></onUpdate>
       <hAlign>left</hAlign>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>676</left>
+      <left>699</left>
       <leftRatio>0.594547053649956</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <sizeRatio>0.0911062906724512</sizeRatio>
       <text>.</text>
       <top>42</top>
-      <width>461</width>
+      <width>476</width>
       <widthRatio>0.405452946350044</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp121/temp5">
@@ -831,7 +915,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00216919739696312</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>461</width>
+      <width>476</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp124">
@@ -847,7 +931,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.228260869565217</sizeRatio>
       <text>.</text>
       <top>84</top>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>0.161829375549692</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp124/temp6">
@@ -861,7 +945,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00543478260869565</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp126">
@@ -872,13 +956,13 @@ ee.setText(sender, s);]]></onUpdate>
       <fontColor>545454</fontColor>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>184</left>
+      <left>191</left>
       <leftRatio>0.161829375549692</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <sizeRatio>0.227027027027027</sizeRatio>
       <text>.</text>
       <top>84</top>
-      <width>185</width>
+      <width>190</width>
       <widthRatio>0.162708883025506</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp126/temp7">
@@ -892,7 +976,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00540540540540541</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>185</width>
+      <width>190</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp128">
@@ -902,13 +986,13 @@ ee.setText(sender, s);]]></onUpdate>
       <fontColor>545454</fontColor>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>369</left>
+      <left>381</left>
       <leftRatio>0.324538258575198</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <sizeRatio>0.228260869565217</sizeRatio>
       <text>.</text>
       <top>84</top>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>0.161829375549692</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp128/temp8">
@@ -922,7 +1006,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00543478260869565</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp130">
@@ -932,13 +1016,13 @@ ee.setText(sender, s);]]></onUpdate>
       <fontColor>545454</fontColor>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>553</left>
+      <left>572</left>
       <leftRatio>0.48636763412489</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <sizeRatio>0.341463414634146</sizeRatio>
       <text>.</text>
       <top>84</top>
-      <width>123</width>
+      <width>127</width>
       <widthRatio>0.108179419525066</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp130/temp9">
@@ -952,7 +1036,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00813008130081301</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>123</width>
+      <width>127</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp132">
@@ -962,13 +1046,13 @@ ee.setText(sender, s);]]></onUpdate>
       <hAlign>left</hAlign>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>676</left>
+      <left>699</left>
       <leftRatio>0.594547053649956</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <sizeRatio>0.0911062906724512</sizeRatio>
       <text>.</text>
       <top>84</top>
-      <width>461</width>
+      <width>476</width>
       <widthRatio>0.405452946350044</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp132/temp10">
@@ -982,7 +1066,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00216919739696312</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>461</width>
+      <width>476</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp135">
@@ -998,7 +1082,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.228260869565217</sizeRatio>
       <text>.</text>
       <top>126</top>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>0.161829375549692</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp135/temp11">
@@ -1012,7 +1096,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00543478260869565</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp137">
@@ -1023,13 +1107,13 @@ ee.setText(sender, s);]]></onUpdate>
       <fontColor>545454</fontColor>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>184</left>
+      <left>191</left>
       <leftRatio>0.161829375549692</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <sizeRatio>0.227027027027027</sizeRatio>
       <text>.</text>
       <top>126</top>
-      <width>185</width>
+      <width>190</width>
       <widthRatio>0.162708883025506</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp137/temp12">
@@ -1043,7 +1127,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00540540540540541</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>185</width>
+      <width>190</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp139">
@@ -1053,13 +1137,13 @@ ee.setText(sender, s);]]></onUpdate>
       <fontColor>545454</fontColor>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>369</left>
+      <left>381</left>
       <leftRatio>0.324538258575198</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <sizeRatio>0.228260869565217</sizeRatio>
       <text>.</text>
       <top>126</top>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>0.161829375549692</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp139/temp13">
@@ -1073,7 +1157,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00543478260869565</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp142">
@@ -1083,13 +1167,13 @@ ee.setText(sender, s);]]></onUpdate>
       <fontColor>545454</fontColor>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>553</left>
+      <left>572</left>
       <leftRatio>0.48636763412489</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <sizeRatio>0.341463414634146</sizeRatio>
       <text>.</text>
       <top>126</top>
-      <width>123</width>
+      <width>127</width>
       <widthRatio>0.108179419525066</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp142/temp14">
@@ -1103,7 +1187,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00813008130081301</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>123</width>
+      <width>127</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp146">
@@ -1113,13 +1197,13 @@ ee.setText(sender, s);]]></onUpdate>
       <hAlign>left</hAlign>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>676</left>
+      <left>699</left>
       <leftRatio>0.594547053649956</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <sizeRatio>0.0911062906724512</sizeRatio>
       <text>.</text>
       <top>126</top>
-      <width>461</width>
+      <width>476</width>
       <widthRatio>0.405452946350044</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp146/temp15">
@@ -1133,7 +1217,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00216919739696312</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>461</width>
+      <width>476</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp152">
@@ -1149,7 +1233,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.228260869565217</sizeRatio>
       <text>.</text>
       <top>168</top>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>0.161829375549692</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp152/temp16">
@@ -1163,7 +1247,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00543478260869565</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp156">
@@ -1174,13 +1258,13 @@ ee.setText(sender, s);]]></onUpdate>
       <fontColor>545454</fontColor>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>184</left>
+      <left>191</left>
       <leftRatio>0.161829375549692</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <sizeRatio>0.227027027027027</sizeRatio>
       <text>.</text>
       <top>168</top>
-      <width>185</width>
+      <width>190</width>
       <widthRatio>0.162708883025506</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp156/temp17">
@@ -1194,7 +1278,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00540540540540541</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>185</width>
+      <width>190</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp160">
@@ -1204,13 +1288,13 @@ ee.setText(sender, s);]]></onUpdate>
       <fontColor>545454</fontColor>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>369</left>
+      <left>381</left>
       <leftRatio>0.324538258575198</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <sizeRatio>0.228260869565217</sizeRatio>
       <text>.</text>
       <top>168</top>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>0.161829375549692</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp160/temp18">
@@ -1224,7 +1308,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00543478260869565</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp164">
@@ -1234,13 +1318,13 @@ ee.setText(sender, s);]]></onUpdate>
       <fontColor>545454</fontColor>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>553</left>
+      <left>572</left>
       <leftRatio>0.48636763412489</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <sizeRatio>0.341463414634146</sizeRatio>
       <text>.</text>
       <top>168</top>
-      <width>123</width>
+      <width>127</width>
       <widthRatio>0.108179419525066</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp164/temp19">
@@ -1254,7 +1338,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00813008130081301</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>123</width>
+      <width>127</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp168">
@@ -1264,13 +1348,13 @@ ee.setText(sender, s);]]></onUpdate>
       <hAlign>left</hAlign>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>676</left>
+      <left>699</left>
       <leftRatio>0.594547053649956</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <sizeRatio>0.0911062906724512</sizeRatio>
       <text>.</text>
       <top>168</top>
-      <width>461</width>
+      <width>476</width>
       <widthRatio>0.405452946350044</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp168/temp20">
@@ -1284,7 +1368,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00216919739696312</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>461</width>
+      <width>476</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp174">
@@ -1300,7 +1384,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.228260869565217</sizeRatio>
       <text>.</text>
       <top>210</top>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>0.161829375549692</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp174/temp21">
@@ -1314,7 +1398,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00543478260869565</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp178">
@@ -1325,13 +1409,13 @@ ee.setText(sender, s);]]></onUpdate>
       <fontColor>545454</fontColor>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>184</left>
+      <left>191</left>
       <leftRatio>0.161829375549692</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <sizeRatio>0.227027027027027</sizeRatio>
       <text>.</text>
       <top>210</top>
-      <width>185</width>
+      <width>190</width>
       <widthRatio>0.162708883025506</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp178/temp22">
@@ -1345,7 +1429,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00540540540540541</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>185</width>
+      <width>190</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp182">
@@ -1355,13 +1439,13 @@ ee.setText(sender, s);]]></onUpdate>
       <fontColor>545454</fontColor>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>369</left>
+      <left>381</left>
       <leftRatio>0.324538258575198</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <sizeRatio>0.228260869565217</sizeRatio>
       <text>.</text>
       <top>210</top>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>0.161829375549692</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp182/temp23">
@@ -1375,7 +1459,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00543478260869565</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp186">
@@ -1385,13 +1469,13 @@ ee.setText(sender, s);]]></onUpdate>
       <fontColor>545454</fontColor>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>553</left>
+      <left>572</left>
       <leftRatio>0.48636763412489</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <sizeRatio>0.341463414634146</sizeRatio>
       <text>.</text>
       <top>210</top>
-      <width>123</width>
+      <width>127</width>
       <widthRatio>0.108179419525066</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp186/temp24">
@@ -1405,7 +1489,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00813008130081301</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>123</width>
+      <width>127</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp190">
@@ -1415,13 +1499,13 @@ ee.setText(sender, s);]]></onUpdate>
       <hAlign>left</hAlign>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>676</left>
+      <left>699</left>
       <leftRatio>0.594547053649956</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <sizeRatio>0.0911062906724512</sizeRatio>
       <text>.</text>
       <top>210</top>
-      <width>461</width>
+      <width>476</width>
       <widthRatio>0.405452946350044</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp190/temp25">
@@ -1435,7 +1519,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00216919739696312</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>461</width>
+      <width>476</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp196">
@@ -1451,7 +1535,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.228260869565217</sizeRatio>
       <text>.</text>
       <top>252</top>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>0.161829375549692</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp196/temp26">
@@ -1465,7 +1549,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00543478260869565</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp200">
@@ -1476,13 +1560,13 @@ ee.setText(sender, s);]]></onUpdate>
       <fontColor>545454</fontColor>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>184</left>
+      <left>191</left>
       <leftRatio>0.161829375549692</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <sizeRatio>0.227027027027027</sizeRatio>
       <text>.</text>
       <top>252</top>
-      <width>185</width>
+      <width>190</width>
       <widthRatio>0.162708883025506</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp200/temp27">
@@ -1496,7 +1580,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00540540540540541</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>185</width>
+      <width>190</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp204">
@@ -1506,13 +1590,13 @@ ee.setText(sender, s);]]></onUpdate>
       <fontColor>545454</fontColor>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>369</left>
+      <left>381</left>
       <leftRatio>0.324538258575198</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <sizeRatio>0.228260869565217</sizeRatio>
       <text>.</text>
       <top>252</top>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>0.161829375549692</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp204/temp28">
@@ -1526,7 +1610,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00543478260869565</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp208">
@@ -1536,13 +1620,13 @@ ee.setText(sender, s);]]></onUpdate>
       <fontColor>545454</fontColor>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>553</left>
+      <left>572</left>
       <leftRatio>0.48636763412489</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <sizeRatio>0.341463414634146</sizeRatio>
       <text>.</text>
       <top>252</top>
-      <width>123</width>
+      <width>127</width>
       <widthRatio>0.108179419525066</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp208/temp29">
@@ -1556,7 +1640,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00813008130081301</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>123</width>
+      <width>127</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp212">
@@ -1566,13 +1650,13 @@ ee.setText(sender, s);]]></onUpdate>
       <hAlign>left</hAlign>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>676</left>
+      <left>699</left>
       <leftRatio>0.594547053649956</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <sizeRatio>0.0911062906724512</sizeRatio>
       <text>.</text>
       <top>252</top>
-      <width>461</width>
+      <width>476</width>
       <widthRatio>0.405452946350044</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp212/temp30">
@@ -1586,7 +1670,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00216919739696312</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>461</width>
+      <width>476</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp218">
@@ -1602,7 +1686,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.228260869565217</sizeRatio>
       <text>.</text>
       <top>294</top>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>0.161829375549692</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp218/temp31">
@@ -1616,7 +1700,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00543478260869565</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp222">
@@ -1627,13 +1711,13 @@ ee.setText(sender, s);]]></onUpdate>
       <fontColor>545454</fontColor>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>184</left>
+      <left>191</left>
       <leftRatio>0.161829375549692</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <sizeRatio>0.227027027027027</sizeRatio>
       <text>.</text>
       <top>294</top>
-      <width>185</width>
+      <width>190</width>
       <widthRatio>0.162708883025506</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp222/temp32">
@@ -1647,7 +1731,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00540540540540541</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>185</width>
+      <width>190</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp226">
@@ -1657,13 +1741,13 @@ ee.setText(sender, s);]]></onUpdate>
       <fontColor>545454</fontColor>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>369</left>
+      <left>381</left>
       <leftRatio>0.324538258575198</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <sizeRatio>0.228260869565217</sizeRatio>
       <text>.</text>
       <top>294</top>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>0.161829375549692</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp226/temp33">
@@ -1677,7 +1761,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00543478260869565</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp230">
@@ -1687,13 +1771,13 @@ ee.setText(sender, s);]]></onUpdate>
       <fontColor>545454</fontColor>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>553</left>
+      <left>572</left>
       <leftRatio>0.48636763412489</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <sizeRatio>0.341463414634146</sizeRatio>
       <text>.</text>
       <top>294</top>
-      <width>123</width>
+      <width>127</width>
       <widthRatio>0.108179419525066</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp230/temp34">
@@ -1707,7 +1791,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00813008130081301</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>123</width>
+      <width>127</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp234">
@@ -1717,13 +1801,13 @@ ee.setText(sender, s);]]></onUpdate>
       <hAlign>left</hAlign>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>676</left>
+      <left>699</left>
       <leftRatio>0.594547053649956</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <sizeRatio>0.0911062906724512</sizeRatio>
       <text>.</text>
       <top>294</top>
-      <width>461</width>
+      <width>476</width>
       <widthRatio>0.405452946350044</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp234/temp35">
@@ -1737,7 +1821,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00216919739696312</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>461</width>
+      <width>476</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp240">
@@ -1753,7 +1837,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.228260869565217</sizeRatio>
       <text>.</text>
       <top>336</top>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>0.161829375549692</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp240/temp36">
@@ -1767,7 +1851,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00543478260869565</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp244">
@@ -1778,13 +1862,13 @@ ee.setText(sender, s);]]></onUpdate>
       <fontColor>545454</fontColor>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>184</left>
+      <left>191</left>
       <leftRatio>0.161829375549692</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <sizeRatio>0.227027027027027</sizeRatio>
       <text>.</text>
       <top>336</top>
-      <width>185</width>
+      <width>190</width>
       <widthRatio>0.162708883025506</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp244/temp37">
@@ -1798,7 +1882,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00540540540540541</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>185</width>
+      <width>190</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp248">
@@ -1808,13 +1892,13 @@ ee.setText(sender, s);]]></onUpdate>
       <fontColor>545454</fontColor>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>369</left>
+      <left>381</left>
       <leftRatio>0.324538258575198</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <sizeRatio>0.228260869565217</sizeRatio>
       <text>.</text>
       <top>336</top>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>0.161829375549692</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp248/temp38">
@@ -1828,7 +1912,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00543478260869565</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp252">
@@ -1838,13 +1922,13 @@ ee.setText(sender, s);]]></onUpdate>
       <fontColor>545454</fontColor>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>553</left>
+      <left>572</left>
       <leftRatio>0.48636763412489</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <sizeRatio>0.341463414634146</sizeRatio>
       <text>.</text>
       <top>336</top>
-      <width>123</width>
+      <width>127</width>
       <widthRatio>0.108179419525066</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp252/temp39">
@@ -1858,7 +1942,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00813008130081301</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>123</width>
+      <width>127</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp255">
@@ -1868,13 +1952,13 @@ ee.setText(sender, s);]]></onUpdate>
       <hAlign>left</hAlign>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>676</left>
+      <left>699</left>
       <leftRatio>0.594547053649956</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <sizeRatio>0.0911062906724512</sizeRatio>
       <text>.</text>
       <top>336</top>
-      <width>461</width>
+      <width>476</width>
       <widthRatio>0.405452946350044</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp255/temp40">
@@ -1888,7 +1972,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00216919739696312</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>461</width>
+      <width>476</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp259">
@@ -1904,7 +1988,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.228260869565217</sizeRatio>
       <text>.</text>
       <top>378</top>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>0.161829375549692</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp259/temp41">
@@ -1918,7 +2002,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00543478260869565</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp261">
@@ -1929,13 +2013,13 @@ ee.setText(sender, s);]]></onUpdate>
       <fontColor>545454</fontColor>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>184</left>
+      <left>191</left>
       <leftRatio>0.161829375549692</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <sizeRatio>0.227027027027027</sizeRatio>
       <text>.</text>
       <top>378</top>
-      <width>185</width>
+      <width>190</width>
       <widthRatio>0.162708883025506</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp261/temp42">
@@ -1949,7 +2033,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00540540540540541</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>185</width>
+      <width>190</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp264">
@@ -1959,13 +2043,13 @@ ee.setText(sender, s);]]></onUpdate>
       <fontColor>545454</fontColor>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>369</left>
+      <left>381</left>
       <leftRatio>0.324538258575198</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <sizeRatio>0.228260869565217</sizeRatio>
       <text>.</text>
       <top>378</top>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>0.161829375549692</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp264/temp43">
@@ -1979,7 +2063,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00543478260869565</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp267">
@@ -1989,13 +2073,13 @@ ee.setText(sender, s);]]></onUpdate>
       <fontColor>545454</fontColor>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>553</left>
+      <left>572</left>
       <leftRatio>0.48636763412489</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <sizeRatio>0.341463414634146</sizeRatio>
       <text>.</text>
       <top>378</top>
-      <width>123</width>
+      <width>127</width>
       <widthRatio>0.108179419525066</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp267/temp44">
@@ -2009,7 +2093,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00813008130081301</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>123</width>
+      <width>127</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp269">
@@ -2019,13 +2103,13 @@ ee.setText(sender, s);]]></onUpdate>
       <hAlign>left</hAlign>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>676</left>
+      <left>699</left>
       <leftRatio>0.594547053649956</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <sizeRatio>0.0911062906724512</sizeRatio>
       <text>.</text>
       <top>378</top>
-      <width>461</width>
+      <width>476</width>
       <widthRatio>0.405452946350044</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp269/temp45">
@@ -2039,7 +2123,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00216919739696312</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>461</width>
+      <width>476</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp273">
@@ -2055,7 +2139,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.228260869565217</sizeRatio>
       <text>.</text>
       <top>420</top>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>0.161829375549692</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp273/temp46">
@@ -2069,7 +2153,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00543478260869565</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp276">
@@ -2080,13 +2164,13 @@ ee.setText(sender, s);]]></onUpdate>
       <fontColor>545454</fontColor>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>184</left>
+      <left>191</left>
       <leftRatio>0.161829375549692</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <sizeRatio>0.227027027027027</sizeRatio>
       <text>.</text>
       <top>420</top>
-      <width>185</width>
+      <width>190</width>
       <widthRatio>0.162708883025506</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp276/temp47">
@@ -2100,7 +2184,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00540540540540541</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>185</width>
+      <width>190</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp279">
@@ -2110,13 +2194,13 @@ ee.setText(sender, s);]]></onUpdate>
       <fontColor>545454</fontColor>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>369</left>
+      <left>381</left>
       <leftRatio>0.324538258575198</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <sizeRatio>0.228260869565217</sizeRatio>
       <text>.</text>
       <top>420</top>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>0.161829375549692</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp279/temp48">
@@ -2130,7 +2214,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00543478260869565</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp281">
@@ -2140,13 +2224,13 @@ ee.setText(sender, s);]]></onUpdate>
       <fontColor>545454</fontColor>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>553</left>
+      <left>572</left>
       <leftRatio>0.48636763412489</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <sizeRatio>0.341463414634146</sizeRatio>
       <text>.</text>
       <top>420</top>
-      <width>123</width>
+      <width>127</width>
       <widthRatio>0.108179419525066</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp281/temp49">
@@ -2160,7 +2244,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00813008130081301</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>123</width>
+      <width>127</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp284">
@@ -2170,13 +2254,13 @@ ee.setText(sender, s);]]></onUpdate>
       <hAlign>left</hAlign>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>676</left>
+      <left>699</left>
       <leftRatio>0.594547053649956</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <sizeRatio>0.0911062906724512</sizeRatio>
       <text>.</text>
       <top>420</top>
-      <width>461</width>
+      <width>476</width>
       <widthRatio>0.405452946350044</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp284/temp50">
@@ -2190,7 +2274,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00216919739696312</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>461</width>
+      <width>476</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp288">
@@ -2206,7 +2290,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.228260869565217</sizeRatio>
       <text>.</text>
       <top>462</top>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>0.161829375549692</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp288/temp51">
@@ -2220,7 +2304,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00543478260869565</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp291">
@@ -2231,13 +2315,13 @@ ee.setText(sender, s);]]></onUpdate>
       <fontColor>545454</fontColor>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>184</left>
+      <left>191</left>
       <leftRatio>0.161829375549692</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <sizeRatio>0.227027027027027</sizeRatio>
       <text>.</text>
       <top>462</top>
-      <width>185</width>
+      <width>190</width>
       <widthRatio>0.162708883025506</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp291/temp52">
@@ -2251,7 +2335,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00540540540540541</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>185</width>
+      <width>190</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp293">
@@ -2261,13 +2345,13 @@ ee.setText(sender, s);]]></onUpdate>
       <fontColor>545454</fontColor>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>369</left>
+      <left>381</left>
       <leftRatio>0.324538258575198</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <sizeRatio>0.228260869565217</sizeRatio>
       <text>.</text>
       <top>462</top>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>0.161829375549692</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp293/temp53">
@@ -2281,7 +2365,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00543478260869565</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp296">
@@ -2291,13 +2375,13 @@ ee.setText(sender, s);]]></onUpdate>
       <fontColor>545454</fontColor>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>553</left>
+      <left>572</left>
       <leftRatio>0.48636763412489</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <sizeRatio>0.341463414634146</sizeRatio>
       <text>.</text>
       <top>462</top>
-      <width>123</width>
+      <width>127</width>
       <widthRatio>0.108179419525066</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp296/temp54">
@@ -2311,7 +2395,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00813008130081301</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>123</width>
+      <width>127</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp299">
@@ -2321,13 +2405,13 @@ ee.setText(sender, s);]]></onUpdate>
       <hAlign>left</hAlign>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>676</left>
+      <left>699</left>
       <leftRatio>0.594547053649956</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <sizeRatio>0.0911062906724512</sizeRatio>
       <text>.</text>
       <top>462</top>
-      <width>461</width>
+      <width>476</width>
       <widthRatio>0.405452946350044</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp299/temp55">
@@ -2341,7 +2425,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00216919739696312</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>461</width>
+      <width>476</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp303">
@@ -2357,7 +2441,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.228260869565217</sizeRatio>
       <text>.</text>
       <top>504</top>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>0.161829375549692</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp303/temp56">
@@ -2371,7 +2455,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00543478260869565</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp305">
@@ -2382,13 +2466,13 @@ ee.setText(sender, s);]]></onUpdate>
       <fontColor>545454</fontColor>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>184</left>
+      <left>191</left>
       <leftRatio>0.161829375549692</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <sizeRatio>0.227027027027027</sizeRatio>
       <text>.</text>
       <top>504</top>
-      <width>185</width>
+      <width>190</width>
       <widthRatio>0.162708883025506</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp305/temp57">
@@ -2402,7 +2486,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00540540540540541</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>185</width>
+      <width>190</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp308">
@@ -2412,13 +2496,13 @@ ee.setText(sender, s);]]></onUpdate>
       <fontColor>545454</fontColor>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>369</left>
+      <left>381</left>
       <leftRatio>0.324538258575198</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <sizeRatio>0.228260869565217</sizeRatio>
       <text>.</text>
       <top>504</top>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>0.161829375549692</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp308/temp58">
@@ -2432,7 +2516,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00543478260869565</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp311">
@@ -2442,13 +2526,13 @@ ee.setText(sender, s);]]></onUpdate>
       <fontColor>545454</fontColor>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>553</left>
+      <left>572</left>
       <leftRatio>0.48636763412489</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <sizeRatio>0.341463414634146</sizeRatio>
       <text>.</text>
       <top>504</top>
-      <width>123</width>
+      <width>127</width>
       <widthRatio>0.108179419525066</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp311/temp59">
@@ -2462,7 +2546,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00813008130081301</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>123</width>
+      <width>127</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp313">
@@ -2472,13 +2556,13 @@ ee.setText(sender, s);]]></onUpdate>
       <hAlign>left</hAlign>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>676</left>
+      <left>699</left>
       <leftRatio>0.594547053649956</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <sizeRatio>0.0911062906724512</sizeRatio>
       <text>.</text>
       <top>504</top>
-      <width>461</width>
+      <width>476</width>
       <widthRatio>0.405452946350044</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp313/temp60">
@@ -2492,7 +2576,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00216919739696312</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>461</width>
+      <width>476</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp317">
@@ -2508,7 +2592,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.228260869565217</sizeRatio>
       <text>.</text>
       <top>546</top>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>0.161829375549692</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp317/temp61">
@@ -2522,7 +2606,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00543478260869565</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp320">
@@ -2533,13 +2617,13 @@ ee.setText(sender, s);]]></onUpdate>
       <fontColor>545454</fontColor>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>184</left>
+      <left>191</left>
       <leftRatio>0.161829375549692</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <sizeRatio>0.227027027027027</sizeRatio>
       <text>.</text>
       <top>546</top>
-      <width>185</width>
+      <width>190</width>
       <widthRatio>0.162708883025506</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp320/temp62">
@@ -2553,7 +2637,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00540540540540541</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>185</width>
+      <width>190</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp323">
@@ -2563,13 +2647,13 @@ ee.setText(sender, s);]]></onUpdate>
       <fontColor>545454</fontColor>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>369</left>
+      <left>381</left>
       <leftRatio>0.324538258575198</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <sizeRatio>0.228260869565217</sizeRatio>
       <text>.</text>
       <top>546</top>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>0.161829375549692</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp323/temp63">
@@ -2583,7 +2667,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00543478260869565</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp325">
@@ -2593,13 +2677,13 @@ ee.setText(sender, s);]]></onUpdate>
       <fontColor>545454</fontColor>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>553</left>
+      <left>572</left>
       <leftRatio>0.48636763412489</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <sizeRatio>0.341463414634146</sizeRatio>
       <text>.</text>
       <top>546</top>
-      <width>123</width>
+      <width>127</width>
       <widthRatio>0.108179419525066</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp325/temp64">
@@ -2613,7 +2697,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00813008130081301</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>123</width>
+      <width>127</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp328">
@@ -2623,13 +2707,13 @@ ee.setText(sender, s);]]></onUpdate>
       <hAlign>left</hAlign>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>676</left>
+      <left>699</left>
       <leftRatio>0.594547053649956</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <sizeRatio>0.0911062906724512</sizeRatio>
       <text>.</text>
       <top>546</top>
-      <width>461</width>
+      <width>476</width>
       <widthRatio>0.405452946350044</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp328/temp65">
@@ -2643,7 +2727,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00216919739696312</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>461</width>
+      <width>476</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp332">
@@ -2659,7 +2743,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.228260869565217</sizeRatio>
       <text>.</text>
       <top>588</top>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>0.161829375549692</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp332/temp66">
@@ -2673,7 +2757,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00543478260869565</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp335">
@@ -2684,13 +2768,13 @@ ee.setText(sender, s);]]></onUpdate>
       <fontColor>545454</fontColor>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>184</left>
+      <left>191</left>
       <leftRatio>0.161829375549692</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <sizeRatio>0.227027027027027</sizeRatio>
       <text>.</text>
       <top>588</top>
-      <width>185</width>
+      <width>190</width>
       <widthRatio>0.162708883025506</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp335/temp67">
@@ -2704,7 +2788,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00540540540540541</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>185</width>
+      <width>190</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp337">
@@ -2714,13 +2798,13 @@ ee.setText(sender, s);]]></onUpdate>
       <fontColor>545454</fontColor>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>369</left>
+      <left>381</left>
       <leftRatio>0.324538258575198</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <sizeRatio>0.228260869565217</sizeRatio>
       <text>.</text>
       <top>588</top>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>0.161829375549692</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp337/temp68">
@@ -2734,7 +2818,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00543478260869565</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>184</width>
+      <width>191</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp340">
@@ -2744,13 +2828,13 @@ ee.setText(sender, s);]]></onUpdate>
       <fontColor>545454</fontColor>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>553</left>
+      <left>572</left>
       <leftRatio>0.48636763412489</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <sizeRatio>0.341463414634146</sizeRatio>
       <text>.</text>
       <top>588</top>
-      <width>123</width>
+      <width>127</width>
       <widthRatio>0.108179419525066</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp340/temp69">
@@ -2764,7 +2848,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00813008130081301</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>123</width>
+      <width>127</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp343">
@@ -2774,13 +2858,13 @@ ee.setText(sender, s);]]></onUpdate>
       <hAlign>left</hAlign>
       <height>42</height>
       <heightRatio>0.0666666666666667</heightRatio>
-      <left>676</left>
+      <left>699</left>
       <leftRatio>0.594547053649956</leftRatio>
       <onClick>g5.tableClick(sender);</onClick>
       <sizeRatio>0.0911062906724512</sizeRatio>
       <text>.</text>
       <top>588</top>
-      <width>461</width>
+      <width>476</width>
       <widthRatio>0.405452946350044</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/tablebody2/temp343/temp70">
@@ -2794,7 +2878,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.00216919739696312</sizeRatio>
       <top>41</top>
       <topRatio>0.976190476190476</topRatio>
-      <width>461</width>
+      <width>476</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/panel5">
@@ -2809,7 +2893,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.0158311345646438</sizeRatio>
       <top>-7</top>
       <topRatio>-0.0102639296187683</topRatio>
-      <width>1137</width>
+      <width>1175</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="LayoutYItem" pathname="/divRoot/layouty1/layoutyitem6">
@@ -2823,7 +2907,7 @@ ee.setText(sender, s);]]></onUpdate>
       <sizeRatio>0.0343007915567282</sizeRatio>
       <top>757</top>
       <topRatio>0.951005025125628</topRatio>
-      <width>1137</width>
+      <width>1175</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="LayoutX" pathname="/divRoot/layouty1/layoutyitem6/layoutx22">
@@ -2831,7 +2915,7 @@ ee.setText(sender, s);]]></onUpdate>
       <dockY>center</dockY>
       <height>27</height>
       <heightRatio>0.692307692307692</heightRatio>
-      <left>800</left>
+      <left>838</left>
       <leftRatio>0.703605980650836</leftRatio>
       <outerRight>50</outerRight>
       <sizeRatio>0.0940766550522648</sizeRatio>
@@ -2931,8 +3015,8 @@ ee.setText(sender, s);]]></onUpdate>
       <widthRatio>0.169744942832014</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/panel1">
-      <aniAlpha>appear:渐变出现</aniAlpha>
-      <aniPos>leftFlyIn:左侧飞入</aniPos>
+      <aniAlpha>appear</aniAlpha>
+      <aniPos>leftFlyIn</aniPos>
       <backgroundColor>008080</backgroundColor>
       <backgroundSkin>edit2</backgroundSkin>
       <cursor>pointer</cursor>
@@ -2943,7 +3027,7 @@ ee.setText(sender, s);]]></onUpdate>
       <heightRatio>0.717336683417085</heightRatio>
       <layerName>创建/编辑用户</layerName>
       <layerVisible>false</layerVisible>
-      <left>259</left>
+      <left>278</left>
       <leftRatio>0.227792436235708</leftRatio>
       <sizeRatio>0.922455573505654</sizeRatio>
       <top>112</top>
@@ -3399,7 +3483,7 @@ sql=
     "FROM      dbo.[log] LEFT OUTER JOIN " +
     "                dbo.userInfoAdmin ON dbo.[log].operatorUserId = dbo.userInfoAdmin.id LEFT OUTER JOIN " +
     "                dbo.userInfo ON dbo.[log].userId = dbo.userInfo.id " +
-    "WHERE   (dbo.[log].logType = 'USER') " +
+    "WHERE   (dbo.[log].logType = 'USER' OR dbo.[log].logType = 'U2') " +
     "ORDER BY dbo.[log].id DESC; ";
 sqlResult = db.executeQuery("DB", sql);
 if (sqlResult == null) {
