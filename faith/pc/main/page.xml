@@ -330,6 +330,7 @@ a.css_button1:hover{
       <fontColor>E0E0E0</fontColor>
       <height>796</height>
       <heightRatio>1</heightRatio>
+      <layerVisible>false</layerVisible>
       <left>0</left>
       <note>mainDiv</note>
       <onCreate><![CDATA[
@@ -518,6 +519,7 @@ sender.scrollAniProcess = function() {
       <height>780</height>
       <heightRatio>0.979899497487437</heightRatio>
       <layerName>===P2===</layerName>
+      <layerVisible>false</layerVisible>
       <left>300</left>
       <leftRatio>0.251046025104603</leftRatio>
       <onCreate>sender.v_fitInner = true;
@@ -538,6 +540,7 @@ ee.setVisible(sender, true);
       <height>780</height>
       <heightRatio>1</heightRatio>
       <layerName>Home主页面</layerName>
+      <layerVisible>false</layerVisible>
       <left>0</left>
       <onCreate><![CDATA[sender.v_fitInner = true;
 sender.c_bottom = ee.getControl("panel648");
@@ -927,6 +930,7 @@ sender.showAlert = function(value) {
       <fontSize>20</fontSize>
       <height>429</height>
       <heightRatio>0.55</heightRatio>
+      <layerVisible>false</layerVisible>
       <left>0</left>
       <note>主页顶部发帖</note>
       <onCreate><![CDATA[sender.style.boxSizing="border-box";
@@ -2206,12 +2210,6 @@ eb.processDock();
       <__U_onInputChange-sender-key-oldText-newText-oldHtml-newHtml type="jsMix"><![CDATA[var text = ee.getEditText(sender.c_edit);
 
 if (g5.isBlankTooMuch(newText)) return false;
-
-/*
-if (newText.split("\n").length-1>20) {
-    return false;
-}
-*/
 
 var cp = sender.getCurPosAbs();
 var sTemp = sender.convertHtml(newText);
@@ -19875,9 +19873,7 @@ ee.setRect(g5.p2.p31.c_p1, null, r.y + dy, null,null);
 </__U_onHeightChange-sender-oldH-newH>
       <__U_onInputChange-sender-key-oldText-newText-oldHtml-newHtml type="jsMix"><![CDATA[var text = ee.getEditText(sender.c_edit);
 
-if (newText.split("\n").length-1>20) {
-    return false;
-}
+if (g5.isBlankTooMuch(newText)) return false;
 
 var cp = sender.getCurPosAbs();
 var sTemp = sender.convertHtml(newText);
@@ -29839,7 +29835,6 @@ return false;</onClick>
       <height>796</height>
       <heightRatio>1</heightRatio>
       <layerName><![CDATA[popBlack->主界面弹窗黑色]]></layerName>
-      <layerVisible>false</layerVisible>
       <left>0</left>
       <onClick>if (!ee.isInternalNode(sender, event.target)) {
     return;
@@ -30866,7 +30861,6 @@ sender.init(0);
       <height>611</height>
       <heightRatio>0.767587939698492</heightRatio>
       <layerName>发短文</layerName>
-      <layerVisible>false</layerVisible>
       <left>331</left>
       <leftRatio>0.276987447698745</leftRatio>
       <onClick>window.event? window.event.cancelBubble = true : event.stopPropagation();</onClick>
@@ -31635,9 +31629,7 @@ sender.setEnabled(false);
       <__U_onHeightChange-sender-oldH-newH type="jsMix" />
       <__U_onInputChange-sender-key-oldText-newText-oldHtml-newHtml type="jsMix"><![CDATA[var text = ee.getEditText(sender.c_edit);
 
-if (newText.split("\n").length-1>20) {
-    return false;
-}
+if (g5.isBlankTooMuch(newText)) return false;
 
 var cp = sender.getCurPosAbs();
 var sTemp = sender.convertHtml(newText);
