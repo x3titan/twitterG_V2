@@ -737,7 +737,10 @@ if (t1=="U2") {
     return;
 }
 
-if (note == "") return;
+if (note == "") {
+    ee.setText(sender, "");
+    return;
+}
 ee.setText(sender, s);
 
 let c = sender.querySelector("#refLink");
