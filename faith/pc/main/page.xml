@@ -49657,6 +49657,8 @@ let initMoreBar = function(root, isRe) {
                 ee.moveControl(root.c_label5,0,dh);
                 if (root.c_rePhotos) ee.moveControl(root.c_rePhotos,0,dh);
                 if (root.c_bottom01) ee.moveControl(root.c_bottom01,0,dh);
+                if (root.c_bottom01) ee.moveControl(root.c_bottom01,0,dh);
+                if (root.c_reVote) ee.moveControl(root.c_reVote,0,dh);
                 g5.batchMoveY(rootItems,rootIndex+1,dh);
                 if (g5.currentPageIndex==8) {
                     ee.moveControl(g5.p2.p9.c_tabRoot,0,dh);
@@ -49692,6 +49694,7 @@ let initMoreBar = function(root, isRe) {
                 if (root.c_photos) ee.moveControl(root.c_photos,0,dh);
                 if (root.c_bottom01) ee.moveControl(root.c_bottom01,0,dh);
                 if (root.c_reRoot) ee.moveControl(root.c_reRoot,0,dh);
+                if (root.c_vote) ee.moveControl(root.c_vote,0,dh);
                 g5.batchMoveY(rootItems,rootIndex+1,dh);
                 if (g5.currentPageIndex==8) {
                     ee.moveControl(g5.p2.p9.c_tabRoot,0,dh);
