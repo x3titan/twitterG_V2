@@ -1,6 +1,6 @@
 <EBProj>
   <projectName>拳头聊天</projectName>
-  <projectItems count="1710">
+  <projectItems count="1711">
     <page pathname="/new" alias="用户首次进入" />
     <image pathname="/new/CPY0000.jpg" />
     <page pathname="/new/reg" alias="注册账号" />
@@ -1711,6 +1711,7 @@
     <image pathname="/pc/main/L07c.png" />
     <page pathname="/stop" alias="停机维护" />
     <image pathname="/stop/login.jpg" />
+    <page pathname="/API" alias="接口函数" />
   </projectItems>
   <dbConnections count="1">
     <connection name="DB">
