@@ -1,5 +1,5 @@
 <page>
-  <controls count="59">
+  <controls count="60">
     <control type="DivRoot" pathname="/divRoot">
       <backgroundColor>ffffff</backgroundColor>
       <bgColorEnabled>true</bgColorEnabled>
@@ -20,7 +20,7 @@ g5.GMenuControl_name = "g5.menu";
 g5.menu[0].self = g5.menu[0];
 //首页  
 g5.menu[0].addMenu(ee.getControl("layoutyitem7"));
-g5.menu[0].addSubMenu(ee.getControl("layoutyitem8"), 32*6+32);
+g5.menu[0].addSubMenu(ee.getControl("layoutyitem8"), 32*7+32);
 g5.menu[0].addMenu(ee.getControl("layoutyitem9"));
 g5.menu[0].addSubMenu(ee.getControl("layoutyitem10"), 95); 
 g5.menu[0].addMenu(ee.getControl("layoutyitem15"));
@@ -71,7 +71,7 @@ getUserInfo();
 </style>]]></pageHead>
       <pageTitle>FAITH后台管理系统</pageTitle>
       <top>0</top>
-      <width>1087</width>
+      <width>1175</width>
     </control>
     <control type="LayoutY" pathname="/divRoot/layouty1">
       <dockX>fill</dockX>
@@ -79,9 +79,9 @@ getUserInfo();
       <height>796</height>
       <heightRatio>1</heightRatio>
       <left>0</left>
-      <sizeRatio>0.724838411819021</sizeRatio>
+      <sizeRatio>0.732290708371665</sizeRatio>
       <top>0</top>
-      <width>1087</width>
+      <width>1175</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="LayoutYItem" pathname="/divRoot/layouty1/layoutyitem1">
@@ -89,11 +89,11 @@ getUserInfo();
       <bgColorEnabled>true</bgColorEnabled>
       <heavyEnabled>false</heavyEnabled>
       <height>68</height>
-      <heightRatio>0.086624203821656</heightRatio>
+      <heightRatio>0.085427135678392</heightRatio>
       <left>0</left>
-      <sizeRatio>0.0627885503231764</sizeRatio>
+      <sizeRatio>0.062557497700092</sizeRatio>
       <top>0</top>
-      <width>1087</width>
+      <width>1175</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem1/panel17">
@@ -103,10 +103,10 @@ getUserInfo();
       <height>35</height>
       <heightRatio>0.514705882352941</heightRatio>
       <left>0</left>
-      <sizeRatio>0.0323176361957525</sizeRatio>
+      <sizeRatio>0.0321987120515179</sizeRatio>
       <top>33</top>
       <topRatio>0.485294117647059</topRatio>
-      <width>1087</width>
+      <width>1175</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem1/panel3">
@@ -117,9 +117,9 @@ getUserInfo();
       <height>9</height>
       <heightRatio>0.132352941176471</heightRatio>
       <left>0</left>
-      <sizeRatio>0.00831024930747922</sizeRatio>
+      <sizeRatio>0.00827966881324747</sizeRatio>
       <top>0</top>
-      <width>1087</width>
+      <width>1175</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem1/panel6">
@@ -132,25 +132,25 @@ getUserInfo();
       <height>35</height>
       <heightRatio>0.514705882352941</heightRatio>
       <left>40</left>
-      <leftRatio>0.0369344413665743</leftRatio>
+      <leftRatio>0.0367985280588776</leftRatio>
       <sizeRatio>0.148936170212766</sizeRatio>
       <text>后台管理系统</text>
       <top>19</top>
       <topRatio>0.279411764705882</topRatio>
       <width>235</width>
-      <widthRatio>0.216989843028624</widthRatio>
+      <widthRatio>0.216191352345906</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem1/panel11">
       <dockX>right</dockX>
       <height>24</height>
       <heightRatio>0.352941176470588</heightRatio>
-      <left>812</left>
-      <leftRatio>0.746075715604801</leftRatio>
+      <left>900</left>
+      <leftRatio>0.747010119595216</leftRatio>
       <sizeRatio>0.0872727272727273</sizeRatio>
       <top>36</top>
       <topRatio>0.529411764705882</topRatio>
       <width>275</width>
-      <widthRatio>0.253924284395199</widthRatio>
+      <widthRatio>0.252989880404784</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem1/panel11/panel12">
       <backgroundImg>image004.png</backgroundImg>
@@ -225,7 +225,7 @@ window.location.href = ee.getUrl("/admin/login"); </onClick>
       <height>34</height>
       <heightRatio>0.5</heightRatio>
       <left>232</left>
-      <leftRatio>0.214219759926131</leftRatio>
+      <leftRatio>0.21343146274149</leftRatio>
       <onClick>g5.appendPage("账户信息", ee.getUrl("/admin/account/myAccount"));</onClick>
       <onCreate>sender.className = "buttonGray";
 //ee.setTextColor(sender, "#ffffff");
@@ -237,36 +237,36 @@ sender.style.borderRadius = "5px";</onCreate>
       <top>26</top>
       <topRatio>0.382352941176471</topRatio>
       <width>349</width>
-      <widthRatio>0.322253000923361</widthRatio>
+      <widthRatio>0.321067157313707</widthRatio>
     </control>
     <control type="LayoutYItem" pathname="/divRoot/layouty1/layoutyitem2">
       <backgroundColor>FAFAFA</backgroundColor>
       <bgColorEnabled>true</bgColorEnabled>
       <height>701</height>
-      <heightRatio>0.878980891719745</heightRatio>
+      <heightRatio>0.880653266331658</heightRatio>
       <left>0</left>
-      <sizeRatio>0.637119113573407</sizeRatio>
+      <sizeRatio>0.644894204231831</sizeRatio>
       <top>68</top>
-      <topRatio>0.086624203821656</topRatio>
-      <width>1087</width>
+      <topRatio>0.085427135678392</topRatio>
+      <width>1175</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="LayoutX" pathname="/divRoot/layouty1/layoutyitem2/layoutx2">
       <dockX>fill</dockX>
       <dockY>fill</dockY>
       <height>676</height>
-      <heightRatio>0.963768115942029</heightRatio>
+      <heightRatio>0.964336661911555</heightRatio>
       <left>15</left>
-      <leftRatio>0.0138504155124654</leftRatio>
+      <leftRatio>0.0137994480220791</leftRatio>
       <outerBottom>10</outerBottom>
       <outerLeft>15</outerLeft>
       <outerRight>15</outerRight>
       <outerTop>15</outerTop>
-      <sizeRatio>0.631528964862298</sizeRatio>
+      <sizeRatio>0.639545884578997</sizeRatio>
       <top>15</top>
-      <topRatio>0.0217391304347826</topRatio>
-      <width>1057</width>
-      <widthRatio>0.972299168975069</widthRatio>
+      <topRatio>0.021398002853067</topRatio>
+      <width>1145</width>
+      <widthRatio>0.972401103955842</widthRatio>
     </control>
     <control type="LayoutXItem" pathname="/divRoot/layouty1/layoutyitem2/layoutx2/layoutxitem1">
       <backgroundColor>C0C0C0</backgroundColor>
@@ -275,10 +275,10 @@ sender.style.borderRadius = "5px";</onCreate>
       <height>676</height>
       <heightRatio>1</heightRatio>
       <left>0</left>
-      <sizeRatio>3.65384615384615</sizeRatio>
+      <sizeRatio>3.71428571428571</sizeRatio>
       <top>0</top>
       <width>182</width>
-      <widthRatio>0.172839506172839</widthRatio>
+      <widthRatio>0.172185430463576</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/layoutx2/layoutxitem1/panel2">
       <backgroundColor>EEEEEE</backgroundColor>
@@ -286,16 +286,16 @@ sender.style.borderRadius = "5px";</onCreate>
       <dockX>fill</dockX>
       <dockY>fill</dockY>
       <height>674</height>
-      <heightRatio>0.996992481203008</heightRatio>
+      <heightRatio>0.997041420118343</heightRatio>
       <left>1</left>
       <leftRatio>0.00549450549450549</leftRatio>
       <outerBottom>1</outerBottom>
       <outerLeft>1</outerLeft>
       <outerRight>1</outerRight>
       <outerTop>1</outerTop>
-      <sizeRatio>3.68333333333333</sizeRatio>
+      <sizeRatio>3.74444444444444</sizeRatio>
       <top>1</top>
-      <topRatio>0.00150375939849624</topRatio>
+      <topRatio>0.0014792899408284</topRatio>
       <width>180</width>
       <widthRatio>0.989010989010989</widthRatio>
     </control>
@@ -304,10 +304,10 @@ sender.style.borderRadius = "5px";</onCreate>
       <dockY>fill</dockY>
       <fieldCount>10</fieldCount>
       <height>664</height>
-      <heightRatio>0.984917043740573</heightRatio>
+      <heightRatio>0.985163204747775</heightRatio>
       <left>0</left>
       <outerBottom>10</outerBottom>
-      <sizeRatio>3.62777777777778</sizeRatio>
+      <sizeRatio>3.68888888888889</sizeRatio>
       <top>0</top>
       <width>180</width>
       <widthRatio>1</widthRatio>
@@ -323,7 +323,7 @@ sender.style.borderRadius = "5px";</onCreate>
       <hAlign>left</hAlign>
       <heavyEnabled>false</heavyEnabled>
       <height>3</height>
-      <heightRatio>0.00459418070444104</heightRatio>
+      <heightRatio>0.00451807228915663</heightRatio>
       <left>0</left>
       <outerRight>8</outerRight>
       <sizeRatio>0.0166666666666667</sizeRatio>
@@ -339,7 +339,7 @@ sender.style.borderRadius = "5px";</onCreate>
       <fontSize>14</fontSize>
       <heavyEnabled>false</heavyEnabled>
       <height>38</height>
-      <heightRatio>0.0581929555895865</heightRatio>
+      <heightRatio>0.0572289156626506</heightRatio>
       <left>0</left>
       <onClick>g5.menu[0].click(0);
 
@@ -349,7 +349,7 @@ sender.style.borderRadius = "5px";</onCreate>
       <sizeRatio>0.211111111111111</sizeRatio>
       <text>综合管理</text>
       <top>3</top>
-      <topRatio>0.00459418070444104</topRatio>
+      <topRatio>0.00451807228915663</topRatio>
       <width>180</width>
       <widthRatio>1</widthRatio>
     </control>
@@ -361,10 +361,10 @@ sender.style.borderRadius = "5px";</onCreate>
       <fontItalic>true</fontItalic>
       <fontSize>13</fontSize>
       <heavyEnabled>false</heavyEnabled>
-      <height>74</height>
-      <heightRatio>0.11144578313253</heightRatio>
+      <height>380</height>
+      <heightRatio>0.572289156626506</heightRatio>
       <left>0</left>
-      <sizeRatio>0.411111111111111</sizeRatio>
+      <sizeRatio>2.11111111111111</sizeRatio>
       <top>41</top>
       <topRatio>0.0617469879518072</topRatio>
       <width>180</width>
@@ -376,12 +376,12 @@ sender.style.borderRadius = "5px";</onCreate>
       <dockX>fill</dockX>
       <dockY>top</dockY>
       <height>18</height>
-      <heightRatio>0.36734693877551</heightRatio>
+      <heightRatio>0.243243243243243</heightRatio>
       <left>0</left>
       <outerTop>-7</outerTop>
       <sizeRatio>0.1</sizeRatio>
       <top>-7</top>
-      <topRatio>-0.142857142857143</topRatio>
+      <topRatio>-0.0945945945945946</topRatio>
       <width>180</width>
       <widthRatio>1</widthRatio>
     </control>
@@ -392,7 +392,7 @@ sender.style.borderRadius = "5px";</onCreate>
       <fontColor>808080</fontColor>
       <fontSize>10</fontSize>
       <height>34</height>
-      <heightRatio>0.693877551020408</heightRatio>
+      <heightRatio>0.0894736842105263</heightRatio>
       <left>0</left>
       <onClick>g5.appendPage("用户管理", ee.getUrl("/admin/admin/userAdmin"));
 </onClick>
@@ -404,7 +404,7 @@ sender.style.borderRadius = "5px";</onCreate>
       <sizeRatio>0.188888888888889</sizeRatio>
       <text>用户管理</text>
       <top>12</top>
-      <topRatio>0.244897959183673</topRatio>
+      <topRatio>0.0315789473684211</topRatio>
       <width>180</width>
       <widthRatio>1</widthRatio>
     </control>
@@ -415,7 +415,7 @@ sender.style.borderRadius = "5px";</onCreate>
       <fontColor>808080</fontColor>
       <fontSize>10</fontSize>
       <height>34</height>
-      <heightRatio>0.693877551020408</heightRatio>
+      <heightRatio>0.0894736842105263</heightRatio>
       <left>0</left>
       <onClick>g5.appendPage("推荐搜索", ee.getUrl("/admin/admin/recommendSearch"));
 </onClick>
@@ -426,8 +426,8 @@ sender.style.borderRadius = "5px";</onCreate>
 sender.style.borderRadius = "5px";</onCreate>
       <sizeRatio>0.188888888888889</sizeRatio>
       <text>推荐搜索管理</text>
-      <top>46</top>
-      <topRatio>0.938775510204082</topRatio>
+      <top>80</top>
+      <topRatio>0.210526315789474</topRatio>
       <width>180</width>
       <widthRatio>1</widthRatio>
     </control>
@@ -438,7 +438,7 @@ sender.style.borderRadius = "5px";</onCreate>
       <fontColor>808080</fontColor>
       <fontSize>10</fontSize>
       <height>34</height>
-      <heightRatio>0.693877551020408</heightRatio>
+      <heightRatio>0.0894736842105263</heightRatio>
       <left>0</left>
       <onClick>g5.appendPage("推荐关注", ee.getUrl("/admin/admin/recommendUser"));
 </onClick>
@@ -449,8 +449,8 @@ sender.style.borderRadius = "5px";</onCreate>
 sender.style.borderRadius = "5px";</onCreate>
       <sizeRatio>0.188888888888889</sizeRatio>
       <text>推荐关注管理</text>
-      <top>80</top>
-      <topRatio>1.63265306122449</topRatio>
+      <top>115</top>
+      <topRatio>0.302631578947368</topRatio>
       <width>180</width>
       <widthRatio>1</widthRatio>
     </control>
@@ -461,7 +461,7 @@ sender.style.borderRadius = "5px";</onCreate>
       <fontColor>808080</fontColor>
       <fontSize>10</fontSize>
       <height>34</height>
-      <heightRatio>0.693877551020408</heightRatio>
+      <heightRatio>0.0894736842105263</heightRatio>
       <left>0</left>
       <onClick>g5.appendPage("维护", ee.getUrl("/admin/admin/MNT1"));
 </onClick>
@@ -472,8 +472,8 @@ sender.style.borderRadius = "5px";</onCreate>
 sender.style.borderRadius = "5px";</onCreate>
       <sizeRatio>0.188888888888889</sizeRatio>
       <text>维护</text>
-      <top>114</top>
-      <topRatio>2.3265306122449</topRatio>
+      <top>149</top>
+      <topRatio>0.392105263157895</topRatio>
       <width>180</width>
       <widthRatio>1</widthRatio>
     </control>
@@ -484,7 +484,7 @@ sender.style.borderRadius = "5px";</onCreate>
       <fontColor>808080</fontColor>
       <fontSize>10</fontSize>
       <height>34</height>
-      <heightRatio>0.693877551020408</heightRatio>
+      <heightRatio>0.0894736842105263</heightRatio>
       <left>0</left>
       <onClick>g5.appendPage("短文管理", ee.getUrl("/admin/admin/contentAdmin"));
 </onClick>
@@ -495,8 +495,8 @@ sender.style.borderRadius = "5px";</onCreate>
 sender.style.borderRadius = "5px";</onCreate>
       <sizeRatio>0.188888888888889</sizeRatio>
       <text>短文管理</text>
-      <top>148</top>
-      <topRatio>3.02040816326531</topRatio>
+      <top>183</top>
+      <topRatio>0.481578947368421</topRatio>
       <width>180</width>
       <widthRatio>1</widthRatio>
     </control>
@@ -507,7 +507,7 @@ sender.style.borderRadius = "5px";</onCreate>
       <fontColor>808080</fontColor>
       <fontSize>10</fontSize>
       <height>34</height>
-      <heightRatio>0.11038961038961</heightRatio>
+      <heightRatio>0.0894736842105263</heightRatio>
       <left>0</left>
       <onClick>g5.appendPage("投票管理", ee.getUrl("/admin/admin/voteAdmin"));
 </onClick>
@@ -518,8 +518,31 @@ sender.style.borderRadius = "5px";</onCreate>
 sender.style.borderRadius = "5px";</onCreate>
       <sizeRatio>0.188888888888889</sizeRatio>
       <text>投票管理</text>
-      <top>182</top>
-      <topRatio>0.590909090909091</topRatio>
+      <top>217</top>
+      <topRatio>0.571052631578947</topRatio>
+      <width>180</width>
+      <widthRatio>1</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/layoutx2/layoutxitem1/panel2/layouty3/layoutyitem8/panel36">
+      <backgroundColor>198DC9</backgroundColor>
+      <cursor>pointer</cursor>
+      <dockX>fill</dockX>
+      <fontColor>808080</fontColor>
+      <fontSize>10</fontSize>
+      <height>34</height>
+      <heightRatio>0.0894736842105263</heightRatio>
+      <left>0</left>
+      <onClick>g5.appendPage("AI用户管理", ee.getUrl("/admin/admin/userAdminAI"));
+</onClick>
+      <onCreate>sender.className = "buttonGray";
+//ee.setTextColor(sender, "#ffffff");
+//var p = eb.getDivRectSetting(sender).h + "px";
+//sender.style.borderRadius = parseInt(eb.getDivRectSetting(sender).h/2) + "px";
+sender.style.borderRadius = "5px";</onCreate>
+      <sizeRatio>0.188888888888889</sizeRatio>
+      <text>AI用户管理</text>
+      <top>46</top>
+      <topRatio>0.121052631578947</topRatio>
       <width>180</width>
       <widthRatio>1</widthRatio>
     </control>
@@ -530,14 +553,14 @@ sender.style.borderRadius = "5px";</onCreate>
       <fontSize>14</fontSize>
       <heavyEnabled>false</heavyEnabled>
       <height>44</height>
-      <heightRatio>0.0673813169984686</heightRatio>
+      <heightRatio>0.0662650602409639</heightRatio>
       <left>0</left>
       <onClick>g5.menu[0].click(1);
 </onClick>
       <sizeRatio>0.244444444444444</sizeRatio>
       <text>统计报表</text>
-      <top>115</top>
-      <topRatio>0.137825421133231</topRatio>
+      <top>421</top>
+      <topRatio>0.173192771084337</topRatio>
       <width>180</width>
       <widthRatio>1</widthRatio>
     </control>
@@ -559,11 +582,11 @@ sender.style.borderRadius = "5px";</onCreate>
       <bgColorEnabled>true</bgColorEnabled>
       <heavyEnabled>false</heavyEnabled>
       <height>136</height>
-      <heightRatio>0.208269525267994</heightRatio>
+      <heightRatio>0.204819277108434</heightRatio>
       <left>0</left>
       <sizeRatio>0.755555555555556</sizeRatio>
-      <top>159</top>
-      <topRatio>0.2052067381317</topRatio>
+      <top>465</top>
+      <topRatio>0.239457831325301</topRatio>
       <width>180</width>
       <widthRatio>1</widthRatio>
     </control>
@@ -634,15 +657,15 @@ sender.style.borderRadius = "5px";</onCreate>
       <fontSize>14</fontSize>
       <heavyEnabled>false</heavyEnabled>
       <height>44</height>
-      <heightRatio>0.0673813169984686</heightRatio>
+      <heightRatio>0.0662650602409639</heightRatio>
       <left>0</left>
       <onClick>g5.menu[0].click(2);
 
 </onClick>
       <sizeRatio>0.244444444444444</sizeRatio>
       <text>历史记录</text>
-      <top>295</top>
-      <topRatio>0.413476263399694</topRatio>
+      <top>601</top>
+      <topRatio>0.444277108433735</topRatio>
       <width>180</width>
       <widthRatio>1</widthRatio>
     </control>
@@ -664,11 +687,11 @@ sender.style.borderRadius = "5px";</onCreate>
       <bgColorEnabled>true</bgColorEnabled>
       <heavyEnabled>false</heavyEnabled>
       <height>32</height>
-      <heightRatio>0.0490045941807044</heightRatio>
+      <heightRatio>0.0481927710843374</heightRatio>
       <left>0</left>
       <sizeRatio>0.177777777777778</sizeRatio>
-      <top>339</top>
-      <topRatio>0.480857580398162</topRatio>
+      <top>645</top>
+      <topRatio>0.510542168674699</topRatio>
       <width>180</width>
       <widthRatio>1</widthRatio>
     </control>
@@ -740,13 +763,13 @@ sender.style.borderRadius = "5px";</onCreate>
       <fontSize>14</fontSize>
       <heavyEnabled>false</heavyEnabled>
       <height>44</height>
-      <heightRatio>0.0673813169984686</heightRatio>
+      <heightRatio>0.0662650602409639</heightRatio>
       <left>0</left>
       <onClick>g5.menu[0].click(3);</onClick>
       <sizeRatio>0.244444444444444</sizeRatio>
       <text>系统账号</text>
-      <top>371</top>
-      <topRatio>0.529862174578867</topRatio>
+      <top>677</top>
+      <topRatio>0.558734939759036</topRatio>
       <width>180</width>
       <widthRatio>1</widthRatio>
     </control>
@@ -768,11 +791,11 @@ sender.style.borderRadius = "5px";</onCreate>
       <bgColorEnabled>true</bgColorEnabled>
       <heavyEnabled>false</heavyEnabled>
       <height>28</height>
-      <heightRatio>0.0428790199081164</heightRatio>
+      <heightRatio>0.0421686746987952</heightRatio>
       <left>0</left>
       <sizeRatio>0.155555555555556</sizeRatio>
-      <top>415</top>
-      <topRatio>0.597243491577335</topRatio>
+      <top>721</top>
+      <topRatio>0.625</topRatio>
       <width>180</width>
       <widthRatio>1</widthRatio>
     </control>
@@ -860,12 +883,12 @@ sender.style.borderRadius = "5px";</onCreate>
     <control type="LayoutYItem" pathname="/divRoot/layouty1/layoutyitem2/layoutx2/layoutxitem1/panel2/layouty3/layoutyitem14">
       <backgroundColor>F0F0F0</backgroundColor>
       <bgColorEnabled>true</bgColorEnabled>
-      <height>221</height>
-      <heightRatio>0.359877488514548</heightRatio>
+      <height>-85</height>
+      <heightRatio>0.332831325301205</heightRatio>
       <left>0</left>
-      <sizeRatio>1.30555555555556</sizeRatio>
-      <top>443</top>
-      <topRatio>0.640122511485452</topRatio>
+      <sizeRatio>1.22777777777778</sizeRatio>
+      <top>749</top>
+      <topRatio>0.667168674698795</topRatio>
       <width>180</width>
       <widthRatio>1</widthRatio>
     </control>
@@ -875,7 +898,7 @@ sender.style.borderRadius = "5px";</onCreate>
       <dockX>fill</dockX>
       <dockY>top</dockY>
       <height>2</height>
-      <heightRatio>0.00851063829787234</heightRatio>
+      <heightRatio>0.00904977375565611</heightRatio>
       <left>0</left>
       <sizeRatio>0.0111111111111111</sizeRatio>
       <top>0</top>
@@ -890,11 +913,11 @@ sender.style.borderRadius = "5px";</onCreate>
       <height>676</height>
       <heightRatio>1</heightRatio>
       <left>182</left>
-      <leftRatio>0.172839506172839</leftRatio>
-      <sizeRatio>66.5</sizeRatio>
+      <leftRatio>0.172185430463576</leftRatio>
+      <sizeRatio>67.6</sizeRatio>
       <top>0</top>
       <width>10</width>
-      <widthRatio>0.00949667616334283</widthRatio>
+      <widthRatio>0.00946073793755913</widthRatio>
     </control>
     <control type="Button" pathname="/divRoot/layouty1/layoutyitem2/layoutx2/layoutxitem4/button4">
       <backgroundColor1>198DC9</backgroundColor1>
@@ -929,7 +952,7 @@ g5.leftBar = !g5.leftBar;
 </onClick>
       <outerLeft>1</outerLeft>
       <outerRight>1</outerRight>
-      <sizeRatio>83.125</sizeRatio>
+      <sizeRatio>84.5</sizeRatio>
       <top>0</top>
       <width>8</width>
       <widthRatio>0.8</widthRatio>
@@ -940,11 +963,11 @@ g5.leftBar = !g5.leftBar;
       <height>676</height>
       <heightRatio>1</heightRatio>
       <left>192</left>
-      <leftRatio>0.182336182336182</leftRatio>
-      <sizeRatio>0.772357723577236</sizeRatio>
+      <leftRatio>0.181646168401135</leftRatio>
+      <sizeRatio>0.78150289017341</sizeRatio>
       <top>0</top>
-      <width>865</width>
-      <widthRatio>0.817663817663818</widthRatio>
+      <width>953</width>
+      <widthRatio>0.818353831598865</widthRatio>
     </control>
     <control type="LayoutY" pathname="/divRoot/layouty1/layoutyitem2/layoutx2/layoutxitem3/layouty4">
       <backgroundColor>FAFAFA</backgroundColor>
@@ -953,18 +976,18 @@ g5.leftBar = !g5.leftBar;
       <dockY>fill</dockY>
       <fieldCount>2</fieldCount>
       <height>674</height>
-      <heightRatio>0.996992481203008</heightRatio>
+      <heightRatio>0.997041420118343</heightRatio>
       <left>1</left>
-      <leftRatio>0.00116144018583043</leftRatio>
+      <leftRatio>0.00115606936416185</leftRatio>
       <outerBottom>1</outerBottom>
       <outerLeft>1</outerLeft>
       <outerRight>1</outerRight>
       <outerTop>1</outerTop>
-      <sizeRatio>0.771827706635623</sizeRatio>
+      <sizeRatio>0.780996523754345</sizeRatio>
       <top>1</top>
-      <topRatio>0.00150375939849624</topRatio>
-      <width>863</width>
-      <widthRatio>0.997677119628339</widthRatio>
+      <topRatio>0.0014792899408284</topRatio>
+      <width>951</width>
+      <widthRatio>0.997687861271676</widthRatio>
     </control>
     <control type="LayoutYItem" pathname="/divRoot/layouty1/layoutyitem2/layoutx2/layoutxitem3/layouty4/layoutyitem11">
       <backgroundColor>F0F0F0</backgroundColor>
@@ -972,11 +995,11 @@ g5.leftBar = !g5.leftBar;
       <backgroundImgMode>stretch</backgroundImgMode>
       <heavyEnabled>false</heavyEnabled>
       <height>32</height>
-      <heightRatio>0.0482654600301659</heightRatio>
+      <heightRatio>0.0474777448071217</heightRatio>
       <left>0</left>
-      <sizeRatio>0.0372526193247963</sizeRatio>
+      <sizeRatio>0.0370799536500579</sizeRatio>
       <top>0</top>
-      <width>863</width>
+      <width>951</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/layoutx2/layoutxitem3/layouty4/layoutyitem11/panel26">
@@ -987,22 +1010,22 @@ g5.leftBar = !g5.leftBar;
       <height>1</height>
       <heightRatio>0.03125</heightRatio>
       <left>0</left>
-      <sizeRatio>0.00116414435389988</sizeRatio>
+      <sizeRatio>0.00115874855156431</sizeRatio>
       <top>31</top>
       <topRatio>0.96875</topRatio>
-      <width>863</width>
+      <width>951</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="LayoutYItem" pathname="/divRoot/layouty1/layoutyitem2/layoutx2/layoutxitem3/layouty4/layoutyitem12">
       <backgroundColor>FFFFFF</backgroundColor>
       <fontSize>13</fontSize>
       <height>642</height>
-      <heightRatio>0.951734539969834</heightRatio>
+      <heightRatio>0.952522255192878</heightRatio>
       <left>0</left>
-      <sizeRatio>0.734575087310827</sizeRatio>
+      <sizeRatio>0.743916570104287</sizeRatio>
       <top>32</top>
-      <topRatio>0.0482654600301659</topRatio>
-      <width>863</width>
+      <topRatio>0.0474777448071217</topRatio>
+      <width>951</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/layoutx2/layoutxitem3/layouty4/layoutyitem12/panel20">
@@ -1013,7 +1036,7 @@ g5.leftBar = !g5.leftBar;
       <height>642</height>
       <heightRatio>1</heightRatio>
       <left>1</left>
-      <leftRatio>0.00116414435389988</leftRatio>
+      <leftRatio>0.00115874855156431</leftRatio>
       <onClick>var c = ee.getControl("layoutxitem1");
 if (eb.isEmpty(g5.leftBar)) {
     g5.leftBar = true;
@@ -1034,10 +1057,10 @@ g5.leftBar = !g5.leftBar;
       <onMouseLeave>this.style.backgroundColor = "";</onMouseLeave>
       <outerLeft>1</outerLeft>
       <outerRight>1</outerRight>
-      <sizeRatio>0.736289381563594</sizeRatio>
+      <sizeRatio>0.745644599303136</sizeRatio>
       <top>0</top>
-      <width>861</width>
-      <widthRatio>0.9976717112922</widthRatio>
+      <width>949</width>
+      <widthRatio>0.997682502896871</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem2/panel18">
       <backgroundImg>shadowY.png</backgroundImg>
@@ -1045,13 +1068,13 @@ g5.leftBar = !g5.leftBar;
       <dockX>fill</dockX>
       <dockY>top</dockY>
       <height>18</height>
-      <heightRatio>0.0260869565217391</heightRatio>
+      <heightRatio>0.0256776034236805</heightRatio>
       <left>0</left>
       <outerTop>-7</outerTop>
-      <sizeRatio>0.0166204986149585</sizeRatio>
+      <sizeRatio>0.0165593376264949</sizeRatio>
       <top>-7</top>
-      <topRatio>-0.0101449275362319</topRatio>
-      <width>1087</width>
+      <topRatio>-0.00998573466476462</topRatio>
+      <width>1175</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="LayoutYItem" pathname="/divRoot/layouty1/layoutyitem3">
@@ -1060,13 +1083,13 @@ g5.leftBar = !g5.leftBar;
       <fontColor>808080</fontColor>
       <heavyEnabled>false</heavyEnabled>
       <height>27</height>
-      <heightRatio>0.0343949044585987</heightRatio>
+      <heightRatio>0.0339195979899498</heightRatio>
       <left>0</left>
-      <sizeRatio>0.0249307479224377</sizeRatio>
+      <sizeRatio>0.0248390064397424</sizeRatio>
       <text>FAITH后台管理系统</text>
       <top>769</top>
-      <topRatio>0.965605095541401</topRatio>
-      <width>1087</width>
+      <topRatio>0.96608040201005</topRatio>
+      <width>1175</width>
       <widthRatio>1</widthRatio>
     </control>
     <control type="Panel" pathname="/divRoot/layouty1/layoutyitem3/panel19">
@@ -1077,9 +1100,9 @@ g5.leftBar = !g5.leftBar;
       <height>2</height>
       <heightRatio>0.0740740740740741</heightRatio>
       <left>0</left>
-      <sizeRatio>0.00184672206832872</sizeRatio>
+      <sizeRatio>0.00183992640294388</sizeRatio>
       <top>0</top>
-      <width>1087</width>
+      <width>1175</width>
       <widthRatio>1</widthRatio>
     </control>
   </controls>

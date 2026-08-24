@@ -330,7 +330,6 @@ a.css_button1:hover{
       <fontColor>E0E0E0</fontColor>
       <height>796</height>
       <heightRatio>1</heightRatio>
-      <layerVisible>false</layerVisible>
       <left>0</left>
       <note>mainDiv</note>
       <onCreate><![CDATA[
@@ -519,7 +518,6 @@ sender.scrollAniProcess = function() {
       <height>780</height>
       <heightRatio>0.979899497487437</heightRatio>
       <layerName>===P2===</layerName>
-      <layerVisible>false</layerVisible>
       <left>300</left>
       <leftRatio>0.251046025104603</leftRatio>
       <onCreate>sender.v_fitInner = true;
@@ -17694,7 +17692,6 @@ sender._input.style.resize = "none";</onCreate>
       <height>702</height>
       <heightRatio>0.9</heightRatio>
       <layerName>设置-账号-头像和主题背景</layerName>
-      <layerVisible>false</layerVisible>
       <left>0</left>
       <onCreate>sender.c_userPhoto = ee.getControl("panel468");
 sender.c_titleBg = ee.getControl("panel472");
@@ -29835,6 +29832,7 @@ return false;</onClick>
       <height>796</height>
       <heightRatio>1</heightRatio>
       <layerName><![CDATA[popBlack->主界面弹窗黑色]]></layerName>
+      <layerVisible>false</layerVisible>
       <left>0</left>
       <onClick>if (!ee.isInternalNode(sender, event.target)) {
     return;
@@ -30861,6 +30859,7 @@ sender.init(0);
       <height>611</height>
       <heightRatio>0.767587939698492</heightRatio>
       <layerName>发短文</layerName>
+      <layerVisible>false</layerVisible>
       <left>331</left>
       <leftRatio>0.276987447698745</leftRatio>
       <onClick>window.event? window.event.cancelBubble = true : event.stopPropagation();</onClick>
