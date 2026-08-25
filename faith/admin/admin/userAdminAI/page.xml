@@ -1,5 +1,5 @@
 <page>
-  <controls count="319">
+  <controls count="320">
     <control type="DivRoot" pathname="/divRoot">
       <backgroundColor>ffffff</backgroundColor>
       <bgColorEnabled>true</bgColorEnabled>
@@ -222,6 +222,54 @@ sender.style.borderRadius = "5px";</onCreate>
       <outerBottom>5</outerBottom>
       <sizeRatio>0.231404958677686</sizeRatio>
       <text>登录个人主页</text>
+      <top>27</top>
+      <topRatio>0.45</topRatio>
+      <width>121</width>
+      <widthRatio>0.102978723404255</widthRatio>
+    </control>
+    <control type="Panel" pathname="/divRoot/layouty1/layoutyitem1/panel40">
+      <backgroundColor>30B5EF</backgroundColor>
+      <cursor>pointer</cursor>
+      <dockY>bottom</dockY>
+      <fontBold>true</fontBold>
+      <fontColor>808080</fontColor>
+      <height>28</height>
+      <heightRatio>0.466666666666667</heightRatio>
+      <layerVisible>false</layerVisible>
+      <left>195</left>
+      <leftRatio>0.165957446808511</leftRatio>
+      <onClick>if (!g5.tableClick.valid) {
+    alert("请选择有效的记录进行操作");
+    return;
+}
+var userName = query.dataset.getData(4,g5.tableClick.y);
+var userId = query.dataset.getData(0,g5.tableClick.y);
+var currentChar = query.dataset.getData(18,g5.tableClick.y);
+
+g5.multilinePrompt("请输入新的AI人格：", currentChar)
+    .then(function(newChar) {
+        if (newChar === null) {
+            return;
+        }
+
+        // 在这里保存修改后的内容
+        //userId,aiChar,onComplete()
+        setAIChar.userId = userId;
+        setAIChar.aiChar = newChar;
+        setAIChar.onComplete = function() {
+            query();
+        }
+        setAIChar();
+    });
+
+
+
+</onClick>
+      <onCreate>sender.className = "buttonGray";
+sender.style.borderRadius = "5px";</onCreate>
+      <outerBottom>5</outerBottom>
+      <sizeRatio>0.231404958677686</sizeRatio>
+      <text>修改AI人格</text>
       <top>27</top>
       <topRatio>0.45</topRatio>
       <width>121</width>
@@ -5274,7 +5322,7 @@ sender.itemsAdd = function(value) {
       <widthRatio>0.34468085106383</widthRatio>
     </control>
   </controls>
-  <taskSet count="11">
+  <taskSet count="6">
     <taskSetItem name="query">
       <script1>eio.appendString8(eb.getCookie("FAToken")); 
 eio.appendString8(ee.getEditText(ee.getControl("edit3")));
@@ -5601,392 +5649,6 @@ alert("修改用户信息完成");
 ee.setVisible(ee.getControl("panel1"), false);
 query();</script3>
     </taskSetItem>
-    <taskSetItem name="disableUser">
-      <script1>//封号/解封, userId,operation,onComplete()
-if (disableUser.busy) return;
-disableUser.busy = true;
-eio.appendString16(eb.getCookie("FAToken"));
-eio.appendString16(disableUser.userId);
-eio.appendString16(disableUser.operation);
-</script1>
-      <script2><![CDATA[var token = eio.readString16();
-var disableUserId = parseInt(eio.readString16());
-var operation = parseInt(eio.readString16());
-
-//获取用户信息及认证
-var sql,sqlResult;
-sql = "exec getUserInfoBySessionAdmin '" + db.encode(token) + "'";
-sqlResult = db.executeQuery("DB", sql);
-if (sqlResult == null) {
-    eio.appendString8("F");
-    es.logWarning("数据库执行错误, sql=" + sql);
-    return;
-}
-db.read(sqlResult);
-if (db.getString(sqlResult, "sessionId").length < 5) {
-    eio.appendString8("F");
-    eio.appendString8("token失效");
-    es.logWarning("用户token失效, sql=" + sql);
-    return;
-}   
-var userId = db.getString(sqlResult, "id");
-var userName = db.getString(sqlResult, "userName");
-
-sql = "exec userDisable " +
-    userId + "," +
-    disableUserId + "," +
-    operation;
-sqlResult = db.executeQuery("DB", sql); 
-if (sqlResult == null) {
-    eio.appendString8("F");
-    es.logWarning("数据库执行错误, sql=" + sql);
-    return;
-}
-db.read(sqlResult);
-if (db.getInt32(sqlResult, "errorCode") != 0) {
-    eio.appendString8("F");
-    eio.appendString8(db.getString(sqlResult, "errorString"));
-    return;
-}
-
-eio.appendString8("T");
-eio.appendString8(db.getString(sqlResult, "errorString"));
-]]></script2>
-      <script3>if (eio.readString8() != "T") {
-    disableUser.busy = false;
-    alert("操作失败：" + eio.readString8());
-    return;
-}
-
-if (disableUser.onComplete) disableUser.onComplete();
-disableUser.busy = false;
-</script3>
-    </taskSetItem>
-    <taskSetItem name="freezeUser">
-      <script1>//userId,operation,onComplete()
-if (freezeUser.busy) return;
-freezeUser.busy = true;
-eio.appendString16(eb.getCookie("FAToken"));
-eio.appendString16(freezeUser.userId);
-eio.appendString16(freezeUser.operation);
-</script1>
-      <script2><![CDATA[var token = eio.readString16();
-var disableUserId = parseInt(eio.readString16());
-var operation = parseInt(eio.readString16());
-
-//获取用户信息及认证
-var sql,sqlResult;
-sql = "exec getUserInfoBySessionAdmin '" + db.encode(token) + "'";
-sqlResult = db.executeQuery("DB", sql);
-if (sqlResult == null) {
-    eio.appendString8("F");
-    es.logWarning("数据库执行错误, sql=" + sql);
-    return;
-}
-db.read(sqlResult);
-if (db.getString(sqlResult, "sessionId").length < 5) {
-    eio.appendString8("F");
-    eio.appendString8("token失效");
-    es.logWarning("用户token失效, sql=" + sql);
-    return;
-}   
-var userId = db.getString(sqlResult, "id");
-var userName = db.getString(sqlResult, "userName");
-
-sql = "exec userFreeze " +
-    userId + "," +
-    disableUserId + "," +
-    operation;
-sqlResult = db.executeQuery("DB", sql); 
-if (sqlResult == null) {
-    eio.appendString8("F");
-    es.logWarning("数据库执行错误, sql=" + sql);
-    return;
-}
-db.read(sqlResult);
-if (db.getInt32(sqlResult, "errorCode") != 0) {
-    eio.appendString8("F");
-    eio.appendString8(db.getString(sqlResult, "errorString"));
-    return;
-}
-
-eio.appendString8("T");
-eio.appendString8(db.getString(sqlResult, "errorString"));
-]]></script2>
-      <script3>if (eio.readString8() != "T") {
-    freezeUser.busy = false;
-    alert("操作失败：" + eio.readString8());
-    return;
-}
-
-if (freezeUser.onComplete) freezeUser.onComplete();
-freezeUser.busy = false;
-</script3>
-    </taskSetItem>
-    <taskSetItem name="setUserStatus">
-      <script1>//userId,newStatus,onComplete()
-if (setUserStatus.busy) return;
-setUserStatus.busy = true;
-eio.appendString16(eb.getCookie("FAToken"));
-eio.appendString16(setUserStatus.userId);
-eio.appendString16(setUserStatus.newStatus);
-</script1>
-      <script2><![CDATA[var token = eio.readString16();
-var userId = parseInt(eio.readString16());
-var newStatus = eio.readString16();
-
-//获取用户信息及认证
-var sql,sqlResult;
-sql = "exec getUserInfoBySessionAdmin '" + db.encode(token) + "'";
-sqlResult = db.executeQuery("DB", sql);
-if (sqlResult == null) {
-    eio.appendString8("F");
-    es.logWarning("数据库执行错误, sql=" + sql);
-    return;
-}
-db.read(sqlResult);
-if (db.getString(sqlResult, "sessionId").length < 5) {
-    eio.appendString8("F");
-    eio.appendString8("token失效");
-    es.logWarning("用户token失效, sql=" + sql);
-    return;
-}   
-var myUserId = db.getString(sqlResult, "id");
-var myUserName = db.getString(sqlResult, "userName");
-
-sql = "exec userSetStatus " +
-    myUserId + "," +
-    userId + "," +
-    db.encode(newStatus);
-sqlResult = db.executeQuery("DB", sql); 
-if (sqlResult == null) {
-    eio.appendString8("F");
-    es.logWarning("数据库执行错误, sql=" + sql);
-    return;
-}
-db.read(sqlResult);
-if (db.getInt32(sqlResult, "errorCode") != 0) {
-    eio.appendString8("F");
-    eio.appendString8(db.getString(sqlResult, "errorString"));
-    return;
-}
-
-eio.appendString8("T");
-eio.appendString8(db.getString(sqlResult, "errorString"));
-]]></script2>
-      <script3>if (eio.readString8() != "T") {
-    setUserStatus.busy = false;
-    alert("操作失败：" + eio.readString8());
-    return;
-}
-
-if (setUserStatus.onComplete) setUserStatus.onComplete();
-setUserStatus.busy = false;
-</script3>
-    </taskSetItem>
-    <taskSetItem name="delFollow">
-      <script1>//userId,onComplete(result)
-if (delFollow.busy) return;
-delFollow.busy = true;
-eio.appendString16(eb.getCookie("FAToken"));
-eio.appendString16(delFollow.userId);
-</script1>
-      <script2><![CDATA[var token = eio.readString16();
-var opUserId = parseInt(eio.readString16());
-
-//获取用户信息及认证
-var sql,sqlResult;
-sql = "exec getUserInfoBySessionAdmin '" + db.encode(token) + "'";
-sqlResult = db.executeQuery("DB", sql);
-if (sqlResult == null) {
-    eio.appendString8("F");
-    es.logWarning("数据库执行错误, sql=" + sql);
-    return;
-}
-db.read(sqlResult);
-if (db.getString(sqlResult, "sessionId").length < 5) {
-    eio.appendString8("F");
-    eio.appendString8("token失效");
-    es.logWarning("用户token失效, sql=" + sql);
-    return;
-}   
-var userId = db.getString(sqlResult, "id");
-var userName = db.getString(sqlResult, "userName");
-
-sql = "exec userDeleteFollow " +
-    userId + "," +
-    opUserId + ";";
-sqlResult = db.executeQuery("DB", sql); 
-if (sqlResult == null) {
-    eio.appendString8("F");
-    es.logWarning("数据库执行错误, sql=" + sql);
-    return;
-}
-db.read(sqlResult);
-if (db.getInt32(sqlResult, "errorCode") != 0) {
-    eio.appendString8("F");
-    eio.appendString8(db.getString(sqlResult, "errorString"));
-    return;
-}
-
-eio.appendString8("T");
-eio.appendString16(db.getString(sqlResult, "errorString"));
-]]></script2>
-      <script3>if (eio.readString8() != "T") {
-    delFollow.busy = false;
-    alert("操作失败：" + eio.readString8());
-    return;
-}
-
-delFollow.result = eio.readString16();
-if (delFollow.onComplete) delFollow.onComplete(delFollow.result);
-delFollow.busy = false;
-</script3>
-    </taskSetItem>
-    <taskSetItem name="changePassword">
-      <script1>//userId,newPassword,onComplete()
-if (changePassword.busy) return;
-changePassword.busy = true;
-eio.appendString16(eb.getCookie("FAToken"));
-eio.appendString16(changePassword.userId);
-eio.appendString16(changePassword.newPassword);</script1>
-      <script2><![CDATA[var token = eio.readString16();
-var userId = parseInt(eio.readString16());
-var newPassword = eio.readString16();
-
-//获取用户信息及认证
-var sql,sqlResult;
-sql = "exec getUserInfoBySessionAdmin '" + db.encode(token) + "'";
-sqlResult = db.executeQuery("DB", sql);
-if (sqlResult == null) {
-    eio.appendString8("F");
-    es.logWarning("数据库执行错误, sql=" + sql);
-    return;
-}
-db.read(sqlResult);
-if (db.getString(sqlResult, "sessionId").length < 5) {
-    eio.appendString8("F");
-    eio.appendString8("token失效");
-    es.logWarning("用户token失效, sql=" + sql);
-    return;
-}   
-var myUserId = db.getString(sqlResult, "id");
-var myUserName = db.getString(sqlResult, "userName");
-
-sql = "exec userSetPassword " +
-    myUserId + "," +
-    userId + "," +
-    "'" + db.encode(es.getMd5(newPassword)) + "'";
-sqlResult = db.executeQuery("DB", sql); 
-if (sqlResult == null) {
-    eio.appendString8("F");
-    es.logWarning("数据库执行错误, sql=" + sql);
-    return;
-}
-db.read(sqlResult);
-if (db.getInt32(sqlResult, "errorCode") != 0) {
-    eio.appendString8("F");
-    eio.appendString8(db.getString(sqlResult, "errorString"));
-    return;
-}
-
-eio.appendString8("T");
-eio.appendString8(db.getString(sqlResult, "errorString"));
-
-
-
-
-
-
-
-
-
-
-
-
-]]></script2>
-      <script3>if (eio.readString8() != "T") {
-    changePassword.busy = false;
-    alert("操作失败：" + eio.readString8());
-    return;
-}
-
-if (changePassword.onComplete) changePassword.onComplete();
-changePassword.busy = false;
-</script3>
-    </taskSetItem>
-    <taskSetItem name="changeEmail">
-      <script1>//userId,email,onComplete()
-if (changeEmail.busy) return;
-changeEmail.busy = true;
-eio.appendString8(eb.getCookie("FAToken"));
-eio.appendString8(changeEmail.userId);
-eio.appendString8(changeEmail.email);</script1>
-      <script2><![CDATA[var token = eio.readString8();
-var userId = parseInt(eio.readString8());
-var email = eio.readString8();
-
-//获取用户信息及认证
-var sql,sqlResult;
-sql = "exec getUserInfoBySessionAdmin '" + db.encode(token) + "'";
-sqlResult = db.executeQuery("DB", sql);
-if (sqlResult == null) {
-    eio.appendString8("F");
-    es.logWarning("数据库执行错误, sql=" + sql);
-    return;
-}
-db.read(sqlResult);
-if (db.getString(sqlResult, "sessionId").length < 5) {
-    eio.appendString8("F");
-    eio.appendString8("token失效");
-    es.logWarning("用户token失效, sql=" + sql);
-    return;
-}   
-var myUserId = db.getString(sqlResult, "id");
-var myUserName = db.getString(sqlResult, "userName");
-
-sql = "exec adminSetRegEmail " +
-    myUserId + "," +
-    userId + "," +
-    "'" + db.encode(email) + "'";
-sqlResult = db.executeQuery("DB", sql); 
-if (sqlResult == null) {
-    eio.appendString8("F");
-    es.logWarning("数据库执行错误, sql=" + sql);
-    return;
-}
-db.read(sqlResult);
-if (db.getInt32(sqlResult, "errorCode") != 0) {
-    eio.appendString8("F");
-    eio.appendString8(db.getString(sqlResult, "errorString"));
-    return;
-}
-
-eio.appendString8("T");
-eio.appendString8(db.getString(sqlResult, "errorString"));
-
-
-
-
-
-
-
-
-
-
-
-
-]]></script2>
-      <script3>if (eio.readString8() != "T") {
-    changeEmail.busy = false;
-    alert("操作失败：" + eio.readString8());
-    return;
-}
-
-if (changeEmail.onComplete) changeEmail.onComplete();
-changeEmail.busy = false;
-</script3>
-    </taskSetItem>
     <taskSetItem name="getTokenByUsername">
       <script1>eio.appendString8(eb.getCookie("FAToken")); 
 eio.appendString8(getTokenByUsername.targetUserName);</script1>
@@ -6061,9 +5723,81 @@ if (!eb.isEmpty(getTokenByUsername.onComplete)) {
     getTokenByUsername.onComplete = null;
 }</script3>
     </taskSetItem>
+    <taskSetItem name="setAIChar">
+      <script1>//userId,aiChar,onComplete()
+if (setAIChar.busy) return;
+setAIChar.busy = true;
+eio.appendString8(eb.getCookie("FAToken"));
+eio.appendString8(setAIChar.userId + "");
+eio.appendString16(setAIChar.aiChar);</script1>
+      <script2><![CDATA[var token = eio.readString8();
+var userId = parseInt(eio.readString8());
+var aiChar = eio.readString16();
+
+//获取用户信息及认证
+var sql,sqlResult;
+sql = "exec getUserInfoBySessionAdmin '" + db.encode(token) + "'";
+sqlResult = db.executeQuery("DB", sql);
+if (sqlResult == null) {
+    eio.appendString8("F");
+    es.logWarning("数据库执行错误, sql=" + sql);
+    return;
+}
+db.read(sqlResult);
+if (db.getString(sqlResult, "sessionId").length < 5) {
+    eio.appendString8("F");
+    eio.appendString8("token失效");
+    es.logWarning("用户token失效, sql=" + sql);
+    return;
+}   
+var myUserId = db.getString(sqlResult, "id");
+var myUserName = db.getString(sqlResult, "userName");
+
+sql = "exec adminSetAIChar " +
+    myUserId + "," +
+    userId + "," +
+    "'" + db.encode(aiChar) + "'";
+sqlResult = db.executeQuery("DB", sql); 
+if (sqlResult == null) {
+    eio.appendString8("F");
+    es.logWarning("数据库执行错误, sql=" + sql);
+    return;
+}
+db.read(sqlResult);
+if (db.getInt32(sqlResult, "errorCode") != 0) {
+    eio.appendString8("F");
+    eio.appendString8(db.getString(sqlResult, "errorString"));
+    return;
+}
+
+eio.appendString8("T");
+eio.appendString8(db.getString(sqlResult, "errorString"));
+
+
+
+
+
+
+
+
+
+
+
+
+]]></script2>
+      <script3>if (eio.readString8() != "T") {
+    setAIChar.busy = false;
+    alert("操作失败：" + eio.readString8());
+    return;
+}
+
+if (setAIChar.onComplete) setAIChar.onComplete();
+setAIChar.busy = false;
+</script3>
+    </taskSetItem>
   </taskSet>
   <gridLines count="0" />
-  <g5Items count="3">
+  <g5Items count="4">
     <item name="imgUrl" type="10">
       <varValue>"/incoming/";</varValue>
       <functionParam />
@@ -6106,6 +5840,84 @@ while (true) {
 }
 result.y -= document.documentElement.scrollTop;
 return result;</functionCode>
+    </item>
+    <item name="multilinePrompt" type="20">
+      <varValue />
+      <functionParam>title, defaultValue</functionParam>
+      <functionCode>return new Promise(function(resolve) {
+    var overlay = document.createElement("div");
+
+    overlay.style.cssText =
+        "position:fixed;" +
+        "left:0;top:0;right:0;bottom:0;" +
+        "background:rgba(0,0,0,0.4);" +
+        "display:flex;" +
+        "align-items:center;" +
+        "justify-content:center;" +
+        "z-index:99999;";
+
+    var dialog = document.createElement("div");
+
+    dialog.style.cssText =
+        "width:500px;" +
+        "background:white;" +
+        "padding:20px;" +
+        "border-radius:10px;" +
+        "box-sizing:border-box;";
+
+    var label = document.createElement("div");
+    label.textContent = title;
+    label.style.marginBottom = "10px";
+
+    var textarea = document.createElement("textarea");
+    textarea.value = (defaultValue || "").replace(/\\n/g, "\n");
+    textarea.style.cssText =
+        "width:100%;" +
+        "height:220px;" +
+        "padding:10px;" +
+        "box-sizing:border-box;" +
+        "resize:vertical;";
+
+    var buttons = document.createElement("div");
+    buttons.style.cssText =
+        "margin-top:12px;" +
+        "text-align:right;";
+
+    var okButton = document.createElement("button");
+    okButton.textContent = "确定";
+
+    var cancelButton = document.createElement("button");
+    cancelButton.textContent = "取消";
+    cancelButton.style.marginLeft = "10px";
+
+    buttons.appendChild(okButton);
+    buttons.appendChild(cancelButton);
+
+    dialog.appendChild(label);
+    dialog.appendChild(textarea);
+    dialog.appendChild(buttons);
+    overlay.appendChild(dialog);
+    document.body.appendChild(overlay);
+
+    textarea.focus();
+
+    okButton.onclick = function() {
+        // 将 textarea 中的真实换行转换为字面量 \n
+        var value = textarea.value
+            .replace(/\r\n/g, "\n")
+            .replace(/\r/g, "\n")
+            .replace(/\n/g, "\\n");
+    
+        document.body.removeChild(overlay);
+        resolve(value);
+    };
+
+    cancelButton.onclick = function() {
+        document.body.removeChild(overlay);
+        resolve(null);
+    };
+});
+</functionCode>
     </item>
   </g5Items>
 </page>
