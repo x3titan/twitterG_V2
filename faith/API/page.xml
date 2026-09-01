@@ -10,7 +10,7 @@
       <width>1000</width>
     </control>
   </controls>
-  <taskSet count="3">
+  <taskSet count="5">
     <taskSetItem name="getAIUserList">
       <script1>//token(admin) string8
 
@@ -162,6 +162,125 @@ if (!eb.isEmpty(getTokenByUsername.onComplete)) {
     getTokenByUsername.onComplete(getTokenByUsername.token, getTokenByUsername.errorMessage);
     getTokenByUsername.onComplete = null;
 }</script3>
+    </taskSetItem>
+    <taskSetItem name="loginAdmin">
+      <script1><![CDATA[if (!login.param) login.param = "";
+g5.username = login.username;
+g5.password = login.password;
+if (g5.username.length <= 2) {
+    g5.alert1("登录提示", "请输入有效的账号");
+    return;
+}
+eio.appendString8(g5.username);
+eio.appendString8(g5.password);
+
+
+
+]]></script1>
+      <script2><![CDATA[var username = eio.readString8();
+var password = eio.readString8();
+var sql,sqlResult;  
+
+//var decodeText = function(text) {
+//1    var result = "";
+//    for (var i=0; i<text.length; i++) {
+//        result +=  String.fromCharCode(text.charCodeAt(i) ^ 0x0A);    
+//    }
+//    return result;                   
+//}
+//var passwordMd5 = es.getMd5(decodeText(password));
+var passwordMd5 = es.getMd5(password);
+
+sql = "exec loginAdmin '" + db.encode(username) + "'," +
+    "'" + passwordMd5 + "'";
+sqlResult = db.executeQuery("DB", sql);
+if (sqlResult == null) {
+    eio.appendString8("F");
+    eio.appendString8("系统繁忙请稍后再试");
+    return;
+}
+db.read(sqlResult);
+if (db.getInt32(sqlResult, "errorCode")!=0) {
+    eio.appendString8("F");
+    eio.appendString8(db.getString(sqlResult, "errorString"));
+    es.logWarning("用户登录失败,username=" + username + ",password=" + password);
+    return;
+} 
+eio.appendString8("T");
+eio.appendString8(db.getString(sqlResult, "errorString"));
+es.logCommon("用户输入账户密码登录：" + username);
+]]></script2>
+      <script3>var resultCode=eio.readString8(); 
+if (resultCode=="F") {
+    g5.alert1("提示", "登录失败：" + eio.readString8());
+    return;
+}  
+//获取令牌
+eb.setCookie("FAToken", eio.readString8());  
+window.location.href = ee.getUrl("/admin/main");
+
+
+</script3>
+    </taskSetItem>
+    <taskSetItem name="getContentIdList">
+      <script1>/*
+tokenAdmin: string8
+startIndex: string8
+length: string8
+*/
+
+
+
+</script1>
+      <script2><![CDATA[tokenAdmin = eio.readString8();
+startIndex = parseInt(eio.readString8());
+length = parseInt(eio.readString8());
+
+var sql,sqlResult;  
+
+sql = "exec getUserInfoBySessionAdmin '" + db.encode(tokenAdmin) + "'";
+sqlResult = db.executeQuery("DB", sql);
+if (sqlResult == null) {
+    eio.appendString8("F");
+    es.logWarning("数据库执行错误, sql=" + sql);
+    return;
+}
+db.read(sqlResult);
+if (db.getString(sqlResult, "sessionId").length < 5) {
+    eio.appendString8("F");
+    eio.appendString8("token失效");
+    es.logWarning("用户token失效, sql=" + sql);
+    return;
+}   
+var userIdAdmin = db.getString(sqlResult, "id");
+var userNameAdmin = db.getString(sqlResult, "userName");
+
+sql = "select top(" + (startIndex + length) +" ) " +
+    "id from tContent " +
+    "where uplinkType = 'N' " +
+    "order by id DESC";
+sqlResult = db.executeQuery("DB", sql);
+if (sqlResult == null) {
+    eio.appendString8("F");
+    eio.appendString8("系统繁忙请稍后再试");
+    return;
+}
+eio.appendString8("T");
+eio.appendDataSet(sqlResult,
+    "id",
+    startIndex, length
+); 
+
+]]></script2>
+      <script3>var resultCode=eio.readString8(); 
+if (resultCode=="F") {
+    g5.alert1("提示", "登录失败：" + eio.readString8());
+    return;
+}  
+
+
+
+</script3>
     </taskSetItem>
   </taskSet>
   <gridLines count="0" />
