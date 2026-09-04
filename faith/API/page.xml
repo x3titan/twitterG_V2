@@ -10,13 +10,65 @@
       <width>1000</width>
     </control>
   </controls>
-  <taskSet count="5">
+  <taskSet count="7">
     <taskSetItem name="getAIUserList">
-      <script1>//token(admin) string8
+      <script1>/*
+tokenAdmin: string8
+startIndex: string8
+length: string8
 
+return
+T/F:string8
+Dataset [userId,userName,nickName,note,character]
+
+*/
 </script1>
-      <script2>var token = eio.readString8();
-</script2>
+      <script2><![CDATA[tokenAdmin = eio.readString8();
+startIndex = parseInt(eio.readString8());
+length = parseInt(eio.readString8());
+
+var sql,sqlResult;  
+
+sql = "exec getUserInfoBySessionAdmin '" + db.encode(tokenAdmin) + "'";
+sqlResult = db.executeQuery("DB", sql);
+if (sqlResult == null) {
+    eio.appendString8("F");
+    es.logWarning("数据库执行错误, sql=" + sql);
+    return;
+}
+db.read(sqlResult);
+if (db.getString(sqlResult, "sessionId").length < 5) {
+    eio.appendString8("F");
+    eio.appendString8("token失效");
+    es.logWarning("用户token失效, sql=" + sql);
+    return;
+}   
+var userIdAdmin = db.getString(sqlResult, "id");
+var userNameAdmin = db.getString(sqlResult, "userName");
+
+sql =
+    "SELECT TOP (" + (startIndex + length) +") userInfo.id as userId " +
+    "      ,userInfo.[userName] " +
+    "      ,userInfo.[nickName] " +
+    "      ,userInfo.[note] " +
+    "      ,userAI.[character] " +
+    "  FROM [twitterG].[dbo].[userInfo] " +
+    "  inner join userAI on userAI.userId = userInfo.id " +
+    "  order by userID DESC ";
+sqlResult = db.executeQuery("DB", sql);
+if (sqlResult == null) {
+    eio.appendString8("F");
+    eio.appendString8("系统繁忙请稍后再试");
+    return;
+}
+eio.appendString8("T");
+eio.appendDataSet(sqlResult,
+    "userId,userName,nickName,note,character",
+    startIndex, length
+); 
+
+
+]]></script2>
       <script3 />
     </taskSetItem>
     <taskSetItem name="getUserInfo">
@@ -88,34 +140,36 @@ g5.processUrl();
 </script3>
     </taskSetItem>
     <taskSetItem name="getTokenByUsername">
-      <script1>eio.appendString8(getTokenByUsername.adminUserName);
-eio.appendString8(getTokenByUsername.adminPasswordMD5);
-eio.appendString8(getTokenByUsername.targetUserName);</script1>
-      <script2>var adminUserName = eio.readString8();
-var adminPasswordMD5 = eio.readString8();
-var targetUserName = eio.readString8();
+      <script1>/*
+tokenAdmin: string8
+targetUserName: string8
 
-if ((adminUserName == "") || (adminPasswordMD5 == "") || (targetUserName == "")) {
-    eio.appendString8("F");
-    eio.appendString8("参数不完整");
-    return;
-}
+return
+T/F:string8
+token: string8
+*/
+</script1>
+      <script2><![CDATA[tokenAdmin = eio.readString8();
+targetUserName = eio.readString8();
 
 var sql, sqlResult;
 
-sql = "select id from userInfoAdmin where userName='" + db.encode(adminUserName) + "' and password='" + db.encode(adminPasswordMD5) + "'";
+sql = "exec getUserInfoBySessionAdmin '" + db.encode(tokenAdmin) + "'";
 sqlResult = db.executeQuery("DB", sql);
 if (sqlResult == null) {
     eio.appendString8("F");
-    eio.appendString8("系统繁忙,请稍后再试");
+    es.logWarning("数据库执行错误, sql=" + sql);
     return;
 }
-if (!db.read(sqlResult)) {
+db.read(sqlResult);
+if (db.getString(sqlResult, "sessionId").length < 5) {
     eio.appendString8("F");
-    eio.appendString8("管理员账号或密码不正确");
+    eio.appendString8("token失效");
+    es.logWarning("用户token失效, sql=" + sql);
     return;
-}
-var adminUserId = db.getString(sqlResult, "id");
+}   
+var userIdAdmin = db.getString(sqlResult, "id");
+var userNameAdmin = db.getString(sqlResult, "userName");
 
 sql = "select id from userInfo where userName='" + db.encode(targetUserName) + "'";
 sqlResult = db.executeQuery("DB", sql);
@@ -135,7 +189,7 @@ sql = "declare @token varchar(100); " +
       "select top 1 @token = sessionId from [session] where userId=" + targetUserId + " order by id desc; " +
       "if (@token is null) begin " +
       "set @token = CONVERT(varchar(100), NEWID()); " +
-      "insert into [session] (sessionId, userId, userIdAdmin) values (@token, " + targetUserId + ", " + adminUserId + "); " +
+      "insert into [session] (sessionId, userId, userIdAdmin) values (@token, " + targetUserId + ", " + userIdAdmin + "); " +
       "end " +
       "select @token as token";
 sqlResult = db.executeQuery("DB", sql);
@@ -148,7 +202,7 @@ db.read(sqlResult);
 var token = db.getString(sqlResult, "token");
 
 eio.appendString8("T");
-eio.appendString8(token);</script2>
+eio.appendString8(token);]]></script2>
       <script3>var r = eio.readString8();
 if (r == "F") {
     getTokenByUsername.token = null;
@@ -227,6 +281,11 @@ window.location.href = ee.getUrl("/admin/main");
 tokenAdmin: string8
 startIndex: string8
 length: string8
+
+return
+T/F:string8
+Dataset [contentId]
+
 */
 
 
@@ -270,6 +329,164 @@ eio.appendDataSet(sqlResult,
     "id",
     startIndex, length
 ); 
+
+]]></script2>
+      <script3>var resultCode=eio.readString8(); 
+if (resultCode=="F") {
+    g5.alert1("提示", "登录失败：" + eio.readString8());
+    return;
+}  
+
+
+
+</script3>
+    </taskSetItem>
+    <taskSetItem name="follow">
+      <script1>/*
+token: string8
+follow: T/F,string8
+userId: string8
+
+return
+T/F:string8
+
+*/
+
+
+
+
+
+</script1>
+      <script2><![CDATA[var token = eio.readString8();
+var follow = eio.readString8();
+var userId = eio.readString8();
+var sql,sqlResult; 
+
+if (parseInt(userId) == 10877) {
+    eio.appendString8("F");
+    eio.appendString8("该账号不能被关注。");
+    return;
+}
+sql = "exec getUserInfoBySession '" + db.encode(token) + "'";
+sqlResult = db.executeQuery("DB", sql);
+if (sqlResult == null) {
+    eio.appendString8("F");
+    eio.appendString8("系统繁忙请稍后再试");
+    return;
+}
+db.read(sqlResult);
+if (db.getString(sqlResult, "sessionId").length < 5) {
+    eio.appendString8("F");
+    eio.appendString8("上次登录时间太久或者您更换了系统");
+    es.logCommon("用户token登录失败,token=" + token);
+    return;
+}
+var myUserId = db.getString(sqlResult,"id");
+if (myUserId == userId) {
+    eio.appendString8("F");
+    eio.appendString8("关注自己就没意思了吧？");
+    return;
+}
+if (db.getString(sqlResult,"userName")=="guest") {
+    eio.appendString8("F");
+    eio.appendString8("游客不能关注和取消关注账号，您如果需要使用这个功能请注册正式用户。");
+    return;
+}
+
+sql = "exec followUser " + myUserId + "," + parseInt(userId) + "," + (follow=="T"?"1":"0");
+if (!db.executeNoneQuery("DB", sql)) {
+    eio.appendString8("F");
+    eio.appendString8("系统繁忙请稍后再试");
+    return;
+}
+
+eio.appendString8("T");
+eio.appendString8(follow);
+]]></script2>
+      <script3>g5.blockLoading.close();
+if (eio.readString8() != "T") {
+    g5.alert1("提示", eio.readString8());
+    return;
+}
+var f = eio.readString8();
+if (!eb.isEmpty(follow.onComplete)) {
+    follow.onComplete();
+    follow.onComplete = null;
+}
+
+</script3>
+    </taskSetItem>
+    <taskSetItem name="aiReply">
+      <script1>/*
+tokenAdmin: string8
+contentId: string8
+contentText: string16
+photoText: string16
+aiEmotion: string16
+aiReply: string16
+userId: string8
+aiUserId: string8
+
+return
+T/F:string8
+*/
+
+
+
+</script1>
+      <script2><![CDATA[tokenAdmin = eio.readString8();
+contentId = parseInt(eio.readString8());
+contentText = eio.readString16();
+photoText = eio.readString16();
+aiEmotion = eio.readString16();
+aiReply = eio.readString16();
+userId = parseInt(eio.readString8());
+aiUserId = parseInt(eio.readString8());
+
+var sql,sqlResult;  
+
+sql = "exec getUserInfoBySessionAdmin '" + db.encode(tokenAdmin) + "'";
+sqlResult = db.executeQuery("DB", sql);
+if (sqlResult == null) {
+    eio.appendString8("F");
+    es.logWarning("数据库执行错误, sql=" + sql);
+    return;
+}
+db.read(sqlResult);
+if (db.getString(sqlResult, "sessionId").length < 5) {
+    eio.appendString8("F");
+    eio.appendString8("token失效");
+    es.logWarning("用户token失效, sql=" + sql);
+    return;
+}   
+var userIdAdmin = db.getString(sqlResult, "id");
+var userNameAdmin = db.getString(sqlResult, "userName");
+
+sql =
+    "INSERT INTO aiReply (" +
+    "   contentId," +
+    "   contentText," +
+    "   photoText," +
+    "   aiEmotion," +
+    "   aiReply," +
+    "   userId," +
+    "   aiUserId " +
+    ") VALUES (" +
+    contentId + "," +
+    "'" + db.encode(contentText) + "'," +
+    "'" + db.encode(photoText) + "'," +
+    "'" + db.encode(aiEmotion) + "'," +
+    "'" + db.encode(aiReply) + "'," +
+    userId + "," +
+    aiUserId +
+    ")";
+sqlResult = db.executeQuery("DB", sql);
+if (sqlResult == null) {
+    eio.appendString8("F");
+    eio.appendString8("系统繁忙请稍后再试");
+    return;
+}
+eio.appendString8("T");
 
 ]]></script2>
       <script3>var resultCode=eio.readString8(); 
