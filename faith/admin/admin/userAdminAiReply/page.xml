@@ -273,23 +273,20 @@ sender.style.borderRadius = "5px";</onCreate>
     alert("请选择有效的记录进行操作");
     return;
 }
-var replyId = query.dataset.getData(0,g5.tableClick.y);
-var currentChar = query.dataset.getData(6,g5.tableClick.y);
+let replyId = query.dataset.getData(0,g5.tableClick.y);
+let currentText = query.dataset.getData(6,g5.tableClick.y);
 
-g5.multilinePrompt("请修改AI回复内容：", currentChar)
-    .then(function(newChar) {
-        if (newChar === null) {
+g5.multilinePrompt("请修改AI回复内容：", currentText)
+    .then(function(userInput) {
+        if (userInput === null) {
             return;
         }
-
-        // 在这里保存修改后的内容
-        //userId,aiChar,onComplete()
-        setAIChar.userId = userId;
-        setAIChar.aiChar = newChar;
-        setAIChar.onComplete = function() {
+        modifyAiReply.replyId = replyId;
+        modifyAiReply.replyText = userInput;
+        modifyAiReply.onComplete = function() {
             query();
         }
-        //setAIChar();
+        modifyAiReply();
     });
 
 
@@ -316,31 +313,16 @@ sender.style.borderRadius = "5px";</onCreate>
       <layerVisible>false</layerVisible>
       <left>320</left>
       <leftRatio>0.272340425531915</leftRatio>
-      <onClick>return;
-if (!g5.tableClick.valid) {
+      <onClick>if (!g5.tableClick.valid) {
     alert("请选择有效的记录进行操作");
     return;
 }
-var replyId = query.dataset.getData(0,g5.tableClick.y);
-var currentChar = query.dataset.getData(6,g5.tableClick.y);
-
-g5.multilinePrompt("请修改AI回复内容：", currentChar)
-    .then(function(newChar) {
-        if (newChar === null) {
-            return;
-        }
-
-        // 在这里保存修改后的内容
-        //userId,aiChar,onComplete()
-        setAIChar.userId = userId;
-        setAIChar.aiChar = newChar;
-        setAIChar.onComplete = function() {
-            query();
-        }
-        //setAIChar();
-    });
-
-
+let replyId = query.dataset.getData(0,g5.tableClick.y);
+del.replyId = replyId;
+del.onComplete = function() {
+    query();
+}
+del();
 
 </onClick>
       <onCreate>sender.className = "buttonGray";
@@ -364,33 +346,26 @@ sender.style.borderRadius = "5px";</onCreate>
       <layerVisible>false</layerVisible>
       <left>398</left>
       <leftRatio>0.338723404255319</leftRatio>
-      <onClick>return;
-if (!g5.tableClick.valid) {
+      <onClick>if (!g5.tableClick.valid) {
     alert("请选择有效的记录进行操作");
     return;
 }
-var replyId = query.dataset.getData(0,g5.tableClick.y);
-var currentChar = query.dataset.getData(6,g5.tableClick.y);
 
-g5.multilinePrompt("请修改AI回复内容：", currentChar)
-    .then(function(newChar) {
-        if (newChar === null) {
-            return;
-        }
-
-        // 在这里保存修改后的内容
-        //userId,aiChar,onComplete()
-        setAIChar.userId = userId;
-        setAIChar.aiChar = newChar;
-        setAIChar.onComplete = function() {
-            query();
-        }
-        //setAIChar();
-    });
-
-
-
-</onClick>
+newTwitterV2.aiUserId = query.dataset.getData(12,g5.tableClick.y);
+newTwitterV2.content = query.dataset.getData(6,g5.tableClick.y);
+newTwitterV2.uplinkType = "R";
+newTwitterV2.uplinkId = query.dataset.getData(2,g5.tableClick.y);
+newTwitterV2.photos = new Array();
+newTwitterV2.voteList = new Array();
+newTwitterV2.voteDuration = 0;
+newTwitterV2.onComplete = function() {
+    del.replyId = query.dataset.getData(0,g5.tableClick.y);
+    del.onComplete = function() {
+        query();
+    }
+    del();    
+}
+newTwitterV2();</onClick>
       <onCreate>sender.className = "buttonGray";
 sender.style.borderRadius = "5px";</onCreate>
       <outerBottom>5</outerBottom>
@@ -4041,7 +4016,7 @@ sender.itemsAdd = function(value) {
       <widthRatio>0.34468085106383</widthRatio>
     </control>
   </controls>
-  <taskSet count="4">
+  <taskSet count="5">
     <taskSetItem name="query">
       <script1>eio.appendString8(eb.getCookie("FAToken")); 
 eio.appendString8(ee.getEditText(ee.getControl("edit3")));
@@ -4138,14 +4113,14 @@ ee.setText(ee.getControl("panel16"), "共找到" +
 ]]></script3>
     </taskSetItem>
     <taskSetItem name="del">
-      <script1>eio.appendString8(eb.getCookie("loginToken"));
-eio.appendInt32(parseInt(g5.userId));</script1>
-      <script2><![CDATA[var token = eio.readString8();
-var deleteUserId = eio.readInt32();
+      <script1>//del: replyId, onComplete
+eio.appendString8(eb.getCookie("FAToken"));
+eio.appendString8(del.replyId);</script1>
+      <script2><![CDATA[var tokenAmin = eio.readString8();
+var replyId = parseInt(eio.readString8());
 
-//获取用户信息及认证
-var sql,sqlResult;
-sql = "exec getUserInfoBySession '" + db.encode(token) + "'";
+var sql, sqlResult;
+sql = "exec getUserInfoBySessionAdmin '" + db.encode(tokenAmin) + "'";
 sqlResult = db.executeQuery("DB", sql);
 if (sqlResult == null) {
     eio.appendString8("F");
@@ -4155,27 +4130,19 @@ if (sqlResult == null) {
 db.read(sqlResult);
 if (db.getString(sqlResult, "sessionId").length < 5) {
     eio.appendString8("F");
-    eio.appendString8("您已经长时间没有登录系统了，请返回登录页面重新登录");
+    eio.appendString8("token失效");
     es.logWarning("用户token失效, sql=" + sql);
     return;
 }   
-var userId = db.getString(sqlResult, "id");
-var companyId = db.getString(sqlResult, "companyId");
+var adminUserId = db.getString(sqlResult, "id");
+var adminUserName = db.getString(sqlResult, "userName");
 
 //修改
-sql = "exec userDelete " +
-    userId + "," +
-    deleteUserId;
+sql = "DELETE aiReply WHERE id = " + replyId;
 sqlResult = db.executeQuery("DB", sql); 
 if (sqlResult == null) {
     eio.appendString8("F");
     es.logWarning("数据库执行错误, sql=" + sql);
-    return;
-}
-db.read(sqlResult);
-if (db.getInt32(sqlResult, "errorCode") < 0) {
-    eio.appendString8("F");
-    eio.appendString8(db.getString(sqlResult, "errorString"));
     return;
 }
 
@@ -4183,49 +4150,25 @@ eio.appendString8("T");
 eio.appendString8(db.getString(sqlResult, "errorString"));
 ]]></script2>
       <script3>if (eio.readString8() != "T") {
-    alert("无法删除用户账户：" + eio.readString8());
+    alert("Error：" + eio.readString8());
     return;
 }
-
-alert("删除用户账户完成");
-query();</script3>
+if (del.onComplete) del.onComplete();
+</script3>
     </taskSetItem>
-    <taskSetItem name="modify">
-      <script1><![CDATA[var modifyUserId = ee.getText(ee.getControl("panel10"));
-var username = ee.getEditText(ee.getControl("edit2"));
-var password1 = ee.getEditText(ee.getControl("edit4"));
-var password2 = ee.getEditText(ee.getControl("edit5"));
-var nickName = ee.getEditText(ee.getControl("edit6"));
-var mobile = ee.getEditText(ee.getControl("edit7"));
-var companyId = ee.getEditText(ee.getControl("edit8"));
-var note = ee.getEditText(ee.getControl("edit1"));
+    <taskSetItem name="modifyAiReply">
+      <script1>//modifyAiReply: replyId,replyText,onComplete
+eio.appendString8(eb.getCookie("FAToken"));
+eio.appendString8(modifyAiReply.replyId + "");
+eio.appendString16(modifyAiReply.replyText);
 
-if ((password1 != "") || (password2 != "")) {
-    alert("系统注意到您输入了密码，修改密码必须本人操作，您无权在这里修改他人的密码，所以您输入的密码会被忽略。 ");
-}
-if (companyId != "") {
-    alert("您输入companyId是不必要的，系统将忽略您的输入");
-}
-if (nickName.length < 2) {
-    alert("修改后的昵称长度不能少于2个字符或者汉字");
-    return;
-}
+</script1>
+      <script2><![CDATA[let tokenAmin = eio.readString8();
+let replyId = parseInt(eio.readString8());
+let replyText = eio.readString16();
 
-eio.appendString8(eb.getCookie("loginToken"));
-eio.appendInt32(parseInt(modifyUserId));
-eio.appendString8(nickName);
-eio.appendString8(mobile);
-eio.appendString16(note);
-]]></script1>
-      <script2><![CDATA[var token = eio.readString8();
-var modifyUserId = eio.readInt32();
-var nickName = eio.readString8();
-var mobile = eio.readString8();
-var note = eio.readString16(); 
-
-//获取用户信息及认证
-var sql,sqlResult;
-sql = "exec getUserInfoBySession '" + db.encode(token) + "'";
+var sql, sqlResult;
+sql = "exec getUserInfoBySessionAdmin '" + db.encode(tokenAmin) + "'";
 sqlResult = db.executeQuery("DB", sql);
 if (sqlResult == null) {
     eio.appendString8("F");
@@ -4235,20 +4178,18 @@ if (sqlResult == null) {
 db.read(sqlResult);
 if (db.getString(sqlResult, "sessionId").length < 5) {
     eio.appendString8("F");
-    eio.appendString8("您已经长时间没有登录系统了，请返回登录页面重新登录");
+    eio.appendString8("token失效");
     es.logWarning("用户token失效, sql=" + sql);
     return;
 }   
-var userId = db.getString(sqlResult, "id");
-var companyId = db.getString(sqlResult, "companyId");
+var adminUserId = db.getString(sqlResult, "id");
+var adminUserName = db.getString(sqlResult, "userName");
 
 //修改
-sql = "exec userModify " +
-    userId + "," +
-    modifyUserId + "," +
-    "'" + db.encode(mobile) + "'," +
-    "'" + db.encode(nickName) + "'," +
-    "'" + db.encode(note) + "'";
+sql =
+    "UPDATE aiReply " +
+    "SET aiReply = '" + db.encode(replyText) +"' " +
+    "WHERE id = " + replyId; 
     
 sqlResult = db.executeQuery("DB", sql); 
 if (sqlResult == null) {
@@ -4264,16 +4205,13 @@ if (db.getInt32(sqlResult, "errorCode") < 0) {
 }
 
 eio.appendString8("T");
-eio.appendString8(db.getString(sqlResult, "errorString"));
 ]]></script2>
       <script3>if (eio.readString8() != "T") {
-    alert("无法修改用户信息：" + eio.readString8());
+    alert("无法执行操作：" + eio.readString8());
     return;
 }
 
-alert("修改用户信息完成");
-ee.setVisible(ee.getControl("panel1"), false);
-query();</script3>
+if (modifyAiReply.onComplete) modifyAiReply.onComplete();</script3>
     </taskSetItem>
     <taskSetItem name="getTokenByUsername">
       <script1>eio.appendString8(eb.getCookie("FAToken")); 
@@ -4348,6 +4286,165 @@ if (!eb.isEmpty(getTokenByUsername.onComplete)) {
     getTokenByUsername.onComplete(getTokenByUsername.token, getTokenByUsername.errorMessage);
     getTokenByUsername.onComplete = null;
 }</script3>
+    </taskSetItem>
+    <taskSetItem name="newTwitterV2">
+      <script1><![CDATA[//content,aiUserId,uplinkType,uplinkId,photos(array),voteList,voteDuration,onComplete(contentId)
+if (newTwitterV2.busy) return;
+newTwitterV2.busy = true;
+
+if (eb.isEmpty(newTwitterV2.photos)) newTwitterV2.photos = new Array();
+
+var text = newTwitterV2.content;
+if (newTwitterV2.uplinkType!="L") {
+    if ((text.length<=0) &amp;&amp; (newTwitterV2.photos.length<=0)) {
+        g5.alert1("发言内容不符合要求", "发言内容不能为空");
+        newTwitterV2.busy = false;
+        return;
+    }
+}
+
+eio.appendString8(eb.getCookie("FAToken"));
+eio.appendString8(newTwitterV2.aiUserId)
+eio.appendString16(text);
+eio.appendString16(newTwitterV2.uplinkType);
+eio.appendString16(newTwitterV2.uplinkId+"");
+eio.appendInt32(newTwitterV2.photos.length);
+for (var i=0; i<newTwitterV2.photos.length; i++) eio.appendString16(newTwitterV2.photos[i]);
+eio.appendByte(newTwitterV2.voteList.length);
+for (var i=0; i<newTwitterV2.voteList.length; i++) eio.appendString8(newTwitterV2.voteList[i]);
+if (!newTwitterV2.voteDuration) newTwitterV2.voteDuration = 10 * 60;
+eio.appendString8(newTwitterV2.voteDuration+"");
+
+
+
+
+
+
+
+]]></script1>
+      <script2><![CDATA[let tokenAmin = eio.readString8();
+let aiUserId = parseInt(eio.readString8());
+let text = eio.readString16();
+let uplinkType = eio.readString16();
+let uplinkId = eio.readString16();
+let count = Math.min(eio.readInt32(),4);
+let photos = new Array();
+for (var i=0; i<count; i++) {
+    photos.push(eio.readString16());
+}
+while (photos.length<4) photos.push("");
+count = Math.min(eio.readByte(), 15);
+let voteList = new Array();
+for (var i=0; i<count; i++) {
+    voteList.push(eio.readString8());
+}
+let voteDuration = parseInt(eio.readString8());
+
+var sql,sqlResult;  
+sql = "exec getUserInfoBySessionAdmin '" + db.encode(tokenAmin) + "'";
+sqlResult = db.executeQuery("DB", sql);
+if (sqlResult == null) {
+    eio.appendString8("F");
+    es.logWarning("数据库执行错误, sql=" + sql);
+    return;
+}
+db.read(sqlResult);
+if (db.getString(sqlResult, "sessionId").length < 5) {
+    eio.appendString8("F");
+    eio.appendString8("token失效");
+    es.logWarning("用户token失效, sql=" + sql);
+    return;
+}   
+var adminUserId = db.getString(sqlResult, "id");
+var adminUserName = db.getString(sqlResult, "userName");
+
+var ptn = /@([a-zA-Z0-9_\-]{2,20})/gim;
+var s = text.replace(ptn, "@$1|");
+var alertUsers = new Array();
+var i=0,j;
+while (i<s.length) {
+    if (s.charAt(i)!="@") {
+        i++;
+        continue;
+    }
+    j = i+1;
+    while (j<s.length) {
+        if (s.charAt(j)=="|") break;
+        j++;
+    }
+    if (j-i-1>0) {
+        var un = s.substr(i+1,j-i-1);
+        if (un.toUpperCase()!=userName.toUpperCase())
+            alertUsers.push(un);
+    }
+    i=j;
+}
+
+sql = "DECLARE @voteNames TYPEStringTable;\n";
+if (voteList.length>0) {
+    sql += "INSERT INTO @voteNames (value) VALUES ";
+    for (var i=0; i<voteList.length; i++) {
+        if (i>0) sql += ",";
+        sql += "('" + db.encode(voteList[i]) + "')";
+    }
+    sql += ";\n";
+}
+sql +=
+    "exec twitterNewV2 " +
+    aiUserId +
+    ",N'" + db.encode(text) + "'" +
+    ",1" +
+    ",'" + db.encode(photos[0]) + "'" +
+    ",'" + db.encode(photos[1]) + "'" +
+    ",'" + db.encode(photos[2]) + "'" +
+    ",'" + db.encode(photos[3]) + "'" +
+    ",'" + db.encode(uplinkType) + "'" +
+    ",'" + db.encode(uplinkId) + "'" +
+    ",@voteNames" +
+    "," + voteDuration + ";\n";
+    
+sqlResult = db.executeQuery("DB", sql);
+if (sqlResult == null) {
+    eio.appendString8("F");
+    eio.appendString8("系统繁忙请稍后再试");
+    es.logWarning(sql);
+    return;
+}
+db.read(sqlResult);
+let contentId = db.getString(sqlResult,"contentId");
+let voteId = db.getString(sqlResult,"voteId");
+let postCountDiff = db.getString(sqlResult,"postCountDiff");
+
+sql = "";
+for (var i=0; i<alertUsers.length; i++) {
+    sql += "exec [userPromptSend] " +
+        aiUserId +
+        ",'" + db.encode(alertUsers[i]) + "'" +
+        "," + contentId +
+        ",'" + db.encode(text) + "';\n";
+}
+if (sql.length>0) sqlResult = db.executeNoneQuery("DB", sql);
+
+eio.appendString8("T");
+eio.appendString8(contentId);
+eio.appendString8(postCountDiff);
+eio.appendString8(voteId);
+
+]]></script2>
+      <script3>if (eio.readString8() == "F") {
+    alert("error: ", eio.readString8());
+    newTwitterV2.busy = false;
+    return;
+}
+newTwitterV2.contentId = eio.readString8();
+newTwitterV2.postCountDiff = parseInt(eio.readString8());
+newTwitterV2.voteId = parseInt(eio.readString8());
+if (newTwitterV2.onComplete) {
+    newTwitterV2.onComplete(newTwitterV2.contentId, newTwitterV2.postCountDiff, newTwitterV2.voteId);
+}
+newTwitterV2.busy = false; 
+
+</script3>
     </taskSetItem>
   </taskSet>
   <gridLines count="0" />
